@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ การบริหารความเสี่ยง ควบคุมภายใน & Risk Culture</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun','Noto Sans Thai',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px}
+header{background:linear-gradient(135deg,#1a2744,#2d3a5c);color:#fff;padding:20px 24px;text-align:center}
+header h1{font-size:1.3em;margin-bottom:4px}
+header p{font-size:.88em;opacity:.85}
+.controls{background:#fff;padding:14px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.controls label{font-size:.82em;color:#555;font-weight:600}
+select,button{padding:6px 12px;border-radius:8px;border:1px solid #ccc;font-family:inherit;font-size:.88em;cursor:pointer}
+button{background:#2d3a5c;color:#fff;border:none;font-weight:600;transition:.2s}
+button:hover{background:#1a2744}
+button.secondary{background:#7f8c8d}
+button.secondary:hover{background:#566573}
+.progress-bar{width:100%;background:#e0e0e0;border-radius:10px;height:8px;margin:6px 0}
+.progress-fill{height:8px;border-radius:10px;background:linear-gradient(90deg,#2d3a5c,#10b981);transition:.4s}
+.score-box{background:#fff;border:2px solid #2d3a5c;border-radius:12px;padding:6px 16px;font-weight:700;color:#1a2744;white-space:nowrap}
+#quiz-area{max-width:860px;margin:20px auto;padding:0 16px 60px}
+.category-title{background:#2d3a5c;color:#fff;border-radius:10px 10px 0 0;padding:10px 18px;font-weight:700;font-size:.95em;margin-top:24px}
+.q-card{background:#fff;border-radius:0 0 10px 10px;margin-bottom:4px;padding:18px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.q-card+.q-card{border-top:1px solid #f0f0f0;border-radius:0}
+.q-card:last-child{border-radius:0 0 10px 10px}
+.q-header{display:flex;gap:8px;align-items:flex-start;margin-bottom:10px}
+.q-num{background:#2d3a5c;color:#fff;border-radius:50%;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.78em;font-weight:700}
+.q-level{font-size:.72em;padding:2px 8px;border-radius:4px;font-weight:600;white-space:nowrap}
+.lvl-จำ{background:#dbeafe;color:#1d4ed8}
+.lvl-เข้าใจ{background:#fef3c7;color:#92400e}
+.lvl-ประยุกต์{background:#ede9fe;color:#6d28d9}
+.q-text{font-weight:600;line-height:1.6;margin-bottom:10px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;padding:8px 12px;border:2px solid #e5e7eb;border-radius:8px;cursor:pointer;transition:.2s;font-size:.92em}
+.opt:hover{border-color:#93c5fd;background:#f0f7ff}
+.opt input{margin:0;accent-color:#2d3a5c}
+.opt.correct{border-color:#10b981;background:#d1fae5}
+.opt.wrong{border-color:#ef4444;background:#fee2e2}
+.opt.reveal{border-color:#10b981;background:#ecfdf5}
+.exp{margin-top:10px;padding:10px 14px;background:#f8fafc;border-radius:8px;font-size:.85em;line-height:1.6;display:none;border-left:4px solid #10b981}
+.exp.show{display:block}
+.exp strong{color:#2d3a5c}
+.filter-btn{padding:5px 12px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:#555;font-size:.8em;cursor:pointer;font-weight:600}
+.filter-btn.active{background:#2d3a5c;color:#fff;border-color:#2d3a5c}
+.result-box{background:#fff;border-radius:12px;padding:24px;text-align:center;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.08);display:none}
+.result-box h2{color:#2d3a5c;margin-bottom:8px}
+.result-score{font-size:2.5em;font-weight:800;color:#10b981}
+.result-pct{font-size:1.2em;color:#555;margin-top:4px}
+@media(max-width:700px){.controls{flex-direction:column;align-items:stretch;}.filter-btn{font-size:.75em;}}
+</style>
+</head>
+<body>
+<header>
+<h1>📝 แบบทดสอบ การบริหารความเสี่ยง ควบคุมภายใน & Risk Culture</h1>
+<p>สำหรับเตรียมสอบเลื่อนระดับ ผช.ผจข. ธ.ก.ส. — Genius 9</p>
+</header>
+<div class="controls">
+<label>หมวด:</label>
+<div id="filterBtns" style="display:flex;gap:4px;flex-wrap:wrap;">
+<button class="filter-btn active" data-cat="all">ทั้งหมด (40)</button>
+<button class="filter-btn" data-cat="ความเสี่ยง">ความเสี่ยง (10)</button>
+<button class="filter-btn" data-cat="ISO 31000">ISO 31000 (5)</button>
+<button class="filter-btn" data-cat="Three Lines">Three Lines (7)</button>
+<button class="filter-btn" data-cat="ควบคุมภายใน">ควบคุมภายใน (8)</button>
+<button class="filter-btn" data-cat="Risk Culture">Risk Culture (6)</button>
+<button class="filter-btn" data-cat="ธ.ก.ส.">ธ.ก.ส. (4)</button>
+</div>
+<div style="flex:1"></div>
+<div class="score-box">得分: <span id="score">0</span>/<span id="total">40</span></div>
+</div>
+<div style="max-width:860px;margin:8px auto;padding:0 16px;">
+<div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+</div>
+<div id="resultBox" class="result-box" style="max-width:860px;margin:0 auto;padding:0 16px;">
+<h2>🏆 ผลลัพธ์</h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-pct" id="resultPct"></div>
+</div>
+<div id="quiz-area"></div>
+<script>
+const ALL_Q = [
+// ===== หมวด การบริหารความเสี่ยง =====
+{id:1,cat:"ความเสี่ยง",level:"จำ",q:"COSO ย่อมาจากอะไร?",opts:["Committee of Sponsoring Organizations of the Treadway Commission","Central Office for Strategic Oversight","Corporate Organization for Standard & Ethics","Chief Operating Standards Organization"],ans:0,exp:"COSO ย่อมาจาก Committee of Sponsoring Organizations of the Treadway Commission — เป็นคณะกรรมการที่จัดตั้งขึ้นเพื่อสนับสนุนการพัฒนากรอบการกำกับดูแลและการบริหารความเสี่ยง"},
+{id:2,cat:"ความเสี่ยง",level:"จำ",q:"ความเสี่ยง 4 ประเภทหลัก มีอะไรบ้าง?",opts:["Strategic, Operational, Financial, Compliance","Credit, Market, Liquidity, Operational","Internal, External, Financial, Strategic","Technical, Financial, Legal, Human"],ans:0,exp:"ความเสี่ยง 4 ประเภทหลัก: Strategic (เชิงยุทธศาสตร์), Operational (การดำเนินงาน), Financial (ทางการเงิน), Compliance (การปฏิบัติตามกฎเกณฑ์)"},
+{id:3,cat:"ความเสี่ยง",level:"จำ",q:"กระบวนการบริหารความเสี่ยงมีกี่ขั้นตอน และขั้นตอนใดเริ่มต้น?",opts:["5 ขั้นตอน เริ่มจากระบุ (Identify)","4 ขั้นตอน เริ่มจากการประเมิน (Assess)","6 ขั้นตอน เริ่มจากการวางแผน (Plan)","3 ขั้นตอน เริ่มจากการควบคุม (Control)"],ans:0,exp:"กระบวนการ 5 ขั้นตอน: 1) ระบุ (Identify) 2) ประเมิน (Assess) 3) ควบคุม (Control) 4) บริหาร (Manage) 5) บูรณาการ (Integrate)"},
+{id:4,cat:"ความเสี่ยง",level:"เข้าใจ",q:"Risk Appetite คืออะไร?",opts:["ระดับความเสี่ยงสูงสุดที่องค์กรยอมรับได้","จำนวนเงินที่สำรองไว้สำหรับความเสี่ยง","ประเภทของความเสี่ยงที่องค์กรเผชิญ","อัตราการขาดทุนที่ยอมรับได้"],ans:0,exp:"Risk Appetite คือ ระดับความเสี่ยงโดยรวมที่องค์กรยอมรับได้ในการมุ่งสู่เป้าหมาย เป็นกรอบในการตัดสินใจว่าจะรับความเสี่ยงระดับใด"},
+{id:5,cat:"ความเสี่ยง",level:"เข้าใจ",q:"ใน Risk Assessment Matrix ถ้า 'โอกาสเกิดสูง' และ 'ผลกระทบสูง' ระดับความเสี่ยงจะเป็นอย่างไร?",opts:["สูงมาก (Critical)","สูง (High)","ปานกลาง (Medium)","ต่ำ (Low)"],ans:0,exp:"โอกาสเกิดสูง + ผลกระทบสูง = ระดับสูงมาก (Critical) ต้องจัดการทันที มีแผนรับมือฉุกเฉิน"},
+{id:6,cat:"ความเสี่ยง",level:"เข้าใจ",q:"COSO ERM 2017 เน้นจุดใดเป็นพิเศษ?",opts:["สร้างมูลค่าเพิ่ม (Value Enhancement) ให้องค์กร","ควบคุมค่าใช้จ่ายให้ต่ำสุด","กำจัดความเสี่ยงทั้งหมด","ทำให้องค์กรไม่มีหนี้"],ans:0,exp:"COSO ERM 2017 เน้นการ 'สร้างมูลค่าเพิ่ม (Value Enhancement)' โดยบูรณาการการบริหารความเสี่ยงเข้ากับยุทธศาสตร์องค์กร ไม่ใช่แค่ป้องกัน_loss"},
+{id:7,cat:"ความเสี่ยง",level:"ประยุกต์",q:"ลูกค้า ธ.ก.ส. ยื่นเอกสารปลอมเพื่อขอสินเชื่อ ความเสี่ยงนี้จัดอยู่ในประเภทใด?",opts:["Operational Risk (ความเสี่ยงจากการดำเนินงาน)","Strategic Risk","Financial Risk","Compliance Risk"],ans:0,exp:"การทุจริตของลูกค้า/พนักงานจัดอยู่ใน Operational Risk เพราะเป็นความเสี่ยงจากกระบวนการและบุคคลในการดำเนินงาน"},
+{id:8,cat:"ความเสี่ยง",level:"จำ",q:"วัตถุประสงค์การควบคุมภายใน COSO มีกี่ข้อ?",opts:["3 ข้อ: ประสิทธิผล ความน่าเชื่อถือ การปฏิบัติตาม","2 ข้อ: กำไร ความปลอดภัย","5 ข้อ: ครอบคลุมทุกด้าน","4 ข้อ: บุคลากร เทคโนโลยี เงินทุน ข้อมูล"],ans:0,exp:"วัตถุประสงค์ COSO 3 ข้อ: 1) ประสิทธิผลและประสิทธิภาพของการดำเนินงาน 2) ความน่าเชื่อถือของรายงานทางการเงิน 3) การปฏิบัติตามกฎหมายและระเบียบข้อบังคับ"},
+{id:9,cat:"ความเสี่ยง",level:"จำ",q:"COSO 2017 ให้ความสำคัญกับเรื่องใดเป็นพิเศษ?",opts:["การสร้างวัฒนธรรมความเสี่ยง (Risk Culture)","การลดต้นทุน","การเพิย์เงินปันผล","การจดทะเบียนในตลาดหลักทรัพย์"],ans:0,exp:"COSO 2017 เน้นว่าการสร้างวัฒนธรรมความเสี่ยง (Risk Culture) เป็นองค์ประกอบสำคัญของระบบควบคุมภายในที่มีประสิทธิผล"},
+{id:10,cat:"ความเสี่ยง",level:"เข้าใจ",q:"COSO IC กับ COSO ERM ต่างกันอย่างไร?",opts:["IC เน้นควบคุมภายใน ERM เน้นการบริหารความเสี่ยงเชิงยุทธศาสตร์","IC เก่ากว่า ERM จึงดีกว่า","IC ใช้กับธนาคาร ERM ใช้กับโรงงาน","ไม่มีความแตกต่างกัน"],ans:0,exp:"COSO IC (Internal Control) เน้นระบบการควบคุมภายใน COSO ERM (Enterprise Risk Management) เน้นการบริหารความเสี่ยงเชิงยุทธศาสตร์เพื่อสร้างมูลค่าเพิ่ม ใช้ร่วมกันได้"},
+
+// ===== หมวด ISO 31000 =====
+{id:11,cat:"ISO 31000",level:"จำ",q:"ISO 31000 เป็น 'Standard' หรือ 'Framework'?",opts:["Framework — ไม่สามารถรับรอง (Certify) ได้","Standard — สามารถรับรองได้","ทั้ง Standard และ Framework","Guideline — ใช้เฉพาะในยุโรป"],ans:0,exp:"ISO 31000 เป็น Framework (กรอบ) ไม่ใช่ Standard (มาตรฐาน) จึงไม่สามารถนำไปรับรอง (Certify) ได้ เหมือน ISO 9001 ที่เป็น Standard"},
+{id:12,cat:"ISO 31000",level:"จำ",q:"กระบวนการ ISO 31000 มีกี่ขั้นตอน?",opts:["5 ขั้นตอน: Scope → Assessment → Treatment → Monitor → Communicate","3 ขั้นตอน: Identify → Assess → Control","4 ขั้นตอน: Plan → Do → Check → Act","6 ขั้นตอน: ครอบคลุมทุกด้าน"],ans:0,exp:"ISO 31000 มี 5 ขั้นตอน: 1) Scope & Context 2) Risk Assessment 3) Risk Treatment 4) Monitor & Review 5) Communication & Consultation"},
+{id:13,cat:"ISO 31000",level:"เข้าใจ",q:"ISO 31000 ต่างจาก COSO อย่างไร?",opts:["ISO เน้นการบริหารความเสี่ยง COSO เน้นการควบคุมภายใน","ISO ใช้กับธนาคาร COSO ใช้กับโรงงาน","ISO ใหม่กว่า COSO จึงดีกว่า","ไม่มีความแตกต่างกัน"],ans:0,exp:"ISO 31000 เน้นการบริหารความเสี่ยงแบบองค์รวม (Risk Management) ส่วน COSO เน้นการควบคุม_internal (Internal Control) ทั้งสองใช้ร่วมกันได้"},
+{id:14,cat:"ISO 31000",level:"จำ",q:"ISO 31000 เน้นเรื่องใดเป็นพิเศษ?",opts:["การมีส่วนร่วมของผู้มีส่วนได้ส่วนเสีย (Stakeholder Engagement)","การลดค่าใช้จ่าย","การเพิ่มกำไร","การจดทะเบียน"],ans:0,exp:"ISO 31000 ให้ความสำคัญกับ Stakeholder Engagement — การมีส่วนร่วมของผู้มีส่วนได้ส่วนเสียในทุกขั้นตอน"},
+{id:15,cat:"ISO 31000",level:"เข้าใจ",q:"ทำไม ISO 31000 ถึงไม่สามารถ Certify ได้?",opts:["เพราะเป็น Framework (กรอบ) ไม่ใช่ Standard (มาตรฐาน)","เพราะเป็นขององค์กรระหว่างประเทศ","เพราะยังใหม่เกินไป","เพราะใช้กับเฉพาะธนาคาร"],ans:0,exp:"ISO 31000 เป็น Framework ที่ให้แนวทาง ไม่ใช่ Standard ที่กำหนดเกณฑ์ผ่าน/ไม่ผ่าน จึงไม่สามารถนำไป Certify ได้"},
+
+// ===== หมวด Three Lines of Defense =====
+{id:16,cat:"Three Lines",level:"จำ",q:"Three Lines of Defense เส้นที่ 1 คือใคร?",opts:["ฝ่ายปฏิบัติงาน (Business Operations)","ฝ่ายตรวจสอบภายใน","ฝ่ายบริหารความเสี่ยง","คณะกรรมการ"],ans:0,exp:"เส้นที่ 1 = ฝ่ายปฏิบัติงาน เป็นผู้รับผิดชอบหลักต่อความเสี่ยงในการดำเนินงานประจำวัน และสร้าง/ดำเนินการควบคุมภายในในสายงาน"},
+{id:17,cat:"Three Lines",level:"จำ",q:"Three Lines of Defense เส้นที่ 2 คือใคร?",opts:["ฝ่ายกำกับดูแลความเสี่ยง (Risk & Compliance)","ฝ่ายปฏิบัติงาน","ฝ่ายตรวจสอบภายใน","ลูกค้า"],ans:0,exp:"เส้นที่ 2 = ฝ่ายกำกับดูแลความเสี่ยง (Risk Management, Compliance, Quality Assurance) กำหนดนโยบายและติดตามระดับความเสี่ยง"},
+{id:18,cat:"Three Lines",level:"จำ",q:"Three Lines of Defense เส้นที่ 3 คือใคร?",opts:["ฝ่ายตรวจสอบภายใน (Internal Audit)","ฝ่ายปฏิบัติงาน","ฝ่ายบุคคล","ฝ่ายการเงิน"],ans:0,exp:"เส้นที่ 3 = ฝ่ายตรวจสอบ внутренняя ตรวจสอบและให้ความเห็นอิสระว่าเส้นที่ 1 และ 2 ทำงานได้อย่างมีประสิทธิผล"},
+{id:19,cat:"Three Lines",level:"เข้าใจ",q:"COSO 2017 เปลี่ยนชื่อจาก 'Three Lines of Defense' เป็นอะไร?",opts:["Three Lines Model","Three Lines Strategy","Three Lines Framework","Three Layers of Protection"],ans:0,exp:"COSO 2017 เปลี่ยนมาใช้ 'Three Lines Model' เพราะไม่ได้เน้นแค่ 'ป้องกัน (Defense)' แต่รวมถึงการสร้างมูลค่า (Value Creation) ด้วย"},
+{id:20,cat:"Three Lines",level:"จำ",q:"ฝ่ายตรวจสอบภายใน (เส้นที่ 3) รายงานต่อใคร?",opts:["คณะกรรมการตรวจสอบ (Audit Committee)","ฝ่ายจัดการ (Management)","ฝ่ายบุคคล","ฝ่ายการเงิน"],ans:0,exp:"ฝ่ายตรวจสอบภายในต้องรายงานต่อคณะกรรมการตรวจสอบ (Audit Committee) โดยตรง ไม่ขึ้นกับฝ่ายจัดการ เพื่อรักษาความเป็นอิสระ"},
+{id:21,cat:"Three Lines",level:"ประยุกต์",q:"ใน ธ.ก.ส. พนักงานสินเชื่อตรวจสอบเอกสารก่อนอนุมัติ จัดอยู่ในเส้นที่เท่าไร?",opts:["เส้นที่ 1 (ฝ่ายปฏิบัติงาน)","เส้นที่ 2 (ฝ่ายกำกับดูแล)","เส้นที่ 3 (ฝ่ายตรวจสอบ)","ไม่จัดอยู่ใน Three Lines"],ans:0,exp:"พนักงานสินเชื่อตรวจสอบเอกสารก่อนอนุมัติเป็นหน้าที่ของฝ่ายปฏิบัติงาน (เส้นที่ 1) ที่ต้องสร้างและดำเนินการควบคุมภายในในสายงานของตนเอง"},
+{id:22,cat:"Three Lines",level:"เข้าใจ",q:"ใครเป็น 'ผู้รับผิดชอบหลัก' (Primary Owner) ต่อความเสี่ยง?",opts:["ฝ่ายปฏิบัติงาน (ผู้สร้างความเสี่ยง)","ฝ่ายตรวจสอบภายใน","ฝ่ายบริหารความเสี่ยง","คณะกรรมการ"],ans:0,exp:"ใน Three Lines Model ฝ่ายปฏิบัติงานเป็น 'เจ้าของความเสี่ยง' หลัก เพราะเป็นผู้ทำธุรกรรมและสร้างความเสี่ยงในกระบวนการ日常工作"},
+
+// ===== หมวด การควบคุมภายใน =====
+{id:23,cat:"ควบคุมภายใน",level:"จำ",q:"การควบคุมภายในมี 3 ประเภท ตามลำดับเวลา คืออะไร?",opts:["Preventive (ป้องกัน), Detective (ตรวจจับ), Corrective (แก้ไข)","Input, Process, Output","Plan, Do, Check","Before, During, After"],ans:0,exp:"3 ประเภท: Preventive = ป้องกันก่อนเกิดเหตุ Detective = ตรวจจับเมื่อเกิดแล้ว Corrective = แก้ไขหลังเกิด"},
+{id:24,cat:"ควบคุมภายใน",level:"จำ",q:"Segregation of Duties (การแบ่งแยกหน้าที่) หมายถึงอะไร?",opts:["ไม่ให้คนเดียวทำทุกขั้นตอนของธุรกรรมเดียวกัน","ให้พนักงานทุกคนทำงานเหมือนกัน","แบ่งงานตามวันจันทร์-ศุกร์","ให้หัวหน้าทำทุกอย่าง"],ans:0,exp:"Segregation of Duties คือ การแบ่งแยกหน้าที่ให้คน的不同คนทำคนละขั้นตอน เช่น คนอนุมัติ ≠ คนทำรายการ ≠ คนตรวจสอบ"},
+{id:25,cat:"ควบคุมภายใน",level:"เข้าใจ",q:"Dual Control (อนุมัติ 2 ชั้น) เป็นตัวอย่างของควบคุมประเภทใด?",opts:["Preventive Control (ป้องกัน)","Detective Control (ตรวจจับ)","Corrective Control (แก้ไข)","Directive Control"],ans:0,exp:"Dual Control เป็น Preventive Control เพราะออกแบบมาเพื่อป้องกันไม่ให้เกิดความผิดพลาดหรือทุจริตตั้งแต่แรก โดยต้องมีผู้อนุมัติ 2 คน"},
+{id:26,cat:"ควบคุมภายใน",level:"เข้าใจ",q:"การแบ่งแยกหน้าที่ช่วยป้องกันอะไรได้มากที่สุด?",opts:["การทุจริตและข้อผิดพลาดที่เกิดจากคนเดียว","ระบบล่ม","อัตราแลกเปลี่ยน","ภัยธรรมชาติ"],ans:0,exp:"Segregation of Duties ช่วยป้องกันการทุจริตและข้อผิดพลาดที่เกิดจากคนคนเดียว เพราะต้องมีคนอย่างน้อย 2 คนร่วมกันถึงจะทำธุรกรรมเสร็จ"},
+{id:27,cat:"ควบคุมภายใน",level:"จำ",q:"IT General Controls (ITGC) ไม่รวมเรื่องใด?",opts:["การกำหนดเป้าหมายกำไร","Password Policy","Backup & Recovery","Access Control"],ans:0,exp:"ITGC รวมถึง Password Policy, Backup & Recovery, Access Control, Change Management — ไม่รวมเรื่องการเงินโดยตรง"},
+{id:28,cat:"ควบคุมภายใน",level:"เข้าใจ",q:"รายงาน Monitoring และการกระทบยอดบัญชี เป็นตัวอย่างของ?",opts:["Detective Control","Preventive Control","Corrective Control","Directive Control"],ans:0,exp:"รายงาน Monitoring และการกระทบยอดบัญชีเป็น Detective Control เพราะใช้ตรวจจับความผิดปกติที่เกิดขึ้นแล้ว"},
+{id:29,cat:"ควบคุมภายใน",level:"เข้าใจ",q:"แผนฟื้นฟูธุรกิจ (Business Recovery Plan) เป็นตัวอย่างของ?",opts:["Corrective Control","Preventive Control","Detective Control","Strategic Control"],ans:0,exp:"Business Recovery Plan เป็น Corrective Control เพราะใช้แก้ไขสถานการณ์เมื่อเกิดวิกฤตแล้ว"},
+{id:30,cat:"ควบคุม內部",level:"ประยุกต์",q:"ทำไมต้องมีทั้ง 3 ประเภท (Preventive, Detective, Corrective)?",opts:["เพราะป้องกันอย่างเดียวไม่พอ ต้องมีตรวจจับและแก้ไขด้วย","เพราะกฎหมายกำหนด","เพราะต้องการให้ยุ่งยาก","เพราะทุกองค์กรทำเหมือนกัน"],ans:0,exp:"ป้องกันอย่างเดียวไม่สามารถหยุดทุกความเสี่ยงได้ ต้องมี Detective Control ตรวจจับสิ่งที่หลุดจากป้องกัน และ Corrective Control แก้ไขเมื่อเกิดแล้ว"},
+
+// ===== หมวด Risk Culture =====
+{id:31,cat:"Risk Culture",level:"จำ",q:"Risk Culture คืออะไร?",opts:["ค่านิยม พฤติกรรม และทัศนคติ ของบุคลากรที่มีต่อความเสี่ยง","ระเบียบข้อบังคับขององค์กร","ระบบ IT ที่ใช้จัดการความเสี่ยง","คณะกรรมการกำกับดูแล"],ans:0,exp:"Risk Culture คือ ค่านิยม พฤติกรรม และทัศนคติ (Values, Behaviors, Mindset) ของคนในองค์กรที่มีต่อความเสี่ยง"},
+{id:32,cat:"Risk Culture",level:"จำ",q:"องค์ประกอบ Risk Culture มีกี่ด้าน?",opts:["4 ด้าน: Values, Behaviors, Mindset, Accountability","3 ด้าน: Policy, Process, People","5 ด้าน: ครบทุกมิติ","2 ด้าน: Rules and Actions"],ans:0,exp:"Risk Culture มี 4 องค์ประกอบ: 1) Values (ค่านิยม) 2) Behaviors (พฤติกรรม) 3) Mindset (ทัศนคติ) 4) Accountability (ความรับผิดชอบ)"},
+{id:33,cat:"Risk Culture",level:"จำ",q:"'Tone from the Top' หมายถึงอะไร?",opts:["ผู้บริหารระดับสูงต้องเป็นตัวอย่างในด้านการบริหารความเสี่ยง","เสียงเพลงในที่ประชุม","นโยบายจากฝ่ายบุคคล","รายงานจากฝ่ายตรวจสอบ"],ans:0,exp:"Tone from the Top หมายถึง ทัศนคติและพฤติกรรมของผู้บริหารระดับสูงที่ต้องเป็นตัวอย่าง (Leading by Example) ในการให้ความสำคัญกับความเสี่ยง"},
+{id:34,cat:"Risk Culture",level:"เข้าใจ",q:"Risk Culture วัดจากอะไร?",opts:["พฤติกรรมจริงของบุคลากร ไม่ใช่ระเบียบที่เขียนไว้","จำนวนระเบียบที่มี","งบประมาณด้านความเสี่ยง","จำนวนฝ่ายที่เกี่ยวข้อง"],ans:0,exp:"Risk Culture วัดจากพฤติกรรมจริง (What people actually do) ไม่ใช่ระเบียบที่เขียนไว้ (What people should do) ต้องสังเกตจากการกระทำจริง"},
+{id:35,cat:"Risk Culture",level:"เข้าใจ",q:"ทำไม Risk Culture จึงสำคัญกว่าแค่ระเบียบ?",opts:["เพราะคนต้องเชื่อและปฏิบัติตาม ไม่ใช่แค่รู้ว่ามีระเบียบ","เพราะระเบียบไม่สำคัญ","เพราะเสียค่าใช้จ่ายน้อยกว่า","เพราะเป็นที่นิยม"],ans:0,exp:"ระเบียบดีแค่ไหนก็ใช้ไม่ได้ถ้าคนไม่เชื่อและไม่ปฏิบัติตาม Risk Culture ทำให้คน 'อยาก' ทำ ไม่ใช่แค่ 'ถูกบังคับ' ให้ทำ"},
+{id:36,cat:"Risk Culture",level:"จำ",q:"ปัจจัยขับเคลื่อน Risk Culture ไม่รวมเรื่องใด?",opts:["จำนวนพนักงาน","Tone from the Top","Incentive System","Training & Education"],ans:0,exp:"ปัจจัยขับเคลื่อน Risk Culture: Tone from the Top, การสื่อสาร, Incentive System, Accountability, Training & Education — ไม่รวมจำนวนพนักงาน"},
+
+// ===== หมวด เชื่อมโยง ธ.ก.ส. =====
+{id:37,cat:"ธ.ก.ส.",level:"เข้าใจ",q:"วัฒนธรรม HEART ของ ธ.ก.ส. ข้อ 'A — Accountability' เชื่อมโยงกับ Risk Culture อย่างไร?",opts:["ตรงกับองค์ประกอบ Accountability ใน Risk Culture","เกี่ยวข้องกับ IT Security","เป็นเรื่องการเงินล้วนๆ","ไม่เกี่ยวข้องกับ Risk Culture"],ans:0,exp:"A = Accountability (รับผิดชอบ) ใน HEART ตรงกับ Accountability ใน Risk Culture ที่ต้องมีความชัดเจนว่าใครรับผิดชอบอะไรต่อความเสี่ยง"},
+{id:38,cat:"ธ.ก.ส.",level:"จำ",q:"GRC ย่อมาจากอะไร?",opts:["Governance, Risk, Compliance","General Risk Committee","Global Regulatory Council","Growth, Revenue, Cost"],ans:0,exp:"GRC = Governance (การกำกับดูแล) + Risk (การบริหารความเสี่ยง) + Compliance (การปฏิบัติตามกฎเกณฑ์) เป็นกรอบการทำงานเชื่อมโยง 3 ด้าน"},
+{id:39,cat:"ธ.ก.ส.",level:"เข้าใจ",q:"Responsibility for all ในแนวนโยบาย SFIs เชื่อมโยงกับ Good Governance อย่างไร?",opts:["ดำเนินธุรกิจอย่างรับผิดชอบ ยึดหลัก Sustainable Banking และ ESG","ให้กู้เงินทุกคนโดยไม่ตรวจสอบ","ลดค่าใช้จ่ายให้มากที่สุด","เลิกจ้างพนักงานที่มีอายุมาก"],ans:0,exp:"Responsibility for all = ดำเนินธุรกิจอย่างรับผิดชอบ ยึดหลัก Sustainable Banking, Good Governance, ESG — เป็นส่วนหนึ่งของวัฒนธรรมองค์กรที่คำนึงถึงความเสี่ยง"},
+{id:40,cat:"ธ.ก.ส.",level:"ประยุกต์",q:"SO5 'เพิ่มศักยภาพบุคลากรและ GRC รองรับการเติบโต' เกี่ยวข้องกับ Risk Management อย่างไร?",opts:["พัฒนาบุคลากรให้มีทักษะด้าน Governance Risk Compliance","เพิ่มเงินเดือนพนักงาน","ขยายสาขาทั่วประเทศ","ลดจำนวนพนักงาน"],ans:0,exp:"SO5 เกี่ยวข้องกับการพัฒนาบุคลากรให้มีทักษะด้าน GRC (Governance, Risk, Compliance) ซึ่งเป็นรากฐานสำคัญของการบริหารความเสี่ยงในองค์กร"}
+];
+
+let answered = {};
+let score = 0;
+let currentCat = 'all';
+
+function renderQuiz() {
+  const area = document.getElementById('quiz-area');
+  area.innerHTML = '';
+  let lastCat = '';
+  
+  ALL_Q.forEach((q, idx) => {
+    if (currentCat !== 'all' && q.cat !== currentCat) return;
+    if (q.cat !== lastCat) {
+      const ct = document.createElement('div');
+      ct.className = 'category-title';
+      ct.textContent = '📂 ' + q.cat;
+      area.appendChild(ct);
+      lastCat = q.cat;
+    }
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'q-' + q.id;
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num">${q.id}</div>
+        <span class="q-level lvl-${q.level}">${q.level}</span>
+        <span style="font-size:.72em;color:#888;margin-left:auto;">${q.cat}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="opts">
+        ${q.opts.map((o, i) => `
+          <label class="opt" id="opt-${q.id}-${i}" onclick="selectOpt(${q.id},${i})">
+            <input type="radio" name="q${q.id}" value="${i}">
+            <span>${String.fromCharCode(65+i)}. ${o}</span>
+          </label>
+        `).join('')}
+      </div>
+      <div class="exp" id="exp-${q.id}"><strong>💡 ${q.exp}</strong></div>
+    `;
+    area.appendChild(card);
+  });
+}
+
+function selectOpt(qid, idx) {
+  answered[qid] = idx;
+  const q = ALL_Q.find(x => x.id === qid);
+  // Update visual
+  q.opts.forEach((_, i) => {
+    document.getElementById(`opt-${qid}-${i}`).className = 'opt';
+  });
+  document.getElementById(`opt-${qid}-${idx}`).classList.add('active');
+}
+
+function checkAnswers() {
+  score = 0;
+  let total = 0;
+  ALL_Q.forEach(q => {
+    if (currentCat !== 'all' && q.cat !== currentCat) return;
+    total++;
+    const opt0 = document.getElementById(`opt-${q.id}-0`);
+    if (!opt0) return;
+    
+    q.opts.forEach((_, i) => {
+      const el = document.getElementById(`opt-${q.id}-${i}`);
+      el.classList.remove('correct', 'wrong', 'reveal');
+      el.querySelector('input').disabled = true;
+    });
+    
+    const correctEl = document.getElementById(`opt-${q.id}-${q.ans}`);
+    correctEl.classList.add('correct');
+    
+    if (answered[q.id] === q.ans) {
+      score++;
+    } else if (answered[q.id] !== undefined) {
+      document.getElementById(`opt-${q.id}-${answered[q.id]}`).classList.add('wrong');
+    } else {
+      correctEl.classList.add('reveal');
+    }
+    
+    document.getElementById(`exp-${q.id}`).classList.add('show');
+  });
+  
+  document.getElementById('score').textContent = score;
+  document.getElementById('total').textContent = total;
+  const pct = total > 0 ? Math.round(score/total*100) : 0;
+  document.getElementById('progFill').style.width = pct + '%';
+  
+  const rb = document.getElementById('resultBox');
+  rb.style.display = 'block';
+  document.getElementById('resultScore').textContent = `${score}/${total}`;
+  document.getElementById('resultPct').textContent = `${pct}% — ${pct >= 80 ? '🎉 ยอดเยี่ยม!' : pct >= 60 ? '👍 ดีมาก!' : '💪 ฝึกอีกนิด!'}`;
+  
+  rb.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+
+function resetQuiz() {
+  answered = {};
+  score = 0;
+  document.getElementById('score').textContent = '0';
+  document.getElementById('progFill').style.width = '0%';
+  document.getElementById('resultBox').style.display = 'none';
+  renderQuiz();
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    resetQuiz();
+  });
+});
+
+renderQuiz();
+</script>
+<div style="max-width:860px;margin:0 auto;padding:20px;text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+<button onclick="checkAnswers()" style="padding:12px 30px;font-size:1em;border-radius:10px;background:#10b981;color:#fff;border:none;font-weight:700;cursor:pointer;">✅ ตรวจคำตอบ</button>
+<button onclick="resetQuiz()" class="secondary" style="padding:12px 30px;font-size:1em;border-radius:10px;">🔄 ทำใหม่</button>
+<a href="risk-management-summary.html" style="padding:12px 30px;font-size:1em;border-radius:10px;background:#2d3a5c;color:#fff;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;">📖 ทวนเนื้อหาก่อน</a>
+<a href="index.html" style="padding:12px 30px;font-size:1em;border-radius:10px;background:#7f8c8d;color:#fff;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;">🏠 หน้าหลัก</a>
+</div>
+</body>
+</html>

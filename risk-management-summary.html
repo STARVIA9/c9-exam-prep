@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ การบริหารความเสี่ยง ควบคุมภายใน & Risk Culture — สรุปสอบ Genius 9</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#0f172a;--surface:#1e293b;--surface2:#334155;--surface3:#475569;--accent:#f59e0b;--accent2:#10b981;--accent3:#3b82f6;--accent4:#ef4444;--accent5:#8b5cf6;--text:#f1f5f9;--text2:#94a3b8;--border:#475569;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;padding:0;}
+nav{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+nav h1{font-size:16px;color:var(--accent);margin-right:12px;white-space:nowrap;}
+nav a{color:var(--text2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s;}
+nav a:hover{background:var(--surface2);color:var(--accent);}
+.container{max-width:960px;margin:0 auto;padding:30px 20px 80px;}
+h2{font-size:1.4em;color:var(--accent);margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent);display:inline-block;}
+h3{font-size:1.15em;color:var(--accent2);margin:24px 0 10px;}
+h4{font-size:1em;color:var(--accent3);margin:16px 0 8px;}
+p{margin:8px 0;color:var(--text);}
+.section{background:var(--surface);border-radius:12px;padding:24px;margin:16px 0;border:1px solid var(--border);}
+.highlight{background:rgba(245,158,11,0.1);border-left:4px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-weight:500;}
+.warn{background:rgba(239,68,68,0.1);border-left:4px solid var(--accent4);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;}
+.tip{background:rgba(16,185,129,0.1);border-left:4px solid var(--accent2);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92em;}
+th{background:var(--surface2);color:var(--accent);padding:10px 12px;text-align:left;font-weight:600;}
+td{padding:8px 12px;border-bottom:1px solid var(--border);}
+tr:hover td{background:rgba(255,255,255,.03);}
+.tag{display:inline-block;font-size:.78em;font-weight:600;padding:2px 10px;border-radius:6px;margin:2px;}
+.tag-gold{background:rgba(245,158,11,.15);color:var(--accent);}
+.tag-green{background:rgba(16,185,129,.15);color:var(--accent2);}
+.tag-blue{background:rgba(59,130,246,.15);color:var(--accent3);}
+.tag-red{background:rgba(239,68,68,.15);color:var(--accent4);}
+.tag-purple{background:rgba(139,92,246,.15);color:var(--accent5);}
+ul,ol{margin:8px 0 8px 20px;}
+li{margin:4px 0;}
+.mnemonic{background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(245,158,11,.15));border:1px solid rgba(139,92,246,.3);border-radius:12px;padding:16px;margin:12px 0;text-align:center;}
+.mnemonic h4{color:var(--accent5);margin-bottom:8px;}
+.mnemonic .big{font-size:1.8em;font-weight:800;color:var(--accent);letter-spacing:4px;}
+.framework-box{background:var(--surface2);border-radius:12px;padding:20px;margin:12px 0;}
+.framework-box h4{color:var(--accent);margin-bottom:10px;}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.flow-step{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:.88em;font-weight:600;color:var(--text);}
+.flow-arrow{color:var(--accent);font-size:1.2em;display:flex;align-items:center;}
+.line-box{border-radius:12px;padding:16px;margin:10px 0;}
+.line-1{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);}
+.line-2{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);}
+.line-3{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);}
+.coso-pillar{flex:1;min-width:140px;background:var(--surface2);border-radius:10px;padding:12px;text-align:center;border:1px solid var(--border);}
+.coso-pillar h5{color:var(--accent);font-size:.85em;margin-bottom:4px;}
+.coso-pillar p{font-size:.78em;color:var(--text2);}
+.pillar-grid{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;}
+.heart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0;}
+.heart-card{background:var(--surface2);border-radius:10px;padding:12px;text-align:center;border:1px solid var(--border);}
+.heart-card .emoji{font-size:1.5em;}
+.heart-card h5{color:var(--accent);margin:4px 0;}
+.heart-card p{font-size:.8em;color:var(--text2);}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;font-size:.9em;margin-bottom:20px;}
+.back-link:hover{text-decoration:underline;}
+@media(max-width:700px){.container{padding:16px 12px 60px;}h2{font-size:1.2em;}.pillar-grid{flex-direction:column;}.flow{flex-direction:column;align-items:stretch;}.flow-arrow{transform:rotate(90deg);justify-content:center;}}
+</style>
+</head>
+<body>
+<nav>
+<h1>🛡️ RM & IC</h1>
+<a href="index.html">🏠 หน้าหลัก</a>
+<a href="#risk-mgmt">การบริหารความเสี่ยง</a>
+<a href="#coso">COSO 2017</a>
+<a href="#iso">ISO 31000</a>
+<a href="#three-lines">3 เส้นป้องกัน</a>
+<a href="#internal-ctrl">ควบคุมภายใน</a>
+<a href="#risk-culture">Risk Culture</a>
+<a href="#baac">ธ.ก.ส.</a>
+<a href="#mnemonics">คีย์เวิร์ด</a>
+</nav>
+
+<div class="container">
+
+<a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+
+<h2 id="risk-mgmt">🛡️ 1. การบริหารความเสี่ยง (Risk Management)</h2>
+
+<div class="section">
+<h3>นิยาม</h3>
+<p><strong>การบริหารความเสี่ยง</strong> คือ กระบวนการระบุ วิเคราะห์ ประเมิน และจัดการความเสี่ยงที่อาจกระทบเป้าหมายขององค์กร อย่างเป็นระบบและต่อเนื่อง</p>
+
+<div class="highlight">
+<strong>จุดสำคัญ:</strong> การบริหารความเสี่ยงไม่ใช่การ "กำจัด" ความเสี่ยงทั้งหมด แต่เป็นการ <strong>"บริหารให้เหลือระดับที่ยอมรับได้"</strong> (Risk Appetite)
+</div>
+
+<h3>ประเภทของความเสี่ยง (4 ประเภทหลัก)</h3>
+<table>
+<tr><th>ประเภท</th><th>นิยาม</th><th>ตัวอย่าง ธ.ก.ส.</th></tr>
+<tr><td><span class="tag tag-blue">Strategic</span> ความเสี่ยงเชิงยุทธศาสตร์</td><td>ความเสี่ยงจากแผนธุรกิจและการตัดสินใจเชิงกลยุทธ์</td><td>ขยายสินเชื่อใหม่ผิดกลุ่มเป้าหมาย, การแข่งขันจาก Virtual Bank</td></tr>
+<tr><td><span class="tag tag-gold">Operational</span> ความเสี่ยงจากการดำเนินงาน</td><td>ความเสี่ยงจากกระบวนการ People System External Events</td><td>ระบบล่ม, พนักงานทุจริต, ข้อผิดพลาดในการให้บริการ</td></tr>
+<tr><td><span class="tag tag-green">Financial</span> ความเสี่ยงทางการเงิน</td><td>ความเสี่ยงที่กระทบฐานะการเงิน</td><td>NPL สูงขึ้น, อัตราแลกเปลี่ยน, ความเสี่ยงด้านสภาพคล่อง</td></tr>
+<tr><td><span class="tag tag-red">Compliance</span> ความเสี่ยงด้านการปฏิบัติตามกฎเกณฑ์</td><td>ความเสี่ยงจากการไม่ปฏิบัติตามกฎหมาย ระเบียบ ข้อบังคับ</td><td>ไม่ปฏิบัติตาม พ.ร.บ.ป้องกันฟอกเงino, Regulation 35</td></tr>
+</table>
+
+<h3>กระบวนการบริหารความเสี่ยง (5 ขั้นตอน)</h3>
+<div class="flow">
+<div class="flow-step">🔍 ระบุ<br><small>Identify</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">📊 ประเมิน<br><small>Assess</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">🚧 ควบคุม<br><small>Control</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">⚙️ บริหาร<br><small>Manage</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">🔗 บูรณาการ<br><small>Integrate</small></div>
+</div>
+
+<h3>ระดับความเสี่ยง (Risk Rating)</h3>
+<table>
+<tr><th></th><th>ผลกระทบ ต่ำ</th><th>ผลกระทบ ปานกลาง</th><th>ผลกระทบ สูง</th></tr>
+<tr><td><strong>โอกาสเกิดสูง</strong></td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td><td style="background:rgba(239,68,68,.2);">สูง</td><td style="background:rgba(239,68,68,.3);">สูงมาก</td></tr>
+<tr><td><strong>โอกาสเกิดปานกลาง</strong></td><td style="background:rgba(16,185,129,.2);">ต่ำ</td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td><td style="background:rgba(239,68,68,.2);">สูง</td></tr>
+<tr><td><strong>โอกาสเกิดต่ำ</strong></td><td style="background:rgba(16,185,129,.15);">ต่ำมาก</td><td style="background:rgba(16,185,129,.2);">ต่ำ</td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td></tr>
+</table>
+</div>
+
+<h2 id="coso">🏛️ 2. COSO Framework 2017</h2>
+
+<div class="section">
+<div class="highlight">
+<strong>COSO</strong> = Committee of Sponsoring Organizations of the Treadway Commission<br>
+เป็นกรอบการควบคุมภายในที่ได้รับการยอมรับมากที่สุดในโลก
+</div>
+
+<h3>5 เสาหลัก (COSO IC Framework)</h3>
+<div class="pillar-grid">
+<div class="coso-pillar"><h5>1️⃣ Control Environment</h5><p>สภาพแวดล้อมการควบคุม — ค่านิยม จริยธรรม โครงสร้างองค์กร</p></div>
+<div class="coso-pillar"><h5>2️⃣ Risk Assessment</h5><p>การประเมินความเสี่ยง — ระบุ วิเคราะห์ จัดลำดับ</p></div>
+<div class="coso-pillar"><h5>3️⃣ Control Activities</h5><p>กิจกรรมควบคุม — นโยบาย ขั้นตอน ระบบ IT</p></div>
+<div class="coso-pillar"><h5>4️⃣ Info & Communication</h5><p>ข้อมูลและการสื่อสาร — รายงาน แจ้งเตือน รับทราบ</p></div>
+<div class="coso-pillar"><h5>5️⃣ Monitoring</h5><p>การติดตาม — ประเมินผล ทบทวน แก้ไข</p></div>
+</div>
+
+<h3>วัตถุประสงค์การควบคุมภายใน (3 ข้อ)</h3>
+<table>
+<tr><th>#</th><th>วัตถุประสงค์</th><th>ตัวอย่าง</th></tr>
+<tr><td>1</td><td><strong>ประสิทธิผลและประสิทธิภาพ</strong>ของการดำเนินงาน</td><td>กระบวนงานเร็ว ถูกต้อง คุ้มค่า</td></tr>
+<tr><td>2</td><td><strong>ความน่าเชื่อถือ</strong>ของรายงานทางการเงิน</td><td>งบการเงินถูกต้อง ครบถ้วน ทันเวลา</td></tr>
+<tr><td>3</td><td><strong>การปฏิบัติตาม</strong>กฎหมายและระเบียบข้อบังคับ</td><td>ปฏิบัติตาม พ.ร.บ. Regulation 35</td></tr>
+</table>
+
+<div class="warn">
+<strong>⚠️ จุดดักข้อสอบ:</strong> COSO 2017 เน้นการ <strong>"สร้างวัฒนธรรมความเสี่ยง"</strong> เป็นองค์ประกอบสำคัญ — ไม่ใช่แค่ระบบหรือระเบียบ แต่รวมถึง <strong>ทัศนคติและพฤติกรรม</strong> ของบุคลากรทุกระดับ
+</div>
+
+<h3>COSO ERM 2017 (Enterprise Risk Management)</h3>
+<div class="tip">
+<strong>ต่างจาก COSO IC:</strong> COSO ERM เน้นการ <strong>"สร้างมูลค่าเพิ่ม (Value Enhancement)"</strong> ให้องค์กร โดยบูรณาการการบริหารความเสี่ยงเข้ากับการจัดทำยุทธศาสตร์
+</div>
+</div>
+
+<h2 id="iso">🌐 3. ISO 31000:2018</h2>
+
+<div class="section">
+<h3>ลักษณะสำคัญ</h3>
+<ul>
+<li><strong>ISO 31000 เป็น "Framework" ไม่ใช่ "Standard"</strong> — ไม่สามารถรับรอง (Certify) ได้ เหมือน ISO 9001</li>
+<li>ประยุกต์ใช้ได้กับทุกองค์กร ทุกขนาด ทุกอุตสาหกรรม</li>
+<li>เน้น <strong>การมีส่วนร่วมของผู้มีส่วนได้ส่วนเสีย</strong> (Stakeholder Engagement)</li>
+</ul>
+
+<h3>กระบวนการ ISO 31000</h3>
+<div class="flow">
+<div class="flow-step"> Scope, Context<br><small>กำหนดขอบเขต</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"> Risk Assessment<br><small>ระบุ วิเคราะห์ ประเมิน</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"> Risk Treatment<br><small>จัดการความเสี่ยง</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"> Monitor & Review<br><small>ติดตามทบทวน</small></div>
+<div class="flow-arrow">→</div>
+<div class="flow-step"> Communication<br><small>สื่อสารปรับปรุง</small></div>
+</div>
+
+<div class="highlight">
+<strong>ISO 31000 vs COSO:</strong><br>
+• COSO เน้น <strong>การควบคุมภายใน</strong> (Internal Control)<br>
+• ISO 31000 เน้น <strong>การบริหารความเสี่ยง</strong> (Risk Management) แบบองค์รวม<br>
+• ทั้งสองใช้ร่วมกันได้ ไม่ขัดแย้งกัน
+</div>
+</div>
+
+<h2 id="three-lines">🏗️ 4. Three Lines of Defense (3 เส้นป้องกัน)</h2>
+
+<div class="section">
+<div class="line-box line-1">
+<h4>🛡️ เส้นที่ 1 — ฝ่ายปฏิบัติงาน (Business Operations)</h4>
+<ul>
+<li>ผู้รับผิดชอบหลักต่อความเสี่ยงในการดำเนินงานประจำวัน</li>
+<li>สร้างและดำเนินการควบคุมภายในในสายงานของตนเอง</li>
+<li>ตัวอย่าง: พนักงานสินเชื่อตรวจสอบเอกสารก่อนอนุมัติ, หัวหน้างานกลั่นกรองรายการ</li>
+</ul>
+</div>
+
+<div class="line-box line-2">
+<h4>📋 เส้นที่ 2 — ฝ่ายกำกับดูแลความเสี่ยง (Risk & Compliance Functions)</h4>
+<ul>
+<li>กำหนดนโยบาย แนวทาง เกณฑ์การบริหารความเสี่ยง</li>
+<li>ติดตามและรายงานระดับความเสี่ยงให้ฝ่ายจัดการ</li>
+<li>ตัวอย่าง: ฝ่ายบริหารความเสี่ยง, ฝ่ายกำกับการปฏิบัติตามกฎเกณฑ์, ฝ่ายนิติกรรม</li>
+</ul>
+</div>
+
+<div class="line-box line-3">
+<h4>🔍 เส้นที่ 3 — ฝ่ายตรวจสอบภายใน (Internal Audit)</h4>
+<ul>
+<li>ตรวจสอบและให้ความเห็นอิสระว่าเส้นที่ 1 และ 2 ทำงานได้อย่างมีประสิทธิผล</li>
+<li>รายงานตรงต่อ <strong>คณะกรรมการตรวจสอบ</strong> (ไม่ขึ้นกับฝ่ายจัดการ)</li>
+<li>ตัวอย่าง: ฝ่ายตรวจสอบภายใน ธ.ก.ส.</li>
+</ul>
+</div>
+
+<div class="warn">
+<strong>⚠️ จุดดักข้อสอบ:</strong> "Three Lines" บางทีเรียก "Three Lines of Defense" แต่ COSO 2017 ปรับมาใช้คำว่า <strong>"Three Lines Model"</strong> เพราะไม่ได้เน้นแค่ "ป้องกัน" แต่รวมถึงการสร้างมูลค่าด้วย
+</div>
+</div>
+
+<h2 id="internal-ctrl">🔒 5. การควบคุมภายใน (Internal Control)</h2>
+
+<div class="section">
+<h3>ประเภทของการควบคุม (ตามลำดับเวลา)</h3>
+<table>
+<tr><th>ประเภท</th><th>นิยาม</th><th>ตัวอย่าง ธ.ก.ส.</th></tr>
+<tr><td><span class="tag tag-blue">Preventive</span> ป้องกัน</td><td>ป้องกันไม่ให้เกิดปัญหาตั้งแต่แรก</td><td>ระบบ Dual Control อนุมัติ 2 ชั้น, ตรวจสอบเอกสารก่อนทำรายการ</td></tr>
+<tr><td><span class="tag tag-gold">Detective</span> ตรวจจับ</td><td>ตรวจพบปัญหาเมื่อเกิดขึ้นแล้ว</td><td>รายงาน Monitoring, การกระทบยอดบัญชี, ตรวจสอบย้อนหลัง</td></tr>
+<tr><td><span class="tag tag-red">Corrective</span> แก้ไข</td><td>แก้ไขปัญหาที่เกิดขึ้นแล้ว</td><td>แผนฟื้นฟู (Business Recovery Plan), การสั่งย้ายพนักงานที่ทุจริต</td></tr>
+</table>
+
+<h3>การควบคุม — วิธีการ</h3>
+<table>
+<tr><th>วิธีการ</th><th>คำอธิบาย</th><th>ตัวอย่าง</th></tr>
+<tr><td><strong>การแบ่งแยกหน้าที่</strong><br>(Segregation of Duties)</td><td>ไม่ให้คนเดียวทำทุกขั้นตอน</td><td>คนอนุมัติ ≠ คนทำรายการ ≠ คนตรวจสอบ</td></tr>
+<tr><td><strong>การอนุมัติ</strong><br>(Authorization)</td><td>ต้องได้รับอนุมัติตามระดับอำนาจ</td><td>สินเชื่อเกิน 10 ล้าน → ผจก.อนุมัติ</td></tr>
+<tr><td><strong>การควบคุมทางกายภาพ</strong><br>(Physical Control)</td><td>ควบคุมทรัพย์สินทางกายภาพ</td><td>ตู้นิรภัย กล้อง CCTV ระบบ Key Card</td></tr>
+<tr><td><strong>การควบคุม IT</strong><br>(IT General Controls)</td><td>ควบคุมระบบสารสนเทศ</td><td>Password Policy, Backup, Access Control</td></tr>
+</table>
+</div>
+
+<h2 id="risk-culture">🎭 6. Risk Culture (วัฒนธรรมองค์กรที่คำนึงถึงความเสี่ยง)</h2>
+
+<div class="section">
+<h3>นิยาม</h3>
+<div class="highlight">
+<strong>Risk Culture</strong> คือ <strong>ค่านิยม พฤติกรรม และทัศนคติ</strong> ของบุคลากรในองค์กรที่มีต่อความเสี่ยงและ การบริหารความเสี่ยง — เป็นรากฐานที่กำหนดว่า "คนในองค์กรคิดและทำอย่างไรกับความเสี่ยง"
+</div>
+
+<h3>องค์ประกอบ 4 ด้าน</h3>
+<table>
+<tr><th>องค์ประกอบ</th><th>คำอธิบาย</th><th>ตัวอย่างใน ธ.ก.ส.</th></tr>
+<tr><td><strong>Values</strong> ค่านิยม</td><td>ค่านิยมร่วมที่ให้ความสำคัญกับความเสี่ยง</td><td>HEART: Honest with integrity, Accountability</td></tr>
+<tr><td><strong>Behaviors</strong> พฤติกรรม</td><td>การกระทำที่สะท้อนความตระหนักรู้เรื่องความเสี่ยง</td><td>พนักงานกล้า Report ความผิดปกติ ไม่ปกปิด</td></tr>
+<tr><td><strong>Mindset</strong> ทัศนคติ</td><td>วิธีคิดเกี่ยวกับความเสี่ยงในองค์กร</td><td>มองความเสี่ยงเป็น "โอกาส" ไม่ใช่แค่ "อุปสรรค"</td></tr>
+<tr><td><strong>Accountability</strong> ความรับผิดชอบ</td><td>การรับผิดชอบต่อความเสี่ยงในหน้าที่ของตนเอง</td><td>ผู้จัดการสาขาต้องรับผิดชอบ NPL ในเขตรับผิดชอบ</td></tr>
+</table>
+
+<h3>ปัจจัยขับเคลื่อน Risk Culture</h3>
+<ul>
+<li><strong>Tone from the Top</strong> — ผู้บริหารต้องเป็นตัวอย่าง (Leading by Example)</li>
+<li><strong>การสื่อสาร</strong> — ต้องสื่อสารเรื่องความเสี่ยงอย่างสม่ำเสมอ เปิดเผย</li>
+<li><strong>Incentive System</strong> — ระบบรางวัล/บทลงโทษต้องสอดคล้องกับความเสี่ยง</li>
+<li><strong>Accountability</strong> — ต้องชัดเจนว่าใครรับผิดชอบอะไร</li>
+<li><strong>Training & Education</strong> — ฝึกอบรมให้ตระหนักรู้เรื่องความเสี่ยง</li>
+</ul>
+
+<div class="warn">
+<strong>⚠️ จุดดักข้อสอบ:</strong> Risk Culture <strong>ไม่ใช่</strong> แค่ "ระเบียบหรือขั้นตอน" — แต่เป็น <strong>"วิธีคิดและพฤติกรรมจริง"</strong> ของคนในองค์กร ระเบียบดีแค่ไหนก็ใช้ไม่ได้ถ้าคนไม่เชื่อและไม่ปฏิบัติตาม
+</div>
+</div>
+
+<h2 id="baac">🏦 7. การเชื่อมโยงกับ ธ.ก.ส.</h2>
+
+<div class="section">
+<h3>วัฒนธรรมองค์กร HEART</h3>
+<div class="heart-grid">
+<div class="heart-card"><div class="emoji">💎</div><h5>H — Honest with integrity</h5><p>ซื่อสัตย์สุจริต<br><span class="tag tag-green"> Risk Culture ด้าน Values</span></p></div>
+<div class="heart-card"><div class="emoji">💰</div><h5>E — Economy/Sufficiency</h5><p>ประหยัด/พอเพียง<br><span class="tag tag-blue">Risk Appetite ระดับ conserv.</span></p></div>
+<div class="heart-card"><div class="emoji">🎯</div><h5>A — Accountability</h5><p>รับผิดชอบ<br><span class="tag tag-gold">3 Lines of Defense</span></p></div>
+<div class="heart-card"><div class="emoji">❤️</div><h5>R — Response heartily</h5><p>ตอบสนองด้วยใจ<br><span class="tag tag-purple">Stakeholder Mgmt</span></p></div>
+<div class="heart-card"><div class="emoji">🤝</div><h5>T — Teamwork</h5><p>การทำงานเป็นทีม<br><span class="tag tag-red">Cross-functional Risk</span></p></div>
+</div>
+
+<h3>SO5 — เพิ่มศักยภาพบุคลากรและ GRC</h3>
+<div class="tip">
+<strong>GRC</strong> = Governance Risk Compliance<br>
+• <strong>G</strong>overnance = การกำกับดูแลที่ดี<br>
+• <strong>R</strong>isk = การบริหารความเสี่ยง<br>
+• <strong>C</strong>ompliance = การปฏิบัติตามกฎเกณฑ์<br>
+เชื่อมโยง SE-AM หมวด 3 (RM & IC) และ หมวด 1 (CG)
+</div>
+
+<h3>แนวนโยบาย SFIs — Responsibility for all</h3>
+<div class="highlight">
+<strong>Responsibility for all</strong> = ดำเนินธุรกิจอย่างรับผิดชอบ ยึดหลัก<br>
+✅ Sustainable Banking &nbsp; ✅ Good Governance &nbsp; ✅ ESG
+</div>
+
+<h3>วัตถุประสงค์เชิงยุทธศาสตร์ที่เกี่ยวข้อง</h3>
+<table>
+<tr><th>SO</th><th>วัตถุประสงค์</th><th>เชื่อมโยง Risk</th></tr>
+<tr><td><strong>SO2</strong></td><td>บริหารคุณภาพสินเชื่อเพื่อความแข็งแกร่งทางการเงิน</td><td>Financial Risk, NPL Management</td></tr>
+<tr><td><strong>SO5</strong></td><td>เพิ่มศักยภาพบุคลากรและ GRC</td><td>Governance, Risk, Compliance</td></tr>
+</table>
+</div>
+
+<h2 id="mnemonics">💡 8. คีย์เวิร์ดทำข้อสอบ</h2>
+
+<div class="section">
+<div class="mnemonic">
+<h4>🧠 COSO 5 เสา</h4>
+<div class="big">C-R-C-I-M</div>
+<p><strong>C</strong>ontrol Environment → <strong>R</strong>isk Assessment → <strong>C</strong>ontrol Activities → <strong>I</strong>nformation → <strong>M</strong>onitoring</p>
+</div>
+
+<div class="mnemonic">
+<h4>🧠 วัตถุประสงค์ COSO (3 ข้อ)</h4>
+<div class="big">E-R-C</div>
+<p><strong>E</strong>ffectiveness (ประสิทธิผล) → <strong>R</strong>eliability (ความน่าเชื่อถือ) → <strong>C</strong>ompliance (การปฏิบัติตาม)</p>
+</div>
+
+<div class="mnemonic">
+<h4>🧠 Three Lines of Defense</h4>
+<div class="big">O-R-A</div>
+<p><strong>O</strong>perations (ปฏิบัติ) → <strong>R</strong>isk Functions (กำกับดูแล) → <strong>A</strong>udit (ตรวจสอบ)</p>
+</div>
+
+<div class="mnemonic">
+<h4>🧠 4 ประเภทความเสี่ยง</h4>
+<div class="big">S-O-F-C</div>
+<p><strong>S</strong>trategic → <strong>O</strong>perational → <strong>F</strong>inancial → <strong>C</strong>ompliance</p>
+</div>
+
+<div class="mnemonic">
+<h4>🧠 Risk Culture 4 องค์ประกอบ</h4>
+<div class="big">V-B-M-A</div>
+<p><strong>V</strong>alues → <strong>B</strong>ehaviors → <strong>M</strong>indset → <strong>A</strong>ccountability</p>
+</div>
+
+<div class="highlight">
+<strong>💡 ทริคสอบ:</strong>
+<ul>
+<li>COSO 2017 เน้น "สร้างวัฒนธรรมความเสี่ยง" — ถ้าเจอว่า COSO = แค่ "ระเบียบ" → <strong>ผิด</strong></li>
+<li>ISO 31000 เป็น "Framework" ไม่ใช่ "Standard" — ไม่สามารถ certify ได้</li>
+<li>Three Lines สมัยใหม่เรียก "Three Lines Model" ไม่ใช่ "Three Lines of Defense"</li>
+<li>Risk Culture วัดจาก "พฤติกรรมจริง" ไม่ใช่ "ระเบียบที่เขียนไว้"</li>
+<li>ธ.ก.ส. วัฒนธรรม HEART = H(A)RT ตรงกับ Accountability ใน Risk Culture</li>
+</ul>
+</div>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:var(--text3);font-size:.85em;">
+สรุปโดย คาร่า 🐶 — Genius 9 ผช.ผจข. ธ.ก.ส. · 2569<br>
+<a href="risk-management-quiz.html" style="color:var(--accent);text-decoration:none;">📝 ทำแบบทดสอบเลย →</a>
+</div>
+
+</div>
+</body>
+</html>

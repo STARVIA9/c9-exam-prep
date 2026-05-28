@@ -58,6 +58,10 @@ button.secondary:hover{background:#566573}
 .s-item{background:#f8f9fa;border-radius:10px;padding:14px;text-align:center}
 .s-item .s-val{font-size:1.5em;font-weight:700;color:#2e86c1}
 .s-item .s-lbl{font-size:.8em;color:#666;margin-top:4px}
+.back-home{position:fixed;bottom:24px;left:24px;z-index:999;display:inline-flex;align-items:center;gap:6px;background:rgba(19,29,51,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 18px;color:#94a3b8;text-decoration:none;font-size:.85rem;font-weight:600;font-family:'Noto Sans Thai','Sarabun',sans-serif;transition:all .25s ease;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.back-home:hover{background:rgba(29,39,64,.95);border-color:rgba(212,148,47,.3);color:#e8b84f;transform:translateY(-1px)}
+.back-home svg{width:16px;height:16px;transition:transform .2s}
+.back-home:hover svg{transform:translateX(-2px)}
 </style>
 </head>
 <body>
@@ -390,5 +394,9 @@ function getCorrectIdx(qid){return _correctMap[qid]||0;}
 
 window.onload = ()=>{startQuiz();}
 </script>
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"/></svg>
+  กลับหน้าหลัก
+</a>
 </body>
 </html>
