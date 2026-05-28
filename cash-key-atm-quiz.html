@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ เงินสดขาดเกิน · กุญแจ KSIM · เงินสดสำรอง · ตู้ ATM</title>
+<style>
+:root {
+  --bg: #0f1923; --card: #1a2836; --card-hover: #1f3040;
+  --text: #e8e8e8; --text2: #a0b4c8; --accent: #ffd54f;
+  --green: #4caf50; --red: #ef5350; --blue: #42a5f5; --purple: #ab47bc;
+  --border: #2a3f52; --shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+* { margin:0; padding:0; box-sizing:border-box }
+body { font-family:'Sarabun','Noto Sans Thai',sans-serif; background:var(--bg); color:var(--text); line-height:1.8 }
+nav { background:linear-gradient(135deg,#0d1b2a,#1b2838); padding:20px 30px; position:sticky; top:0; z-index:100; border-bottom:2px solid var(--accent) }
+nav h1 { color:var(--accent); font-size:1.3em; text-align:center }
+nav .stats { display:flex; justify-content:center; gap:30px; margin-top:10px }
+nav .stats span { color:var(--text2); font-size:.9em }
+nav .stats strong { color:var(--accent) }
+.tabs { display:flex; justify-content:center; gap:8px; padding:15px; flex-wrap:wrap }
+.tab { background:var(--card); border:1px solid var(--border); color:var(--text2); padding:8px 20px; border-radius:25px; cursor:pointer; transition:.2s; font-size:.9em }
+.tab:hover, .tab.active { background:var(--accent); color:#000; border-color:var(--accent) }
+.container { max-width:900px; margin:0 auto; padding:15px }
+.q-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:25px; margin:15px 0; box-shadow:var(--shadow); transition:.3s }
+.q-card:hover { border-color:var(--accent); transform:translateY(-2px) }
+.q-num { display:inline-block; background:var(--accent); color:#000; font-weight:bold; padding:2px 12px; border-radius:15px; font-size:.85em; margin-bottom:10px }
+.q-topic { display:inline-block; padding:2px 10px; border-radius:15px; font-size:.75em; margin-left:8px }
+.topic-cash { background:#1b5e20; color:#a5d6a7 }
+.topic-key { background:#4a148c; color:#ce93d8 }
+.topic-reserve { background:#0d47a1; color:#90caf9 }
+.topic-atm { background:#bf360c; color:#ffab91 }
+.q-text { font-size:1.05em; margin-bottom:15px; color:var(--text) }
+.q-opts label { display:block; padding:10px 15px; margin:6px 0; background:#152230; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:.2s }
+.q-opts label:hover { background:#1f3040; border-color:var(--blue) }
+.q-opts input[type="radio"] { display:none }
+.q-opts input[type="radio"]:checked + span { font-weight:bold; color:var(--accent) }
+.q-opts label.correct { background:#1b3a1b; border-color:var(--green); color:#a5d6a7 }
+.q-opts label.wrong { background:#3a1b1b; border-color:var(--red); color:#ef9a9a }
+.q-opts label.show-correct { border-color:var(--green); border-width:2px }
+.q-btn { background:var(--blue); color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; margin-top:12px; font-size:.95em; transition:.2s }
+.q-btn:hover { background:#1e88e5 }
+.explain { display:none; margin-top:12px; padding:15px; background:#152230; border-left:4px solid var(--accent); border-radius:0 8px 8px 0; color:var(--text2); font-size:.92em }
+.explain strong { color:var(--accent) }
+.footer { text-align:center; padding:30px; color:#556; font-size:.85em }
+.score-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:linear-gradient(135deg,#1a3a4a,#0d2137); padding:15px; text-align:center; border-top:2px solid var(--accent); z-index:100 }
+.score-bar span { color:var(--accent); font-size:1.3em; font-weight:bold }
+@media(max-width:600px) { .q-card { padding:18px } nav { padding:15px } }
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>📝 แบบทดสอบ ผช.ผจข. — เงินสด · กุญแจ · ATM</h1>
+  <div class="stats">
+    <span>📊 ทั้งหมด <strong>20</strong> ข้อ</span>
+    <span>⏱️ ไม่จำกัดเวลา</span>
+    <span>🎯 ทำเสร็จกดตรวจ</span>
+  </div>
+</nav>
+
+<div class="tabs">
+  <div class="tab active" onclick="filterTab('all')">📋 ทั้งหมด</div>
+  <div class="tab" onclick="filterTab('cash')">💵 เงินสดขาดเกิน</div>
+  <div class="tab" onclick="filterTab('key')">🔑 กุญแจ KSIM</div>
+  <div class="tab" onclick="filterTab('reserve')">💰 เงินสดสำรอง</div>
+  <div class="tab" onclick="filterTab('atm')">🏧 ตู้ ATM</div>
+</div>
+
+<div class="container" id="quizContainer">
+
+<!-- ===== เงินสดขาดเกิน ===== -->
+<div class="q-card" data-topic="cash">
+  <span class="q-num">1</span><span class="q-topic topic-cash">💵 เงินสดขาดเกิน</span>
+  <div class="q-text">เงินสดขาดบัญชีไม่เกิน 20 บาท พนักงานต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>A. ต้องชดใช้เงินทันที</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q1"><span>B. ลงในทะเบียนเงินสดขาด-เกินบัญชีไม่เกิน 20 บาท เพื่อบริหารจัดการรวมกัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>C. รายงานผู้จัดการสาขาทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>D. ปรับปรุงบัญชีลูกหนี้รอการสอบสวน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e1')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e1"><strong>คำตอบ: B</strong><br>เงินสดขาด/เกินไม่เกิน 20 บาท ให้ลงใน "ทะเบียนเงินสดขาด-เกินบัญชีไม่เกิน 20 บาท" เพื่อบริหารจัดการรวมกัน ไม่ต้องชดใช้หรือนำส่งทันที</div>
+</div>
+
+<div class="q-card" data-topic="cash">
+  <span class="q-num">2</span><span class="q-topic topic-cash">💵 เงินสดขาดเกิน</span>
+  <div class="q-text">เงินสดขาดบัญชีตั้งแต่เท่าไหร่ขึ้นไป ต้องตั้งคณะกรรมการสอบข้อเท็จจริงทุกกรณี?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>A. 1,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>B. 3,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q2"><span>C. 10,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>D. 20,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e2')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e2"><strong>คำตอบ: C</strong><br>เงินสดขาดตั้งแต่ 10,000 บาทขึ้นไป ต้องตั้งคณะกรรมการสอบข้อเท็จจริงทุกกรณี และบันทึกตั้งบัญชี "ลูกหนี้รอการสอบสวน" (รหัส 18009003)</div>
+</div>
+
+<div class="q-card" data-topic="cash">
+  <span class="q-num">3</span><span class="q-topic topic-cash">💵 เงินสดขาดเกิน</span>
+  <div class="q-text">คณะกรรมการสอบสวนเงินสดขาด ต้องมี composition อย่างน้อยกี่คน และระดับใดขึ้นไป?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>A. 2 คน ระดับ 3 ขึ้นไป</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q3"><span>B. 3 คน ระดับ 4 ขึ้นไป และไม่ต่ำกว่าระดับของพนักงานที่ทำเงินขาด</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>C. 3 คน ระดับ 5 ขึ้นไป</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>D. 5 คน ระดับ 4 ขึ้นไป</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e3')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e3"><strong>คำตอบ: B</strong><br>ผอจ. แต่งตั้งคณะกรรมการฯ อย่างน้อย 3 คน (ระดับ 4 ขึ้นไป และต้องไม่ต่ำกว่าระดับของพนักงานที่ทำเงินขาด) ต้องสรุปผลภายใน 30 วัน (ขยายได้อีก 15 วัน)</div>
+</div>
+
+<div class="q-card" data-topic="cash">
+  <span class="q-num">4</span><span class="q-topic topic-cash">💵 เงินสดขาดเกิน</span>
+  <div class="q-text">เงินสดเกินบัญชีเกิน 20 บาท ในวันสิ้นปีบัญชี สาขาต้องโอนเข้าบัญชีใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>A. ลูกหนี้รอการสอบสวน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>B. เจ้าหนี้รอดำเนินการ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q4"><span>C. รายได้เบ็ดเตล็ด</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>D. เงินฝากออมทรัพย์</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e4')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e4"><strong>คำตอบ: C</strong><br>ในวันสิ้นปีบัญชี ให้สาขาโอนจากบัญชี "เจ้าหนี้รอดำเนินการ-เงินสดเกินบัญชี" ไปเข้าบัญชี "รายได้เบ็ดเตล็ด" (ยกเว้นรายการเดือนมีนาคม ให้รอโอนปีบัญชีถัดไป)</div>
+</div>
+
+<div class="q-card" data-topic="cash">
+  <span class="q-num">5</span><span class="q-topic topic-cash">💵 เงินสดขาดเกิน</span>
+  <div class="q-text">เงินสดขาดบัญชี ต้องปรับปรุงบัญชีเป็น "ลูกหนี้รอการสอบสวน" รหัสบัญชีใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>A. 18009001</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>B. 18009003</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q5"><span>C. 18009006</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>D. 18009009</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e5')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e5"><strong>คำตอบ: B</strong><br>เงินสดขาดต้องปรับปรุงบัญชีเป็น "ลูกหนี้รอการสอบสวน" (รหัส 18009003) จากนั้นเมื่อสอบสวนเสร็จ ผอจ. จะออกคำสั่งให้พนักงานชดใช้ แล้วจึงปรับเป็น "ลูกหนี้รอการชดใช้-พนักงาน" (รหัส 18009006)</div>
+</div>
+
+<!-- ===== กุญแจ KSIM ===== -->
+<div class="q-card" data-topic="key">
+  <span class="q-num">6</span><span class="q-topic topic-key">🔑 กุญแจ KSIM</span>
+  <div class="q-text">กุญแจ KSIM ของสาขา แบ่งออกเป็นกี่ชุด และใครเป็นผู้ถือ?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>A. 2 ชุด — ผจข. และ ผช.ผจข.</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q6"><span>B. 3 ชุด — ผจข., ผช.ผจข., การเงิน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>C. 4 ชุด — ผจข., ผช.ผจข., การเงิน, ธุรการ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>D. 3 ชุด — ผจข., หัวหน้าการเงิน, พนักงานการเงิน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e6')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e6"><strong>คำตอบ: B</strong><br>กุญแจ KSIM แบ่ง 3 ชุด คือ: ชุด ก (ผจข.), ชุด ข (ผช.ผจข.), ชุด ค (การเงิน) ห้ามถือข้ามชุด</div>
+</div>
+
+<div class="q-card" data-topic="key">
+  <span class="q-num">7</span><span class="q-topic topic-key">🔑 กุญแจ KSIM</span>
+  <div class="q-text">หลังปิดตู้นิรภัย ผู้ถือกุญแจต้องปฏิบัติอย่างไรทันที?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>A. เก็บกุญแจไว้ในลิ้นชัก</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>B. ล็อคตู้แล้วเดินออกไปเลย</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q7"><span>C. หมุนรหัสตู้นิรภัยทิ้งทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>D. บันทึกรหัสลงในสมุดก่อนแล้วค่อยหมุนทิ้ง</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e7')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e7"><strong>คำตอบ: C</strong><br>เมื่อปิดตู้นิรภัยแล้ว ต้องหมุนรหัสทิ้งทันที ห้ามทิ้งรหัสไว้ในตำแหน่งที่ล็อคเสร็จ เพราะจะทำให้เปิดตู้ได้โดยไม่ต้องหมุนรหัสใหม่</div>
+</div>
+
+<div class="q-card" data-topic="key">
+  <span class="q-num">8</span><span class="q-topic topic-key">🔑 กุญแจ KSIM</span>
+  <div class="q-text">รหัสตู้นิรภัยต้องเปลี่ยนแปลงบ่อยเพียงใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>A. ทุกเดือน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q8"><span>B. ทุกไตรมาส</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>C. ทุก 6 เดือน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>D. ทุกสิ้นปีบัญชี</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e8')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e8"><strong>คำตอบ: B</strong><br>รหัสตู้นิรภัยต้องเปลี่ยนแปลงทุกไตรมาส และเมื่อรับมอบกุญแจชุด ก ต้องเปลี่ยนแปลงรหัสตู้นิรภัยใหม่ทันที</div>
+</div>
+
+<div class="q-card" data-topic="key">
+  <span class="q-num">9</span><span class="q-topic topic-key">🔑 กุญแจ KSIM</span>
+  <div class="q-text">กรณีกุญแจ KSIM สูญหายจากความประมาทเลินเล่อ ค่าใช้จ่ายในการจัดทำกุญแจดอกใหม่ใครรับผิดชอบ?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>A. ธนาคารรับผิดชอบทั้งหมด</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q9"><span>B. พนักงานผู้ถือกุญแจต้องรับผิดชอบจ่ายเองทั้งหมด</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>C. ผู้จัดการสาขาจ่ายครึ่งหนึ่ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>D. แบ่งกันจ่ายระหว่างผจข. กับ ผช.ผจข.</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e9')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e9"><strong>คำตอบ: B</strong><br>กรณีกุญแจหายจากความประมาทเลินเล่อ พนักงานผู้ถือกุญแจต้องเป็นผู้รับผิดชอบจ่ายเองทั้งหมด (ค่าจัดทำดอกใหม่ + ค่าเดินทางไปรับกุญแจสำรอง) แต่ถ้าเป็นเหตุสุดวิสัย ธนาคารจะรับผิดชอบให้</div>
+</div>
+
+<div class="q-card" data-topic="key">
+  <span class="q-num">10</span><span class="q-topic topic-key">🔑 กุญแจ KSIM</span>
+  <div class="q-text">การส่งมอบกุญแจ KSIM ต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>A. มอบให้ผู้ใดก็ได้ที่ไว้ใจ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>B. มอบให้ตามลำดับชั้น ลงลายมือชื่อในสมุดทะเบียนทุกครั้ง</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q10"><span>C. ข้อ B ถูกต้อง และรหัสตู้นิรภัยต้องส่งในซองปิดผนึกลับเฉพาะ ผู้รับต้องเปลี่ยนรหัสใหม่ทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>D. ส่งทาง LINE ให้ผู้รับทราบ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e10')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e10"><strong>คำตอบ: C</strong><br>การส่งมอบต้อง: (1) มอบตามลำดับชั้น ห้ามข้ามลำดับ (2) ลงทะเบียนทุกครั้งในสมุด "ทะเบียนรายละเอียดการส่งมอบ-รับมอบกุญแจ" (3) รหัสตู้นิรภัยส่งในซองปิดผนึกลับเฉพาะ (4) ผู้รับต้องเปลี่ยนแปลงรหัสใหม่ทันที</div>
+</div>
+
+<!-- ===== เงินสดสำรองสาขา ===== -->
+<div class="q-card" data-topic="reserve">
+  <span class="q-num">11</span><span class="q-topic topic-reserve">💰 เงินสดสำรอง</span>
+  <div class="q-text">ใครเป็นผู้เบิกเงินสดจากห้องมั่นคงและทำรายการ Transfer Cash Out (TO)?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>A. พนักงานการเงิน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q11"><span>B. ผู้รับมอบอำนาจชั้น ก (ผจข. หรือ ผช.ผจข.)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>C. หัวหน้าการเงิน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>D. กรรมการตรวจเงินสด</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e11')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e11"><strong>คำตอบ: B</strong><br>ผู้รับมอบอำนาจชั้น ก จะเป็นผู้เบิกเงินจากห้องมั่นคงและทำรายการโอนเงิน (Transfer Cash Out: TO) ไปยังพนักงานการเงินหน้าเคาน์เตอร์ (Teller)</div>
+</div>
+
+<div class="q-card" data-topic="reserve">
+  <span class="q-num">12</span><span class="q-topic topic-reserve">💰 เงินสดสำรอง</span>
+  <div class="q-text">รายการใดสำคัญที่สุดในการตรวจนับเงินสดสิ้นวัน?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>A. Teller Proof</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q12"><span>B. รายงานยอดเงินคงเหลือ 302.02.15</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>C. Branch Proof</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>D. ใบเสร็จรับเงิน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e12')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e12"><strong>คำตอบ: B</strong><br>รายงานยอดเงินคงเหลือ (302.02.15) เป็นรายงานสำคัญที่สุดประจำวัน คณะกรรมการตรวจนับเงินสดทุกคนต้องลงลายมือชื่อรับรอง ฉบับหนึ่งใช้ตรวจสอบกับบัญชี อีกฉบับเก็บเข้าตู้นิรภัยพร้อมเงินสด</div>
+</div>
+
+<div class="q-card" data-topic="reserve">
+  <span class="q-num">13</span><span class="q-topic topic-reserve">💰 เงินสดสำรอง</span>
+  <div class="q-text">เงินสดตรวจนับเสร็จแล้ว ต้องนำเข้าห้องมั่นคงเมื่อใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>A. รอตรวจสอบกับบัญชีเสร็จก่อน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>B. รอผู้จัดการสาขาลงนามก่อน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q13"><span>C. ทันทีโดยไม่ต้องรอตรวจสอบกับบัญชี</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>D. รอปิดระบบงานสาขาเสร็จก่อน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e13')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e13"><strong>คำตอบ: C</strong><br>คณะกรรมการตรวจนับเงินสดจะรวมเงินทั้งหมดและนำไปเก็บในตู้นิรภัยห้องมั่นคง "ทันทีโดยไม่ต้องรอตรวจสอบกับยอดเงินสดคงเหลือทางบัญชี" เพื่อความปลอดภัย</div>
+</div>
+
+<div class="q-card" data-topic="reserve">
+  <span class="q-num">14</span><span class="q-topic topic-reserve">💰 เงินสดสำรอง</span>
+  <div class="q-text">กรณีสาขามีเงินสดสำรองคงเหลือเกินวงเงินที่กำหนด ต้องทำอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>A. เก็บไว้ก่อนแล้วค่อยรายงานสัปดาห์หน้า</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q14"><span>B. ทำบันทึกขออนุมัติขยายวงเงินผ่านระบบ MMS เสนอ สนจ. ภายใน 5 วันทำการ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>C. โอนเงินส่วนเกินเข้าบัญชีรายได้ทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>D. แจ้งสำนักงานใหญ่ทางโทรศัพท์</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e14')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e14"><strong>คำตอบ: B</strong><br>สาขาต้องทำ "บันทึกขออนุมัติขยายวงเงินสำรองคงเหลือ" ผ่านระบบ MMS เสนอให้ สนจ. อนุมัติ ภายใน 5 วันทำการหลังสิ้นงวด</div>
+</div>
+
+<div class="q-card" data-topic="reserve">
+  <span class="q-num">15</span><span class="q-topic topic-reserve">💰 เงินสดสำรอง</span>
+  <div class="q-text">การตรวจสอบทรัพย์สินภายนอก (เงินสดที่สาขานำฝากไว้ที่ศูนย์ KCIM ธนาคารกรุงไทย) ต้องตรวจสอบบ่อยเพียงใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>A. ทุกเดือน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q15"><span>B. ไตรมาสละ 1 ครั้ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>C. ทุก 6 เดือน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>D. ปีละครั้ง</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e15')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e15"><strong>คำตอบ: B</strong><br>คณะกรรมการของ สนจ. เข้าทำการตรวจนับเงินสดและกระทบยอดเงินคงคลัง ณ สำนักงานบริษัทรับจ้าง ไตรมาสละ 1 ครั้ง</div>
+</div>
+
+<!-- ===== ตู้ ATM ===== -->
+<div class="q-card" data-topic="atm">
+  <span class="q-num">16</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">กรณีเกิดเหตุผิดปกติกับตู้ ATM (ถูกทุบ งัดแงะ ไฟไหม้) พนักงานต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>A. ซ่อมเองทันที</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q16"><span>B. แจ้งผู้รับมอบอำนาจทันที ห้ามจับต้องเครื่อง ถ่ายภาพ แจ้งความ แจ้ง ฝปท.</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>C. เปิดเครื่องตรวจดูเงินข้างใน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>D. รอจนกว่าจะมีลูกค้ามาแจ้ง</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e16')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e16"><strong>คำตอบ: B</strong><br>พนักงานต้องแจ้งผู้รับมอบอำนาจทันที ห้ามบุคคลอื่นจับต้องเครื่องเด็ดขาด ถ่ายภาพความเสียหาย แจ้งความลงบันทึกประจำวันกับตำรวจ และรีบแจ้งฝ่ายปฏิบัติการดิจิทัล (ฝปท.)</div>
+</div>
+
+<div class="q-card" data-topic="atm">
+  <span class="q-num">17</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">เงินสดขาดบัญชีตู้ ATM ตั้งแต่เท่าไหร่ ผู้จัดการสาขาต้องสั่งดึงไฟล์ CCTV มาตรวจสอบ?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>A. 1,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q17"><span>B. 3,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>C. 5,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>D. 10,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e17')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e17"><strong>คำตอบ: B</strong><br>ขาดตั้งแต่ 3,000 บาทขึ้นไป ผู้จัดการสาขาต้องดึงไฟล์ภาพจากกล้อง CCTV ในวันที่เปลี่ยนกล่องเงินมาตรวจสอบร่วมกับกรรมการตู้</div>
+</div>
+
+<div class="q-card" data-topic="atm">
+  <span class="q-num">18</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">เงินสดขาดบัญชีตู้ ATM ตั้งแต่ 10,000 บาทขึ้นไป แต่ไม่มีเจตนาทุจริต ต้องทำอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>A. ให้พนักงานชดใช้ทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>B. ตั้งคณะกรรมการสอบสวนทันที</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q18"><span>C. รายงาน สนจ. และสำนักธุรกรรมการเงิน เพื่อขอแก้ไข</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>D. ปิดเรื่องไม่ต้องทำอะไร</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e18')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e18"><strong>คำตอบ: C</strong><br>ถ้าไม่มีเจตนาทุจริต (เช่น นับผิด/สลับกล่อง) ให้รายงาน สนจ. และสำนักธุรกรรมการเงิน แต่ถ้า "ส่อไปในทางทุจริต" ต้องตั้งคณะกรรมการสอบข้อเท็จจริงทันที</div>
+</div>
+
+<div class="q-card" data-topic="atm">
+  <span class="q-num">19</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">กรณีเงินสดขาดบัญชีตู้ ATM น้อยกว่า 10,000 บาท แต่เกิดซ้ำซากกับพนักงานคนเดิม กี่ครั้งใน 1 ปี และรวมยอดเกินเท่าไหร่ ถึงต้องตั้งคณะกรรมการสอบ?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>A. 2 ครั้ง/ปี รวมเกิน 1,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q19"><span>B. 3 ครั้ง/ปี รวมเกิน 3,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>C. 5 ครั้ง/ปี รวมเกิน 5,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>D. 3 ครั้ง/ปี รวมเกิน 5,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e19')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e19"><strong>คำตอบ: B</strong><br>หากเกิดซ้ำกับพนักงานคนเดิมตั้งแต่ 3 ครั้งขึ้นไปใน 1 ปี และยอดรวมเกิน 3,000 บาท ต้องตั้งคณะกรรมการสอบข้อเท็จจริงเช่นกัน</div>
+</div>
+
+<div class="q-card" data-topic="atm">
+  <span class="q-num">20</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">เจ้าหน้าที่ รปภ. ต้องเดินสแกน Guard Tour กี่ชั่วโมงครั้ง และห้ามเข้าพื้นที่ใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>A. ทุก 2 ชั่วโมง / ห้ามเข้าห้องมั่นคง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>B. ทุก 1 ชั่วโมง / ห้ามเข้าห้องน้ำ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q20"><span>C. ทุก 1 ชั่วโมง / ห้ามเข้า Banking Area</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>D. ทุก 4 ชั่วโมง / ห้ามเข้าลานจอดรถ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e20')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e20"><strong>คำตอบ: C</strong><br>เจ้าหน้าที่ รปภ. ต้องเดินสแกน Guard Tour จุดตรวจเวรยามภายนอกอาคารทุกๆ 1 ชั่วโมง และห้าม รปภ. เข้าไปในพื้นที่รับ-จ่ายเงิน (Banking Area) โดยเด็ดขาด เว้นแต่มีเหตุผิดปกติ</div>
+</div>
+
+</div><!-- /container -->
+
+<div class="score-bar" id="scoreBar">
+  ✅ ทำไปแล้ว <span id="answeredCount">0</span>/20 ข้อ | 
+  ถูก <span id="correctCount" style="color:#4caf50">0</span> ข้อ | 
+  ผิด <span id="wrongCount" style="color:#ef5350">0</span> ข้อ
+</div>
+
+<div class="footer">
+  📚 เนื้อหาจาก NotebookLM — ระเบียบวิธีปฏิบัติ ธ.ก.ส. ฉบับจริง<br>
+  🎯 ศูนย์เตรียมสอบ ผช.ผจข. Genius 9
+</div>
+
+<script>
+let correct=0, wrong=0, answered=0;
+const answeredSet = new Set();
+
+function check(el, isCorrect) {
+  const card = el.closest('.q-card');
+  const name = el.querySelector('input').name;
+  if (answeredSet.has(name)) return;
+  answeredSet.add(name);
+  
+  const opts = card.querySelectorAll('.q-opts label');
+  opts.forEach(o => {
+    o.style.pointerEvents = 'none';
+    if (o === el) {
+      o.classList.add(isCorrect ? 'correct' : 'wrong');
+    }
+  });
+  
+  if (!isCorrect) {
+    opts.forEach(o => {
+      if (o.querySelector('input').name === name && o.onclick && o.onclick.toString().includes('true')) {
+        o.classList.add('show-correct');
+      }
+    });
+  }
+  
+  answered++;
+  if (isCorrect) correct++; else wrong++;
+  
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('scoreBar').style.display = 'block';
+}
+
+function toggleExplain(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function filterTab(topic) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.q-card').forEach(card => {
+    if (topic === 'all' || card.dataset.topic === topic) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
