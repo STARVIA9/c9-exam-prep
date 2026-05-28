@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📋 Market Conduct — ธ.ก.ส. | การปฏิบัติทางการตลาดอย่างเป็นธรรม</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0d1425;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --surface3: #22324f;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --gold-dim: rgba(212, 148, 47, 0.12);
+  --gold-soft: rgba(212, 148, 47, 0.06);
+  --green: #22a67e;
+  --green-dim: rgba(34, 166, 126, 0.12);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75, 123, 236, 0.10);
+  --purple: #9772e6;
+  --purple-dim: rgba(151, 114, 230, 0.10);
+  --red: #e55c5c;
+  --red-dim: rgba(229, 92, 92, 0.10);
+  --cyan: #36b5c4;
+  --cyan-dim: rgba(54, 181, 196, 0.10);
+  --orange: #f09b3a;
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --glow: 0 0 60px rgba(212, 148, 47, 0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 40%, rgba(212,148,47,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 85% 20%, rgba(75,123,236,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(151,114,230,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  background: rgba(7,11,20,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+.top-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.top-nav a:hover {
+  color: var(--gold2);
+  background: var(--gold-dim);
+}
+
+.top-nav .logo {
+  color: var(--gold2);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ===== FLOATING BACK BUTTON ===== */
+.float-back {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 20px rgba(212,148,47,0.3);
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+}
+
+.float-back:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(212,148,47,0.45);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 72px 18px 48px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 40px 20px 28px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold-dim);
+  color: var(--gold2);
+  border: 1px solid rgba(212,148,47,0.25);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: var(--text2);
+  font-size: 0.95rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 20px 0 32px;
+}
+
+.toc-title {
+  color: var(--gold2);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.toc-list li a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  background: var(--gold-soft);
+  border: 1px solid transparent;
+}
+
+.toc-list li a:hover {
+  color: var(--gold2);
+  background: var(--gold-dim);
+  border-color: rgba(212,148,47,0.2);
+}
+
+/* ===== SECTION ===== */
+.section {
+  margin-bottom: 36px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header .icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.section-header h2 small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+/* Icon backgrounds */
+.icon-gold { background: var(--gold-dim); }
+.icon-blue { background: var(--blue-dim); }
+.icon-green { background: var(--green-dim); }
+.icon-purple { background: var(--purple-dim); }
+.icon-red { background: var(--red-dim); }
+.icon-cyan { background: var(--cyan-dim); }
+.icon-orange { background: rgba(240,155,58,0.12); }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--gold2);
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  position: relative;
+  padding: 4px 0 4px 20px;
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.card ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+  background: var(--gold-soft);
+  border: 1px solid rgba(212,148,47,0.15);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin: 10px 0;
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.info-box strong {
+  color: var(--gold2);
+}
+
+/* ===== GRID ===== */
+.grid-9 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.grid-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: all 0.2s;
+}
+
+.grid-item:hover {
+  border-color: rgba(212,148,47,0.2);
+  background: var(--surface3);
+}
+
+.grid-item .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--gold-dim);
+  color: var(--gold2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.grid-item .label {
+  font-size: 0.8rem;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ===== PENALTY TABLE ===== */
+.penalty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.penalty-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.penalty-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.penalty-text {
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.penalty-text strong {
+  color: var(--text);
+}
+
+/* ===== QUIZ SECTION ===== */
+.quiz-intro {
+  background: linear-gradient(135deg, var(--surface), var(--surface2));
+  border: 1px solid rgba(212,148,47,0.2);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.quiz-intro h3 {
+  color: var(--gold2);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.quiz-intro p {
+  color: var(--text2);
+  font-size: 0.85rem;
+}
+
+/* ===== QUESTION CARD ===== */
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+
+.q-card.correct-highlight {
+  border-color: rgba(34,166,126,0.4);
+  background: linear-gradient(135deg, var(--surface), rgba(34,166,126,0.04));
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.q-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--gold-dim);
+  color: var(--gold2);
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.q-text {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.6;
+  padding-top: 3px;
+}
+
+.q-options {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.q-options li {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  color: var(--text2);
+  line-height: 1.5;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.q-options li:hover {
+  border-color: rgba(212,148,47,0.2);
+  background: var(--surface3);
+}
+
+.q-options li .opt-label {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--gold);
+  margin-right: 6px;
+}
+
+.q-options li.correct {
+  border-color: var(--green);
+  background: var(--green-dim);
+  color: var(--text);
+}
+
+.q-options li.correct .opt-label {
+  color: var(--green);
+}
+
+.q-answer {
+  background: var(--green-dim);
+  border: 1px solid rgba(34,166,126,0.25);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-top: 10px;
+}
+
+.q-answer .ans-label {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.q-answer .ans-text {
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.q-answer .ans-text strong {
+  color: var(--text);
+}
+
+/* ===== SCORE SUMMARY ===== */
+.score-area {
+  text-align: center;
+  padding: 24px 20px;
+  margin-top: 24px;
+}
+
+.score-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.score-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212,148,47,0.35);
+}
+
+.score-reset {
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 10px;
+}
+
+.score-reset:hover {
+  border-color: var(--gold);
+  color: var(--gold2);
+}
+
+.score-result {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+}
+
+.score-result.pass {
+  background: var(--green-dim);
+  border: 1px solid rgba(34,166,126,0.3);
+  color: var(--green);
+}
+
+.score-result.fail {
+  background: var(--red-dim);
+  border: 1px solid rgba(229,92,92,0.3);
+  color: var(--red);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.4rem; }
+  .section-header h2 { font-size: 1.05rem; }
+  .card { padding: 14px 16px; }
+  .q-card { padding: 16px; }
+  .grid-9 { grid-template-columns: 1fr; }
+  .float-back { width: 44px; height: 44px; font-size: 1.1rem; bottom: 18px; right: 18px; }
+}
+
+/* ===== TOGGLE ANSWER VISIBILITY ===== */
+.q-answer {
+  display: none;
+}
+.q-card.show-answer .q-answer {
+  display: block;
+}
+
+.q-show-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.q-show-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold2);
+}
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  z-index: 99;
+  transition: width 0.05s;
+  width: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="top-nav">
+  <a href="index.html">← หน้าหลัก</a>
+  <span class="logo">📋 Market Conduct</span>
+  <span></span>
+</nav>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ===== FLOATING BACK ===== -->
+<a href="index.html" class="float-back" title="กลับหน้าหลัก">🏠</a>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">📋 ธ.ก.ส. — เก็งข้อสอบ</div>
+    <h1>Market Conduct<br><span>การปฏิบัติทางการตลาดอย่างเป็นธรรม</span></h1>
+    <p>สรุปเนื้อหาครบถ้วนตามหลักเกณฑ์ ธปท. พร้อมข้อสอบวิเคราะห์สถานการณ์ 10 ข้อ สำหรับพนักงาน ธ.ก.ส.</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">📑 สารบัญเนื้อหา</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. หลักการสำคัญ</a></li>
+      <li><a href="#s2">2. การขายอย่างเป็นธรรม</a></li>
+      <li><a href="#s3">3. การเปิดเผยข้อมูล &amp; โฆษณา</a></li>
+      <li><a href="#s4">4. PDPA</a></li>
+      <li><a href="#s5">5. การจัดการร้องเรียน</a></li>
+      <li><a href="#s6">6. 9 ระบบ ธปท.</a></li>
+      <li><a href="#s7">7. บทลงโทษ</a></li>
+      <li><a href="#quiz">📝 ข้อสอบ 10 ข้อ</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: หลักการสำคัญ -->
+  <!-- ============================================================ -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="icon icon-gold">⚖️</div>
+      <h2>หลักการสำคัญของ Market Conduct <small>ธปท. กำหนดหลักเกณฑ์เพื่อคุ้มครองผู้บริโภค</small></h2>
+    </div>
+    <div class="card">
+      <p>Market Conduct คือแนวปฏิบัติที่สถาบันการเงินต้องดำเนินธุรกิจอย่างเป็นธรรม โปร่งใส และคำนึงถึงประโยชน์สูงสุดของผู้บริโภค ตามหลักเกณฑ์ที่ <strong>ธนาคารแห่งประเทศไทย (ธปท.)</strong> กำหนด</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🔑 5 เรื่องสำคัญของ Market Conduct</div>
+      <ul>
+        <li><strong>การขายอย่างเป็นธรรม</strong> — ห้ามยัดเยียดขาย ต้องประเมินความเหมาะสมของลูกค้า</li>
+        <li><strong>การเปิดเผยข้อมูล</strong> — ต้องให้ข้อมูลครบถ้วน ถูกต้อง ชัดเจน</li>
+        <li><strong>การโฆษณา</strong> — ต้องไม่โอ้อวด ไม่บิดเบือน ไม่กล่าวร้ายคู่แข่ง</li>
+        <li><strong>การคุ้มครองข้อมูลส่วนบุคคล</strong> — ต้องได้รับความยินยอมก่อนใช้ข้อมูล</li>
+        <li><strong>การจัดการเรื่องร้องเรียน</strong> — ต้องมีช่องทางรับเรื่องร้องเรียนที่รวดเร็วและเป็นธรรม</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: การขายอย่างเป็นธรรม -->
+  <!-- ============================================================ -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="icon icon-green">🛡️</div>
+      <h2>หลักเกณฑ์การขายอย่างเป็นธรรม <small>Fair Selling</small></h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>ห้ามยัดเยียดขาย (Mis-selling)</strong> — ต้องไม่ชักจูงให้ลูกค้าซื้อผลิตภัณฑ์ที่ไม่จำเป็นหรือไม่เหมาะสม</li>
+        <li><strong>ห้ามขายผลิตภัณฑ์ที่ไม่เหมาะสมกับลูกค้า</strong> — ต้องประเมินความรู้ ความเข้าใจ และความสามารถในการรับความเสี่ยงของลูกค้า</li>
+        <li><strong>พนักงานต้องประเมินความเหมาะสมของลูกค้าก่อนเสนอขาย</strong> — ใช้แบบประเมินความเสี่ยงหรือสอบถามข้อมูลพื้นฐาน</li>
+        <li><strong>ต้องให้ข้อมูลอย่างครบถ้วน ถูกต้อง</strong> — อธิบายเงื่อนไข ผลประโยชน์ ความเสี่ยง และภาระผูกพันอย่างชัดเจน</li>
+      </ul>
+      <div class="info-box">
+        <strong>💡 ข้อควรจำ:</strong> การขายอย่างเป็นธรรม = ขายสิ่งที่ลูกค้า<strong>ต้องการ</strong>และ<strong>เหมาะสม</strong> ไม่ใช่ขายให้ได้ target
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: การเปิดเผยข้อมูลและการโฆษณา -->
+  <!-- ============================================================ -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="icon icon-blue">📢</div>
+      <h2>การเปิดเผยข้อมูลและการโฆษณา <small>Disclosure &amp; Advertising</small></h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>ข้อมูลต้องถูกต้อง ไม่บิดเบือน ไม่เกินจริง</strong> — ต้องสื่อสารตามข้อเท็จจริง</li>
+        <li><strong>การโฆษณาต้องไม่โอ้อวด</strong> — ไม่ใช้คำว่า "ดีที่สุด" "ถูกที่สุด" โดยไม่มีหลักฐาน</li>
+        <li><strong>ไม่กล่าวร้ายคู่แข่ง</strong> — ห้ามเปรียบเทียบในทางเสียหาย</li>
+        <li><strong>ต้องระบุข้อมูลสำคัญ</strong> เช่น อัตราดอกเบี้ย ค่าธรรมเนียม ความเสี่ยง เงื่อนไขที่เกี่ยวข้อง</li>
+      </ul>
+      <div class="info-box">
+        <strong>⚠️ ข้อพึงระวัง:</strong> การโฆษณาต้องมีหลักฐานอ้างอิงได้ และต้องสื่อสารให้ผู้บริโภคเข้าใจได้ง่าย
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4: PDPA -->
+  <!-- ============================================================ -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="icon icon-purple">🔐</div>
+      <h2>การคุ้มครองข้อมูลส่วนบุคคล (PDPA) <small>พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562</small></h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>ต้องได้รับความยินยอมจากลูกค้าก่อนใช้ข้อมูล</strong> — Consent ต้องชัดเจน แยกจากข้อตกลงอื่น</li>
+        <li><strong>ห้ามเปิดเผยข้อมูลลูกค้าให้ผู้ไม่เกี่ยวข้อง</strong> — รวมถึงการแชร์ข้อมูลระหว่างหน่วยงานโดยไม่ได้รับอนุญาต</li>
+        <li><strong>ลูกค้ามีสิทธิ</strong> ดังต่อไปนี้:
+          <ul style="margin-top:6px; padding-left:16px; list-style:disc;">
+            <li style="padding-left:0;">📄 ขอเข้าดูข้อมูลส่วนบุคคลที่ธนาคารเก็บไว้</li>
+            <li style="padding-left:0;">✏️ ขอแก้ไขข้อมูลให้ถูกต้อง</li>
+            <li style="padding-left:0;">⏸️ ขอระงับการใช้ข้อมูลชั่วคราว</li>
+            <li style="padding-left:0;">🚫 ขอคัดค้านการเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูล</li>
+            <li style="padding-left:0;">🗑️ ขอลบข้อมูล (Right to Erasure)</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="info-box">
+        <strong>🔒 หลักง่าย:</strong> ข้อมูลลูกค้า = ทรัพย์สินของลูกค้า เราเป็นเพียงผู้ดูแล ต้องใช้ด้วยความระมัดระวัง
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 5: การจัดการเรื่องร้องเรียน -->
+  <!-- ============================================================ -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="icon icon-red">📞</div>
+      <h2>การจัดการเรื่องร้องเรียน <small>Complaint Management</small></h2>
+    </div>
+    <div class="card">
+      <div class="card-title">📌 ช่องทางการร้องเรียน ธ.ก.ส.</div>
+      <ul>
+        <li>📞 <strong>Call Center:</strong> 0 2555 0555</li>
+        <li>📱 <strong>สายด่วน:</strong> 1593</li>
+        <li>📧 <strong>E-mail:</strong> contact@baac.or.th</li>
+        <li>💻 <strong>ระบบ VOC</strong> (Voice of Customer)</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <ul>
+          <li>ต้องดำเนินการ<strong>รวดเร็ว เป็นธรรม</strong></li>
+          <li>มีขั้นตอนที่ชัดเจนและแจ้งผลให้ลูกค้าทราบ</li>
+          <li>บันทึกข้อมูลการร้องเรียนเพื่อใช้ในการปรับปรุง</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 6: 9 ระบบ ธปท. -->
+  <!-- ============================================================ -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="icon icon-cyan">🏗️</div>
+      <h2>9 ระบบตามหลักเกณฑ์ ธปท. <small>ระบบบริหารจัดการเพื่อการปฏิบัติทางการตลาดอย่างเป็นธรรม</small></h2>
+    </div>
+    <div class="card">
+      <p style="margin-bottom:10px;">ธปท. กำหนดให้สถาบันการเงินมี 9 ระบบในการบริหารจัดการ ดังนี้</p>
+      <div class="grid-9">
+        <div class="grid-item"><div class="num">1</div><div class="label">วัฒนธรรมองค์กรและบทบาทผู้บริหาร</div></div>
+        <div class="grid-item"><div class="num">2</div><div class="label">การพัฒนาผลิตภัณฑ์</div></div>
+        <div class="grid-item"><div class="num">3</div><div class="label">การจ่ายค่าตอบแทน<br><span style="color:var(--red);font-size:0.75rem;">⚠️ ห้ามผูกกับยอดขาย</span></div></div>
+        <div class="grid-item"><div class="num">4</div><div class="label">กระบวนการขาย</div></div>
+        <div class="grid-item"><div class="num">5</div><div class="label">การสื่อสารและให้ความรู้</div></div>
+        <div class="grid-item"><div class="num">6</div><div class="label">การดูแลข้อมูลส่วนบุคคล</div></div>
+        <div class="grid-item"><div class="num">7</div><div class="label">การจัดการร้องเรียน</div></div>
+        <div class="grid-item"><div class="num">8</div><div class="label">การควบคุม กำกับ ตรวจสอบ<br><span style="color:var(--cyan);font-size:0.75rem;">3 Lines of Defense</span></div></div>
+        <div class="grid-item"><div class="num">9</div><div class="label">BCP<br><span style="color:var(--text3);font-size:0.7rem;">Business Continuity Plan</span></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔄 3 Lines of Defense</div>
+      <ul>
+        <li><strong>Line 1:</strong> หน่วยงานปฏิบัติงาน (Frontline) — ควบคุมความเสี่ยงในกระบวนการทำงานประจำวัน</li>
+        <li><strong>Line 2:</strong> หน่วยงานกำกับดูแล (Compliance/Risk Management) — กำหนดนโยบาย มาตรฐาน และติดตาม</li>
+        <li><strong>Line 3:</strong> หน่วยงานตรวจสอบภายใน (Internal Audit) — ตรวจสอบอิสระ ประเมินประสิทธิภาพ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 7: บทลงโทษ -->
+  <!-- ============================================================ -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="icon icon-orange">⚡</div>
+      <h2>บทลงโทษ <small>Penalties &amp; Sanctions</small></h2>
+    </div>
+    <div class="card">
+      <div class="penalty-list">
+        <div class="penalty-item">
+          <div class="penalty-icon" style="background:var(--gold-dim);">🏛️</div>
+          <div class="penalty-text"><strong>โทษทางวินัย</strong> — ตามข้อบังคับธนาคาร ตักเตือน พักงาน ไล่ออก ขึ้นอยู่กับความร้ายแรง</div>
+        </div>
+        <div class="penalty-item">
+          <div class="penalty-icon" style="background:var(--red-dim);">💰</div>
+          <div class="penalty-text"><strong>โทษปรับตามกฎหมาย</strong> — สูงสุด <strong>1,000,000 บาท</strong> + ปรับรายวันกรณีฝ่าฝืนต่อเนื่อง</div>
+        </div>
+        <div class="penalty-item">
+          <div class="penalty-icon" style="background:var(--purple-dim);">📜</div>
+          <div class="penalty-text"><strong>โทษตาม พ.ร.บ.ธุรกิจสถาบันการเงิน</strong> — รวมถึงการเพิกถอนใบอนุญาต</div>
+        </div>
+        <div class="penalty-item">
+          <div class="penalty-icon" style="background:var(--blue-dim);">🚨</div>
+          <div class="penalty-text"><strong>โทษตามกฎหมาย ปปง.</strong> — กรณีเกี่ยวข้องกับการฟอกเงินหรือสนับสนุนทางการเงินแก่การก่อการร้าย</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- QUIZ SECTION -->
+  <!-- ============================================================ -->
+  <div class="section" id="quiz" style="margin-top:40px;">
+    <div class="section-header">
+      <div class="icon icon-gold">📝</div>
+      <h2>ข้อสอบวิเคราะห์สถานการณ์ (Scenario-Based) <small>10 ข้อ</small></h2>
+    </div>
+
+    <div class="quiz-intro">
+      <h3>📋 คำชี้แจง</h3>
+      <p>ข้อสอบทั้ง 10 ข้อ เป็นสถานการณ์ที่พนักงาน ธ.ก.ส. อาจพบเจอในการปฏิบัติงานจริง ให้อ่านสถานการณ์และเลือกคำตอบที่ถูกต้องที่สุด กดปุ่ม "ดูเฉลย" เพื่อตรวจสอบคำตอบ พร้อมเหตุผลประกอบ</p>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-card" id="q1">
+      <div class="q-header">
+        <div class="q-number">1</div>
+        <div class="q-text">นายสมชายเดินทางมาที่สาขาเพื่อขอเปิดบัญชีออมทรัพย์ พนักงานสอบถามข้อมูลเบื้องต้นพบว่านายสมชายมีสีหน้าเคร่งเครียด พูดจาวกวน ลงชื่อในเอกสารโดยไม่ตรวจสอบ และขอเปิดบัญชีหลายประเภทพร้อมกันอย่างเร่งรีบ พนักงานควรปฏิบัติอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ดำเนินการให้เร็วที่สุดตามที่ลูกค้าต้องการ เพราะเป็นหน้าที่ให้บริการ</li>
+        <li><span class="opt-label">ข.</span> แนะนำให้ลูกค้ามาพร้อมหลักฐานเพิ่มเติมในวันอื่น เพราะเอกสารไม่ครบ</li>
+        <li><span class="opt-label">ค.</span> ชะลอการเปิดบัญชี สังเกตพฤติกรรมเพิ่มเติม และรายงานผู้บังคับบัญชา เนื่องจากเข้าข่ายพฤติกรรมที่ผิดปกติ (Red Flag)</li>
+        <li><span class="opt-label">ง.</span> ให้ลูกค้าเซ็นยินยอมทุกอย่างแล้วรีบดำเนินการเพื่อลดความเสี่ยง</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q1')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ค.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> พฤติกรรมของนายสมชาย เช่น หน้าตาเคร่งเครียด พูดจาวกวน ลงชื่อไม่ตรวจสอบ และขอเปิดหลายบัญชีพร้อมกัน เป็น Red Flag ที่อาจเกี่ยวข้องกับการฟอกเงิน พนักงานต้องปฏิบัติตามหลักเกณฑ์ KYC (Know Your Customer) และ AML โดยชะลอการดำเนินการ สังเกต และรายงานผู้บังคับบัญชา</div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card" id="q2">
+      <div class="q-header">
+        <div class="q-number">2</div>
+        <div class="q-text">หัวหน้ากดดันให้พนักงานทุกคนยอดขายประกันสินเชื่อให้ถึงเป้า พร้อมบอกว่า "ใครทำไม่ถึงเป้าจะถูกปรับลดโบนัส" และแนะนำให้เสนอขายประกันกับลูกค้าทุกรายที่มาขอสินเชื่อ โดยไม่ต้องประเมินความเสี่ยง พนักงานควรทำอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ทำตามหัวหน้าเพราะเกรงจะถูกปรับลดโบนัส</li>
+        <li><span class="opt-label">ข.</span> เสนอขายเฉพาะลูกค้าที่ดูมีฐานะร่ำรวยเท่านั้น</li>
+        <li><span class="opt-label">ค.</span> ปฏิบัติตามหลักเกณฑ์ Market Conduct โดยประเมินความเหมาะสมของลูกค้าก่อนเสนอขาย และแจ้งหัวหน้าว่าการกดดันให้ขายโดยไม่ประเมินความเสี่ยงผิดหลักเกณฑ์</li>
+        <li><span class="opt-label">ง.</span> ยื่นเรื่องลาออกเพราะทำงานในสภาพแวดล้อมนี้ไม่ได้</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q2')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ค.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ข้อ 3 ของ 9 ระบบ ธปท. ระบุชัดเจนว่า <strong>ห้ามผูกค่าตอบแทนกับยอดขาย</strong> ที่อาจนำไปสู่ Mis-selling พนักงานต้องยึดหลัก Fair Selling คือขายเฉพาะผลิตภัณฑ์ที่เหมาะสมกับลูกค้า หากพบการกระทำที่ผิดหลักเกณฑ์ ควรแจ้งผู้บังคับบัญชาหรือหน่วยงาน Compliance</div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card" id="q3">
+      <div class="q-header">
+        <div class="q-number">3</div>
+        <div class="q-text">พนักงานพบว่าข้อมูลส่วนบุคคลของลูกค้าที่บันทึกในระบบถูกส่งให้เพื่อนร่วมงานต่างฝ่ายโดยไม่ได้รับอนุญาตจากลูกค้า เมื่อสอบถามพบว่าเพื่อนร่วมงานต้องการนำข้อมูลไปใช้ทำแผนการตลาด พนักงานควรทำอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ไม่เป็นไร เพราะเป็นคนในธนาคารเหมือนกัน ใช้ข้อมูลกันได้</li>
+        <li><span class="opt-label">ข.</span> แจ้งเพื่อนร่วมงานว่านี่คือการละเมิด PDPA และรายงานเหตุการณ์ให้ผู้บังคับบัญชาทราบทันที</li>
+        <li><span class="opt-label">ค.</span> บอกให้เพื่อนร่วมงานขออนุญาตลูกค้าทีหลังก็ได้</li>
+        <li><span class="opt-label">ง.</span> ไม่ต้องทำอะไรเพราะไม่ใช่หน้าที่ของตน</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q3')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ตาม PDPA การนำข้อมูลส่วนบุคคลของลูกค้าไปใช้ต้องได้รับความยินยอมจากเจ้าของข้อมูลก่อน แม้จะเป็นคนในธนาคารก็ไม่สามารถใช้ข้อมูลข้ามฝ่ายได้ การแจ้งเตือนและรายงานเหตุการณ์เป็นหน้าที่ของพนักงานทุกคนในการปกป้องข้อมูลลูกค้า</div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card" id="q4">
+      <div class="q-header">
+        <div class="q-number">4</div>
+        <div class="q-text">ธนาคารจัดโปรโมชันดอกเบี้ยเงินกู้พิเศษ โดยโฆษณาว่า "ดอกเบี้ยต่ำที่สุดในประเทศ!" แต่ทีมการตลาดไม่มีเอกสารหรือหลักฐานเปรียบเทียบดอกเบี้ยกับธนาคารอื่นมายืนยันคำกล่าวอ้างนี้ การกระทำดังกล่าวผิดหลักเกณฑ์ใด?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ไม่ผิด เพราะเป็นการโฆษณาทั่วไปที่ทุกธนาคารทำ</li>
+        <li><span class="opt-label">ข.</span> ผิดหลักเกณฑ์การโฆษณาที่ต้องไม่โอ้อวดเกินจริง และต้องมีหลักฐานอ้างอิงได้</li>
+        <li><span class="opt-label">ค.</span> ผิดเฉพาะกรณีที่มีคู่แข่งฟ้องร้องเท่านั้น</li>
+        <li><span class="opt-label">ง.</span> ผิดหลักการจัดการร้องเรียน</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q4')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> หลักเกณฑ์ Market Conduct กำหนดให้การโฆษณาต้องไม่โอ้อวด ไม่เกินจริง และต้องมีหลักฐานอ้างอิงได้ คำว่า "ต่ำที่สุด" เป็นการกล่าวอ้างเปรียบเทียบที่ต้องมีหลักฐานชัดเจน การไม่มีเอกสารยืนยันถือเป็นการโฆษณาที่ไม่เป็นธรรม</div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card" id="q5">
+      <div class="q-header">
+        <div class="q-number">5</div>
+        <div class="q-text">ลูกค้าวัย 70 ปีมาขอทำประกันสะสมทรัพย์แบบลดหย่อนภาษี พนักงานสังเกตว่าลูกค้าดูสับสน ไม่เข้าใจเงื่อนไขกรมธรรม์ และรายได้ของลูกค้าต่ำกว่าเกณฑ์ที่ต้องเสียภาษี แต่พนักงานยังคงเสนอขายเพราะต้องการทำยอดให้ได้ตามเป้า การกระทำนี้ผิดหลักการใด?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ไม่ผิด เพราะลูกค้ามาเองด้วยความสมัครใจ</li>
+        <li><span class="opt-label">ข.</span> ผิดหลัก Fair Selling เพราะผลิตภัณฑ์ไม่เหมาะสมกับลูกค้า (ลูกค้าไม่มีภาระภาษี) และลูกค้าไม่เข้าใจเงื่อนไข</li>
+        <li><span class="opt-label">ค.</span> ผิดเฉพาะกรณีลูกค้าร้องเรียน</li>
+        <li><span class="opt-label">ง.</span> ผิดหลักการเปิดเผยข้อมูลเท่านั้น</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q5')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> การเสนอขายผลิตภัณฑ์ที่ไม่เหมาะสมกับลูกค้า (Suitability) ถือเป็น Mis-selling โดยตรง โดยเฉพาะกรณีที่ผลิตภัณฑ์ไม่มีประโยชน์กับลูกค้า (ไม่ต้องเสียภาษีอยู่แล้ว) และลูกค้าไม่เข้าใจเงื่อนไข พนักงานต้องปฏิเสธการขายและแนะนำผลิตภัณฑ์ที่เหมาะสมกว่า</div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card" id="q6">
+      <div class="q-header">
+        <div class="q-number">6</div>
+        <div class="q-text">ลูกค้าโทรศัพท์มาร้องเรียนว่าถูก call center ของธนาคารโทรไปเสนอขายสินเชื่อ ส่วนลดพิเศษวันละ 5-6 รอบ แม้ลูกค้าจะบอกว่าไม่สนใจแล้ว พนักงาน call center ยังคงโทรซ้ำ ลูกค้าไม่พอใจมาก พนักงานควรจัดการอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> บอกลูกค้าว่าเป็นนโยบายบริษัท แล้ววางสาย</li>
+        <li><span class="opt-label">ข.</span> แจ้งลูกค้าว่าจะบันทึกความประสงค์ไม่รับข้อมูลทางการตลาด (Do Not Call) และแจ้งผู้รับผิดชอบเพื่อปรับปรุงระบบ ชี้แจงและขอโทษลูกค้า</li>
+        <li><span class="opt-label">ค.</span> บอกลูกค้าว่าให้ไปร้องเรียนที่ ธปท. เลย</li>
+        <li><span class="opt-label">ง.</span> ตัดสายแล้วขึ้นสถานะลูกค้ารำคาญในระบบ</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q6')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ลูกค้ามีสิทธิขอไม่รับข้อมูลทางการตลาด (Right to Object) ตาม PDPA และหลักเกณฑ์ Market Conduct กำหนดให้ต้องเคารพความประสงค์ของลูกค้า การโทรซ้ำแม้ลูกค้าปฏิเสธแล้วเป็นพฤติกรรมที่ไม่เหมาะสม ต้องดำเนินการแก้ไขและขอโทษลูกค้า</div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-card" id="q7">
+      <div class="q-header">
+        <div class="q-number">7</div>
+        <div class="q-text">ระหว่างประชุมทีม ผู้จัดการสาขาแจ้งว่าธนาคารกำลังจะออกผลิตภัณฑ์เงินฝากพิเศษดอกเบี้ยสูง และให้พนักงานทุกคนช่วยกันเชิญชวนญาติพี่น้องและเพื่อนฝูงมาเปิดบัญชี โดยใช้ข้อมูลส่วนตัวของพนักงานในการติดต่อ โดยไม่ต้องผ่านกระบวนการ KYC ที่เข้มงวด พนักงานควรปฏิบัติอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ทำตามผู้จัดการ เพราะเป็นญาติพี่น้องของตัวเอง รู้จักกันดีอยู่แล้ว</li>
+        <li><span class="opt-label">ข.</span> ปฏิเสธและอธิบายว่าการละเว้นขั้นตอน KYC และการใช้ข้อมูลส่วนตัวเพื่อเชิญชวนโดยไม่ผ่านระบบผิดหลักเกณฑ์ Market Conduct และความเสี่ยง AML</li>
+        <li><span class="opt-label">ค.</span> ทำตามแต่แอบทำ KYC เองในระบบทีหลัง</li>
+        <li><span class="opt-label">ง.</span> เงียบไม่แสดงความคิดเห็น แต่ไม่ทำตาม</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q7')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ทุกผลิตภัณฑ์ต้องผ่านกระบวนการพัฒนาผลิตภัณฑ์ (ระบบข้อ 2) และกระบวนการขาย (ระบบข้อ 4) อย่างถูกต้อง การละเว้น KYC ไม่ว่ากรณีใดก็ตามผิดกฎหมาย AML และ Market Conduct การใช้ข้อมูลส่วนตัวของพนักงานเพื่อเชิญชวนก็เป็นการใช้ข้อมูลที่ไม่เหมาะสมเช่นกัน</div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-card" id="q8">
+      <div class="q-header">
+        <div class="q-number">8</div>
+        <div class="q-text">ลูกค้ารายหนึ่งมายื่นเรื่องร้องเรียนว่าถูกพนักงานบันทึกข้อมูลผิด ทำให้สูญเสียโอกาสในการขอสินเชื่อ แต่พนักงานที่เกี่ยวข้องบอกว่าเป็นความผิดพลาดเล็กน้อยและไม่ควรเป็นเรื่องใหญ่ ฝ่ายจัดการเรื่องร้องเรียนควรดำเนินการอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ปัดตกเพราะเป็นเรื่องเล็กน้อย</li>
+        <li><span class="opt-label">ข.</span> ดำเนินการสอบสวนตามขั้นตอนอย่างรวดเร็วและเป็นธรรม แจ้งผลให้ลูกค้าทราบ พร้อมหาแนวทางป้องกันไม่ให้เกิดซ้ำ</li>
+        <li><span class="opt-label">ค.</span> บอกให้ลูกค้าไปฟ้องร้องเอาเอง</li>
+        <li><span class="opt-label">ง.</span> ตำหนิพนักงานภายในแต่ไม่ต้องแจ้งลูกค้า</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q8')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ตามระบบข้อ 7 (การจัดการร้องเรียน) และหลักเกณฑ์ Market Conduct ทุกเรื่องร้องเรียนต้องได้รับการดำเนินการอย่างรวดเร็ว เป็นธรรม มีการสอบสวน แจ้งผล และปรับปรุงกระบวนการเพื่อป้องกันการเกิดซ้ำ ไม่มีคำว่า "เรื่องเล็กน้อย" เมื่อลูกค้าได้รับผลกระทบ</div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="q-card" id="q9">
+      <div class="q-header">
+        <div class="q-number">9</div>
+        <div class="q-text">พนักงานสังเกตว่าเพื่อนร่วมงานมักจะให้ลูกค้าเซ็นเอกสารหลายฉบับพร้อมกัน โดยไม่เปิดโอกาสให้ลูกค้าอ่านรายละเอียด โดยบอกว่า "เดี๋ยวธนาคารจัดการให้เอง" เพื่อความรวดเร็ว พนักงานควรทำอย่างไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ไม่ยุ่ง เพราะเป็นเรื่องของเพื่อนร่วมงาน</li>
+        <li><span class="opt-label">ข.</span> ตักเตือนเพื่อนร่วมงานด้วยวาจาว่าการกระทำดังกล่าวผิดหลักเกณฑ์การขายอย่างเป็นธรรม และควรรายงานให้ผู้บังคับบัญชาทราบ</li>
+        <li><span class="opt-label">ค.</span> ทำตามบ้างเพราะเห็นว่าเร็วดี</li>
+        <li><span class="opt-label">ง.</span> บอกให้ลูกค้าไม่ต้องเซ็นอะไรทั้งนั้น</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q9')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> การให้ลูกค้าเซ็นเอกสารโดยไม่อ่านรายละเอียดและไม่อธิบายเงื่อนไขเป็นการละเมิดหลักการขายอย่างเป็นธรรมที่ต้องให้ข้อมูลครบถ้วนและได้รับความยินยอมอย่างแท้จริง (Informed Consent) การตักเตือนเพื่อนร่วมงานและรายงานผู้บังคับบัญชาเป็นสิ่งที่ควรทำเพื่อปกป้องสิทธิของลูกค้า</div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="q-card" id="q10">
+      <div class="q-header">
+        <div class="q-number">10</div>
+        <div class="q-text">เกิดเหตุระบบ IT ขัดข้อง ทำให้ข้อมูลลูกค้าบางส่วนรั่วไหลออกไปยังบุคคลภายนอก ผู้บริหารธนาคารควรดำเนินการลำดับแรกคืออะไร?</div>
+      </div>
+      <ul class="q-options">
+        <li><span class="opt-label">ก.</span> ปิดข่าวไม่ให้ใครรู้ เพราะเสียชื่อเสียง</li>
+        <li><span class="opt-label">ข.</span> ดำเนินการตาม BCP (ระบบข้อ 9) ควบคุมสถานการณ์ แจ้งลูกค้าที่ได้รับผลกระทบ และรายงานหน่วยงานกำกับดูแลตามกฎหมาย PDPA ภายใน 72 ชั่วโมง</li>
+        <li><span class="opt-label">ค.</span> รอให้ตรวจสอบให้ชัดเจนก่อนแล้วค่อยแจ้งทีหลัง</li>
+        <li><span class="opt-label">ง.</span> โทษพนักงานไอทีแล้วจบ</li>
+      </ul>
+      <button class="q-show-btn" onclick="toggleAnswer('q10')">👁️ ดูเฉลย</button>
+      <div class="q-answer">
+        <span class="ans-label">✅ คำตอบที่ถูกต้อง: ข.</span>
+        <div class="ans-text"><strong>เหตุผล:</strong> ตาม PDPA กรณีข้อมูลรั่วไหลต้องแจ้งสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคลภายใน 72 ชั่วโมง และแจ้งเจ้าของข้อมูลหากมีความเสี่ยงสูง การดำเนินการตาม BCP และควบคุมสถานการณ์เป็นลำดับแรกที่สำคัญ พร้อมทั้งต้องสื่อสารกับลูกค้าที่ได้รับผลกระทบอย่างโปร่งใส</div>
+      </div>
+    </div>
+
+    <!-- SCORE AREA -->
+    <div class="score-area">
+      <div>
+        <button class="score-btn" onclick="showAllAnswers()">📝 แสดงเฉลยทั้งหมด</button>
+        <button class="score-reset" onclick="hideAllAnswers()">🔄 ซ่อนเฉลย</button>
+      </div>
+      <div class="score-result pass" style="margin-top:20px; display:none;" id="allRevealed">
+        ✅ แสดงเฉลยทั้งหมดแล้ว — ศึกษาเนื้อหาให้เข้าใจเพื่อสอบผ่าน!
+      </div>
+    </div>
+
+  </div><!-- end section -->
+
+  <!-- FOOTER -->
+  <div style="text-align:center; padding:30px 0 20px; border-top:1px solid var(--border); margin-top:20px;">
+    <p style="color:var(--text3); font-size:0.75rem;">
+      📋 ศูนย์เตรียมสอบ ผช.ผจข. ธ.ก.ส. — Market Conduct (การปฏิบัติทางการตลาดอย่างเป็นธรรม)<br>
+      ปรับปรุงตามหลักเกณฑ์ ธปท. 2568
+    </p>
+  </div>
+
+</div><!-- end container -->
+
+<script>
+// Scroll progress bar
+window.addEventListener('scroll', function() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+
+// Toggle answer for individual question
+function toggleAnswer(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('show-answer');
+  const btn = card.querySelector('.q-show-btn');
+  if (card.classList.contains('show-answer')) {
+    btn.textContent = '🙈 ซ่อนเฉลย';
+  } else {
+    btn.textContent = '👁️ ดูเฉลย';
+  }
+}
+
+// Show all answers
+function showAllAnswers() {
+  document.querySelectorAll('.q-card').forEach(function(card) {
+    card.classList.add('show-answer');
+    const btn = card.querySelector('.q-show-btn');
+    if (btn) btn.textContent = '🙈 ซ่อนเฉลย';
+  });
+  document.getElementById('allRevealed').style.display = 'block';
+}
+
+// Hide all answers
+function hideAllAnswers() {
+  document.querySelectorAll('.q-card').forEach(function(card) {
+    card.classList.remove('show-answer');
+    const btn = card.querySelector('.q-show-btn');
+    if (btn) btn.textContent = '👁️ ดูเฉลย';
+  });
+  document.getElementById('allRevealed').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
