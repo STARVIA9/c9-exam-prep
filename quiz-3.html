@@ -6,7 +6,8 @@
 <title>แบบทดสอบชุดที่ 3 — แนวข้อสอบจริง ผช.ผจข. ปี 2567</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px}
+body{font-family:'Sarabun',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px  overflow-x: hidden;
+}
 header{background:linear-gradient(135deg,#6c3483,#9b59b6);color:#fff;padding:20px 24px;text-align:center}
 header h1{font-size:1.4em;margin-bottom:6px}
 header p{font-size:.88em;opacity:.9;line-height:1.6}
@@ -54,6 +55,25 @@ button.sec{background:#7f8c8d}button.sec:hover{background:#566573}
 .si{background:#f8f9fa;border-radius:10px;padding:12px;text-align:center}
 .sv{font-size:1.4em;font-weight:700;color:#6c3483}
 .sl{font-size:.78em;color:#666;margin-top:4px}
+
+@media (max-width: 600px) {
+  .header { padding: 16px; }
+  .header h1 { font-size: 16px; }
+  .header p { font-size: 12px; }
+  .controls { padding: 10px 12px; gap: 8px; }
+  .controls select, .controls button { padding: 6px 10px; font-size: 13px; }
+  .controls .score-display { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+  .quiz-area { padding: 0 10px; }
+  .question-card { padding: 16px; }
+  .q-text { font-size: 14px; }
+  .option { font-size: 13px; padding: 10px 12px; gap: 8px; }
+  .result-breakdown { grid-template-columns: 1fr; }
+  .nav-buttons { gap: 8px; }
+  .nav-btn { padding: 8px 14px; font-size: 13px; }
+  .filter-tags { padding: 8px 12px; gap: 6px; }
+  .tag { font-size: 12px; padding: 3px 10px; }
+}
+
 </style>
 </head>
 <body>

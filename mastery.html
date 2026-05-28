@@ -8,7 +8,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
 :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8  overflow-x: hidden;
+}
 nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:12px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 nav h1{font-size:17px;color:var(--a);margin-right:12px;white-space:nowrap}
 nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
@@ -34,12 +35,33 @@ blockquote{border-left:3px solid var(--a2);padding:10px 16px;margin:12px 0;backg
 .tag.red{background:#7f1d1d;color:#fca5a5} .tag.green{background:#064e3b;color:#34d399} .tag.blue{background:#1e3a5f;color:#93c5fd} .tag.gold{background:#78350f;color:#fbbf24}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-@media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr}
+  .table-wrap { margin: 8px 0; }
+  table { font-size: 13px; min-width: 400px; }
+  th, td { padding: 6px 8px; }
+  nav { padding: 8px 10px; gap: 4px; }
+  nav h1 { font-size: 15px; margin-right: 8px; }
+  nav a { font-size: 11px; padding: 3px 7px; }
+}
 footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:1px solid var(--b);margin-top:36px}
 .phase{text-align:center;padding:20px;border-radius:12px;margin:8px}
 .phase.p1{background:linear-gradient(135deg,#1e3a5f,#2563eb)} .phase.p2{background:linear-gradient(135deg,#065f46,#10b981)} .phase.p3{background:linear-gradient(135deg,#78350f,#f59e0b)}
 .phase h3{color:#fff;margin-bottom:4px}
 .phase p{color:rgba(255,255,255,0.8);font-size:14px}
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -79,6 +101,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 <blockquote>「The feeling that we have a greater command of reality, other people, and ourselves」<br>— ความรู้สึกที่เรามีอำนาจเหนือความเป็นจริง ผู้อื่น และตัวเองมากขึ้น</blockquote>
 
 <h3>📖 โครงสร้างหนังสือ — 9 บทเรียน</h3>
+<div class="table-wrap">
 <table>
   <tr><th>#</th><th>บทเรียน</th><th>หัวข้อหลัก</th></tr>
   <tr><td>0</td><td>Mastery คืออะไร?</td><td>นิยาม วิวัฒนาการ และทำไมทุกคนเข้าถึงได้</td></tr>
@@ -89,6 +112,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td>5</td><td>Creative-Active</td><td>ปลดปล่อยความคิดสร้างสรรค์</td></tr>
   <tr><td>6</td><td>Mastery</td><td>ถึงจุดสูงสุด — ความรู้สึก intuitive excellence</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -125,6 +149,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>🔍 5 วิธีค้นหา Life's Task</h3>
+<div class="table-wrap">
 <table>
   <tr><th>#</th><th>วิธี</th><th>ตัวอย่าง</th></tr>
   <tr><td>1</td><td><strong>กลับไปดูจุดเริ่มต้น</strong> — ตอนเด็กเราหลงใหลอะไร?</td><td>Einstein ↔ เข็มทิศ, Marie Curie ↔ ห้องแล็บของพ่อ</td></tr>
@@ -133,6 +158,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td>4</td><td><strong>ยอมรับเส้นทางที่ไม่เป็นเส้นตรง</strong> — อาชีพไม่ใช่ทางตรง</td><td>ไม่ต้องกลัวที่จะเบี่ยงเส้นทาง</td></tr>
   <tr><td>5</td><td><strong>เชื่อมั่นว่าเรามีอะไรบางอย่างที่ต้องทำ</strong></td><td>ไม่มีใครให้ความหมายชีวิตเราได้except ตัวเราเอง</td></tr>
 </table>
+</div>
 
 <div class="card warn">
   <strong>🚨 ความเชื่อผิดๆ:</strong>
@@ -154,12 +180,14 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>📐 3 ขั้นตอนของ Apprenticeship</h3>
+<div class="table-wrap">
 <table>
   <tr><th>ขั้น</th><th>ชื่อ</th><th>ทำอะไร</th></tr>
   <tr><td>1</td><td><strong>Deep Observation</strong><br>สังเกตเชิงลึก</td><td>เรียนรู้จากการสังเกตผู้เชี่ยวชาญ ดูวิธีคิด วิธีทำงาน อย่าเพิ่งแสดงตัว</td></tr>
   <tr><td>2</td><td><strong>Skill Acquisition</strong><br>ได้มาซึ่งทักษะ</td><td>ฝึกซ้ำจนเป็นนิสัย ไม่หยุดแม้เบื่อ จนทำได้โดยอัตโนมัติ</td></tr>
   <tr><td>3</td><td><strong>Experimentation</strong><br>ทดลอง</td><td>ลองทำสิ่งใหม่ๆ ขยายขอบเขต หา style ของตัวเอง</td></tr>
 </table>
+</div>
 
 <h3>📏 กฎเหล็ก 3 ข้อในการฝึกซ้ำ</h3>
 <ol>
@@ -181,6 +209,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>💡 วิธีหาและเรียนรู้จาก Mentor</h3>
+<div class="table-wrap">
 <table>
   <tr><th>ขั้นตอน</th><th>ทำอย่างไร</th></tr>
   <tr><td><strong>1. หา Mentor ที่ใช่</strong></td><td>มองหาคนที่เก่งจริง มีประสบการณ์จริง และ愿意ถ่ายทอด</td></tr>
@@ -188,6 +217,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td><strong>3. เรียนรู้แบบ active</strong></td><td>อย่าแค่รับฟัง → จดบันทึก → สรุป → ลองทำจริง → ปรับปรุง</td></tr>
   <tr><td><strong>4. ทำให้ knowledge มีชีวิต</strong></td><td>อย่าแค่จำ → ลองประยุกต์ ลองดัดแปลง ลองคิดต่อ</td></tr>
 </table>
+</div>
 
 <div class="card tip">
   <strong>💡 จำไว้:</strong> Mentor ไม่ใช่แค่ครูสอนหนังสือ แต่เป็นคนที่มี <strong>emotional investment</strong> ในการเรียนรู้ของคุณ ดังนั้นคุณต้องแสดงให้เห็นว่าคุณคุ้มค่าที่จะสอน
@@ -256,6 +286,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>💡 วิธีปลดปล่อย创造力 9 ข้อ</h3>
+<div class="table-wrap">
 <table>
   <tr><th>#</th><th>วิธี</th><th>อธิบาย</th></tr>
   <tr><td>1</td><td><strong>เลือกงานที่เหมาะสม</strong></td><td>ใช้ความเชี่ยวชาญที่มี + ความหลงใหล</td></tr>
@@ -268,6 +299,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td>8</td><td><strong>เปิดรับอิทธิพลใหม่ๆ</strong></td><td>อย่าปิดกั้นตัวเอง</td></tr>
   <tr><td>9</td><td><strong>รู้ว่าเมื่อไหร่ควรหยุด</strong></td><td>ต้องรู้จัก pause บ้าง ให้ brain ได้ประมวลผล</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -357,7 +389,8 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 <h2>🔗 เชื่อมโยงกับการสอบ ผช.ผจข. (C9)</h2>
 <div class="card">
   <p><strong>หนังสือ Mastery ตรงกับ Core Competency C9 มากเลยค่ะพ่อ:</strong></p>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>Mastery Concept</th><th>C9 Competency</th></tr>
     <tr><td>Life's Task</td><td>ค้นหาบทบาทของตัวเองในองค์กร</td></tr>
     <tr><td>Apprenticeship</td><td>เรียนรู้จากประสบการณ์จริงในสาขา</td></tr>
@@ -366,6 +399,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
     <tr><td>Creative-Active</td><td>นวัตกรรม C9 — ทำให้ระบบดีขึ้นทีละนิด</td></tr>
     <tr><td>Dimensional Mind</td><td>คิดแบบบนลงล่าง + ล่างขึ้นบน พร้อมกัน</td></tr>
   </table>
+</div>
 </div>
 </section>
 

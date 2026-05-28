@@ -8,7 +8,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
 :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8  overflow-x: hidden;
+}
 nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:12px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 nav h1{font-size:17px;color:var(--a);margin-right:12px;white-space:nowrap}
 nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
@@ -32,11 +33,32 @@ ul,ol{padding-left:22px;margin:6px 0} li{margin-bottom:3px}
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
 .tag.red{background:#7f1d1d;color:#fca5a5} .tag.green{background:#064e3b;color:#34d399} .tag.blue{background:#1e3a5f;color:#93c5fd} .tag.gold{background:#78350f;color:#fbbf24}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}
+  .table-wrap { margin: 8px 0; }
+  table { font-size: 13px; min-width: 400px; }
+  th, td { padding: 6px 8px; }
+  nav { padding: 8px 10px; gap: 4px; }
+  nav h1 { font-size: 15px; margin-right: 8px; }
+  nav a { font-size: 11px; padding: 3px 7px; }
+}
 details{margin:8px 0;background:var(--s);border-radius:8px;border:1px solid var(--b);padding:4px 12px}
 details[open]{border-color:var(--a2)}
 summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--a3)}
 footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:1px solid var(--b);margin-top:36px}
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -73,6 +95,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>📊 ข้อมูลสำคัญที่ต้องจำ</h3>
+<div class="table-wrap">
 <table>
   <tr><th>หัวข้อ</th><th>รายละเอียด</th><th>สัญลักษณ์จำ</th></tr>
   <tr><td><strong>วงเงินกู้สูงสุด</strong></td><td>ไม่เกินรายละ <span class="tag blue">500,000 บาท</span></td><td>500K</td></tr>
@@ -84,6 +107,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td><strong>อากรแสตมป์</strong></td><td><span class="tag green">ได้รับการยกเว้น</span> (สัญญารัฐบาล)</td><td>ไม่ต้อง</td></tr>
   <tr><td><strong>งวดแรกชำระ</strong></td><td><span class="tag red">เดือนถัดจากเดือนที่จ่ายกู้</span> (ห้ามเดือนเดียวกัน!)</td><td>เดือนถัดไป</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -93,38 +117,46 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 <div class="grid2">
 <div class="card info">
   <h4>💰 ดอกเบี้ย & วงเงิน</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>ดอกเบี้ย</td><td><strong>4%</strong> ต่อปี</td></tr>
     <tr><td>วงเงินสูงสุด</td><td><strong>500,000</strong> บ.</td></tr>
     <tr><td>ระยะเวลาชำระ</td><td>ไม่เกิน <strong>12</strong> ปี</td></tr>
     <tr><td>TDR ยืดเวลา</td><td>ไม่เกิน <strong>8</strong> ปี</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>👥 ผู้กู้ & ผู้ค้ำ</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>รับราชการแล้ว</td><td>ไม่น้อยกว่า <strong>3</strong> ปี</td></tr>
     <tr><td>เงินเดือนคงเหลือ</td><td>ไม่น้อยกว่า <strong>30%</strong></td></tr>
     <tr><td>เงินเดือนผู้ค้ำ</td><td>ไม่ต่ำกว่า <strong>25,000</strong> บ.</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>👥 ผู้ค้ำประกัน</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>กู้ ≤ 300K</td><td>ค้ำ <strong>2 คน</strong></td></tr>
     <tr><td>กู้ > 300K</td><td>ค้ำ <strong>3 คน</strong></td></tr>
     <tr><td>ค้ำคนอื่นได้</td><td>ไม่เกิน <strong>3 คน</strong></td></tr>
     <tr><td>ผู้ค้ำต้องเป็น</td><td>ข้าราชการครู ศธ.</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>💼 ค่าธรรมเนียม/สัญญา</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>ค่าประเมินที่ดิน</td><td><strong>500</strong> บ./แปลง</td></tr>
     <tr><td>อากรแสตมป์</td><td><strong>ไม่ต้องติด</strong></td></tr>
     <tr><td>โอนเข้าบัญชีครู?</td><td><span class="tag red">ห้ามเด็ดขาด!</span></td></tr>
     <tr><td>จ่ายให้ใคร?</td><td><strong>เจ้าหนี้เดิม</strong>เท่านั้น</td></tr>
   </table>
+</div>
 </div>
 </div>
 </section>
@@ -159,12 +191,14 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>วิธีจ่ายเงิน ตามประเภทเจ้าหนี้</h3>
+<div class="table-wrap">
 <table>
   <tr><th>กรณี</th><th>วิธีจ่ายเงิน</th><th>หลักฐาน</th></tr>
   <tr><td><strong>เจ้าหนี้เป็นบุคคลธรรมดา มาเอง</strong></td><td>จ่ายเป็น<strong>เงินสด</strong></td><td>เจ้าหนี้เซ็นรับเงินหน้า 5 ของสัญญา</td></tr>
   <tr><td><strong>เจ้าหนี้ไม่มา / เป็นสถาบันการเงิน</strong></td><td>ตีเป็น <strong>แคชเชียร์เช็ค</strong> ขีดคร่อมสั่งจ่ายในนามเจ้าหนี้</td><td>เก็บค่าธรรมเนียมจากครู + เก็บสำเนาเช็ค</td></tr>
   <tr><td><strong>จ่ายเงินไม่ได้ / ลูกค้าไม่มา</strong></td><td>โอนเงินส่งคืนบัญชี สป. ที่สาขานางเลิ้ง</td><td><strong>ห้ามจ่ายเงินสดส่วนที่เหลือให้ครูเด็ดขาด!</strong></td></tr>
 </table>
+</div>
 
 <div class="card warn">
   <strong>🚨 จุดดักข้อสอบ:</strong> ห้ามสั่งพนักงานโอนเงินเข้าบัญชีครูผู้กู้เด็ดขาด! ต้องจ่ายให้เจ้าหนี้เท่านั้น

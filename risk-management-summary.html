@@ -8,7 +8,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap');
 :root{--bg:#0f172a;--surface:#1e293b;--surface2:#334155;--surface3:#475569;--accent:#f59e0b;--accent2:#10b981;--accent3:#3b82f6;--accent4:#ef4444;--accent5:#8b5cf6;--text:#f1f5f9;--text2:#94a3b8;--border:#475569;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;padding:0;}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;padding:0;  overflow-x: hidden;
+}
 nav{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
 nav h1{font-size:16px;color:var(--accent);margin-right:12px;white-space:nowrap;}
 nav a{color:var(--text2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s;}
@@ -58,6 +59,20 @@ li{margin:4px 0;}
 .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;font-size:.9em;margin-bottom:20px;}
 .back-link:hover{text-decoration:underline;}
 @media(max-width:700px){.container{padding:16px 12px 60px;}h2{font-size:1.2em;}.pillar-grid{flex-direction:column;}.flow{flex-direction:column;align-items:stretch;}.flow-arrow{transform:rotate(90deg);justify-content:center;}}
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -89,6 +104,7 @@ li{margin:4px 0;}
 </div>
 
 <h3>ประเภทของความเสี่ยง (4 ประเภทหลัก)</h3>
+<div class="table-wrap">
 <table>
 <tr><th>ประเภท</th><th>นิยาม</th><th>ตัวอย่าง ธ.ก.ส.</th></tr>
 <tr><td><span class="tag tag-blue">Strategic</span> ความเสี่ยงเชิงยุทธศาสตร์</td><td>ความเสี่ยงจากแผนธุรกิจและการตัดสินใจเชิงกลยุทธ์</td><td>ขยายสินเชื่อใหม่ผิดกลุ่มเป้าหมาย, การแข่งขันจาก Virtual Bank</td></tr>
@@ -96,6 +112,7 @@ li{margin:4px 0;}
 <tr><td><span class="tag tag-green">Financial</span> ความเสี่ยงทางการเงิน</td><td>ความเสี่ยงที่กระทบฐานะการเงิน</td><td>NPL สูงขึ้น, อัตราแลกเปลี่ยน, ความเสี่ยงด้านสภาพคล่อง</td></tr>
 <tr><td><span class="tag tag-red">Compliance</span> ความเสี่ยงด้านการปฏิบัติตามกฎเกณฑ์</td><td>ความเสี่ยงจากการไม่ปฏิบัติตามกฎหมาย ระเบียบ ข้อบังคับ</td><td>ไม่ปฏิบัติตาม พ.ร.บ.ป้องกันฟอกเงino, Regulation 35</td></tr>
 </table>
+</div>
 
 <h3>กระบวนการบริหารความเสี่ยง (5 ขั้นตอน)</h3>
 <div class="flow">
@@ -111,12 +128,14 @@ li{margin:4px 0;}
 </div>
 
 <h3>ระดับความเสี่ยง (Risk Rating)</h3>
+<div class="table-wrap">
 <table>
 <tr><th></th><th>ผลกระทบ ต่ำ</th><th>ผลกระทบ ปานกลาง</th><th>ผลกระทบ สูง</th></tr>
 <tr><td><strong>โอกาสเกิดสูง</strong></td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td><td style="background:rgba(239,68,68,.2);">สูง</td><td style="background:rgba(239,68,68,.3);">สูงมาก</td></tr>
 <tr><td><strong>โอกาสเกิดปานกลาง</strong></td><td style="background:rgba(16,185,129,.2);">ต่ำ</td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td><td style="background:rgba(239,68,68,.2);">สูง</td></tr>
 <tr><td><strong>โอกาสเกิดต่ำ</strong></td><td style="background:rgba(16,185,129,.15);">ต่ำมาก</td><td style="background:rgba(16,185,129,.2);">ต่ำ</td><td style="background:rgba(245,158,11,.2);">ปานกลาง</td></tr>
 </table>
+</div>
 </div>
 
 <h2 id="coso">🏛️ 2. COSO Framework 2017</h2>
@@ -137,12 +156,14 @@ li{margin:4px 0;}
 </div>
 
 <h3>วัตถุประสงค์การควบคุมภายใน (3 ข้อ)</h3>
+<div class="table-wrap">
 <table>
 <tr><th>#</th><th>วัตถุประสงค์</th><th>ตัวอย่าง</th></tr>
 <tr><td>1</td><td><strong>ประสิทธิผลและประสิทธิภาพ</strong>ของการดำเนินงาน</td><td>กระบวนงานเร็ว ถูกต้อง คุ้มค่า</td></tr>
 <tr><td>2</td><td><strong>ความน่าเชื่อถือ</strong>ของรายงานทางการเงิน</td><td>งบการเงินถูกต้อง ครบถ้วน ทันเวลา</td></tr>
 <tr><td>3</td><td><strong>การปฏิบัติตาม</strong>กฎหมายและระเบียบข้อบังคับ</td><td>ปฏิบัติตาม พ.ร.บ. Regulation 35</td></tr>
 </table>
+</div>
 
 <div class="warn">
 <strong>⚠️ จุดดักข้อสอบ:</strong> COSO 2017 เน้นการ <strong>"สร้างวัฒนธรรมความเสี่ยง"</strong> เป็นองค์ประกอบสำคัญ — ไม่ใช่แค่ระบบหรือระเบียบ แต่รวมถึง <strong>ทัศนคติและพฤติกรรม</strong> ของบุคลากรทุกระดับ
@@ -224,14 +245,17 @@ li{margin:4px 0;}
 
 <div class="section">
 <h3>ประเภทของการควบคุม (ตามลำดับเวลา)</h3>
+<div class="table-wrap">
 <table>
 <tr><th>ประเภท</th><th>นิยาม</th><th>ตัวอย่าง ธ.ก.ส.</th></tr>
 <tr><td><span class="tag tag-blue">Preventive</span> ป้องกัน</td><td>ป้องกันไม่ให้เกิดปัญหาตั้งแต่แรก</td><td>ระบบ Dual Control อนุมัติ 2 ชั้น, ตรวจสอบเอกสารก่อนทำรายการ</td></tr>
 <tr><td><span class="tag tag-gold">Detective</span> ตรวจจับ</td><td>ตรวจพบปัญหาเมื่อเกิดขึ้นแล้ว</td><td>รายงาน Monitoring, การกระทบยอดบัญชี, ตรวจสอบย้อนหลัง</td></tr>
 <tr><td><span class="tag tag-red">Corrective</span> แก้ไข</td><td>แก้ไขปัญหาที่เกิดขึ้นแล้ว</td><td>แผนฟื้นฟู (Business Recovery Plan), การสั่งย้ายพนักงานที่ทุจริต</td></tr>
 </table>
+</div>
 
 <h3>การควบคุม — วิธีการ</h3>
+<div class="table-wrap">
 <table>
 <tr><th>วิธีการ</th><th>คำอธิบาย</th><th>ตัวอย่าง</th></tr>
 <tr><td><strong>การแบ่งแยกหน้าที่</strong><br>(Segregation of Duties)</td><td>ไม่ให้คนเดียวทำทุกขั้นตอน</td><td>คนอนุมัติ ≠ คนทำรายการ ≠ คนตรวจสอบ</td></tr>
@@ -239,6 +263,7 @@ li{margin:4px 0;}
 <tr><td><strong>การควบคุมทางกายภาพ</strong><br>(Physical Control)</td><td>ควบคุมทรัพย์สินทางกายภาพ</td><td>ตู้นิรภัย กล้อง CCTV ระบบ Key Card</td></tr>
 <tr><td><strong>การควบคุม IT</strong><br>(IT General Controls)</td><td>ควบคุมระบบสารสนเทศ</td><td>Password Policy, Backup, Access Control</td></tr>
 </table>
+</div>
 </div>
 
 <h2 id="risk-culture">🎭 6. Risk Culture (วัฒนธรรมองค์กรที่คำนึงถึงความเสี่ยง)</h2>
@@ -250,6 +275,7 @@ li{margin:4px 0;}
 </div>
 
 <h3>องค์ประกอบ 4 ด้าน</h3>
+<div class="table-wrap">
 <table>
 <tr><th>องค์ประกอบ</th><th>คำอธิบาย</th><th>ตัวอย่างใน ธ.ก.ส.</th></tr>
 <tr><td><strong>Values</strong> ค่านิยม</td><td>ค่านิยมร่วมที่ให้ความสำคัญกับความเสี่ยง</td><td>HEART: Honest with integrity, Accountability</td></tr>
@@ -257,6 +283,7 @@ li{margin:4px 0;}
 <tr><td><strong>Mindset</strong> ทัศนคติ</td><td>วิธีคิดเกี่ยวกับความเสี่ยงในองค์กร</td><td>มองความเสี่ยงเป็น "โอกาส" ไม่ใช่แค่ "อุปสรรค"</td></tr>
 <tr><td><strong>Accountability</strong> ความรับผิดชอบ</td><td>การรับผิดชอบต่อความเสี่ยงในหน้าที่ของตนเอง</td><td>ผู้จัดการสาขาต้องรับผิดชอบ NPL ในเขตรับผิดชอบ</td></tr>
 </table>
+</div>
 
 <h3>ปัจจัยขับเคลื่อน Risk Culture</h3>
 <ul>
@@ -300,11 +327,13 @@ li{margin:4px 0;}
 </div>
 
 <h3>วัตถุประสงค์เชิงยุทธศาสตร์ที่เกี่ยวข้อง</h3>
+<div class="table-wrap">
 <table>
 <tr><th>SO</th><th>วัตถุประสงค์</th><th>เชื่อมโยง Risk</th></tr>
 <tr><td><strong>SO2</strong></td><td>บริหารคุณภาพสินเชื่อเพื่อความแข็งแกร่งทางการเงิน</td><td>Financial Risk, NPL Management</td></tr>
 <tr><td><strong>SO5</strong></td><td>เพิ่มศักยภาพบุคลากรและ GRC</td><td>Governance, Risk, Compliance</td></tr>
 </table>
+</div>
 </div>
 
 <h2 id="mnemonics">💡 8. คีย์เวิร์ดทำข้อสอบ</h2>

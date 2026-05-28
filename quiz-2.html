@@ -6,7 +6,8 @@
 <title>แบบทดสอบเตรียมสอบเลื่อนระดับ ธ.ก.ส. ชุดที่ 2</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px}
+body{font-family:'Sarabun',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px  overflow-x: hidden;
+}
 header{background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff;padding:20px 24px;text-align:center}
 header h1{font-size:1.4em;margin-bottom:6px}
 header p{font-size:.9em;opacity:.85}
@@ -62,6 +63,25 @@ button.secondary:hover{background:#566573}
 .back-home:hover{background:rgba(29,39,64,.95);border-color:rgba(212,148,47,.3);color:#e8b84f;transform:translateY(-1px)}
 .back-home svg{width:16px;height:16px;transition:transform .2s}
 .back-home:hover svg{transform:translateX(-2px)}
+
+@media (max-width: 600px) {
+  .header { padding: 16px; }
+  .header h1 { font-size: 16px; }
+  .header p { font-size: 12px; }
+  .controls { padding: 10px 12px; gap: 8px; }
+  .controls select, .controls button { padding: 6px 10px; font-size: 13px; }
+  .controls .score-display { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+  .quiz-area { padding: 0 10px; }
+  .question-card { padding: 16px; }
+  .q-text { font-size: 14px; }
+  .option { font-size: 13px; padding: 10px 12px; gap: 8px; }
+  .result-breakdown { grid-template-columns: 1fr; }
+  .nav-buttons { gap: 8px; }
+  .nav-btn { padding: 8px 14px; font-size: 13px; }
+  .filter-tags { padding: 8px 12px; gap: 6px; }
+  .tag { font-size: 12px; padding: 3px 10px; }
+}
+
 </style>
 </head>
 <body>

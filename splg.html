@@ -8,7 +8,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
 :root { --bg:#0f172a; --s:#1e293b; --s2:#334155; --a:#f59e0b; --a2:#10b981; --a3:#3b82f6; --a4:#ef4444; --t:#f1f5f9; --t2:#94a3b8; --b:#475569; }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;padding:0}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;padding:0  overflow-x: hidden;
+}
 nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:12px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 nav h1{font-size:17px;color:var(--a);margin-right:12px;white-space:nowrap}
 nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
@@ -40,6 +41,40 @@ summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--a3)}
 .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
 .tag.red{background:#7f1d1d;color:#fca5a5} .tag.green{background:#064e3b;color:#34d399} .tag.blue{background:#1e3a5f;color:#93c5fd} .tag.gold{background:#78350f;color:#fbbf24}
 footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:1px solid var(--b);margin-top:36px}
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
+
+@media (max-width: 700px) {
+  .container { padding: 18px 12px 60px; }
+  .hero { padding: 24px 12px; }
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 14px; }
+  .hero .badge { font-size: 11px; padding: 4px 10px; }
+  nav { padding: 8px 10px; gap: 4px; }
+  nav h1 { font-size: 15px; margin-right: 8px; }
+  nav a { font-size: 11px; padding: 3px 7px; }
+  table { font-size: 13px; }
+  th { padding: 7px 8px; }
+  td { padding: 5px 8px; }
+  .card { padding: 14px 16px; margin-bottom: 10px; }
+  section h2 { font-size: 20px; }
+  section h3 { font-size: 16px; }
+  .grid2 { gap: 10px; }
+  blockquote { padding: 8px 12px; font-size: 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -73,6 +108,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>📊 ข้อมูลสำคัญที่ต้องจำ</h3>
+<div class="table-wrap">
 <table>
   <tr><th>หัวข้อ</th><th>รายละเอียด</th><th>สัญลักษณ์จำ</th></tr>
   <tr><td><strong>อัตราดอกเบี้ย</strong></td><td><span class="tag gold">5% ต่อปี</span> ไม่มีดอกเบี้ยปรับ</td><td>⭐</td></tr>
@@ -85,6 +121,7 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
   <tr><td><strong>จ่ายเงินกู้ให้เสร็จ</strong></td><td>ภายใน <span class="tag red">60 วัน</span> นับจากได้รับโอนเงิน</td><td>60</td></tr>
   <tr><td><strong>บุคคลค้ำประกัน</strong></td><td>ข้าราชการ 3-5, ไม่เกิน <span class="tag blue">60,000 บาท/คน</span></td><td>60</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -111,12 +148,14 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 
 <div class="card tip">
   <h3>🎯 เทคนิค "เงื่อนไข 3 ส." (สป.กษ.)</h3>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>ส.</th><th>ความหมาย</th><th>ตัวเลข</th></tr>
     <tr><td><strong>ส.</strong> <span style="color:#f59e0b">สัญญา</span></td><td>ผจข.ลงนามในฐานะตัวแทนสป.กษ. ห้ามมอบอำนาจซ้อน</td><td>2 ฉบับ</td></tr>
     <tr><td><strong>ส.</strong> <span style="color:#10b981">สหกรณ์</span></td><td>วงเงิน 300K (อำเภอ) / 500K (จังหวัด)</td><td>300K / 500K</td></tr>
     <tr><td><strong>ส.</strong> <span style="color:#3b82f6">สิทธิพิเศษ</span></td><td>ลูกค้าประวัติดีลดจาก 5% เหลือ 4%</td><td>5% → 4%</td></tr>
   </table>
+</div>
 </div>
 
 <div class="card tip">
@@ -137,35 +176,43 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 <div class="grid2">
 <div class="card info">
   <h4>💰 ดอกเบี้ย</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>ปกติ</td><td><strong>5%</strong> ต่อปี</td></tr>
     <tr><td>ประวัติดี</td><td><strong>4%</strong> ต่อปี</td></tr>
     <tr><td>ค้างชำระ</td><td><strong>ไม่มีดอกเบี้ยปรับ</strong> 🔥</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>💰 วงเงินอนุมัติ</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>อชก.อำเภอ</td><td>≤ <strong>300,000</strong> บ.</td></tr>
     <tr><td>อชก.จังหวัด</td><td>> 300K แต่ ≤ <strong>500,000</strong> บ.</td></tr>
     <tr><td>ค้ำประกัน/คน</td><td>≤ <strong>60,000</strong> บ.</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>⏰ เวลา</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>ชำระคืนทั้งหมด</td><td>≤ <strong>20</strong> ปี</td></tr>
     <tr><td>ปลอดชำระต้น</td><td>≤ <strong>5</strong> ปีแรก</td></tr>
     <tr><td>จ่ายเงินกู้</td><td>≤ <strong>60</strong> วัน 🔥</td></tr>
   </table>
 </div>
+</div>
 <div class="card info">
   <h4>💼 ค่าธรรมเนียม/สัญญา</h4>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><td>ค่าประเมินธนาคารได้รับ</td><td><strong>2,040</strong> บ./ราย</td></tr>
     <tr><td>สัญญา</td><td><strong>2</strong> ฉบับ + พยาน <strong>2</strong> คน</td></tr>
     <tr><td>ห้ามมอบอำนาจซ้อน</td><td>ผจข.ลงเอง ✋</td></tr>
   </table>
+</div>
 </div>
 </div>
 </section>
@@ -187,11 +234,13 @@ footer{text-align:center;padding:24px;color:var(--t2);font-size:13px;border-top:
 </div>
 
 <h3>🏗️ หลักประกัน</h3>
+<div class="table-wrap">
 <table>
   <tr><th>ประเภท</th><th>เงื่อนไข</th></tr>
   <tr><td>อสังหาริมทรัพย์จำนอง</td><td>ราคาประเมิน ≥ จำนวนเงินกู้ (ถ้า < 70% ต้องมีหลักประกันเพิ่มหรือบุคคลค้ำ)</td></tr>
   <tr><td>บุคคลค้ำประกัน</td><td>ข้าราชการ 3-5 (หรือเทียบเท่า) / 1 คน ค้ำ ≤ 1 ราย / ≤ 60,000 บ./คน / ห้ามเป็นกรรมการ อชก.</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->

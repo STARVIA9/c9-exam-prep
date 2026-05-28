@@ -15,6 +15,7 @@
 body {
   font-family: 'Noto Sans Thai', 'Sarabun', sans-serif;
   background: var(--bg); color: var(--text); line-height: 1.8; padding: 0;
+  overflow-x: hidden;
 }
 nav {
   position: sticky; top: 0; z-index: 100;
@@ -73,7 +74,28 @@ blockquote {
 .tag.red { background: #7f1d1d; color: #fca5a5; }
 footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px; border-top: 1px solid var(--border); margin-top: 36px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } 
+  .table-wrap { margin: 8px 0; }
+  table { font-size: 13px; min-width: 400px; }
+  th, td { padding: 6px 8px; }
+  nav { padding: 8px 10px; gap: 4px; }
+  nav h1 { font-size: 15px; margin-right: 8px; }
+  nav a { font-size: 11px; padding: 3px 7px; }
+}
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -109,7 +131,8 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
 <div class="card">
   <p><strong>SE-AM</strong> (State Enterprise Assessment Model) เป็นระบบประเมินผลรัฐวิสาหกิจ โดย <strong>สคร. (สำนักงานคณะกรรมการนโยบายรัฐวิสาหกิจ)</strong> กระทรวงการคลัง</p>
   <p>ประเมิน <strong>8 Core Business Enablers</strong> ดังนี้:</p>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>#</th><th>หมวด</th><th>อังกฤษ</th><th>ย่อ</th></tr>
     <tr><td>1</td><td>การกำกับดูแลที่ดีและการนำองค์กร</td><td>Corporate Governance & Leadership</td><td><span class="tag gold">CG</span></td></tr>
     <tr><td>2</td><td>การวางแผนเชิงกลยุทธ์</td><td>Strategic Planning</td><td><span class="tag gold">SP</span></td></tr>
@@ -120,6 +143,7 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
     <tr><td>7</td><td>การจัดการความรู้และนวัตกรรม</td><td>KM & Innovation Management</td><td><span class="tag gold">KM & IM</span></td></tr>
     <tr><td>8</td><td>การตรวจสอบภายใน</td><td>Internal Audit</td><td><span class="tag gold">IA</span></td></tr>
   </table>
+</div>
 </div>
 </section>
 
@@ -136,6 +160,7 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
 </div>
 
 <h3>10 หลักเกณฑ์ พร้อมน้ำหนัก</h3>
+<div class="table-wrap">
 <table>
   <tr><th>#</th><th>หลักเกณฑ์</th><th>น้ำหนัก</th></tr>
   <tr><td>1</td><td>การสนองบทบาทของภาครัฐ</td><td><span class="tag blue">5%</span></td></tr>
@@ -149,6 +174,7 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
   <tr><td>9</td><td>ความยั่งยืนและนวัตกรรม</td><td><span class="tag blue">12%</span> 🔥</td></tr>
   <tr><td>10</td><td>การติดตามผลการดำเนินงาน</td><td><span class="tag blue">10%</span></td></tr>
 </table>
+</div>
 
 <h4>ประเด็นสำคัญ CG ข้อ 9 — ความยั่งยืนและนวัตกรรม (12% มากสุด)</h4>
 <ul>
@@ -240,13 +266,15 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
 <h2>👥 6. Human Capital Management (HCM)</h2>
 <div class="card">
   <p>น้ำหนักรวม 100% แบ่งเป็น 4 ด้านหลัก:</p>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>ด้าน</th><th>น้ำหนัก</th><th>รายละเอียด</th></tr>
     <tr><td>1. การนำองค์กร</td><td><span class="tag blue">30%</span></td><td>คุณภาพยุทธศาสตร์ (20%), การขับเคลื่อนผู้บริหาร (10%)</td></tr>
     <tr><td>2. การบริหารทุนมนุษย์</td><td><span class="tag blue">25%</span></td><td>อัตรากำลัง (7.5%), ประเมินผล (15%), ผลตอบแทน (2.5%)</td></tr>
     <tr><td>3. การพัฒนาทุนมนุษย์</td><td><span class="tag blue">25%</span></td><td>เรียนรู้และพัฒนา (10%), สืบทอดตำแหน่ง/คนเก่ง (10%), สายอาชีพ (5%)</td></tr>
     <tr><td>4. กลไกสนับสนุน</td><td><span class="tag blue">20%</span></td><td>การเปลี่ยนแปลง (5%), HR Digital (3%), ความปลอดภัย (2%), บทบาท HR (10%)</td></tr>
   </table>
+</div>
 </div>
 </section>
 
@@ -257,7 +285,8 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
   <p>แยกเป็น 2 ส่วน: <span class="tag green">KM 40%</span> + <span class="tag gold">IM 60%</span></p>
 
   <h3>7.1 การจัดการความรู้ (KM) — น้ำหนัก 40%</h3>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>ด้าน</th><th>น้ำหนัก</th></tr>
     <tr><td>1. การนำองค์กร</td><td>8%</td></tr>
     <tr><td>2. การวางแผนและทรัพยากร</td><td>4%</td></tr>
@@ -266,9 +295,11 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
     <tr><td>5. กระบวนการปฏิบัติงาน (ใช้ความรู้เป็นฐาน)</td><td>4%</td></tr>
     <tr><td>6. ผลลัพธ์ของการจัดการความรู้</td><td>8%</td></tr>
   </table>
+</div>
 
   <h3>7.2 การจัดการนวัตกรรม (IM) — น้ำหนัก 60%</h3>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>ด้าน</th><th>น้ำหนัก</th></tr>
     <tr><td>1. การนำองค์กรสู่การจัดการนวัตกรรมที่ยั่งยืน</td><td>8%</td></tr>
     <tr><td>2. ยุทธศาสตร์ด้านนวัตกรรม</td><td>10%</td></tr>
@@ -278,6 +309,7 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
     <tr><td>6. กระบวนการนวัตกรรม (ออกแบบ → สร้างสรรค์ → พัฒนา)</td><td>15%</td></tr>
     <tr><td>7. ผลลัพธ์ด้านนวัตกรรม</td><td>10%</td></tr>
   </table>
+</div>
 
   <div class="card tip">
     <strong>💡 ตัวชี้วัดนวัตกรรม:</strong>
@@ -295,13 +327,15 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
 <h2>🔍 8. Internal Audit (IA)</h2>
 <div class="card">
   <p>แบ่งเป็น 4 ด้านหลัก:</p>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>ด้าน</th><th>น้ำหนัก</th><th>รายละเอียด</th></tr>
     <tr><td>1. คณะกรรมการตรวจสอบ</td><td><span class="tag blue">15%</span></td><td>องค์ประกอบ (2%), ปฏิบัติหน้าที่ (12%), ประชุม (1%)</td></tr>
     <tr><td>2. หน่วยตรวจสอบภายใน (คุณสมบัติ)</td><td><span class="tag blue">15%</span></td><td>บทบาท (3%), อิสระ (3%), เชี่ยวชาญ (5%), ประเมินคุณภาพ (4%)</td></tr>
     <tr><td>3. หน่วยตรวจสอบภายใน (ปฏิบัติงาน)</td><td><span class="tag blue">65%</span> 🔥</td><td>คู่มือ (5%), วางแผน (10%), ปฏิบัติงาน (15%), รายงาน (15%), ความเชื่อมั่น (10%), ให้คำปรึกษา (5%) + อื่นๆ</td></tr>
     <tr><td>4. หน่วยรับตรวจ</td><td><span class="tag blue">5%</span></td><td>ความรับผิดชอบของหน่วยรับตรวจ</td></tr>
   </table>
+</div>
 </div>
 </section>
 
@@ -325,7 +359,8 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
 
 <div class="card tip">
   <strong>📌 สรุปย่อ 8 หมวด</strong>
-  <table>
+  <div class="table-wrap">
+<table>
     <tr><th>หมวด</th><th>ชื่อเต็ม</th><th>ประเด็นสำคัญ</th></tr>
     <tr><td>1. CG</td><td>Corporate Governance & Leadership</td><td>10 เกณฑ์, OECD 2015, Sustainable Banking</td></tr>
     <tr><td>2. SP</td><td>Strategic Planning</td><td>ยุทธศาสตร์ + แผนปฏิบัติการ, การมีส่วนร่วม</td></tr>
@@ -336,6 +371,7 @@ footer { text-align: center; padding: 24px; color: var(--text2); font-size: 13px
     <tr><td>7. KM&IM</td><td>KM & Innovation Mgmt</td><td>KM 40% + IM 60%, F3/LG1/LG2 KPIs</td></tr>
     <tr><td>8. IA</td><td>Internal Audit</td><td>กรรมการตรวจสอบ 15%, ปฏิบัติงาน 65%</td></tr>
   </table>
+</div>
 </div>
 </section>
 

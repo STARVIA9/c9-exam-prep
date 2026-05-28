@@ -28,6 +28,7 @@ body {
   color: var(--text);
   line-height: 1.8;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Sticky Nav */
@@ -216,6 +217,13 @@ blockquote {
 }
 @media (max-width: 640px) {
   .grid2 { grid-template-columns: 1fr; }
+
+  .table-wrap { margin: 8px 0; }
+  table { font-size: 13px; min-width: 400px; }
+  th, td { padding: 6px 8px; }
+  nav { padding: 8px 10px; gap: 4px; }
+  nav h1 { font-size: 15px; margin-right: 8px; }
+  nav a { font-size: 11px; padding: 3px 7px; }
 }
 
 /* Footer */
@@ -245,6 +253,20 @@ summary {
   font-weight: 600;
   color: var(--accent3);
 }
+
+/* === Mobile Responsive Fixes === */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.table-wrap table {
+  margin: 0;
+  min-width: 500px;
+}
+
 </style>
 </head>
 <body>
@@ -295,6 +317,7 @@ summary {
 <!-- ======================== -->
 <section id="mission">
 <h2>🎯 พันธกิจ 4 ข้อ (Mission M1–M4)</h2>
+<div class="table-wrap">
 <table>
   <tr><th>ภารกิจ</th><th>รายละเอียด</th></tr>
   <tr><td><strong>M1</strong></td><td>เป็นศูนย์กลางทางการเงิน ให้บริการครบวงจร ทันสมัย แก่ลูกค้าภาคชนบท</td></tr>
@@ -302,6 +325,7 @@ summary {
   <tr><td><strong>M3</strong></td><td>ส่งเสริมเทคโนโลยีและนวัตกรรม เพิ่มขีดความสามารถ แก้ปัญหาความยากจน เพิ่มรายได้ชนบท</td></tr>
   <tr><td><strong>M4</strong></td><td>สนับสนุนกิจกรรมทางเศรษฐกิจในชุมชน ให้ความรู้และเงินทุน คำนึงถึงคุณค่าร่วมสมดุล ESG</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -309,6 +333,7 @@ summary {
 <!-- ======================== -->
 <section id="spark">
 <h2>💎 ค่านิยมองค์กร — SPARK</h2>
+<div class="table-wrap">
 <table>
   <tr><th>S</th><td><strong>S</strong>ustainability</td><td>ความยั่งยืน</td></tr>
   <tr><th>P</th><td><strong>P</strong>articipation</td><td>การมีส่วนร่วม</td></tr>
@@ -316,6 +341,7 @@ summary {
   <tr><th>R</th><td><strong>R</strong>espect</td><td>ความเคารพ</td></tr>
   <tr><th>K</th><td><strong>K</strong>nowledge</td><td>ความรู้</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -323,6 +349,7 @@ summary {
 <!-- ======================== -->
 <section id="heart">
 <h2>💖 วัฒนธรรมองค์กร — HEART</h2>
+<div class="table-wrap">
 <table>
   <tr><th>H</th><td><strong>H</strong>onesty with integrity</td><td>ซื่อสัตย์สุจริต</td></tr>
   <tr><th>E</th><td><strong>E</strong>conomy / Sufficiency</td><td>ประหยัด / พอเพียง</td></tr>
@@ -330,6 +357,7 @@ summary {
   <tr><th>R</th><td><strong>R</strong>esponse heartily</td><td>ตอบสนองด้วยใจ</td></tr>
   <tr><th>T</th><td><strong>T</strong>eamwork</td><td>การทำงานเป็นทีม</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -346,12 +374,14 @@ summary {
 <blockquote>เป็นสถาบันการเงินเพื่อการพัฒนา สร้างโอกาสให้ประชาชนเข้าถึงแหล่งเงินทุน ควบคู่กับการให้ความรู้ทางการเงิน สนับสนุนความเข้มแข็งเศรษฐกิจฐานราก ลดความเหลื่อมล้ำ นำเทคโนโลยีและนวัตกรรมมาประยุกต์ใช้</blockquote>
 
 <h3>📋 แนวนโยบาย SFIs — 3 ด้าน</h3>
+<div class="table-wrap">
 <table>
   <tr><th>นโยบาย</th><th>คำอธิบาย</th></tr>
   <tr><td><strong>💰 Finance for all</strong></td><td>เติมเต็มช่องว่างทางการเงิน ขยายโอกาสเข้าถึงบริการ (Financial Inclusion)</td></tr>
   <tr><td><strong>📚 Literacy for all</strong></td><td>ยกระดับศักยภาพลูกหนี้ ให้ความรู้ทางการเงิน + ความรู้ดิจิทัล</td></tr>
   <tr><td><strong>♻️ Responsibility for all</strong></td><td>ดำเนินธุรกิจอย่างรับผิดชอบ ยึดหลัก Sustainable Banking, Good Governance, ESG</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -361,12 +391,14 @@ summary {
 <h2>🌿 ESG Framework & SDGs</h2>
 
 <h3>ESG 3 มิติ</h3>
+<div class="table-wrap">
 <table>
   <tr><th>มิติ</th><th>ประเด็นสำคัญ</th></tr>
   <tr><td><span class="tag s">E</span> สิ่งแวดล้อม</td><td>ลดผลกระทบ climate change, บริหารทรัพยากร, สนับสนุนสินเชื่อสีเขียว, Net Zero, Carbon Credit</td></tr>
   <tr><td><span class="tag w">S</span> สังคม</td><td>พัฒนาศักยภาพพนักงาน, ส่งเสริมความรู้นวัตกรรมการเกษตร, การให้ความรู้ทางการเงิน (Financial Literacy)</td></tr>
   <tr><td><span class="tag o">G</span> ธรรมาภิบาล</td><td>เทคโนโลยีดิจิทัลและนวัตกรรม, บริหารจัดการหนี้, การบริหารห่วงโซ่อุปทาน, การปฏิบัติตามกฎเกณฑ์</td></tr>
 </table>
+</div>
 
 <h3>SDGs ที่เชื่อมโยงกับ ธ.ก.ส. (5 เป้าหมาย)</h3>
 <ol>
@@ -395,12 +427,14 @@ summary {
 <!-- ======================== -->
 <section id="bcg">
 <h2>🌱 BCG Model</h2>
+<div class="table-wrap">
 <table>
   <tr><th>เป้าหมาย</th><th>คำอธิบาย</th></tr>
   <tr><td>1. เพิ่มการเติบโตทางธุรกิจ</td><td>ขยายสินเชื่อ พัฒนาผลิตภัณฑ์ สร้างรายได้</td></tr>
   <tr><td>2. ลดความเหลื่อมล้ำทางสังคม</td><td>ยกระดับศักยภาพเกษตรกรรายย่อย ชุมชน</td></tr>
   <tr><td>3. ความยั่งยืนของธรรมชาติและสิ่งแวดล้อม</td><td>สนับสนุน Green Economy, Carbon Neutrality</td></tr>
 </table>
+</div>
 
 <div class="card warn">
   <strong>🚨 ตัวหลอกข้อสอบ!</strong><br>
@@ -470,6 +504,7 @@ summary {
 <h2>🧩 TOWS Matrix</h2>
 
 <h3>กลยุทธ์เชิงรุก (SO)</h3>
+<div class="table-wrap">
 <table>
   <tr><th>กลยุทธ์</th><th>คำอธิบาย</th><th>เชื่อมโยง</th></tr>
   <tr><td>SO1</td><td>สร้างขีดความสามารถการเติบโตสินเชื่อ</td><td>S2,S3,O1,O5</td></tr>
@@ -477,14 +512,17 @@ summary {
   <tr><td>SO3</td><td>ขับเคลื่อน ESG</td><td>S1,S2,S4,O2,O3</td></tr>
   <tr><td>SO4</td><td>ยกระดับพอร์ตสินเชื่อลูกค้ากลุ่มเปราะบาง</td><td>S1,S2,S3,S4,O1,O2,O3,O4</td></tr>
 </table>
+</div>
 
 <h3>กลยุทธ์เชิงแก้ไข (WO)</h3>
+<div class="table-wrap">
 <table>
   <tr><th>กลยุทธ์</th><th>คำอธิบาย</th></tr>
   <tr><td>WO1</td><td>สนับสนุนกลไกเชื่อมโยง สร้างมูลค่าเพิ่มทางธุรกิจ (W1,O2,O3,O4,O5)</td></tr>
   <tr><td>WO2</td><td>ยกระดับกระบวนการและบริการด้วยเทคโนโลยีดิจิทัล (W2,O1,O5)</td></tr>
   <tr><td>WO3</td><td>ขยายขีดความสามารถบุคลากรรองรับธุรกิจ (W3,W4,W5,O1)</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -493,6 +531,7 @@ summary {
 <section id="so">
 <h2>🎯 วัตถุประสงค์เชิงยุทธศาสตร์ (SO1–SO6)</h2>
 
+<div class="table-wrap">
 <table>
   <tr><th>SO</th><th>วัตถุประสงค์</th><th>กลยุทธ์</th><th>ตัวชี้วัด/เป้าหมาย</th></tr>
   <tr>
@@ -532,6 +571,7 @@ summary {
     <td>สินเชื่อยั่งยืน ≥ 25% ของสินเชื่อรวม</td>
   </tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -541,6 +581,7 @@ summary {
 <h2>🏛️ กลาง 1 — นโยบาย ทิศทางภาครัฐ ESG และเทคโนโลยีนวัตกรรม</h2>
 
 <h3>🌾 Blockchain + IoT ด้านการเกษตร (5 ด้าน)</h3>
+<div class="table-wrap">
 <table>
   <tr><th>ด้าน</th><th>รายละเอียด</th></tr>
   <tr><td>🔍 ตรวจสอบสินค้า</td><td>สแกน QR Code ตรวจสอบย้อนกลับจากแหล่งผลิต</td></tr>
@@ -549,6 +590,7 @@ summary {
   <tr><td>💰 P2P ลดต้นทุน</td><td>ซื้อขายตรง Peer-to-Peer</td></tr>
   <tr><td>🌾 จัดการฟาร์ม</td><td>ติดตามบำรุงรักษาฟาร์ม Real-time</td></tr>
 </table>
+</div>
 
 <h3>📖 การรู้เท่าทันการเงิน (Financial Literacy)</h3>
 <p>เป้าหมายแห่งความสำเร็จ: <span class="highlight">"ผู้สูงอายุสามารถใช้ A-Mobile อย่างปลอดภัย รู้เท่าทันมิจฉาชีพ"</span></p>
@@ -566,6 +608,7 @@ summary {
 <!-- ======================== -->
 <section id="finance">
 <h2>💰 เป้าหมายทางการเงิน ปี 2569</h2>
+<div class="table-wrap">
 <table>
   <tr><th>ตัวชี้วัด</th><th>เป้าหมาย</th></tr>
   <tr><td>ROA</td><td>≥ 0.37%</td></tr>
@@ -576,6 +619,7 @@ summary {
   <tr><td>พัฒนาเกษตรกรกลุ่มพักหนี้/เปราะบาง</td><td>600,000 ราย (สะสม)</td></tr>
   <tr><td>ลูกค้าผ่านการพัฒนามีรายได้สุทธิเพิ่ม</td><td>≥ 15%</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
@@ -583,6 +627,7 @@ summary {
 <!-- ======================== -->
 <section>
 <h2>🏗️ โครงสร้างองค์กร (ปี 2569)</h2>
+<div class="table-wrap">
 <table>
   <tr><th>ระดับ</th><th>จำนวน</th></tr>
   <tr><td>สำนักงานใหญ่</td><td>1</td></tr>
@@ -592,6 +637,7 @@ summary {
   <tr><td>สาขาย่อย</td><td>200 สาขา</td></tr>
   <tr><td>หน่วยธุรกิจสินเชื่อ</td><td>1,169 หน่วย</td></tr>
 </table>
+</div>
 </section>
 
 <!-- ======================== -->
