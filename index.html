@@ -371,6 +371,7 @@ body::before {
 .card { opacity: 0; }
 .card.visible { animation: fadeInUp 0.5s ease forwards; }
 </style>
+<link rel="stylesheet" href="study-ui.css">
 </head>
 <body>
 
@@ -384,11 +385,11 @@ body::before {
       <div class="hero-stat-label">สรุปเนื้อหา</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">4</div>
+      <div class="hero-stat-num">7</div>
       <div class="hero-stat-label">ชุดแบบทดสอบ</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">340+</div>
+      <div class="hero-stat-num">410+</div>
       <div class="hero-stat-label">ข้อสอบ</div>
     </div>
   </div>
@@ -839,5 +840,6 @@ const observer = new IntersectionObserver((entries) => {
 
 cards.forEach(card => observer.observe(card));
 </script>
+<script src="study-ui.js" defer></script>
 </body>
 </html>
