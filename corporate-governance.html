@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>การกำกับดูแลกิจการที่ดี (Corporate Governance: CG) | Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07101f;
+  --bg2: #0d1728;
+  --surface: #122039;
+  --surface2: #182947;
+  --card: rgba(18, 32, 57, 0.92);
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --blue: #4b7bec;
+  --green: #22a67e;
+  --red: #e55c5c;
+  --purple: #9b7be9;
+  --text: #edf2f7;
+  --muted: #a9b6c8;
+  --border: rgba(226,232,240,0.12);
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Noto Sans Thai', 'Sarabun', system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(800px 420px at 12% 18%, rgba(212,148,47,.08), transparent 65%),
+    radial-gradient(720px 420px at 88% 12%, rgba(75,123,236,.08), transparent 62%),
+    var(--bg);
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+.topbar {
+  position: sticky;
+  top: 4px;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(7,16,31,.78);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+.topbar a {
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: .86rem;
+  font-weight: 700;
+}
+.topbar a:hover { color: var(--gold2); border-color: rgba(212,148,47,.28); background: rgba(212,148,47,.08); }
+.hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 54px 20px 26px;
+  text-align: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,148,47,.32);
+  background: rgba(212,148,47,.1);
+  color: var(--gold2);
+  font-weight: 800;
+  font-size: .82rem;
+  letter-spacing: .4px;
+}
+h1 {
+  margin: 18px 0 10px;
+  font-size: clamp(1.75rem, 4vw, 3.1rem);
+  line-height: 1.18;
+  letter-spacing: -.035em;
+  color: var(--gold2);
+}
+.hero p { max-width: 760px; margin: 0 auto; color: var(--muted); font-size: 1rem; }
+.container { max-width: 980px; margin: 0 auto; padding: 20px 20px 96px; }
+.toc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  margin: 12px 0 28px;
+}
+.toc a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.035);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+.toc a:hover { border-color: rgba(232,184,79,.45); background: rgba(212,148,47,.08); }
+.section {
+  margin: 22px 0;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 18px 50px rgba(2,8,23,.18);
+}
+.section h2 {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 14px;
+  color: var(--gold2);
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+.section h3 { color: #83d5ff; margin: 18px 0 8px; font-size: 1.05rem; }
+ul, ol { padding-left: 1.35rem; }
+li { margin: 7px 0; }
+strong { color: #fff; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.mini-card {
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(7,16,31,.48);
+}
+.mini-card h3 { margin-top: 0; }
+.callout {
+  margin: 14px 0;
+  padding: 15px 18px;
+  border-radius: 14px;
+  border-left: 4px solid var(--gold);
+  background: rgba(212,148,47,.08);
+}
+.callout.red { border-left-color: var(--red); background: rgba(229,92,92,.08); }
+.callout.green { border-left-color: var(--green); background: rgba(34,166,126,.08); }
+.exam-traps { counter-reset: trap; }
+.trap {
+  position: relative;
+  margin: 14px 0;
+  padding: 16px 18px 16px 58px;
+  border-radius: 16px;
+  border: 1px solid rgba(229,92,92,.18);
+  background: rgba(229,92,92,.07);
+}
+.trap::before {
+  counter-increment: trap;
+  content: counter(trap);
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 800;
+}
+.trap h3 { margin-top: 0; color: #ffb4b4; }
+.keyword-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.keyword { padding: 5px 10px; border-radius: 999px; background: rgba(75,123,236,.14); color:#9cc2ff; font-size:.82rem; font-weight:700; }
+.footer-note { color: var(--muted); text-align:center; font-size:.86rem; margin-top:30px; }
+@media (max-width: 700px) {
+  .topbar { justify-content:flex-start; overflow-x:auto; }
+  .hero { padding-top: 34px; }
+  .container { padding-inline: 14px; }
+  .section { padding: 17px; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+</head>
+<body>
+<nav class="topbar" aria-label="เมนูเนื้อหา CG">
+  <a href="index.html">⌂ หน้าหลัก</a>
+  <a href="#meaning">ความหมาย</a>
+  <a href="#principles">หลักการ</a>
+  <a href="#structure">โครงสร้าง</a>
+  <a href="#grc">GRC</a>
+  <a href="#stakeholders">ผู้มีส่วนได้ส่วนเสีย</a>
+  <a href="#exam">จุดดักข้อสอบ</a>
+</nav>
+
+<header class="hero">
+  <div class="badge">🏛️ Corporate Governance · CG</div>
+  <h1>การกำกับดูแลกิจการที่ดี</h1>
+  <p>สรุปจาก NotebookLM สำหรับเตรียมสอบ ผช.ผจข. ธ.ก.ส. เน้นความโปร่งใส ตรวจสอบได้ จริยธรรม GRC และการตัดสินใจเชิงสถานการณ์</p>
+</header>
+
+<main class="container">
+  <div class="toc">
+    <a href="#meaning">1. ความหมายและวัตถุประสงค์</a>
+    <a href="#principles">2. หลักการสำคัญและจริยธรรม</a>
+    <a href="#structure">3. คณะกรรมการและฝ่ายจัดการ</a>
+    <a href="#grc">4. เชื่อมโยง GRC</a>
+    <a href="#stakeholders">5. ผู้มีส่วนได้ส่วนเสีย</a>
+    <a href="#exam">6. จุดดักข้อสอบ</a>
+  </div>
+
+  <section class="section" id="meaning">
+    <h2>📌 1. ความหมายและวัตถุประสงค์ของ CG</h2>
+    <p><strong>Corporate Governance (CG)</strong> คือระบบ โครงสร้าง กระบวนการ และกลไกในการบริหารจัดการองค์กรให้มีความโปร่งใส ตรวจสอบได้ มีจริยธรรม และคำนึงถึงผู้มีส่วนได้ส่วนเสียทุกฝ่าย</p>
+    <div class="grid-2">
+      <div class="mini-card">
+        <h3>วัตถุประสงค์หลัก</h3>
+        <ul>
+          <li>สร้างความเชื่อมั่นให้ลูกค้า ประชาชน ผู้กำกับดูแล และสังคม</li>
+          <li>ป้องกันการทุจริตและการขัดกันแห่งผลประโยชน์</li>
+          <li>ทำให้องค์กรเติบโตอย่างยั่งยืนตามพันธกิจของธนาคาร</li>
+        </ul>
+      </div>
+      <div class="mini-card">
+        <h3>แก่นที่ต้องจำ</h3>
+        <ul>
+          <li>โปร่งใส</li>
+          <li>ตรวจสอบได้</li>
+          <li>มีจริยธรรม</li>
+          <li>รับผิดชอบต่อผู้มีส่วนได้ส่วนเสีย</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="principles">
+    <h2>✨ 2. หลักการสำคัญ จริยธรรม และความโปร่งใส</h2>
+    <p>ในบริบท ธ.ก.ส. หลัก CG เชื่อมโยงกับค่านิยม <strong>SPARK</strong> วัฒนธรรมองค์กร <strong>HEART</strong> และสมรรถนะด้าน <strong>Integrity & Transparency</strong></p>
+    <div class="callout green">
+      <strong>หลักจำ:</strong> พนักงานต้องซื่อสัตย์สุจริต พูดและทำในสิ่งที่ถูกต้อง ดำรงตนสมฐานะ ไม่ให้ปัจจัยภายนอกแทรกแซงการทำงาน และปฏิเสธสินบนหรือผลประโยชน์ที่ไม่เหมาะสมทุกรูปแบบ
+    </div>
+    <ul>
+      <li><strong>Ethics:</strong> ปฏิบัติงานด้วยความซื่อสัตย์ มีจรรยาบรรณ และกล้าตัดสินใจในสิ่งที่ถูกต้อง</li>
+      <li><strong>Transparency:</strong> เปิดเผยข้อมูลความเสี่ยงและผลการดำเนินงานอย่างถูกต้อง ครบถ้วน ทันเวลา</li>
+      <li><strong>Accountability:</strong> รับผิดชอบต่อผลของการตัดสินใจและสามารถอธิบายเหตุผลตามหลักเกณฑ์ได้</li>
+    </ul>
+  </section>
+
+  <section class="section" id="structure">
+    <h2>🏢 3. โครงสร้างคณะกรรมการ ฝ่ายจัดการ และบทบาทหน้าที่</h2>
+    <div class="grid-2">
+      <div class="mini-card">
+        <h3>คณะกรรมการธนาคาร</h3>
+        <ul>
+          <li>กำหนดนโยบายและทิศทางสำคัญขององค์กร</li>
+          <li>ทำหน้าที่กำกับดูแลและถ่วงดุลฝ่ายบริหาร</li>
+          <li>ต้องมีความเป็นอิสระจากฝ่ายบริหาร</li>
+          <li>สร้าง <strong>Tone at the Top</strong> เป็นแบบอย่างด้านจริยธรรม</li>
+        </ul>
+      </div>
+      <div class="mini-card">
+        <h3>ฝ่ายจัดการ</h3>
+        <ul>
+          <li>นำนโยบายไปปฏิบัติจริง</li>
+          <li>จัดโครงสร้างองค์กร สายการรายงาน และอำนาจหน้าที่ให้เหมาะสม</li>
+          <li>ควบคุมการปฏิบัติงานให้สอดคล้องกับระเบียบและเป้าหมาย</li>
+          <li>รายงานผลและประเด็นความเสี่ยงต่อคณะกรรมการอย่างโปร่งใส</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="grc">
+    <h2>🛡️ 4. CG ต้องเชื่อมกับ GRC: Governance · Risk · Compliance</h2>
+    <p>CG ไม่ได้แยกจากงานประจำ แต่เป็นกรอบคิดในการบริหารงานร่วมกับการบริหารความเสี่ยงและการปฏิบัติตามกฎเกณฑ์</p>
+    <ul>
+      <li><strong>Governance:</strong> มีโครงสร้างกำกับดูแลและการตัดสินใจที่โปร่งใส</li>
+      <li><strong>Risk Management:</strong> บริหารความเสี่ยงโดยคำนึงถึงต้นทุนและประโยชน์ ภายใต้ Risk Limit ที่กำหนด</li>
+      <li><strong>Compliance:</strong> ปฏิบัติตามกฎหมาย ระเบียบ คำสั่ง และนโยบายของธนาคาร</li>
+      <li><strong>Internal Control:</strong> มีการควบคุมภายในและประเมินความเสี่ยงด้านทุจริตอย่างครอบคลุม</li>
+    </ul>
+    <div class="callout">
+      <strong>คำสำคัญออกสอบ:</strong> Tone at the Top, Fraud Risk Assessment, Conflict of Interest, No Gift Policy, Transparency, Accountability
+    </div>
+  </section>
+
+  <section class="section" id="stakeholders">
+    <h2>🤝 5. การดูแลผู้มีส่วนได้ส่วนเสีย</h2>
+    <p>การกำกับดูแลที่ดีต้องคำนึงถึงผู้มีส่วนได้ส่วนเสียทั้งภายในและภายนอกอย่างเสมอภาคและเท่าเทียม เพื่อสร้างความสำเร็จระยะยาวร่วมกัน</p>
+    <ul>
+      <li>เปิดช่องทางการสื่อสารแบบสองทิศทางเพื่อรับฟังความคิดเห็น</li>
+      <li>มีระบบรับข้อร้องเรียนที่เหมาะสมและตรวจสอบได้</li>
+      <li>ประสานประโยชน์ให้เกิดความเข้าใจและผลประโยชน์ร่วมกันแบบ Win-Win</li>
+      <li>ไม่เลือกปฏิบัติและไม่เอื้อประโยชน์ให้ฝ่ายใดฝ่ายหนึ่งโดยไม่เป็นธรรม</li>
+    </ul>
+  </section>
+
+  <section class="section" id="exam">
+    <h2>🚨 6. จุดดักข้อสอบและแนวถามวิเคราะห์</h2>
+    <div class="exam-traps">
+      <div class="trap">
+        <h3>Conflict of Interest</h3>
+        <p>ถ้าพนักงานหรือผู้บริหารมีส่วนได้ส่วนเสียกับลูกค้า คู่ค้า หรือผู้รับเหมา ต้องเปิดเผยและแจ้งให้ธนาคารทราบทันที การปกปิดเป็นการละเมิดหลัก CG</p>
+      </div>
+      <div class="trap">
+        <h3>No Gift Policy</h3>
+        <p>ระวังโจทย์ของขวัญจากลูกค้า ลูกน้อง หรือคู่ค้า โดยเฉพาะกรณีไม่ใช่เทศกาลประเพณี หรือมีมูลค่าเกินเกณฑ์ที่ระเบียบกำหนด อย่าเลือกตอบแบบ “รับไว้ก่อน”</p>
+      </div>
+      <div class="trap">
+        <h3>Integrity Test</h3>
+        <p>ถ้าลูกค้ารายใหญ่หรือผู้มีอิทธิพลขอให้ลัดขั้นตอน คำตอบที่ถูกคือยึดระเบียบ โปร่งใส ตรวจสอบได้ และอธิบายเหตุผลอย่างสุภาพ</p>
+      </div>
+      <div class="trap">
+        <h3>Board Independence</h3>
+        <p>คณะกรรมการต้องมีความเป็นอิสระจากฝ่ายบริหาร เพื่อกำกับ ตรวจสอบ และถ่วงดุลได้อย่างมีประสิทธิภาพ</p>
+      </div>
+    </div>
+    <div class="callout red">
+      <strong>คาถาเข้าห้องสอบ:</strong> กฎระเบียบมาก่อนความเกรงใจ และถ้าเป็นเรื่องจริยธรรมให้ตอบทางเลือกที่โปร่งใส ตรวจสอบได้ ไม่ลัดขั้นตอน
+    </div>
+    <div class="keyword-row">
+      <span class="keyword">CG</span>
+      <span class="keyword">GRC</span>
+      <span class="keyword">Tone at the Top</span>
+      <span class="keyword">No Gift Policy</span>
+      <span class="keyword">Conflict of Interest</span>
+      <span class="keyword">Fraud Risk</span>
+    </div>
+  </section>
+
+  <p class="footer-note">แหล่งสังเคราะห์: NotebookLM - Banking Operations and Cash Management Manual · จัดรูปแบบสำหรับ Genius 9</p>
+</main>
+<script src="study-ui.js" defer></script>
+</body>
+</html>

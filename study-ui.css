@@ -110,6 +110,10 @@ body.study-enhanced {
   pointer-events: auto;
 }
 
+body.has-existing-bottom-right .study-fab--top {
+  bottom: 86px;
+}
+
 .study-cockpit {
   position: relative;
   z-index: 2;
@@ -454,6 +458,10 @@ table {
     right: 12px;
     bottom: 12px;
     width: 42px;
+  }
+
+  body.has-existing-bottom-right .study-fab--top {
+    bottom: 72px;
   }
 
   .study-shortcuts {

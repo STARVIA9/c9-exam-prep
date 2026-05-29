@@ -34,7 +34,16 @@
   }
 
   function addFloatingNavigation() {
-    if (!document.querySelector('.study-floating-nav')) {
+    var existingHomeLink = document.querySelector('a[href="index.html"], a[href="./index.html"], a[href="/index.html"]');
+    var hasExistingBottomLeft = !!document.querySelector('.back-home');
+    var hasExistingBottomRight = !!document.querySelector('.float-back');
+
+    document.body.classList.toggle('has-existing-bottom-left', hasExistingBottomLeft);
+    document.body.classList.toggle('has-existing-bottom-right', hasExistingBottomRight);
+
+    // Do not add a second home button on pages that already include one,
+    // and never show a home button on the homepage itself.
+    if (!isHome && !existingHomeLink && !document.querySelector('.study-floating-nav')) {
       var nav = document.createElement('nav');
       nav.className = 'study-floating-nav';
       nav.setAttribute('aria-label', 'Study navigation');
