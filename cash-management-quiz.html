@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💰 การบริหารเงินสด · KCIM · กฎหมาย — แบบทดสอบ ผช.ผจข.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --surface: #131d33;
+  --surface2: #1a2744;
+  --gold: #d4942f;
+  --gold-dim: rgba(212,148,47,0.15);
+  --green: #22a67e;
+  --green-dim: rgba(34,166,126,0.15);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75,123,236,0.15);
+  --red: #e55c5c;
+  --red-dim: rgba(229,92,92,0.15);
+  --text: #edf2f7;
+  --text-dim: #8899b0;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ── */
+.header {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 24px 20px 16px;
+  text-align: center;
+  position: relative;
+}
+.header h1 {
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.header .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+.back-link {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.back-link:hover { text-decoration: none; color: var(--gold); }
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid rgba(212,148,47,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.tab-btn {
+  flex: 1;
+  padding: 14px 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.tab-content { display: none; padding: 20px 16px 40px; max-width: 800px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* ── Summary Cards ── */
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(212,148,47,0.12);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.card:hover { border-color: rgba(212,148,47,0.3); }
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+  transition: background 0.3s;
+}
+.card-header:hover { background: var(--surface2); }
+.card-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold);
+  flex: 1;
+}
+.card-arrow {
+  font-size: 1.2rem;
+  color: var(--gold);
+  transition: transform 0.3s;
+  margin-left: 10px;
+}
+.card.open .card-arrow { transform: rotate(180deg); }
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s;
+  padding: 0 18px;
+}
+.card.open .card-body {
+  max-height: 2000px;
+  padding: 0 18px 20px;
+}
+.card-body ul {
+  list-style: none;
+  padding: 0;
+}
+.card-body li {
+  padding: 7px 0 7px 22px;
+  position: relative;
+  font-size: 0.93rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.card-body li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+.card-body li.highlight::before { content: '🔥'; color: var(--red); left: -2px; }
+.card-body li.warn::before { content: '⚠️'; left: -2px; }
+.card-body li.info::before { content: '💡'; left: -2px; }
+.card-body li strong { color: var(--gold); }
+.card-body .sub-heading {
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 0.92rem;
+}
+.card-body .note {
+  background: var(--gold-dim);
+  border-left: 3px solid var(--gold);
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: var(--gold);
+}
+
+/* ── Quiz Section ── */
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(212,148,47,0.15);
+}
+.quiz-meta .score { font-weight: 700; color: var(--green); }
+.quiz-meta .total { color: var(--text-dim); }
+
+.progress-bar-container {
+  position: sticky;
+  top: 50px;
+  z-index: 90;
+  background: var(--bg);
+  padding: 8px 0 4px;
+}
+.progress-bar {
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.question-card {
+  background: var(--surface);
+  border: 1px solid rgba(75,123,236,0.15);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 18px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.question-card.answered-correct {
+  border-color: var(--green);
+  box-shadow: 0 0 20px rgba(34,166,126,0.1);
+}
+.question-card.answered-wrong {
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(229,92,92,0.1);
+}
+
+.q-number {
+  display: inline-block;
+  background: var(--blue-dim);
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.q-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.options { display: flex; flex-direction: column; gap: 8px; }
+.option-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--surface2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  line-height: 1.6;
+}
+.option-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  transform: translateX(4px);
+}
+.option-btn:disabled { cursor: default; opacity: 0.85; }
+.option-btn.correct {
+  background: var(--green-dim) !important;
+  border-color: var(--green) !important;
+  color: var(--green) !important;
+  font-weight: 600;
+}
+.option-btn.wrong {
+  background: var(--red-dim) !important;
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+  opacity: 0.8;
+}
+.option-btn.correct-answer {
+  background: var(--green-dim) !important;
+  border-color: var(--green) !important;
+  opacity: 1 !important;
+}
+
+.explanation {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  display: none;
+  animation: fadeSlide 0.4s ease;
+}
+.explanation.show { display: block; }
+.explanation.correct-exp {
+  background: var(--green-dim);
+  border-left: 4px solid var(--green);
+  color: var(--green);
+}
+.explanation.wrong-exp {
+  background: var(--red-dim);
+  border-left: 4px solid var(--red);
+  color: #f0a0a0;
+}
+.explanation strong { display: block; margin-bottom: 4px; font-size: 0.95rem; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Results ── */
+.results-screen {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.results-screen.show { display: block; }
+.results-score {
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.results-label {
+  font-size: 1.3rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.results-comment {
+  font-size: 1.1rem;
+  margin: 16px 0 30px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(212,148,47,0.2);
+}
+.retry-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: linear-gradient(135deg, var(--gold), #b87820);
+  color: var(--bg);
+  border: none;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.retry-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(212,148,47,0.4);
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(212,148,47,0.1);
+  margin-top: 40px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.1rem; }
+  .back-link { top: 10px; left: 10px; font-size: 0.8rem; }
+  .tab-btn { font-size: 0.88rem; padding: 12px 6px; }
+  .question-card { padding: 16px 14px; }
+  .quiz-meta { flex-direction: column; gap: 6px; text-align: center; }
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Confetti effect */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  z-index: 9999;
+  pointer-events: none;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+  <h1>💰 การบริหารเงินสด · KCIM · กฎหมาย</h1>
+  <div class="subtitle">แบบทดสอบ ผช.ผจข. ธ.ก.ส. — เนื้อหาสรุป + 20 ข้อวิเคราะห์</div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('summary')">📖 เนื้อหาสรุป</button>
+  <button class="tab-btn" onclick="switchTab('quiz')">📝 แบบทดสอบ 20 ข้อ</button>
+</div>
+
+<!-- ═══════════════════════════ TAB: SUMMARY ═══════════════════════════ -->
+<div id="tab-summary" class="tab-content active">
+
+  <!-- Card 1 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>💰 ระบบ KCIM และ MMS</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li><strong>KCIM</strong> (Krungthai Cash Inventory Management) = ศูนย์บริหารและจัดการธนบัตรของ บมจ.ธนาคารกรุงไทย</li>
+        <li>ธ.ก.ส. ใช้บริการ <strong>KTBGS</strong> เป็นผู้รับจ้างขนย้ายเงินสด</li>
+        <li>หน้าที่: <strong>รับฝากเงิน</strong> (ส่งเงินก้อนใหญ่ไปเก็บ) และ <strong>ถอนเงิน</strong> (เบิกเงินก้อนใหญ่มาใช้)</li>
+        <li class="highlight">เงื่อนไข: ทำรายการไม่ต่ำกว่า <strong>3.00 ล้านบาท</strong> ต่อครั้ง</li>
+        <li class="highlight">ใช้บริการขนย้ายได้ไม่เกิน <strong>8 ครั้ง/เดือน/สาขา</strong></li>
+      </ul>
+      <div class="sub-heading">🔄 MMS (Monetary Management System)</div>
+      <ul>
+        <li>ระบบขออนุมัติวงเงินและสร้างคำสั่งฝาก/ถอนเงินล่วงหน้า</li>
+        <li class="info">ถอนเงิน (เบิก) ต้องทำล่วงหน้า <strong>2 วันทำการ</strong> ก่อน <strong>14.30 น.</strong></li>
+        <li class="info">ฝากเงิน (ส่ง) ต้องทำล่วงหน้า <strong>1 วันทำการ</strong> ก่อน <strong>14.30 น.</strong></li>
+      </ul>
+      <div class="note">📌 ทั้งฝากและถอนต้องทำผ่าน MMS เท่านั้น ห้ามติดต่อ KCIM โดยตรง</div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>🔄 ขั้นตอนการรับ-จ่ายเงินสดประจำวัน</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>หลักการ <strong>Make/Check</strong> ผ่านระบบ PD Teller</li>
+      </ul>
+      <div class="sub-heading">🌅 ช่วงเช้า</div>
+      <ul>
+        <li>คณะกรรมการตรวจนับ → เปิดห้องมั่นคง → ส่งมอบเงินผู้รักษาเงิน</li>
+        <li>บันทึก <strong>TI</strong> (Transfer Cash In) / <strong>TO</strong> (Transfer Cash Out) แจกจ่าย Teller</li>
+      </ul>
+      <div class="sub-heading">☀️ ระหว่างวัน</div>
+      <ul>
+        <li>Teller ขอเบิกเพิ่ม (<strong>TI</strong>) หรือส่งคืน (<strong>TO</strong>) กับผู้รักษาเงิน</li>
+      </ul>
+      <div class="sub-heading">🌙 สิ้นวัน</div>
+      <ul>
+        <li>Teller ส่งคืน (<strong>TO</strong>) → คณะกรรมการตรวจนับ → รายงาน 302.02.15</li>
+        <li class="highlight">เก็บเข้าตู้นิรภัย <strong>"ทันทีโดยไม่ต้องรอตรวจสอบกับบัญชี"</strong></li>
+        <li>Branch Proof → ปิดระบบ</li>
+      </ul>
+      <div class="note">⚡ ข้อสำคัญ: เงินสดเก็บเข้าตู้นิรภัยทันที ไม่ต้องรอ Make/Clear ก่อน</div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>💸 เงินสดขาด/เกินบัญชี — 3 กรณี (จุดเน้นสอบ!)</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li class="highlight">กรณี 1: ไม่เกิน <strong>20 บาท</strong> → บันทึกในทะเบียน <strong>ไม่ต้องสอบ</strong> แต่ต้อง <strong>ชดใช้เต็มจำนวน</strong></li>
+        <li class="highlight">กรณี 2: เกิน 20 แต่ไม่ถึง <strong>10,000</strong> → ไม่ตั้งคณะกรรมการสอบ → <strong>ลูกหนี้ CBS</strong> → ชดใช้ภายในวันทำการถัดไป</li>
+        <li class="highlight">กรณี 3: ตั้งแต่ <strong>10,000 ขึ้นไป</strong> 🚨 → ต้องตั้งคณะกรรมการสอบทุกกรณี (3 คน, ระดับ 4+, 30 วัน) → บัญชีลูกหนี้รอการสอบสวน (<strong>18009003</strong>)</li>
+      </ul>
+      <div class="note">🎯 จุดเน้นสอบ! จำ 3 กรณีให้แม่น: ≤20 / 21–9,999 / ≥10,000</div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>📜 ระเบียบและกฎหมายที่เกี่ยวข้อง</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li><strong>ระเบียบฉบับที่ 3:</strong> บริหารจัดการและขนย้ายเงินสด — ต้องมี <strong>2 คน</strong> (ผู้รับมอบอำนาจชั้น ก หรือ ข)</li>
+        <li><strong>ระเบียบฉบับที่ 6:</strong> พนักงานผู้รับผิดชอบรับจ่ายเงิน — ให้บริการนอกสำนักงานต้องมีผู้รับมอบอำนาจ 1 คน + พนักงานการเงิน 1 คน</li>
+        <li><strong>ระเบียบฉบับที่ 12:</strong> การเก็บรักษากุญแจ — <strong>Check &amp; Balance</strong> ห้ามบุคคลเดียวถือข้ามชุด</li>
+        <li><strong>ระเบียบกรมธรรม์ประกันภัยเงินสด</strong> — เงินสดสิ้นวันห้ามเกินวงเงินประกันภัย</li>
+      </ul>
+      <div class="note">📋 ระเบียบ 3 → ขนย้าย | ระเบียบ 6 → รับจ่าย | ระเบียบ 12 → กุญแจ</div>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>🏦 วงเงินสำรองและการบริหาร</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>ธนาคารกำหนดวงเงินสำรองภาพรวมให้ <strong>สนจ.</strong> รายไตรมาส</li>
+        <li>สนจ. จัดสรรให้สาขา <strong>6 งวด/ไตรมาส</strong> (งวดวันที่ 1-15, 16-สิ้นเดือน)</li>
+        <li class="highlight">เงินสดสิ้นวัน (รวมหน้าเคาน์เตอร์ + ห้องมั่นคง + ATM/CDM) ห้ามเกินวงเงินประกันภัย</li>
+        <li>ขยายวงเงินสำรองถาวร → ขออนุมัติผ่าน MMS ภายใน <strong>5 วันทำการ</strong> หลังสิ้นงวด</li>
+      </ul>
+      <div class="note">💡 จำ: 6 งวด/ไตรมาส = 2 งวด/เดือน (ต้นเดือน-กลางเดือน / กลางเดือน-สิ้นเดือน)</div>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card" onclick="toggleCard(this)">
+    <div class="card-header">
+      <h3>💵 ธนบัตรชำรุด/ปลอม &amp; แก้ปัญหาเฉพาะหน้า</h3>
+      <span class="card-arrow">▼</span>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li class="info"><strong>ธนบัตรชำรุด:</strong> ถ้ามีเนื้อ <strong>≥ 3/5 ส่วน</strong> → แลกให้ลูกค้าได้ทันที → วางหน้าแหนบส่ง KCIM</li>
+        <li class="info"><strong>ธนบัตรชำรุดยากพิสูจน์</strong> → ให้ลูกค้ากรอกคำร้อง → ใส่ซองปิดผนึก → ส่ง ธปท. ผ่าน KCIM</li>
+        <li class="info"><strong>ธนบัตรปลอม</strong> → ให้ลูกค้าลง <strong>"คำยินยอม"</strong> → ถ้าไม่ยินยอม → ประทับตรา <strong>"ปลอม"</strong> นูน ≥ 3 ซม. ทั้ง 2 ด้าน</li>
+      </ul>
+      <div class="sub-heading">🚨 แก้ปัญหาเงินไม่พอจ่าย</div>
+      <ul>
+        <li>(1) ขอเบิกจากผู้รักษาเงิน <strong>TI/TO</strong></li>
+        <li>(2) <strong>Inter-Branch Transfer</strong></li>
+        <li class="highlight">(3) กรณีฉุกเฉิน โทร กลุ่มบริหารเงินสด ฝกธ. <strong>089-2051693</strong></li>
+      </ul>
+      <div class="note">📞 เบอร์ฉุกเฉิน 089-2051693 — จำให้แม่น!</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════ TAB: QUIZ ═══════════════════════════ -->
+<div id="tab-quiz" class="tab-content">
+  <div class="quiz-meta">
+    <div>✅ ตอบถูก: <span class="score" id="score-display">0</span></div>
+    <div>ข้อที่ <span id="current-q">0</span> / <span class="total" id="total-q">20</span></div>
+  </div>
+  <div class="progress-bar-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+  <div id="quiz-container"></div>
+  <div id="results-screen" class="results-screen"></div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  สร้างโดย คาร่า 🐶 | เตรียมสอบ ผช.ผจข. ธ.ก.ส.<br>
+  <span style="font-size:0.8rem;color:var(--text-dim);">© 2026 BAAC Exam Center — Cash Management & KCIM Edition</span>
+</div>
+
+<script>
+// ── Tab Navigation ──
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', (tab==='summary' && i===0) || (tab==='quiz' && i===1));
+  });
+  document.getElementById('tab-summary').classList.toggle('active', tab==='summary');
+  document.getElementById('tab-quiz').classList.toggle('active', tab==='quiz');
+}
+
+// ── Expandable Cards ──
+function toggleCard(card) {
+  card.classList.toggle('open');
+}
+
+// ── Quiz Data ──
+const questions = [
+  {
+    q: "สาขา A ต้องการเบิกเงินสดจาก KCIM จำนวน 5 ล้านบาท วันจันทร์ จะต้องบันทึกใน MMS ภายในวันใด?",
+    options: [
+      "วันศุกร์ก่อน 14.30 น. (ล่วงหน้า 2 วันทำการ)",
+      "วันจันทร์ตอนเช้าก่อนเปิดสาขา",
+      "วันอาทิตย์ก่อน 14.30 น.",
+      "วันจันทร์ก่อน 14.30 น."
+    ],
+    answer: 0,
+    explanation: "MMS กำหนดให้ถอนเงิน (เบิก) ต้องทำล่วงหน้า 2 วันทำการ ก่อน 14.30 น. วันจันทร์ − 2 วันทำการ = วันศุกร์"
+  },
+  {
+    q: "เงินสดขาด 8,500 บาท ขั้นตอนที่ถูกต้องคือ?",
+    options: [
+      "ตั้งคณะกรรมการสอบทันที เนื่องจากเกิน 10,000",
+      "ไม่ต้องตั้งคณะกรรมการสอบ → ลูกหนี้ CBS → ชดใช้ภายในวันทำการถัดไป",
+      "บันทึกในทะเบียนเฉยๆ ไม่ต้องทำอะไร",
+      "ให้พนักงานรับผิดชอบชดใช้ภายในวันเดียวกัน"
+    ],
+    answer: 1,
+    explanation: "8,500 อยู่ในเกณฑ์ >20 แต่ <10,000 → กรณีที่ 2 ไม่ต้องตั้งคณะกรรมการสอบ ลูกหนี้ CBS และชดใช้ภายในวันทำการถัดไป"
+  },
+  {
+    q: "เงินสดขาด 15,000 บาท ต้องทำอย่างไร?",
+    options: [
+      "บันทึกในทะเบียน ไม่ต้องสอบ เพราะไม่ถึง 20,000",
+      "ลูกหนี้ CBS ชดใช้ภายใน 7 วัน",
+      "ตั้งคณะกรรมการสอบ 3 คน ระดับ 4+ สอบสวน 30 วัน",
+      "หักเงินเดือนพนักงานทันที"
+    ],
+    answer: 2,
+    explanation: "15,000 ≥ 10,000 → กรณีที่ 3 ต้องตั้งคณะกรรมการสอบทุกกรณี (3 คน, ระดับ 4+, 30 วัน) บัญชีลูกหนี้รอการสอบสวน 18009003"
+  },
+  {
+    q: "KCIM กำหนดวงเงินขั้นต่ำต่อครั้งเท่าใด?",
+    options: [
+      "1 ล้านบาท",
+      "2 ล้านบาท",
+      "3 ล้านบาท",
+      "5 ล้านบาท"
+    ],
+    answer: 2,
+    explanation: "KCIM กำหนดให้ทำรายการไม่ต่ำกว่า 3.00 ล้านบาทต่อครั้ง"
+  },
+  {
+    q: "วงเงินขนย้าย KCIM ไม่เกินกี่ครั้ง/เดือน/สาขา?",
+    options: [
+      "4 ครั้ง",
+      "6 ครั้ง",
+      "8 ครั้ง",
+      "10 ครั้ง"
+    ],
+    answer: 2,
+    explanation: "ใช้บริการขนย้ายได้ไม่เกิน 8 ครั้ง/เดือน/สาขา"
+  },
+  {
+    q: "เงินสดสิ้นวันพบว่าเกินวงเงินประกันภัย ต้องทำอย่างไร?",
+    options: [
+      "เก็บไว้ในห้องมั่นคงตามปกติ",
+      "ชี้แจงเหตุผลด้านหลังรายงาน 302.02.15 ขออนุมัติขยายวงเงินชั่วคราว",
+      "โอนเงินส่วนเกินเข้าบัญชีธนาคารทันที",
+      "แจ้งผู้จัดการสาขาแล้วเก็บเข้าตู้นิรภัย"
+    ],
+    answer: 1,
+    explanation: "ถ้าเงินสดสิ้นวันเกินวงเงินประกันภัย ต้องชี้แจงเหตุผลด้านหลังรายงาน 302.02.15 และขออนุมัติขยายวงเงินชั่วคราว"
+  },
+  {
+    q: "ระเบียบฉบับที่ 3 กำหนดให้ขนย้ายเงินสดต้องมีกี่คน?",
+    options: [
+      "1 คน",
+      "2 คน (ต้องมีผู้รับมอบอำนาจชั้น ก หรือ ข)",
+      "3 คน",
+      "แล้วแต่ดุลยพินิจของผู้จัดการสาขา"
+    ],
+    answer: 1,
+    explanation: "ระเบียบฉบับที่ 3: บริหารจัดการและขนย้ายเงินสด ต้องมี 2 คน โดยต้องมีผู้รับมอบอำนาจชั้น ก หรือ ข"
+  },
+  {
+    q: "กรณีเงินสดไม่พอจ่ายลูกค้า วิธีแก้ปัญหาที่เร็วที่สุดคือ?",
+    options: [
+      "รอ KCIM วันรุ่งขึ้น",
+      "ขอเบิกจากผู้รักษาเงิน TI/TO ระหว่างวัน",
+      "ขอโอนจากสาขาอื่น",
+      "แจ้งลูกค้าให้มาใหม่วันอื่น"
+    ],
+    answer: 1,
+    explanation: "วิธีที่เร็วที่สุดคือขอเบิกจากผู้รักษาเงิน TI/TO ระหว่างวัน เพราะสามารถทำได้ทันทีไม่ต้องรอนาน"
+  },
+  {
+    q: "ถ้าพบธนบัตรปลอม ลูกค้าไม่ยอมลงคำยินยอม ต้องทำอย่างไร?",
+    options: [
+      "คืนธนบัตรให้ลูกค้าแล้วปล่อยผ่าน",
+      "ประทับตรา \"ปลอม\" นูน ≥ 3 ซม. ทั้ง 2 ด้าน",
+      "เก็บไว้แล้วส่ง KCIM โดยไม่ต้องทำอะไรเพิ่ม",
+      "แจ้งตำรวจทันที"
+    ],
+    answer: 1,
+    explanation: "กรณีธนบัตรปลอม ถ้าลูกค้าไม่ยอมลงคำยินยอม ต้องประทับตรา \"ปลอม\" นูน ≥ 3 ซม. ทั้ง 2 ด้าน"
+  },
+  {
+    q: "ธนบัตรชำรุดมีเนื้อเท่าใดจึงแลกได้ทันที?",
+    options: [
+      "≥ 1/2 ส่วน",
+      "≥ 2/3 ส่วน",
+      "≥ 3/5 ส่วน",
+      "≥ 4/5 ส่วน"
+    ],
+    answer: 2,
+    explanation: "ธนบัตรชำรุด ถ้ามีเนื้อ ≥ 3/5 ส่วน สามารถแลกให้ลูกค้าได้ทันที แล้ววางหน้าแหนบส่ง KCIM"
+  },
+  {
+    q: "MMS ต้องขอเบิกเงินล่วงหน้ากี่วันทำการ?",
+    options: [
+      "1 วัน",
+      "2 วัน",
+      "3 วัน",
+      "5 วัน"
+    ],
+    answer: 1,
+    explanation: "MMS กำหนดให้ถอนเงิน (เบิก) ต้องทำล่วงหน้า 2 วันทำการ ก่อน 14.30 น."
+  },
+  {
+    q: "กรณีฉุกเฉินระบบล่ม เบิก KCIM ไม่ได้ ต้องทำอย่างไร?",
+    options: [
+      "รอระบบกลับมาแล้วทำรายการใหม่",
+      "ติดต่อ KCIM โดยตรง",
+      "โทร กลุ่มบริหารเงินสด ฝกธ. 089-2051693",
+      "แจ้งผู้จัดการสาขารับผิดชอบเอง"
+    ],
+    answer: 2,
+    explanation: "กรณีฉุกเฉินระบบล่ม โทร กลุ่มบริหารเงินสด ฝกธ. 089-2051693"
+  },
+  {
+    q: "ระเบียบฉบับที่ 12 เกี่ยวกับอะไร?",
+    options: [
+      "การบริหารจัดการและขนย้ายเงินสด",
+      "พนักงานผู้รับผิดชอบรับจ่ายเงิน",
+      "การเก็บรักษากุญแจ Check & Balance",
+      "กรมธรรม์ประกันภัยเงินสด"
+    ],
+    answer: 2,
+    explanation: "ระเบียบฉบับที่ 12 เกี่ยวกับการเก็บรักษากุญแจ — Check & Balance ห้ามบุคคลเดียวถือข้ามชุด"
+  },
+  {
+    q: "วงเงินสำรองสาขาจัดสรรเป็นกี่งวดต่อไตรมาส?",
+    options: [
+      "3 งวด",
+      "4 งวด",
+      "6 งวด",
+      "9 งวด"
+    ],
+    answer: 2,
+    explanation: "สนจ. จัดสรรให้สาขา 6 งวด/ไตรมาส (งวดวันที่ 1-15, 16-สิ้นเดือน)"
+  },
+  {
+    q: "สิ้นวันนี้ ควรเก็บเงินสดเข้าตู้นิรภัยเมื่อใด?",
+    options: [
+      "รอตรวจสอบกับบัญชีก่อนแล้วค่อยเก็บ",
+      "รอผู้จัดการสาขาตรวจก่อน",
+      "ทันทีโดยไม่ต้องรอตรวจสอบกับบัญชี",
+      "รอคณะกรรมการตรวจนับครบก่อน"
+    ],
+    answer: 2,
+    explanation: "เก็บเข้าตู้นิรภัยทันทีโดยไม่ต้องรอตรวจสอบกับบัญชี — เป็นข้อสำคัญที่ examiner ชอบถาม"
+  },
+  {
+    q: "เงินสดขาด 8,500 บาท ระบบตั้งบัญชีอะไร?",
+    options: [
+      "ลูกหนี้รอการสอบสวน 18009003",
+      "ลูกหนี้เงินสดขาดบัญชี CBS อัตโนมัติ → วันถัดไปปรับเป็น \"ลูกหนี้รอการชดใช้-พนักงาน\"",
+      "ค่าใช้จ่ายขาดบัญชี",
+      "ไม่มีการตั้งบัญชีใดๆ"
+    ],
+    answer: 1,
+    explanation: "8,500 อยู่ในกรณีที่ 2 (>20 แต่ <10,000) ระบบตั้งลูกหนี้เงินสดขาดบัญชี CBS อัตโนมัติ → วันถัดไปปรับเป็น \"ลูกหนี้รอการชดใช้-พนักงาน\""
+  },
+  {
+    q: "การฝากเงิน KCIM ต้องทำล่วงหน้ากี่วัน?",
+    options: [
+      "0 วัน (ทำได้ทันที)",
+      "1 วันทำการ ก่อน 14.30 น.",
+      "2 วันทำการ ก่อน 14.30 น.",
+      "3 วันทำการ ก่อน 14.30 น."
+    ],
+    answer: 1,
+    explanation: "ฝากเงิน (ส่ง) KCIM ต้องทำล่วงหน้า 1 วันทำการ ก่อน 14.30 น. (ต่างจากการถอนที่ต้องล่วงหน้า 2 วัน)"
+  },
+  {
+    q: "กรณีเงินสดขาด ≥ 10,000 บัญชีที่ใช้คือ?",
+    options: [
+      "ลูกหนี้เงินสดขาดบัญชี CBS",
+      "ลูกหนี้รอการชดใช้-พนักงาน",
+      "ลูกหนี้รอการสอบสวน รหัส 18009003",
+      "ค่าใช้จ่ายรอการพิสูจน์"
+    ],
+    answer: 2,
+    explanation: "กรณี ≥ 10,000 ต้องตั้งคณะกรรมการสอบ ใช้บัญชีลูกหนี้รอการสอบสวน รหัส 18009003"
+  },
+  {
+    q: "ระเบียบฉบับที่ 6 กำหนดให้ให้บริการนอกสำนักงานต้องมีกี่คน?",
+    options: [
+      "1 คน",
+      "2 คน (ผู้รับมอบอำนาจ 1 + พนักงานการเงิน 1)",
+      "3 คน",
+      "4 คน"
+    ],
+    answer: 1,
+    explanation: "ระเบียบฉบับที่ 6: ให้บริการนอกสำนักงานต้องมีผู้รับมอบอำนาจ 1 คน + พนักงานการเงิน 1 คน = 2 คน"
+  },
+  {
+    q: "ถ้าเงินในทะเบียนเงินสดขาดไม่เกิน 20 บาท มียอดรวมสิ้นปีเกิน 500 บาท ทำอย่างไร?",
+    options: [
+      "โอนเข้าบัญชีรายได้เบ็ดเตล็ด",
+      "ส่งคืนลูกค้าทั้งหมด",
+      "คงไว้ในทะเบียนตามปกติ",
+      "แจ้ง สนจ. ให้พิจารณา"
+    ],
+    answer: 0,
+    explanation: "กรณีเงินสดขาดไม่เกิน 20 บาท บันทึกในทะเบียน แต่ถ้ายอดรวมสิ้นปีเกิน 500 บาท ให้โอนส่วนเกินเข้าบัญชีรายได้เบ็ดเตล็ด"
+  }
+];
+
+// ── Render Quiz ──
+let score = 0;
+let answered = 0;
+
+function renderQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'qcard-' + i;
+    let optsHtml = q.options.map((opt, j) =>
+      `<button class="option-btn" onclick="selectAnswer(${i},${j})" id="opt-${i}-${j}">${String.fromCharCode(65+j)}. ${opt}</button>`
+    ).join('');
+    card.innerHTML = `
+      <span class="q-number">ข้อ ${i+1}</span>
+      <div class="q-text">${q.q}</div>
+      <div class="options">${optsHtml}</div>
+      <div class="explanation" id="exp-${i}">
+        <strong id="exp-label-${i}"></strong>
+        <span>${q.explanation}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qIdx, optIdx) {
+  const q = questions[qIdx];
+  const isCorrect = optIdx === q.answer;
+  // Disable all options for this question
+  q.options.forEach((_, j) => {
+    const btn = document.getElementById(`opt-${qIdx}-${j}`);
+    btn.disabled = true;
+    if (j === q.answer) btn.classList.add('correct-answer');
+    if (j === optIdx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  // Set explanation label dynamically (BUG FIX)
+  const expLabel = document.getElementById('exp-label-' + qIdx);
+  expLabel.textContent = isCorrect ? '✅ ถูกต้อง!' : '❌ ไม่ถูกต้อง';
+
+  const exp = document.getElementById('exp-' + qIdx);
+  exp.className = 'explanation show ' + (isCorrect ? 'correct-exp' : 'wrong-exp');
+
+  const card = document.getElementById('qcard-' + qIdx);
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  if (isCorrect) score++;
+  answered++;
+
+  document.getElementById('score-display').textContent = score;
+  document.getElementById('current-q').textContent = answered;
+  document.getElementById('progress-fill').style.width = (answered / questions.length * 100) + '%';
+
+  if (answered === questions.length) {
+    setTimeout(showResults, 800);
+  }
+}
+
+function showResults() {
+  const pct = Math.round(score / questions.length * 100);
+  let comment = '';
+  let emoji = '';
+  if (pct >= 90) { comment = 'เก่งมาก! พร้อมสอบจริงแล้ว! 🎯'; emoji = '🏆'; }
+  else if (pct >= 70) { comment = 'ดีมาก! ทบทวนอีกนิดก็เก่งแล้ว 💪'; emoji = '⭐'; }
+  else if (pct >= 50) { comment = 'พอใช้ ควรทบทวนเนื้อหาอีกครั้ง 📚'; emoji = '📖'; }
+  else { comment = 'ต้องทบทวนใหม่อีกครั้งนะ 🔄'; emoji = '💪'; }
+
+  const screen = document.getElementById('results-screen');
+  screen.innerHTML = `
+    <div style="font-size:4rem;margin-bottom:10px;">${emoji}</div>
+    <div class="results-label">ผลลัพธ์ของคุณ</div>
+    <div class="results-score">${score}/${questions.length}</div>
+    <div style="font-size:1.3rem;color:var(--gold);margin:8px 0;">${pct}%</div>
+    <div class="results-comment">${comment}</div>
+    <button class="retry-btn" onclick="retryQuiz()">🔄 ทำใหม่อีกครั้ง</button>
+    <div style="margin-top:20px;"><a href="index.html" style="color:var(--gold);">← กลับหน้าหลัก</a></div>
+  `;
+  screen.classList.add('show');
+  screen.scrollIntoView({ behavior: 'smooth' });
+
+  if (pct >= 80) spawnConfetti();
+}
+
+function retryQuiz() {
+  score = 0;
+  answered = 0;
+  document.getElementById('score-display').textContent = '0';
+  document.getElementById('current-q').textContent = '0';
+  document.getElementById('progress-fill').style.width = '0%';
+  document.getElementById('results-screen').classList.remove('show');
+  document.getElementById('results-screen').innerHTML = '';
+  renderQuiz();
+  document.getElementById('tab-quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+function spawnConfetti() {
+  const colors = ['#d4942f','#22a67e','#4b7bec','#e55c5c','#f0c040'];
+  for (let i = 0; i < 50; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDuration = (2 + Math.random() * 3) + 's';
+    c.style.animationDelay = Math.random() * 1.5 + 's';
+    c.style.width = (6 + Math.random() * 8) + 'px';
+    c.style.height = (6 + Math.random() * 8) + 'px';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 5000);
+  }
+}
+
+// Init
+renderQuiz();
+</script>
+</body>
+</html>
