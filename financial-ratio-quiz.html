@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 อัตราส่วนทางการเงิน & งบทดลอง — แบบทดสอบ ผช.ผจข.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg: #070b14;
+--surface: #131d33;
+--surface2: #1a2744;
+--gold: #d4942f;
+--gold-dim: #a06e1f;
+--green: #22a67e;
+--green-dim: #1a7d60;
+--blue: #4b7bec;
+--blue-dim: #3a5fb8;
+--red: #e55c5c;
+--red-dim: #b84444;
+--text: #edf2f7;
+--text-dim: #8899b0;
+--radius: 16px;
+--shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ===== Animated Background ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(212,148,47,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(75,123,236,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(34,166,126,0.04) 0%, transparent 60%);
+  z-index: -1;
+  animation: bgPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  animation: fadeSlideDown 0.8s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header .icon { font-size: 48px; margin-bottom: 12px; }
+.header h1 {
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold), #f0c96e, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.header .subtitle {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* ===== Back Link ===== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* ===== Tab Navigation ===== */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 10px;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.tab-btn {
+  flex: 1;
+  padding: 14px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(212,148,47,0.3);
+}
+.tab-btn:hover:not(.active) {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+/* ===== Tab Panels ===== */
+.tab-panel { display: none; animation: fadeIn 0.4s ease; }
+.tab-panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Summary Cards ===== */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 28px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .badge {
+  background: var(--gold);
+  color: var(--bg);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  border-color: rgba(212,148,47,0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.card-header {
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: background 0.3s;
+}
+.card-header:hover { background: rgba(255,255,255,0.02); }
+
+.card-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header .arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: var(--text-dim);
+}
+.card.open .card-header .arrow { transform: rotate(180deg); color: var(--gold); }
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  padding: 0 20px;
+}
+.card.open .card-body {
+  max-height: 3000px;
+  padding: 0 20px 20px;
+}
+
+.formula-box {
+  background: rgba(75,123,236,0.1);
+  border-left: 3px solid var(--blue);
+  padding: 12px 16px;
+  border-radius: 0 10px 10px 0;
+  margin: 10px 0;
+  font-family: 'Sarabun', monospace;
+  font-size: 0.95rem;
+}
+
+.formula-box.green {
+  background: rgba(34,166,126,0.1);
+  border-left-color: var(--green);
+}
+
+.formula-box.gold {
+  background: rgba(212,148,47,0.1);
+  border-left-color: var(--gold);
+}
+
+.formula-box.red {
+  background: rgba(229,92,92,0.1);
+  border-left-color: var(--red);
+}
+
+.point {
+  padding: 6px 0;
+  padding-left: 16px;
+  position: relative;
+  font-size: 0.93rem;
+}
+.point::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.highlight { color: var(--gold); font-weight: 600; }
+.highlight-green { color: var(--green); font-weight: 600; }
+.highlight-red { color: var(--red); font-weight: 600; }
+.highlight-blue { color: var(--blue); font-weight: 600; }
+
+.alert-box {
+  background: rgba(229,92,92,0.1);
+  border: 1px solid rgba(229,92,92,0.3);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+.alert-box strong { color: var(--red); }
+
+.info-box {
+  background: rgba(75,123,236,0.1);
+  border: 1px solid rgba(75,123,236,0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+
+code {
+  background: rgba(212,148,47,0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: var(--gold);
+}
+
+/* ===== Quiz Section ===== */
+.quiz-progress {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 70px;
+  z-index: 99;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.progress-text { font-weight: 600; font-size: 0.9rem; }
+.progress-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin: 0 16px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.question-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+  animation: fadeSlideUp 0.5s ease-out both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.question-card.answered-correct {
+  border-color: rgba(34,166,126,0.4);
+  background: linear-gradient(135deg, var(--surface), rgba(34,166,126,0.05));
+}
+.question-card.answered-wrong {
+  border-color: rgba(229,92,92,0.4);
+  background: linear-gradient(135deg, var(--surface), rgba(229,92,92,0.05));
+}
+
+.q-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.q-text {
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.q-type-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.q-type-tag.calc { background: rgba(75,123,236,0.2); color: var(--blue); }
+.q-type-tag.theory { background: rgba(34,166,126,0.2); color: var(--green); }
+
+.options { display: flex; flex-direction: column; gap: 8px; }
+
+.option-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 0.93rem;
+  color: var(--text);
+  text-align: left;
+  width: 100%;
+}
+.option-btn:hover:not(.disabled) {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(212,148,47,0.3);
+  transform: translateX(4px);
+}
+
+.option-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.option-btn.selected-correct {
+  background: rgba(34,166,126,0.15);
+  border-color: var(--green);
+}
+.option-btn.selected-correct .option-label {
+  background: var(--green);
+  color: #fff;
+}
+
+.option-btn.selected-wrong {
+  background: rgba(229,92,92,0.15);
+  border-color: var(--red);
+}
+.option-btn.selected-wrong .option-label {
+  background: var(--red);
+  color: #fff;
+}
+
+.option-btn.correct-reveal {
+  border-color: rgba(34,166,126,0.5);
+  background: rgba(34,166,126,0.08);
+}
+
+.option-btn.disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.explanation {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  animation: fadeIn 0.3s ease;
+  display: none;
+}
+.explanation.show { display: block; }
+.explanation.correct {
+  background: rgba(34,166,126,0.1);
+  border: 1px solid rgba(34,166,126,0.2);
+}
+.explanation.wrong {
+  background: rgba(229,92,92,0.1);
+  border: 1px solid rgba(229,92,92,0.2);
+}
+
+/* ===== Results ===== */
+.results-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 40px 30px;
+  text-align: center;
+  margin-top: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+  animation: fadeSlideUp 0.6s ease-out;
+}
+
+.score-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  position: relative;
+}
+.score-circle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+.score-circle .score-text {
+  font-size: 2.4rem;
+  font-weight: 800;
+  z-index: 1;
+}
+.score-circle .score-label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  z-index: 1;
+}
+
+.results-msg {
+  font-size: 1.1rem;
+  margin: 12px 0;
+  font-weight: 600;
+}
+.results-detail {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #fff;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,148,47,0.4);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--gold);
+}
+.btn-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.footer .heart { color: var(--red); }
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .container { padding: 12px 10px 40px; }
+  .header { padding: 24px 12px 20px; }
+  .header .icon { font-size: 36px; }
+  .tab-btn { padding: 12px 6px; font-size: 0.8rem; }
+  .card-header { padding: 14px 16px; }
+  .card-header h3 { font-size: 0.9rem; }
+  .question-card { padding: 18px 14px; }
+  .quiz-progress { flex-wrap: wrap; gap: 8px; }
+  .progress-bar-wrap { order: 3; flex-basis: 100%; margin: 0; }
+  .results-card { padding: 30px 16px; }
+}
+
+/* ===== Scroll Animation ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Expand All Button ===== */
+.expand-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 12px;
+}
+.expand-all-btn:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ===== Summary Section Styles ===== */
+.summary-section { margin-top: 10px; }
+.sub-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green);
+  margin: 16px 0 8px;
+  padding-left: 4px;
+}
+ul.clean {
+  list-style: none;
+  padding: 0;
+}
+ul.clean li {
+  padding: 4px 0 4px 18px;
+  position: relative;
+  font-size: 0.9rem;
+}
+ul.clean li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="icon">📊</div>
+    <h1>อัตราส่วนทางการเงิน & การตรวจสอบงบทดลอง</h1>
+    <div class="subtitle">แบบทดสอบเตรียมสอบ ผู้ช่วยผู้จัดการ ธ.ก.ส.</div>
+  </div>
+
+  <!-- Back Link -->
+  <a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+
+  <!-- Tab Navigation -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('summary')">📚 เนื้อหาสรุป</button>
+    <button class="tab-btn" onclick="switchTab('quiz')">📝 แบบทดสอบ 20 ข้อ</button>
+  </div>
+
+  <!-- ==================== SUMMARY PANEL ==================== -->
+  <div id="panel-summary" class="tab-panel active">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+      <div class="section-title" style="margin:0;">📖 อัตราส่วนทางการเงิน 5 กลุ่ม</div>
+      <button class="expand-all-btn" onclick="toggleAllCards(this)">🔄 แสดงทั้งหมด</button>
+    </div>
+
+    <!-- ===== Group 1: Profitability ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">💰</span> กลุ่ม 1: วัดความสามารถในการทำกำไร (Profitability)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="sub-heading">1.1 Gross Profit Margin (อัตรากำไรขั้นต้น)</div>
+        <div class="formula-box">
+          Gross Profit Margin = (ยอดขาย – ต้นทุนขาย) / ยอดขาย × 100
+        </div>
+        <div class="point"><span class="highlight">ยิ่งสูง ยิ่งดี</span> — แสดงว่าบริหารต้นทุนได้ดี</div>
+
+        <div class="sub-heading">1.2 ROA (Return on Assets)</div>
+        <div class="formula-box green">
+          ROA = กำไรสุทธิ / สินทรัพย์รวม × 100
+        </div>
+        <div class="point"><span class="highlight-green">ยิ่งสูง ยิ่งดี</span> — แสดงประสิทธิภาพการใช้ทรัพย์สินสร้างกำไร</div>
+
+        <div class="sub-heading">1.3 EBITDA</div>
+        <div class="formula-box gold">
+          EBITDA = กำไรจากการดำเนินงาน + ค่าเสื่อมราคา + ค่าตัดจำหน่าย
+        </div>
+        <div class="point">ใช้เป็นตัวแทนกระแสเงินสดจากการดำเนินงาน</div>
+        <div class="point">สำคัญมากสำหรับการคำนวณ <span class="highlight-red">ICR</span> และ <span class="highlight-red">DSCR</span></div>
+      </div>
+    </div>
+
+    <!-- ===== Group 2: Liquidity ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">💧</span> กลุ่ม 2: วัดสภาพคล่อง (Liquidity)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="sub-heading">2.1 Current Ratio</div>
+        <div class="formula-box">
+          Current Ratio = สินทรัพย์หมุนเวียน / หนี้สินหมุนเวียน
+        </div>
+        <div class="point">ปกติควรได้ <span class="highlight">≥ 2 เท่า</span></div>
+        <div class="point">ถ้าน้อยกว่า 1 แสดงว่ามีปัญหาสภาพคล่องรุนแรง</div>
+        <div class="info-box">
+          💡 <strong>สูตรจำง่าย:</strong> "สินทรัพย์หมุนเวียน หาร หนี้สินหมุนเวียน" → ตอบว่า <strong>อย่างน้อย 2 เท่า</strong> ถ้าถูกถามเรื่องค่าปกติ
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Group 3: Leverage ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">⚖️</span> กลุ่ม 3: วัดภาระหนี้สิน (Leverage / Debt)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="sub-heading">3.1 D/E Ratio (Debt to Equity)</div>
+        <div class="formula-box red">
+          D/E Ratio = หนี้สินรวม / ส่วนของเจ้าของ
+        </div>
+        <div class="point"><span class="highlight-red">ไม่ควรเกิน 1 เท่า</span> — ถ้าเกินแสดงว่าพึ่งเงินกู้มากเกินไป</div>
+
+        <div class="sub-heading">3.2 D/A Ratio (Debt to Assets)</div>
+        <div class="formula-box red">
+          D/A Ratio = หนี้สินรวม / สินทรัพย์รวม
+        </div>
+        <div class="point"><span class="highlight-red">ไม่ควรมากกว่า 1 เท่า</span> (เนื่องจากหนี้สินรวม ≤ สินทรัพย์รวม เสมอ)</div>
+
+        <div class="alert-box">
+          🚨 <strong>จุดจำ:</strong> D/E สูง = บริษัทมีหนี้มาก = ความเสี่ยงสูง = банкability ต่ำ
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Group 4: Repayment Capacity ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">🚨</span> กลุ่ม 4: วัดความสามารถชำระหนี้ (Repayment Capacity)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="alert-box">
+          🚨 <strong>จุดเน้นสอบ!</strong> กลุ่มนี้เป็นหัวใจสำคัญที่สุดในการวิเคราะห์สินเชื่อ ธ.ก.ส.
+        </div>
+
+        <div class="sub-heading">4.1 ICR (Interest Coverage Ratio)</div>
+        <div class="formula-box gold">
+          ICR = EBITDA / ดอกเบี้ยจ่าย
+        </div>
+        <div class="point">ควรได้ <span class="highlight">3 – 5 เท่า</span> ขั้นต่ำ <span class="highlight-red">ต้อง > 1 เท่า</span></div>
+        <div class="point">ICR วัดว่ากำไรจากกิจการเพียงพอจ่ายดอกเบี้ยหรือไม่</div>
+
+        <div class="sub-heading">4.2 DSCR (Debt Service Coverage Ratio)</div>
+        <div class="formula-box gold">
+          DSCR = EBITDA / (ดอกเบี้ยจ่าย + ต้นเงินกู้ที่ถึงกำหนดชำระ)
+        </div>
+        <div class="point">ควรได้ <span class="highlight">3 – 5 เท่า</span> ขั้นต่ำ <span class="highlight-red">ต้อง > 1 เท่า</span></div>
+        <div class="point">DSCR วัดว่ากำไรเพียงพอจ่ายทั้งดอกเบี้ย <strong>และ</strong> ต้นเงินหรือไม่</div>
+
+        <div class="info-box">
+          🔑 <strong>ความแตกต่าง ICR vs DSCR:</strong><br>
+          • ICR หารแค่ <strong>ดอกเบี้ยจ่าย</strong> เท่านั้น<br>
+          • DSCR หารทั้ง <strong>ดอกเบี้ย + ต้นเงินกู้</strong> ที่ครบกำหนด<br>
+          → DSCR จึงเข้มงวดกว่า ICR เสมอ
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Group 5: Project Return ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">📈</span> กลุ่ม 5: ประเมินผลตอบแทนโครงการ (Project Return)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="sub-heading">5.1 NPV (Net Present Value)</div>
+        <div class="formula-box green">
+          NPV = มูลค่าปัจจุบันรายได้ – มูลค่าปัจจุบันรายจ่าย
+        </div>
+        <div class="point">ต้อง <span class="highlight-green">≥ 0</span> ถึงจะยอมรับโครงการได้</div>
+        <div class="point">NPV > 0 หมายถึงโครงการสร้างมูลค่าเพิ่ม</div>
+
+        <div class="sub-heading">5.2 IRR (Internal Rate of Return)</div>
+        <div class="formula-box green">
+          IRR = อัตราคิดลดที่ทำให้ NPV = 0
+        </div>
+        <div class="point">ต้อง <span class="highlight-green">> อัตราดอกเบี้ยเงินกู้</span> ถึงจะยอมรับ</div>
+
+        <div class="sub-heading">5.3 B/C Ratio (Benefit-Cost Ratio)</div>
+        <div class="formula-box green">
+          B/C Ratio = PV รายได้ / PV รายจ่าย
+        </div>
+        <div class="point">ต้อง <span class="highlight-green">> 1 เท่า</span> ถึงจะยอมรับ</div>
+
+        <div class="sub-heading">5.4 Payback Period (ระยะเวลาคืนทุน)</div>
+        <div class="formula-box">
+          Payback Period = เงินลงทุนเริ่มต้น / กระแสเงินสดต่อปี
+        </div>
+        <div class="point"><span class="highlight">ยิ่งสั้น ยิ่งดี</span> — แสดงว่าคืนทุนเร็ว</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:36px;">🔍 การตรวจสอบงบทดลอง (Trial Balance) ในระบบ FMIS</div>
+
+    <!-- ===== Trial Balance ===== -->
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">📋</span> หลักการตรวจสอบงบทดลอง</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="sub-heading">หลักการพื้นฐาน</div>
+        <div class="point">งบทดลอง: <span class="highlight">Dr. = Cr. เสมอ</span></div>
+        <div class="point">ตรวจสอบรายงาน <code>ZGL05</code> — double-click เพื่อดูเลขที่เอกสาร</div>
+        <div class="info-box">
+          💡 รหัสเอกสารใน ZGL05:<br>
+          • <code>1</code> = สินทรัพย์<br>
+          • <code>2</code> = ลูกหนี้/AR<br>
+          • <code>7</code> = รายการ Interface กับ CBS<br>
+          • <code>8</code> = การบันทึกลง GL
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">💵</span> ตรวจสอบบัญชีเงินสดในมือ</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="point">บัญชีเงินสดในมือ ใช้รหัสบัญชี <code>10100100</code></div>
+        <div class="point">ต้อง<span class="highlight-red">ตรงกับเงินจริง</span>เสมอ</div>
+        <div class="alert-box">
+          🚨 <strong>สำคัญ!</strong> เงินสดในมือต้องกระทบยอดตรงทุกยอด ห้ามคลาดเคลื่อน
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">🔄</span> กระทบยอด CBS กับ FMIS</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="point">ใช้รายงาน <code>YGLR005</code></div>
+        <div class="point">ดูคอลัมน์ <span class="highlight">"จำนวนเงินที่แตกต่าง"</span></div>
+        <div class="point">ต้องเป็น <span class="highlight-red">0 เสมอ</span></div>
+        <div class="info-box">
+          💡 ถ้าคอลัมน์ "จำนวนเงินที่แตกต่าง" ≠ 0 แสดงว่ามีรายการ.interface ไม่ตรง ต้องตรวจสอบทันที
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">⚠️</span> ตรวจบัญชีพัก (Suspense Accounts)</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="alert-box">
+          🚨 <strong>บัญชีพักทุกบัญชีต้องเป็น 0 เสมอ!</strong>
+        </div>
+
+        <div class="sub-heading">รหัสบัญชีพักที่ต้องตรวจ</div>
+        <ul class="clean">
+          <li><code>25001001</code> — พักเงินสด CBS</li>
+          <li><code>25001000</code> — พักเงินฝาก</li>
+          <li><code>25001002</code> — พักแคชเชียร์เช็ค</li>
+          <li><code>25000100</code> — พักเงินกู้</li>
+        </ul>
+        <div class="point" style="margin-top:8px;">ถ้าบัญชีพักมียอด ≠ 0 แสดงว่ามีรายการค้าง处理 ต้องตามรอยและจัดการให้เสร็จ</div>
+      </div>
+    </div>
+
+    <div class="card" data-card>
+      <div class="card-header" onclick="toggleCard(this)">
+        <h3><span style="font-size:1.2em">📑</span> รายงานที่ใช้ตรวจสอบ</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <ul class="clean">
+          <li><code>ZTLRJGL</code> (Teller Journal GL) — ดูรายการเคลื่อนไหวของเคาน์เตอร์</li>
+          <li><code>ZSCA220B</code> (Rejected Transaction) — ดูรายการที่ทำไม่สำเร็จ <span class="highlight-red">(ย้อนหลัง 1 วัน)</span></li>
+          <li><code>ZGL05</code> — ดูรายการ GL รายวัน</li>
+          <li><code>YGLR005</code> — กระทบยอด CBS-FMIS</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== QUIZ PANEL ==================== -->
+  <div id="panel-quiz" class="tab-panel">
+
+    <div class="quiz-progress" id="quizProgress">
+      <span class="progress-text" id="progressText">ข้อ 0 / 20</span>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      <span class="progress-text" id="scoreText">⭐ 0 คะแนน</span>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <div id="resultsArea" style="display:none;"></div>
+
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  สร้างโดย คาร่า 🐶 | เตรียมสอบ ผช.ผจข. ธ.ก.ส.<br>
+  <span style="font-size:0.78rem; opacity:0.6;">Financial Ratio Analysis & Trial Balance Verification</span>
+</div>
+
+<script>
+// ===== Tab Switching =====
+function switchTab(tab) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  event.target.classList.add('active');
+  if (tab === 'quiz' && !quizStarted) { startQuiz(); }
+}
+
+// ===== Card Toggle =====
+function toggleCard(header) {
+  header.closest('.card').classList.toggle('open');
+}
+
+function toggleAllCards(btn) {
+  const cards = document.querySelectorAll('.card[data-card]');
+  const allOpen = Array.from(cards).every(c => c.classList.contains('open'));
+  cards.forEach(c => {
+    if (allOpen) c.classList.remove('open');
+    else c.classList.add('open');
+  });
+  btn.textContent = allOpen ? '🔄 แสดงทั้งหมด' : '🔄 ซ่อนทั้งหมด';
+}
+
+// ===== Quiz Data =====
+const quizData = [
+  {
+    q: "Current Ratio ที่เหมาะสมควรเท่าใด?",
+    type: "theory",
+    options: ["≥ 1 เท่า", "≥ 2 เท่า", "≥ 3 เท่า", "≥ 0.5 เท่า"],
+    correct: 1,
+    explain: "Current Ratio ควรได้อย่างน้อย 2 เท่า แสดงว่ามีสินทรัพย์หมุนเวียนเพียงพอชำระหนี้สินหมุนเวียนได้ 2 เท่า"
+  },
+  {
+    q: "บริษัทมีสินทรัพย์หมุนเวียน 500,000 บาท หนี้สินหมุนเวียน 200,000 บาท Current Ratio เท่าใด?",
+    type: "calc",
+    options: ["1.5 เท่า", "2.0 เท่า", "2.5 เท่า", "0.4 เท่า"],
+    correct: 2,
+    explain: "Current Ratio = 500,000 / 200,000 = 2.5 เท่า"
+  },
+  {
+    q: "D/E Ratio สูงแสดงความหมายอย่างไร?",
+    type: "theory",
+    options: ["บริษัทมีกำไรดี", "บริษัทมีหนี้มากเมื่อเทียบกับเงินทุนของเจ้าของ", "บริษัทมีสภาพคล่องดี", "บริษัทมีทรัพย์สินมาก"],
+    correct: 1,
+    explain: "D/E Ratio = หนี้สินรวม / ส่วนของเจ้าของ ถ้าสูงแสดงว่าพึ่งเงินกู้มากกว่าเงินทุนของเจ้าของ = ความเสี่ยงทางการเงินสูง"
+  },
+  {
+    q: "ความแตกต่างระหว่าง ICR และ DSCR คืออะไร?",
+    type: "theory",
+    options: [
+      "ICR หารแค่ดอกเบี้ยจ่าย, DSCR หารทั้งดอกเบี้ย + ต้นเงินกู้",
+      "DSCR หารแค่ดอกเบี้ยจ่าย, ICR หารทั้งดอกเบี้ย + ต้นเงินกู้",
+      "ทั้งสองเหมือนกันทุกประการ",
+      "ICR ใช้กำไรสุทธิ, DSCR ใช้ EBITDA"
+    ],
+    correct: 0,
+    explain: "ICR = EBITDA / ดอกเบี้ยจ่าย (วัดแค่ว่าจ่ายดอกเบี้ยได้หรือไม่) ส่วน DSCR = EBITDA / (ดอกเบี้ยจ่าย + ต้นเงินกู้) วัดว่าจ่ายทั้งดอกเบี้ยและต้นเงินได้หรือไม่ → DSCR เข้มงวดกว่า"
+  },
+  {
+    q: "NPV เท่าใดจึงถือว่าโครงการน่าลงทุน?",
+    type: "theory",
+    options: ["NPV > 1", "NPV ≥ 0", "NPV > 100%", "NPV < 0"],
+    correct: 1,
+    explain: "NPV ≥ 0 หมายถึงมูลค่าปัจจุบันของรายได้มากกว่าหรือเท่ากับรายจ่าย แสดงว่าโครงการมีมูลค่าเพิ่ม (NPV ≥ 0)"
+  },
+  {
+    q: "IRR ควรเปรียบเทียบกับอะไร?",
+    type: "theory",
+    options: ["อัตราเงินเฟ้อ", "อัตราดอกเบี้ยเงินกู้", "อัตราการเติบโตของ GDP", "อัตราภาษี"],
+    correct: 1,
+    explain: "IRR (อัตราผลตอบแทนภายใน) ต้องมากกว่าอัตราดอกเบี้ยเงินกู้ ถึงจะยอมรับโครงการได้ เพราะถ้า IRR น้อยกว่าดอกเบี้ยกู้ ไม่คุ้ม"
+  },
+  {
+    q: "B/C Ratio ควรมีค่าเท่าใดจึงถือว่าโครงการคุ้มค่า?",
+    type: "theory",
+    options: ["B/C > 0.5", "B/C > 1", "B/C = 0", "B/C < 1"],
+    correct: 1,
+    explain: "B/C Ratio = PV รายได้ / PV รายจ่าย ถ้า > 1 แสดงว่ารายได้มากกว่ารายจ่าย = คุ้มค่า"
+  },
+  {
+    q: "ในระบบ FMIS บัญชีพักพักเงินสด CBS ใช้รหัสใด?",
+    type: "theory",
+    options: ["25001000", "25001001", "25001002", "25000100"],
+    correct: 1,
+    explain: "รหัสบัญชีพักเงินสด CBS คือ 25001001 (ต้องเป็น 0 เสมอ)"
+  },
+  {
+    q: "รายงาน YGLR005 ใช้ทำอะไร?",
+    type: "theory",
+    options: [
+      "ดูรายการเคลื่อนไหวของเคาน์เตอร์",
+      "กระทบยอด CBS กับ FMIS",
+      "ดูรายการที่ทำไม่สำเร็จ",
+      "ดูรายงาน GL รายวัน"
+    ],
+    correct: 1,
+    explain: "YGLR005 ใช้กระทบยอด CBS กับ FMIS โดยดูคอลัมน์ 'จำนวนเงินที่แตกต่าง' ต้องเท่ากับ 0"
+  },
+  {
+    q: "รายงาน ZSCA220B แสดงรายการย้อนหลังกี่วัน?",
+    type: "theory",
+    options: ["7 วัน", "1 วัน", "30 วัน", "ไม่จำกัด"],
+    correct: 1,
+    explain: "ZSCA220B (Rejected Transaction) แสดงรายการที่ทำไม่สำเร็จ ย้อนหลัง 1 วัน"
+  },
+  {
+    q: "บัญชีเงินสดในมือในระบบ FMIS ใช้รหัสบัญชีใด?",
+    type: "theory",
+    options: ["10100100", "25001001", "25001000", "10100001"],
+    correct: 0,
+    explain: "บัญชีเงินสดในมือใช้รหัส 10100100 ต้องตรวจสอบว่าตรงกับเงินจริงเสมอ"
+  },
+  {
+    q: "EBITDA คำนวณจากอะไร?",
+    type: "calc",
+    options: [
+      "กำไรสุทธิ + ค่าเสื่อมราคา",
+      "กำไรจากการดำเนินงาน + ค่าเสื่อมราคา + ค่าตัดจำหน่าย",
+      "รายได้ - ค่าใช้จ่ายทั้งหมด",
+      "กำไรสุทธิ - ภาษี"
+    ],
+    correct: 1,
+    explain: "EBITDA = กำไรจากการดำเนินงาน + ค่าเสื่อมราคา + ค่าตัดจำหน่าย ซึ่งเป็นตัวแทนกระแสเงินสดจากการดำเนินงาน"
+  },
+  {
+    q: "ROA = กำไรสุทธิ / สินทรัพย์รวม × 100 ROA ที่สูงแสดงว่าอย่างไร?",
+    type: "theory",
+    options: [
+      "บริษัทมีหนี้สินมาก",
+      "บริษัทใช้ทรัพย์สินสร้างกำไรได้อย่างมีประสิทธิภาพ",
+      "บริษัทมีสภาพคล่องต่ำ",
+      "บริษัทมีเงินทุนน้อย"
+    ],
+    correct: 1,
+    explain: "ROA สูง แสดงว่าบริษัทสามารถนำทรัพย์สินมาสร้างกำไรได้ดี = มีประสิทธิภาพในการบริหารทรัพย์สิน"
+  },
+  {
+    q: "Gross Profit Margin = (ยอดขาย – ต้นทุนขาย) / ยอดขาย × 100 ค่าที่ได้สูงแสดงว่า?",
+    type: "calc",
+    options: [
+      "บริษัทมีค่าใช้จ่ายสูง",
+      "บริษัทบริหารต้นทุนได้ดี มีกำไรขั้นต้นสูง",
+      "บริษัทมีหนี้สินมาก",
+      "บริษัทมีสินทรัพย์น้อย"
+    ],
+    correct: 1,
+    explain: "Gross Profit Margin สูง แสดงว่ามีกำไรหลังหักต้นทุนขายมาก บริหารต้นทุนได้ดี"
+  },
+  {
+    q: "Payback Period สั้นแสดงความหมายอย่างไร?",
+    type: "theory",
+    options: [
+      "โครงการมีความเสี่ยงสูง",
+      "โครงการคืนทุนเร็ว = ดี",
+      "โครงการไม่คุ้มค่า",
+      "โครงการมีกำไรต่ำ"
+    ],
+    correct: 1,
+    explain: "Payback Period ยิ่งสั้นยิ่งดี แสดงว่าใช้เวลาคืนเงินลงทุนน้อย = เร็วกว่าจะเริ่มมีกำไร"
+  },
+  {
+    q: "รหัสเอกสารในรายงาน ZGL05 เลข 7 หมายถึงอะไร?",
+    type: "theory",
+    options: [
+      "สินทรัพย์",
+      "ลูกหนี้/AR",
+      "รายการ Interface กับ CBS",
+      "การบันทึกลง GL"
+    ],
+    correct: 2,
+    explain: "รหัส 7 ใน ZGL05 หมายถึงรายการ Interface กับ CBS (ระบบbankingหลัก)"
+  },
+  {
+    q: "DSCR = EBITDA / (ดอกเบี้ยจ่าย + ต้นเงินกู้ที่ถึงกำหนด) DSCR ขั้นต่ำควรเท่าใด?",
+    type: "calc",
+    options: ["> 0.5 เท่า", "> 1 เท่า", "> 2 เท่า", "= 0 เท่า"],
+    correct: 1,
+    explain: "DSCR ขั้นต่ำต้องมากกว่า 1 เท่าเสมอ (ควรอยู่ที่ 3-5 เท่า) เพราะถ้าเท่ากับหรือน้อยกว่า 1 แสดงว่ากำไรไม่พอจ่ายหนี้"
+  },
+  {
+    q: "NPV เท่าใดจึงถือว่าโครงการเป็นที่ยอมรับ?",
+    type: "theory",
+    options: [
+      "NPV ต้องน้อยกว่า 0",
+      "NPV ต้องเท่ากับ 0 เท่านั้น",
+      "NPV ≥ 0 (มากกว่าหรือเท่ากับ 0)",
+      "NPV ต้องมากกว่า 100"
+    ],
+    correct: 2,
+    explain: "NPV ≥ 0 เป็นเงื่อนไขการยอมรับโครงการ = มูลค่าปัจจุบันของกระแสเงินสดรับมากกว่าหรือเท่ากับจ่าย"
+  },
+  {
+    q: "D/E Ratio สูงมาก (เช่น 3 เท่า) แสดงว่า?",
+    type: "theory",
+    options: [
+      "บริษัทมีเงินทุนมาก",
+      "บริษัทมีความเสี่ยงสูงเพราะพึ่งหนี้สินมาก",
+      "บริษัทมีสภาพคล่องดี",
+      "บริษัทมีกำไรสูง"
+    ],
+    correct: 1,
+    explain: "D/E = 3 หมายถึงหนี้สิน 3 ส่วนต่อทุน 1 ส่วน = พึ่งเงินกู้มาก = ความเสี่ยงสูง ธนาคารมักไม่ชอบให้กู้"
+  },
+  {
+    q: "อัตราส่วนใดที่ใช้วัดความสามารถในการจ่ายดอกเบี้ยเงินกู้?",
+    type: "theory",
+    options: [
+      "Current Ratio",
+      "D/E Ratio",
+      "ICR (Interest Coverage Ratio)",
+      "Gross Profit Margin"
+    ],
+    correct: 2,
+    explain: "ICR = EBITDA / ดอกเบี้ยจ่าย วัดว่ากำไรจากกิจการเพียงพอจ่ายดอกเบี้ยเงินกู้หรือไม่"
+  }
+];
+
+// ===== Quiz Logic =====
+let quizStarted = false;
+let currentQ = 0;
+let score = 0;
+let answered = [];
+
+function startQuiz() {
+  quizStarted = true;
+  currentQ = 0;
+  score = 0;
+  answered = new Array(quizData.length).fill(false);
+  document.getElementById('resultsArea').style.display = 'none';
+  renderQuestion();
+  updateProgress();
+}
+
+function renderQuestion() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+
+  quizData.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'q' + i;
+    card.style.animationDelay = (i * 0.05) + 's';
+
+    const typeTag = q.type === 'calc'
+      ? '<span class="q-type-tag calc">🔢 คำนวณ</span>'
+      : '<span class="q-type-tag theory">📖 ทฤษฎี</span>';
+
+    const labels = ['ก', 'ข', 'ค', 'ง'];
+    let optionsHTML = q.options.map((opt, j) => `
+      <button class="option-btn" onclick="selectAnswer(${i}, ${j})" id="opt-${i}-${j}">
+        <span class="option-label">${labels[j]}</span>
+        <span>${opt}</span>
+      </button>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="q-number">${i + 1}</div>
+      <div class="q-text">${q.q} ${typeTag}</div>
+      <div class="options">${optionsHTML}</div>
+      <div class="explanation" id="exp-${i}">
+        <strong>${q.correct === answered[i] ? '✅ ถูกต้อง!' : '❌ ไม่ถูกต้อง'}</strong><br>
+        ${q.explain}
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qIdx, optIdx) {
+  if (answered[qIdx] !== false) return; // already answered
+  answered[qIdx] = optIdx;
+  const q = quizData[qIdx];
+  const isCorrect = optIdx === q.correct;
+
+  if (isCorrect) score++;
+
+  // Style options
+  q.options.forEach((_, j) => {
+    const btn = document.getElementById(`opt-${qIdx}-${j}`);
+    btn.classList.add('disabled');
+    if (j === optIdx) {
+      btn.classList.add(isCorrect ? 'selected-correct' : 'selected-wrong');
+    } else if (j === q.correct) {
+      btn.classList.add('correct-reveal');
+    }
+  });
+
+  // Style card
+  const card = document.getElementById('q' + qIdx);
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  // Show explanation
+  const exp = document.getElementById('exp-' + qIdx);
+  exp.className = 'explanation show ' + (isCorrect ? 'correct' : 'wrong');
+
+  updateProgress();
+
+  // Check if all answered
+  if (answered.every(a => a !== false)) {
+    setTimeout(showResults, 800);
+  }
+}
+
+function updateProgress() {
+  const total = quizData.length;
+  const done = answered.filter(a => a !== false).length;
+  document.getElementById('progressText').textContent = `ข้อ ${done} / ${total}`;
+  document.getElementById('scoreText').textContent = `⭐ ${score} คะแนน`;
+  document.getElementById('progressBar').style.width = ((done / total) * 100) + '%';
+}
+
+function showResults() {
+  const total = quizData.length;
+  const pct = Math.round((score / total) * 100);
+  const circumference = 2 * Math.PI * 65;
+  const offset = circumference - (pct / 100) * circumference;
+
+  let color = pct >= 80 ? '#22a67e' : pct >= 50 ? '#d4942f' : '#e55c5c';
+  let msg = pct >= 80 ? 'เก่งมาก! 🎉' : pct >= 50 ? 'พอใช้ได้ 💪' : 'ต้องทบทวนอีก 📚';
+  let detail = pct >= 80
+    ? 'คุณมีความรู้พื้นฐานที่ดีมาก พร้อมสอบ!'
+    : pct >= 50
+    ? 'ควรทบทวนเนื้อหาที่ตอบผิดอีกครั้ง'
+    : 'แนะนำให้ทบทวนเนื้อหาสรุปก่อนทำแบบทดสอบอีกครั้ง';
+
+  const resultsArea = document.getElementById('resultsArea');
+  resultsArea.style.display = 'block';
+  resultsArea.innerHTML = `
+    <div class="results-card">
+      <div class="score-circle">
+        <svg width="160" height="160">
+          <circle cx="80" cy="80" r="65" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+          <circle cx="80" cy="80" r="65" fill="none" stroke="${color}" stroke-width="10"
+            stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"
+            stroke-linecap="round" style="transition: stroke-dashoffset 1.5s ease;">
+          </circle>
+        </svg>
+        <span class="score-text" style="color:${color}">${score}/${total}</span>
+        <span class="score-label">${pct}%</span>
+      </div>
+      <div class="results-msg" style="color:${color}">${msg}</div>
+      <div class="results-detail">${detail}</div>
+      <div class="btn-group">
+        <button class="btn btn-gold" onclick="startQuiz(); window.scrollTo({top:0,behavior:'smooth'});">🔄 ทำใหม่อีกครั้ง</button>
+        <a href="index.html" class="btn btn-outline">🏠 กลับหน้าหลัก</a>
+      </div>
+    </div>
+  `;
+
+  resultsArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ===== Scroll Reveal Animation =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
