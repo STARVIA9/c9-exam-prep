@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ C9 — พ.ร.บ.2509 20 ข้อ + รวมทุกหมวด 30 ข้อ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8  overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:15px;color:var(--a);margin-right:10px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+.hero{text-align:center;padding:20px 16px 24px;border-bottom:2px solid var(--b);margin-bottom:28px}
+.hero h1{font-size:22px;color:var(--a);margin-bottom:6px}
+.hero p{color:var(--t2);font-size:14px}
+.badge{display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24} .badge.blue{background:#1e3a5f;color:#60a5fa} .badge.green{background:#064e3b;color:#34d399}
+h2{font-size:20px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:14px}
+h4{font-size:15px;color:var(--a3);margin:16px 0 8px;font-weight:600}
+.sc{margin:6px 0 16px;font-size:14px;color:var(--t2)}
+.sc .btn{background:var(--a2);color:#0f172a;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-left:8px}
+.qq{border:1px solid var(--b);background:var(--s);border-radius:8px;padding:12px 14px;margin:8px 0}
+.qq h4{font-size:14px;color:var(--t);margin:0 0 6px 0;border:none;padding:0}
+.qq label{display:block;font-size:13px;padding:3px 0;color:var(--t2);cursor:pointer}
+.qq label:hover{color:var(--a)}
+.qq .btn{background:var(--a);color:#0f172a;border:none;border-radius:6px;padding:5px 14px;font-size:13px;font-weight:600;cursor:pointer;margin-top:6px}
+.qq .btn:hover{opacity:.85}
+.rb.ok{color:#34d399;font-size:13px;padding:4px 0} .rb.no{color:#fca5a5;font-size:13px;padding:4px 0}
+footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>📝 ข้อสอบ C9</h1>
+  <a href="#qz1">📜 พ.ร.บ. 20 ข้อ</a>
+  <a href="#qz2">📋 รวมทุกหมวด 30 ข้อ</a>
+  <a href="c9-content.html" style="margin-left:auto;color:var(--a)">⬅ กลับหน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+<div class="hero">
+  <h1>📝 แบบทดสอบ C9 — 50 ข้อ</h1>
+  <p>พ.ร.บ.2509 20 ข้อ + รวมทุกหมวด 30 ข้อ | จากไฟล์ c9-master (เดิม)</p>
+  <div>
+    <span class="badge gold">📜 พ.ร.บ.2509 20 ข้อ</span>
+    <span class="badge blue">📋 รวมทุกหมวด 30 ข้อ</span>
+  </div>
+</div>
+
+<!-- QUIZ 1: พ.ร.บ.2509 -->
+<h2 id="qz1">📜 แบบทดสอบ พ.ร.บ.2509 — 20 ข้อ</h2>
+<div id="qz1"></div>
+<div class="sc">คะแนน: <span id="sc1">0</span> / 20 <button class="btn" onclick="rs(1)">🔄 ทำใหม่</button></div>
+
+<!-- QUIZ 2: รวมทุกหมวด -->
+<h2 id="qz2">📋 แบบทดสอบรวมทุกหมวด — 30 ข้อ</h2>
+<div id="qz2"></div>
+<div class="sc">คะแนน: <span id="sc2">0</span> / 30 <button class="btn" onclick="rs(2)">🔄 ทำใหม่</button></div>
+
+<footer>
+  🐶✨ คาร่า — 27 มิถุนายน 2569 · <a href="c9-content.html" style="color:#f59e0b">⬅ กลับหน้าหลัก</a>
+</footer>
+</div><!-- /ct -->
+
+<script>
+const Q1=[
+{q:"ตั้งสาขาได้ที่ไหน",c:["ไทยเท่านั้น","กทม.","ในและตปท.","ตปท."],a:2},
+{q:"คณะกรรมการประกอบด้วย",c:["รมว.+รอง2+กก.≤12","รมว.+รอง1+กก.≤10","รมว.+รอง1+กก.≤12+ผจก.เลขา","รมว.+รอง2+กก.≤10"],a:2},
+{q:"ออกข้อบังคับเป็นอำนาจใคร",c:["ธปท.","คกก.ธ.ก.ส.","ผจก.","ผู้บริหาร"],a:1},
+{q:"วัตถุประสงค์ไม่ถูก",c:["ช่วยเกษตรกร","ช่วยบุคคลธรรมดาเท่านั้น","ช่วยกลุ่ม","ช่วยสหกรณ์"],a:1},
+{q:"ทุนเรือนหุ้น",c:["2,000ล.","4,000ล.","8,000ล.","10,000ล."],a:1},
+{q:"คลังถือหุ้นไม่น้อยกว่า",c:["50%","60%","75%","90%"],a:2},
+{q:"ผจก.คุณสมบัติ",c:["ไทย+ตรี","ไทย+ความรู้5ด้าน+เต็มเวลา","ไทย+ประสบการณ์10ปี","ไทย+ความรู้การตลาด"],a:1},
+{q:"ผจก.ว่าง ใครแทน",c:["ประธาน","รองประธาน","รองผจก.","ผู้บริหาร"],a:2},
+{q:"ประชุมสามัญ",c:["1/90วัน","1/150วัน","2/90วัน","2/150วัน"],a:1},
+{q:"องค์ประชุม",c:["≥10คนหุ้น≥1/5","≥15คนหุ้น≥1/3","≥20คนหุ้น≥1/4","≥25คนหุ้น≥1/2"],a:2},
+{q:"ผจก.อายุขั้นต่ำ",c:[30,35,40,45],a:1},
+{q:"กก.ไม่เกินกี่คน",c:[10,12,14,15],a:1},
+{q:"สำรองกี่%ของกำไร",c:["5%","10%","15%","20%"],a:1},
+{q:"สำรองถึงเท่าใดของทุน",c:["1/5","1/4","1/3","1/2"],a:1},
+{q:"รมว.คลังเป็น",c:["ประธาน","รอง","กรรมการ","ที่ปรึกษา"],a:0},
+{q:"ความรับผิดผู้ถือหุ้น",c:["ไม่จำกัด","จำกัดมูลค่าหุ้น","จำกัด100","ไม่มีความ"],a:1},
+{q:"โทษ ม.32",c:["≤1ปี/ปรับ≤2,000","≤3ปี/ปรับ6,000","≤6เดือน/ปรับ1,000","≤5ปี/ปรับ10,000"],a:0},
+{q:"ผู้สอบบัญชีแต่งตั้งโดย",c:["ธนาคาร","ครม.","ธปท.","ผู้ถือหุ้น"],a:1},
+{q:"เลิกธนาคารโดย",c:["มติผู้ถือหุ้น","พ.ร.ฎ.","ครม.","ธปท."],a:1},
+{q:"บุคคลถือหุ้นไม่เกิน",c:["5%","10%","15%","25%"],a:0}
+];
+const E1=["ม.6ตั้งสาขาในและตปท.","ม.14รมว.+รอง1+กก.≤12+ผจก.เลขา","ม.18คกก.ออกข้อบังคับ","ม.9ช่วยเกษตรกร กลุ่ม สหกรณ์","ม.7ทุน4,000ล.","ม.7คลัง≥75%","ม.20ไทย+ความรู้5ด้าน+เต็มเวลา","ม.25รองผจก.รักษาการ","ม.27-29ปีละ1ครั้ง150วัน","ม.29≥20คนหุ้น≥1/4","ม.20≥35ปี","ม.14กก.≤12","ม.39≥10%","ม.39จน≥1/4ทุน","ม.14รมว.คลัง=ประธาน","ม.8จำกัดมูลค่าหุ้น","ม.32≤1ปี/ปรับ≤2,000","ม.35ครม.แต่งตั้ง","เลิกโดยพ.ร.ฎ.","ม.7บุคคล≤5%"];
+
+const Q2=[
+{q:"ทุนเรือนหุ้น",c:["3,000","4,000","5,000","6,000"],a:1},
+{q:"ผจก.อายุ",c:[30,35,40,45],a:1},
+{q:"กก.",c:[9,10,12,15],a:2},
+{q:"ประชุมกี่วัน",c:[120,150,180,90],a:1},
+{q:"องค์ประชุมคน",c:[10,15,20,25],a:2},
+{q:"สำรอง%",c:["5%","10%","15%","20%"],a:1},
+{q:"คลังถือ",c:["50%","60%","75%","80%"],a:2},
+{q:"MLR",c:["Min Loan Rate","Market Loan Rate","Max Loan Rate","Min Lending Rate"],a:0},
+{q:"POSDC D",c:["Directing","Doing","Developing","Decision"],a:0},
+{q:"ไม่ใช่4H",c:["HEAD","HAND","HARMONY","HEALTH"],a:2},
+{q:"ข้อห้ามสินเชื่อ",c:["ประชุมทีม","สร้างเอกสารเท็จ","ตรวจบูโร","พบปะหน่วย"],a:1},
+{q:"บัญชีการเงินถูก",c:["ปล่อยPW","สุ่มนับTeller","คนเดียวบรรจุATM","ไม่ตรวจVoucher"],a:1},
+{q:"อายุความกู้เป็นงวด",c:[3,5,7,10],a:1},
+{q:"อายุความดอกเบี้ย",c:[2,3,5,10],a:2},
+{q:"ไม่ใช่5P",c:["Purpose","People","Price","Payment"],a:2},
+{q:"ไม่ใช่7Cs",c:["Character","Country","Cost","Control"],a:2},
+{q:"สหกรณ์กี่ประเภท",c:[6,7,8,9],a:2},
+{q:"2(1)คือ",c:["ทุนให้กู้สมาชิก","ทุนวัสดุ","ทุนขายผลิตผล","ทุนลงทุน"],a:0},
+{q:"พระภิกษุเงินฝาก",c:["ทายาท","วัด","บิดามารดา","ธนาคาร"],a:1},
+{q:"ผู้ถือหุ้นตรวจ%",c:["10%","15%","20%","25%"],a:1},
+{q:"นิติบุคคลตปท.",c:["รับสดได้","ฝากชื่อหน้าเช็ค","ถอนไม่จำกัด","สลักหลัง"],a:1},
+{q:"รหัสตัดหนี้สูญ",c:["CMWFUL","CMWFULR","YGLR005","TIATM"],a:0},
+{q:"YGLR005ใช้",c:["ตัดหนี้","ตรวจงบ","ถอนฝาก","เปลี่ยนกล่อง"],a:1},
+{q:"BAAC Mobileอายุ",c:[15,18,20,25],a:0},
+{q:"ทดสอบถอนATM",c:[1000,2000,2800,3000],a:2},
+{q:"กรรมการนับATM",c:[2,3,4,5],a:1},
+{q:"เช็คขีดคร่อม",c:["ได้","ไม่ได้","สลักหลังได้","ผจข."],a:1},
+{q:"สลักหลังเช็คแบบ",c:[1,2,3,4],a:1},
+{q:"ค่าอายัดเช็ค",c:[50,100,200,500],a:1},
+{q:"เช็คผู้ถือไม่ระบุชื่อไม่ขีดคร่อม",c:["ถูกต้อง","ไม่ถูก"],a:0}
+];
+const E2=["ม.7 4,000ล.","ม.20≥35","ม.14≤12","ม.27 150วัน","ม.29≥20คนหุ้น≥1/3","ม.39≥10%","ม.7คลัง≥75%","Min Loan Rate","POSDC","4H=HEAD HAND HEART HEALTH","ห้ามสร้างเอกสารเท็จ","สุ่มนับ Teller","ปพพ.193/30 5ปี","ดอกเบี้ยค้าง5ปี","5P=P u P P P","7Cs=C C C C C C C","สหกรณ์8ประเภท","2(1)=ทุนให้กู้สมาชิก","ตกวัด","15%","ฝากตามชื่อหน้าเช็ค","CMWFUL/LNWFUL","FMISตรวจงบ","15ปี","2,800บาท","3คน","ต้องฝากเท่านั้น","2=ลอย-เฉพาะ","100บ./ครั้ง","ถูกต้อง รับสดได้"];
+
+function rQ(id,qs,ex){
+  const el=document.getElementById('qz'+id);
+  for(let i=0;i<qs.length;i++){
+    let d=qs[i],h='<div class="qq"><h4>ข้อ'+(i+1)+'. '+d.q+'</h4>';
+    for(let j=0;j<d.c.length;j++)h+='<label><input type="radio" name="q'+id+'_'+i+'" value="'+j+'"><span>'+String.fromCharCode(65+j)+'. '+d.c[j]+'</span></label>';
+    h+='<button class="btn" onclick="ck('+id+','+i+','+d.a+')">ตรวจ</button><div class="rb" id="r'+id+'_'+i+'"></div></div>';
+    el.innerHTML+=h;
+  }
+}
+const S={};
+function ck(q,i,a){
+  const r=document.getElementById('r'+q+'_'+i),k='s'+q+'_'+i,ex=(q===1?E1:E2);
+  if(S[k]!==undefined){r.className='rb no';r.innerHTML='⛔ ตอบแล้ว';return}
+  const rs=document.getElementsByName('q'+q+'_'+i);let s=-1;
+  for(let j=0;j<rs.length;j++){if(rs[j].checked){s=j;break}}
+  if(s===-1){r.className='rb no';r.innerHTML='⚠️ เลือกก่อน';return}
+  if(s===a){r.className='rb ok';r.innerHTML='✅ '+ex[i];S[k]=1}
+  else{r.className='rb no';r.innerHTML='❌ '+String.fromCharCode(65+a)+'. '+ex[i];S[k]=0}
+  up(q);
+}
+function up(q){let t=0;for(let k in S)if(k.startsWith('s'+q+'_'))t+=S[k];document.getElementById('sc'+q).textContent=t}
+function rs(q){
+  if(!confirm('เริ่มใหม่?'))return;
+  for(let k in S)if(k.startsWith('s'+q+'_'))delete S[k];
+  const n=(q===1?20:30);
+  for(let i=0;i<n;i++){const r=document.getElementById('r'+q+'_'+i);if(r){r.className='rb';r.innerHTML=''}const rs=document.getElementsByName('q'+q+'_'+i);for(let j=0;j<rs.length;j++)rs[j].checked=false}
+  up(q);
+}
+
+rQ(1,Q1,E1);rQ(2,Q2,E2);
+</script>
+</body>
+</html>
