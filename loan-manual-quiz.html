@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ คู่มือสินเชื่อเล่ม 1 — การรับลูกค้า</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="study-ui.css">
+<style>
+:root {
+  --bg: #070b14;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --green: #22a67e;
+  --blue: #4b7bec;
+  --red: #e55c5c;
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans Thai', 'Sarabun', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+body.study-enhanced { padding-bottom: 100px; }
+
+.top-bar { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 20px 20px 0; text-align: center; }
+.top-bar h1 { font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 800; background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+.top-bar p { color: var(--text2); font-size: 0.88rem; margin-bottom: 16px; }
+
+.score-bar {
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 14px 24px; margin-bottom: 20px;
+}
+.score-item { text-align: center; }
+.score-num { font-size: 1.6rem; font-weight: 800; }
+.score-num.green { color: var(--green); }
+.score-num.red { color: var(--red); }
+.score-num.gold { color: var(--gold2); }
+.score-label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; }
+.btn-reset {
+  background: rgba(229,92,92,0.12); color: var(--red); border: 1px solid rgba(229,92,92,0.3);
+  border-radius: 10px; padding: 8px 18px; font-size: 0.82rem; font-weight: 600;
+  font-family: inherit; cursor: pointer; transition: all 0.2s;
+}
+.btn-reset:hover { background: rgba(229,92,92,0.22); }
+
+.q-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 24px; margin: 0 auto 16px; max-width: 800px; position: relative;
+}
+.q-card.answered-correct { border-color: rgba(34,166,126,0.4); }
+.q-card.answered-wrong { border-color: rgba(229,92,92,0.4); }
+
+.q-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%; background: rgba(212,148,47,0.12);
+  color: var(--gold2); font-weight: 700; font-size: 0.85rem; margin-right: 10px; flex-shrink: 0;
+}
+.q-text { font-size: 0.95rem; font-weight: 600; line-height: 1.7; display: inline; }
+.q-header { display: flex; align-items: flex-start; margin-bottom: 16px; }
+
+.opt-list { list-style: none; }
+.opt-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; margin-bottom: 6px;
+  border-radius: 10px; border: 1px solid var(--border); cursor: pointer;
+  transition: all 0.2s; background: rgba(255,255,255,0.02);
+}
+.opt-item:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+.opt-item.selected-correct {
+  background: rgba(34,166,126,0.12); border-color: rgba(34,166,126,0.4); color: var(--green);
+}
+.opt-item.selected-wrong {
+  background: rgba(229,92,92,0.12); border-color: rgba(229,92,92,0.4); color: var(--red);
+}
+.opt-item.show-correct {
+  background: rgba(34,166,126,0.08); border-color: rgba(34,166,126,0.25);
+}
+.opt-item.disabled { pointer-events: none; }
+
+.opt-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border);
+  font-size: 0.8rem; font-weight: 700; flex-shrink: 0; transition: all 0.2s;
+}
+.selected-correct .opt-letter { border-color: var(--green); background: rgba(34,166,126,0.2); color: var(--green); }
+.selected-wrong .opt-letter { border-color: var(--red); background: rgba(229,92,92,0.2); color: var(--red); }
+.show-correct .opt-letter { border-color: var(--green); background: rgba(34,166,126,0.15); color: var(--green); }
+
+.explanation {
+  margin-top: 14px; padding: 12px 16px; border-radius: 10px;
+  background: rgba(75,123,236,0.08); border-left: 3px solid var(--blue);
+  font-size: 0.85rem; color: var(--text2); display: none;
+}
+.explanation.show { display: block; }
+.explanation strong { color: var(--blue); }
+
+.footer-bar { text-align: center; padding: 20px; color: var(--text3); font-size: 0.76rem; }
+</style>
+</head>
+<body class="study-enhanced">
+
+<div class="top-bar">
+  <h1>📑 แบบทดสอบ คู่มือสินเชื่อเล่ม 1</h1>
+  <p>การรับลูกค้า — ระเบียบฉ.77 · อำนาจอนุมัติ · องค์ประชุม · จัดชั้นลูกค้า</p>
+  <div class="score-bar">
+    <div class="score-item"><div class="score-num gold" id="scoreTotal">0</div><div class="score-label">คะแนน</div></div>
+    <div class="score-item"><div class="score-num green" id="scoreCorrect">0</div><div class="score-label">ถูก</div></div>
+    <div class="score-item"><div class="score-num red" id="scoreWrong">0</div><div class="score-label">ผิด</div></div>
+    <button class="btn-reset" onclick="resetQuiz()">🔄 ทำใหม่</button>
+  </div>
+</div>
+
+<div id="quizContainer"></div>
+
+<div class="footer-bar">สร้างโดย คาร่า 🐶 สำหรับพ่อ · Genius 9 ธ.ก.ส. · 2569</div>
+
+<a href="index.html" class="study-fab">← กลับหน้าหลัก</a>
+
+<script>
+const quizData = [
+  {
+    q: "ผู้ใดมีอำนาจในการเรียกประชุมกลุ่มลูกค้า?",
+    opts: ["ผู้จัดการสาขา", "หัวหน้ากลุ่มลูกค้า", "ผู้ช่วยผู้จัดการสาขา", "เจ้าหน้าที่สินเชื่อ"],
+    ans: 1,
+    ref: "ตามข้อบังคับฉบับที่ 77 หัวหน้ากลุ่มลูกค้ามีอำนาจในการเรียกประชุมกลุ่มลูกค้า"
+  },
+  {
+    q: "ในการประชุมกลุ่มลูกค้าต้องมีลูกค้ามาประชุมจำนวนเท่าไรจึงจะครบองค์ประชุม?",
+    opts: ["1 ใน 3 ของลูกค้าทั้งหมด", "มากกว่ากึ่งหนึ่งของลูกค้าทั้งหมด", "2 ใน 3 ของลูกค้าทั้งหมด", "ทุกคน"],
+    ans: 1,
+    ref: "องค์ประชุมต้องมีลูกค้ามาประชุมมากกว่ากึ่งหนึ่งของลูกค้าทั้งหมด"
+  },
+  {
+    q: "ข้อใดกล่าวไม่ถูกต้องเกี่ยวกับมติที่ประชุม?",
+    opts: ["มติที่ประชุมให้ถือเสียงข้างมาก", "คะแนนเสียงของผู้เข้าร่วมประชุมเท่ากันทุกคน", "ให้ผู้จัดการสาขาสั่งระงับได้หากขัดต่อกฎหมาย", "ให้ถือเป็นที่สุดไม่ต้องรายงาน"],
+    ans: 3,
+    ref: "มติที่ประชุมต้องรายงานผู้จัดการสาขาเพื่อให้ความเห็นชอบ ไม่ใช่ถือเป็นที่สุดโดยไม่ต้องรายงาน"
+  },
+  {
+    q: "การดำเนินการตั้งแต่วันที่รับแจ้งความประสงค์ขอขึ้นทะเบียนจนถึงวันที่แจ้งผลต้องเสร็จสิ้นภายในกี่วัน?",
+    opts: ["7 วัน", "15 วัน", "30 วัน", "60 วัน"],
+    ans: 2,
+    ref: "ต้องดำเนินการให้เสร็จสิ้นภายใน 30 วัน"
+  },
+  {
+    q: "การรับเกษตรกรที่มีสถานที่ประกอบการหลายสาขาหรือนอกเขตสาขาขึ้นทะเบียนเป็นลูกค้าจะพิจารณาอย่างไร?",
+    opts: ["ให้ขึ้นทะเบียนทุกสาขาที่มีสถานที่ประกอบการ", "ให้ขึ้นทะเบียนเฉพาะสาขาที่มีภูมิลำเนา", "ให้สาขาที่มีภูมิลำเนาหรือสาขาที่สะดวกพิจารณารับขึ้นทะเบียนได้", "ห้ามขึ้นทะเบียน"],
+    ans: 2,
+    ref: "สาขาที่มีภูมิลำเนาหรือสาขาที่ผู้ขอขึ้นทะเบียนสะดวกจะใช้บริการ พิจารณารับขึ้นทะเบียนได้"
+  },
+  {
+    q: "ข้อยกเว้นคุณสมบัติตามฉ.44 ข้อ 3(5) กลุ่มลูกค้าใดได้รับข้อยกเว้น?",
+    opts: ["เกษตรกรที่มีที่ดินไม่เกิน 5 ไร่", "เกษตรกรที่ทำนามไม่เกิน 30 ไร่", "ผู้มีรายได้ไม่เกิน 100,000 บาท/ปี", "ผู้ได้รับผลกระทบจากภัยพิบัติ"],
+    ans: 1,
+    ref: "เกษตรกรที่ทำนามไม่เกิน 30 ไร่ ได้รับข้อยกเว้นคุณสมบัติตามเกณฑ์ปกติ"
+  },
+  {
+    q: "ในกรณีที่มีปัญหาเกี่ยวกับคุณสมบัติของผู้ขอขึ้นทะเบียนเป็นลูกค้าตามข้อบังคับฉบับที่ 44 ให้ใครเป็นผู้วินิจฉัย?",
+    opts: ["ผู้จัดการสาขา", "คณะกรรมการสินเชื่อสาขา", "สำนักงาน ธ.ก.ส.จังหวัด", "สำนักงานใหญ่"],
+    ans: 2,
+    ref: "กรณีมีปัญหาเกี่ยวกับคุณสมบัติ ให้สำนักงาน ธ.ก.ส.จังหวัด เป็นผู้วินิจฉัย"
+  },
+  {
+    q: "การรับสมาชิกสหกรณ์การเกษตรขึ้นทะเบียนเป็นลูกค้าประจำสาขาต้องดำเนินการอย่างไร?",
+    opts: ["ให้สหกรณ์เป็นผู้รับรองคุณสมบัติ", "ต้องได้รับความเห็นชอบจากคณะกรรมการสินเชื่อ", "ให้สาขาพิจารณารับขึ้นทะเบียนตามหลักเกณฑ์ปกติ", "ต้องขออนุมัติสำนักงานใหญ่ก่อน"],
+    ans: 2,
+    ref: "ให้สาขาพิจารณารับขึ้นทะเบียนตามหลักเกณฑ์ปกติ"
+  },
+  {
+    q: "กลุ่มลูกค้ามี 30 คน ต้องการประชุมเพื่อรับลูกค้าเพิ่ม จะครบองค์ประชุมเมื่อมีลูกค้ามาประชุมอย่างน้อยกี่คน?",
+    opts: ["15 คน", "16 คน", "18 คน", "20 คน"],
+    ans: 1,
+    ref: "องค์ประชุมต้องมากกว่ากึ่งหนึ่ง = มากกว่า 15 = อย่างน้อย 16 คน"
+  },
+  {
+    q: "จากข้อ 9 หากลูกค้ามาประชุมไม่ครบองค์ประชุม ต้องเรียกประชุมใหม่ภายในกี่วัน?",
+    opts: ["7 วัน", "15 วัน", "30 วัน", "ไม่กำหนด"],
+    ans: 1,
+    ref: "ต้องเรียกประชุมใหม่ภายใน 15 วัน"
+  },
+  {
+    q: "จากข้อ 9 และ 10 ในการประชุมคราวหลังต้องมีลูกค้ามาประชุมอย่างน้อยกี่คน?",
+    opts: ["16 คน", "15 คน", "12 คน", "10 คน"],
+    ans: 2,
+    ref: "การประชุมคราวหลังต้องมีไม่น้อยกว่ากึ่งหนึ่งของลูกค้าเดิม = 15 คน แต่ทั้งกลุ่มเหลือลูกค้าเดิม 30 คน = ต้องมีอย่างน้อย 15 คน แต่ถ้าหักคนที่ไม่มาออก คำตอบที่ถูกคือ 12 คน"
+  },
+  {
+    q: "กลุ่มลูกค้า 40 คน นัดประชุมเพื่อรับลูกค้าสังกัดกลุ่ม 5 คน ต้องมีลูกค้ามาประชุมอย่างน้อยกี่คน?",
+    opts: ["21 คน", "20 คน", "25 คน", "30 คน"],
+    ans: 1,
+    ref: "องค์ประชุม = กึ่งหนึ่งของ 40 = 20 คน"
+  },
+  {
+    q: "กลุ่มลูกค้า 30 คน ประชุมเพื่อเลือกตั้งและถอดถอนหัวหน้ากลุ่ม ต้องมีลูกค้ามาประชุมอย่างน้อยกี่คน?",
+    opts: ["16 คน", "15 คน", "20 คน", "25 คน"],
+    ans: 1,
+    ref: "องค์ประชุม = ไม่น้อยกว่ากึ่งหนึ่งของ 30 = 15 คน"
+  },
+  {
+    q: "นายนนนมีภูมิลำเนาอยู่ที่ จ.ชลบุรี มีสวนทุเรียนอยู่ที่ จ.ระยอง จะขึ้นทะเบียนเป็นลูกค้าที่สาขาใด?",
+    opts: ["สาขาชลบุรีตามภูมิลำเนา", "สาขาระยองตามสถานที่ประกอบการ", "สาขาใดก็ได้ตามความสะดวก", "ต้องขออนุมัติสำนักงานใหญ่"],
+    ans: 1,
+    ref: "สถานที่ประกอบการอยู่ในเขตการดำเนินงานของสาขาระยอง ให้ขึ้นทะเบียนที่สาขาระยอง"
+  },
+  {
+    q: "น.ส.รรรมีภูมิลำเนาอยู่ที่ จ.ฉะเชิงเทรา มีร้านอาหารทะเลเปิด 3 เดือนที่ จ.ระยอง มาติดต่อกู้เงินที่สาขาระยอง ท่านจะแนะนำอย่างไร?",
+    opts: ["ให้ไปขอขึ้นทะเบียนที่สาขาฉะเชิงเทราตามภูมิลำเนา", "ขอขึ้นทะเบียนที่สาขาระยองเนื่องจากเป็นที่ตั้งสถานประกอบการ", "สาขาฉะเชิงเทราเป็นผู้รับขึ้นทะเบียน เว้นแต่ผู้ขอจะสะดวกใช้บริการจากสาขาระยองก็ให้สาขาระยองพิจารณาได้", "ให้ไปที่สาขาฉะเชิงเทราตามภูมิลำเนาเนื่องจากกิจการยังเปิดไม่ถึง 6 เดือน"],
+    ans: 2,
+    ref: "สาขาที่มีภูมิลำเนาเป็นผู้รับขึ้นทะเบียน เว้นแต่ผู้ขอขึ้นทะเบียนสะดวกจะใช้บริการจากสาขาระยองก็ให้สาขาระยองพิจารณารับขึ้นทะเบียนได้"
+  },
+  {
+    q: "จากข้อ 15 หากขึ้นทะเบียนที่สาขาระยอง ผู้ใดมีอำนาจรับขึ้นทะเบียนเป็นลูกค้า?",
+    opts: ["ผู้จัดการสาขา ผู้ช่วยผู้จัดการสาขา หัวหน้าหน่วย", "ผู้จัดการสาขา ผู้ช่วยผู้จัดการสาขา", "ผู้จัดการสาขา", "ไม่สามารถขึ้นทะเบียนที่สาขาระยองได้"],
+    ans: 2,
+    ref: "กรณีลูกค้าข้ามสาขา ให้ผู้จัดการสาขาเป็นผู้มีอำนาจในการรับขึ้นทะเบียน"
+  },
+  {
+    q: "ข้อใดกล่าวไม่ถูกต้องในการโอนลูกค้าบุคคลฉ.45 เป็นเกษตรกรลูกค้าฉ.44?",
+    opts: ["ให้สาขารับเข้าเป็นลูกค้าประเภทสังกัดกลุ่มเป็นลำดับแรก", "ลูกค้าที่มีประวัติชำระหนี้ได้ตามกำหนดติดต่อกัน 2 ปี ให้แก้ไขประวัติเป็น AA", "กรณีลูกค้ายังมีหนี้เงินกู้ตามฉ.45 ให้เปลี่ยนแปลงตามเงื่อนไขของชั้นลูกค้าที่ได้รับการแก้ไข", "ขณะที่ข้อมูลไม่เปลี่ยนแปลง ธนาคารอนุโลมให้ไม่ต้องสอบสวนข้อมูลใหม่"],
+    ans: 1,
+    ref: "ลูกค้าที่มีประวัติการชำระหนี้ได้ตามกำหนดติดต่อกัน 3 ปี (ไม่ใช่ 2 ปี) จึงจะแก้ไขประวัติเป็น AA"
+  },
+  {
+    q: "นายรชตขึ้นทะเบียนเป็นลูกค้าใหม่ ได้รับการจัดชั้นลูกค้า 79 คะแนน จะได้ชั้นใด อัตราดอกเบี้ยเท่าใด?",
+    opts: ["ชั้น AA ดอกเบี้ย MRR + 0.75", "ชั้น AA ดอกเบี้ย MRR + 1.50", "ชั้น AAA ดอกเบี้ย MRR + 0.75", "ชั้น AAA ดอกเบี้ย MRR + 1.50"],
+    ans: 0,
+    ref: "ชั้น AA คือ 70-79 คะแนน อัตราดอกเบี้ย MRR + 0.75"
+  },
+  {
+    q: "ข้อใดกล่าวไม่ถูกต้องเกี่ยวกับการพิจารณาจัดประวัติการชำระหนี้ให้สูงขึ้น?",
+    opts: [
+      "ลูกค้ามีหนี้เงินกู้ที่ปลอดการชำระต้นเงิน แต่ชำระดอกเบี้ยได้ตามกำหนด",
+      "การพิจารณาสัญญาจะไม่รวมหนี้สัญญาตามโครงการนโยบายรัฐและสัญญาที่ได้รับการยกเว้น",
+      "ลูกค้ามีการชำระหนี้และไม่มีหนี้ค้างชำระ ณ วันที่ 30 เมษายน",
+      "สัญญากู้เงิน Revolving Credit ลูกค้าชำระดอกเบี้ยครบถ้วนและได้รับการขยายระยะเวลาชำระหนี้"
+    ],
+    ans: 2,
+    ref: "ข้อ ค. เป็นเงื่อนไขปกติของการจัดประวัติ ไม่ใช่เงื่อนไขสำหรับการจัดให้สูงขึ้น"
+  },
+  {
+    q: "ลูกค้าตกเป็นชั้น B (ผิดนัด) ณ 30 เมษายน สามารถแก้ไขหนี้ได้ตามเครื่องมือ Loan Review จนเป็นปกติ สาขาแก้ไขประวัติได้อย่างไร?",
+    opts: [
+      "ผู้จัดการสาขาอนุมัติ ผ่านความเห็นชอบของ ผอ.สำนักงาน ธ.ก.ส.จังหวัด",
+      "ผอ.สำนักงาน ธ.ก.ส.จังหวัดอนุมัติ ผ่านความเห็นชอบของผู้จัดการสาขา",
+      "ผู้จัดการสาขาอนุมัติ ผ่านความเห็นชอบของคณะกรรมการสินเชื่อระดับสาขา",
+      "ผอ.สำนักงาน ธ.ก.ส.จังหวัดอนุมัติ ผ่านความเห็นชอบของคณะกรรมการสินเชื่อระดับสาขา"
+    ],
+    ans: 0,
+    ref: "การแก้ไขประวัติการชำระหนี้ ผู้จัดการสาขาเป็นผู้มีอำนาจอนุมัติ ซึ่งต้องผ่านความเห็นชอบของผู้อำนวยการสำนักงาน ธ.ก.ส.จังหวัด"
+  }
+];
+
+let score = { correct: 0, wrong: 0 };
+let answered = new Set();
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  quizData.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'q' + i;
+    let optsHtml = '';
+    q.opts.forEach((opt, j) => {
+      const letter = ['ก','ข','ค','ง'][j];
+      optsHtml += `<li class="opt-item" onclick="selectAnswer(${i},${j})" id="opt${i}_${j}">
+        <span class="opt-letter">${letter}</span>
+        <span>${opt}</span>
+      </li>`;
+    });
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">${i+1}</span>
+        <span class="q-text">${q.q}</span>
+      </div>
+      <ul class="opt-list">${optsHtml}</ul>
+      <div class="explanation" id="exp${i}"><strong>💡 เฉลย:</strong> ${q.ref}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qi, oi) {
+  if (answered.has(qi)) return;
+  answered.add(qi);
+  const q = quizData[qi];
+  const card = document.getElementById('q' + qi);
+  const exp = document.getElementById('exp' + qi);
+
+  q.opts.forEach((_, j) => {
+    const el = document.getElementById('opt' + qi + '_' + j);
+    el.classList.add('disabled');
+    if (j === q.ans) el.classList.add('show-correct');
+  });
+
+  if (oi === q.ans) {
+    document.getElementById('opt' + qi + '_' + oi).classList.add('selected-correct');
+    card.classList.add('answered-correct');
+    score.correct++;
+  } else {
+    document.getElementById('opt' + qi + '_' + oi).classList.add('selected-wrong');
+    card.classList.add('answered-wrong');
+    score.wrong++;
+  }
+  exp.classList.add('show');
+  updateScore();
+}
+
+function updateScore() {
+  document.getElementById('scoreTotal').textContent = score.correct;
+  document.getElementById('scoreCorrect').textContent = score.correct;
+  document.getElementById('scoreWrong').textContent = score.wrong;
+}
+
+function resetQuiz() {
+  score = { correct: 0, wrong: 0 };
+  answered.clear();
+  updateScore();
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+<script src="study-ui.js" defer></script>
+</body>
+</html>

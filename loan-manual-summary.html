@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📖 สรุปเนื้อหา — คู่มือสินเชื่อเล่ม 1 การรับลูกค้า | Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0d1425;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --surface3: #22324f;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --gold-dim: rgba(212, 148, 47, 0.12);
+  --gold-soft: rgba(212, 148, 47, 0.06);
+  --green: #22a67e;
+  --green-dim: rgba(34, 166, 126, 0.12);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75, 123, 236, 0.10);
+  --purple: #9772e6;
+  --purple-dim: rgba(151, 114, 230, 0.10);
+  --red: #e55c5c;
+  --red-dim: rgba(229, 92, 92, 0.10);
+  --cyan: #36b5c4;
+  --cyan-dim: rgba(54, 181, 196, 0.10);
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+  --radius: 12px;
+  --glow: 0 0 60px rgba(212, 148, 47, 0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 40%, rgba(212,148,47,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 85% 20%, rgba(75,123,236,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(151,114,230,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px 20px 28px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold-dim);
+  color: var(--gold2);
+  border: 1px solid rgba(212,148,47,0.25);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--gold), var(--gold2), #eacc7a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero p {
+  color: var(--text2);
+  font-size: 0.9rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(560px, 80vw);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(212, 148, 47, 0.38), transparent);
+  opacity: 0.75;
+}
+.toc {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 20px auto 0;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.toc h2 {
+  color: var(--gold2);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 4px;
+}
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+}
+.toc a:hover {
+  color: var(--gold);
+  background: var(--gold-soft);
+}
+.toc a .toc-icon {
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 24px auto 80px;
+  padding: 0 20px;
+}
+.accordion {
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 0.25s ease;
+}
+.accordion:focus-within,
+.accordion:hover {
+  border-color: rgba(255,255,255,0.08);
+}
+.accordion summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s ease;
+  user-select: none;
+}
+.accordion summary:hover {
+  background: rgba(255,255,255,0.02);
+}
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+.accordion summary .acc-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.accordion summary .acc-arrow {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--text3);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.accordion[open] summary .acc-arrow {
+  transform: rotate(180deg);
+}
+.accordion[open] {
+  border-color: rgba(212,148,47,0.2);
+}
+.acc-gold .acc-icon { background: var(--gold-dim); }
+.acc-blue .acc-icon { background: var(--blue-dim); }
+.acc-green .acc-icon { background: var(--green-dim); }
+.acc-purple .acc-icon { background: var(--purple-dim); }
+.acc-red .acc-icon { background: var(--red-dim); }
+.acc-cyan .acc-icon { background: var(--cyan-dim); }
+
+.accordion-content {
+  padding: 0 20px 20px;
+  font-size: 0.88rem;
+  line-height: 1.78;
+  color: var(--text);
+}
+.accordion-content h3 {
+  color: var(--gold2);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 18px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.accordion-content h4 {
+  color: var(--blue);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin: 14px 0 6px;
+}
+.accordion-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+.accordion-content ul li {
+  position: relative;
+  padding: 3px 0 3px 18px;
+  color: var(--text2);
+}
+.accordion-content ul li::before {
+  content: '•';
+  position: absolute;
+  left: 4px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.accordion-content ul li strong {
+  color: var(--text);
+}
+.accordion-content .highlight-box {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  margin: 10px 0;
+  color: var(--text);
+}
+.accordion-content .highlight-box.green {
+  background: var(--green-dim);
+  border-left-color: var(--green);
+}
+.accordion-content .highlight-box.blue {
+  background: var(--blue-dim);
+  border-left-color: var(--blue);
+}
+.accordion-content .highlight-box.red {
+  background: var(--red-dim);
+  border-left-color: var(--red);
+}
+.accordion-content .highlight-box.purple {
+  background: var(--purple-dim);
+  border-left-color: var(--purple);
+}
+.accordion-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 0.82rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.accordion-content th {
+  background: var(--surface2);
+  color: var(--gold2);
+  font-weight: 700;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.accordion-content td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+}
+.accordion-content tr:last-child td {
+  border-bottom: none;
+}
+.accordion-content tr:hover td {
+  background: rgba(255,255,255,0.02);
+}
+.accordion-content .num-list {
+  list-style: none;
+  counter-reset: item;
+  padding: 0;
+  margin: 6px 0;
+}
+.accordion-content .num-list li {
+  counter-increment: item;
+  padding: 3px 0 3px 28px;
+  position: relative;
+  color: var(--text2);
+}
+.accordion-content .num-list li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 4px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.accordion-content .num-list li strong {
+  color: var(--text);
+}
+.acc-sub-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.acc-sub-label.gold { background: var(--gold-dim); color: var(--gold2); }
+.acc-sub-label.green { background: var(--green-dim); color: var(--green); }
+.acc-sub-label.blue { background: var(--blue-dim); color: var(--blue); }
+.acc-sub-label.red { background: var(--red-dim); color: var(--red); }
+.acc-sub-label.purple { background: var(--purple-dim); color: var(--purple); }
+
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 18px;
+  color: var(--text3);
+  font-size: 0.76rem;
+  border-top: 1px solid var(--border);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.accordion { animation: fadeInUp 0.4s ease both; }
+.accordion:nth-child(1) { animation-delay: 0.04s; }
+.accordion:nth-child(2) { animation-delay: 0.08s; }
+.accordion:nth-child(3) { animation-delay: 0.12s; }
+.accordion:nth-child(4) { animation-delay: 0.16s; }
+.accordion:nth-child(5) { animation-delay: 0.20s; }
+.accordion:nth-child(6) { animation-delay: 0.24s; }
+.accordion:nth-child(7) { animation-delay: 0.28s; }
+.accordion:nth-child(8) { animation-delay: 0.32s; }
+.accordion:nth-child(9) { animation-delay: 0.36s; }
+.accordion:nth-child(10) { animation-delay: 0.40s; }
+
+@media (max-width: 700px) {
+  .hero { padding: 32px 14px 20px; }
+  .hero h1 { font-size: 1.25rem; }
+  .toc { padding: 16px; margin: 14px 10px 0; }
+  .toc-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 10px; margin: 16px auto 70px; }
+  .accordion summary { padding: 14px 14px; font-size: 0.88rem; }
+  .accordion-content { padding: 0 14px 16px; font-size: 0.82rem; }
+  .accordion-content table { font-size: 0.75rem; }
+  .accordion-content th,
+  .accordion-content td { padding: 5px 7px; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+</head>
+<body class="study-enhanced">
+
+<section class="hero">
+  <div class="hero-badge">✦ GENIUS 9 — ธ.ก.ส. ✦</div>
+  <h1>📖 สรุป คู่มือสินเชื่อ เล่ม 1</h1>
+  <p>ว่าด้วยการรับลูกค้า — ระเบียบฉบับที่ 77 • กลุ่มลูกค้า • การขึ้นทะเบียน • การจัดชั้นลูกค้า • ประวัติการชำระหนี้</p>
+</section>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc">
+  <h2>📋 สารบัญ</h2>
+  <div class="toc-grid">
+    <a href="#sec1"><span class="toc-icon">📜</span> ระเบียบฉบับที่ 77</a>
+    <a href="#sec2"><span class="toc-icon">⚡</span> อำนาจอนุมัติ</a>
+    <a href="#sec3"><span class="toc-icon">📘</span> คำนิยามสำคัญ</a>
+    <a href="#sec4"><span class="toc-icon">👥</span> กลุ่มลูกค้า</a>
+    <a href="#sec5"><span class="toc-icon">📋</span> การรับขึ้นทะเบียนลูกค้า</a>
+    <a href="#sec6"><span class="toc-icon">🌾</span> คุณสมบัติ ฉ.44</a>
+    <a href="#sec7"><span class="toc-icon">🧑‍💼</span> คุณสมบัติ ฉ.45</a>
+    <a href="#sec8"><span class="toc-icon">🔄</span> การย้าย / โอนลูกค้า</a>
+    <a href="#sec9"><span class="toc-icon">🚪</span> การพ้นสภาพ</a>
+    <a href="#sec10"><span class="toc-icon">🏆</span> การจัดชั้นลูกค้า</a>
+    <a href="#sec11"><span class="toc-icon">📊</span> ประวัติการชำระหนี้</a>
+    <a href="#sec12"><span class="toc-icon">✏️</span> การแก้ไขประวัติ</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ===== SECTION 1: ระเบียบฉบับที่ 77 ===== -->
+<details class="accordion acc-gold" id="sec1" open>
+  <summary>
+    <span class="acc-icon">📜</span>
+    ระเบียบฉบับที่ 77 — ว่าด้วยลูกค้าผู้กู้
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>วัตถุประสงค์ของคู่มือ</h3>
+    <p>คู่มือการปฏิบัติงานสินเชื่อด้านเกษตรกร เล่ม 1 ว่าด้วยการรับลูกค้า ครอบคลุมกระบวนการตั้งแต่ก่อนรับลูกค้า การรับขึ้นทะเบียน กลุ่มลูกค้า การจัดชั้นลูกค้า และการจัดประวัติการชำระหนี้</p>
+
+    <h3>ขอบเขตของระเบียบฉบับที่ 77</h3>
+    <ul>
+      <li><strong>ข้อ 5:</strong> การรับขึ้นทะเบียนเกษตรกรเป็นลูกค้าประจำสาขา</li>
+      <li><strong>ข้อ 6:</strong> การรับขึ้นทะเบียนบุคคลเป็นลูกค้าประจำสาขา</li>
+      <li>กำหนดอำนาจอนุมัติ การผ่อนผัน และการมอบอำนาจช่วง</li>
+    </ul>
+
+    <div class="highlight-box">
+      <strong>📌 สรุป:</strong> ระเบียบฉบับที่ 77 เป็นระเบียบหลักที่ควบคุมการรับลูกค้าผู้กู้ของ ธ.ก.ส. ครอบคลุมทั้งเกษตรกร (ฉ.44) และบุคคลทั่วไป (ฉ.45)
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 2: อำนาจอนุมัติ ===== -->
+<details class="accordion acc-red" id="sec2">
+  <summary>
+    <span class="acc-icon">⚡</span>
+    อำนาจอนุมัติรับขึ้นทะเบียนลูกค้า
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>ผู้มีอำนาจอนุมัติ (ข้อ 5 และ 6)</h3>
+    <p>การรับขึ้นทะเบียนเกษตรกรเป็นลูกค้าประจำสาขา และการรับขึ้นทะเบียนบุคคลเป็นลูกค้าประจำสาขา</p>
+
+    <div class="highlight-box">
+      <strong>“ให้อยู่ในอำนาจของ ผู้จัดการสาขา / ผู้ช่วยผู้จัดการสาขา / หัวหน้าหน่วยอำเภอ”</strong>
+    </div>
+
+    <h4>กรณีมีเหตุพิเศษอันควรยกเว้น</h4>
+    <ul>
+      <li>ตามข้อ 3 (1) (5) (6) หรือ (10) แห่งข้อบังคับฉบับที่ 44</li>
+      <li>ตามข้อ 3 (1) (ค) (ง) (จ) และ (ฌ) แห่งข้อบังคับฉบับที่ 45</li>
+    </ul>
+
+    <div class="highlight-box blue">
+      <strong>📝 ผู้จัดการสาขา</strong> มีอำนาจในการผ่อนผันรับขึ้นทะเบียน ทั้งนี้ ต้องบันทึกความเห็นประกอบการวินิจฉัยไว้ด้วย
+    </div>
+
+    <h4>การมอบอำนาจช่วง</h4>
+    <div class="highlight-box green">
+      <strong>“ผู้จัดการสาขามีอำนาจมอบหมายงานและมอบอำนาจช่วงให้ผู้ช่วยผู้จัดการสาขาทำการแทนได้</strong> โดยให้จัดทำคำสั่งมอบหมายงานและมอบอำนาจช่วงไว้เป็นลายลักษณ์อักษร พร้อมทั้งลงนามในคำสั่งดังกล่าว”
+    </div>
+
+    <h4>อำนาจอนุมัติแยกตามตำแหน่ง</h4>
+    <div class="table-wrap">
+    <table>
+      <tr><th>ตำแหน่ง</th><th>อำนาจอนุมัติ</th></tr>
+      <tr><td>ผู้จัดการสาขา</td><td>✅ มีอำนาจ</td></tr>
+      <tr><td>ผู้ช่วยผู้จัดการสาขา</td><td>✅ มีอำนาจ (โดยรับมอบหมาย)</td></tr>
+      <tr><td>หัวหน้าหน่วยอำเภอ</td><td>✅ มีอำนาจ</td></tr>
+      <tr><td>พนักงานพัฒนาธุรกิจ (พพธ.)</td><td>❌ ไม่มีอำนาจอนุมัติ</td></tr>
+      <tr><td>หัวหน้าหน่วย (หนภ.)</td><td>❌ ไม่มีอำนาจเรียกประชุมกลุ่ม</td></tr>
+    </table>
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 3: คำนิยาม ===== -->
+<details class="accordion acc-blue" id="sec3">
+  <summary>
+    <span class="acc-icon">📘</span>
+    คำนิยามสำคัญ (101.02)
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>นิยามตามคู่มือเล่ม 1</h3>
+    <ul>
+      <li><strong>กลุ่มลูกค้า:</strong> การรวมกลุ่มของผู้ขอขึ้นทะเบียนเป็นลูกค้าที่มีภูมิลำเนาและพื้นที่การผลิตอยู่ใกล้เคียงกัน ประกอบอาชีพประเภทเดียวกัน มีความไว้วางใจและสมัครใจที่จะรับรองรับผิดอย่างลูกหนี้ร่วมกันหรือค้ำประกันร่วมกัน</li>
+      <li><strong>ลูกค้าผู้กู้:</strong> ลูกค้าที่ได้รับการขึ้นทะเบียนและมีสิทธิขอกู้เงินจากธนาคาร</li>
+      <li><strong>ผู้ค้ำประกัน:</strong> บุคคลที่รับรองการชำระหนี้ของลูกค้าผู้กู้</li>
+      <li><strong>ผู้ขอขึ้นทะเบียน:</strong> บุคคลที่ยื่นคำขอเพื่อเป็นลูกค้าประจำสาขา</li>
+      <li><strong>เจ้าของทรัพย์สิน:</strong> ผู้ที่มีกรรมสิทธิ์ในทรัพย์สินที่ใช้เป็นหลักประกัน</li>
+      <li><strong>บุคคลอื่นรับใช้หนี้:</strong> บุคคลที่เข้ารับผิดชอบชำระหนี้แทนลูกค้า</li>
+    </ul>
+
+    <h3>รหัสสถานะลูกค้า</h3>
+    <ul>
+      <li><strong>"00":</strong> รับขึ้นทะเบียนตามข้อบังคับ — ลูกค้าปกติ</li>
+      <li><strong>"01":</strong> รับขึ้นทะเบียนเฉพาะกิจ — ลูกค้าโครงการนโยบายรัฐ / โครงการพิเศษ</li>
+    </ul>
+
+    <div class="highlight-box red">
+      <strong>⚠️ ข้อควรจำ:</strong> ลูกค้าที่ขอกู้เงินหรือการจัดทำหนังสือค้ำประกัน ฉ.35 และการซื้อลดเช็ค <strong>ไม่ต้องบันทึกวันที่รับขึ้นทะเบียน</strong>
+    </div>
+
+    <h3>นโยบายสำคัญ</h3>
+    <ul>
+      <li><strong>นโยบายสินเชื่อ (Credit Policy):</strong> กรอบแนวทางการให้สินเชื่อของธนาคาร</li>
+      <li><strong>นโยบายความเสี่ยงด้านสินเชื่อ (Credit Risk Policy):</strong> แนวทางการบริหารความเสี่ยงด้านสินเชื่อ</li>
+    </ul>
+  </div>
+</details>
+
+<!-- ===== SECTION 4: กลุ่มลูกค้า ===== -->
+<details class="accordion acc-green" id="sec4">
+  <summary>
+    <span class="acc-icon">👥</span>
+    กลุ่มลูกค้า — องค์ประกอบ บทบาท การประชุม การพ้นสภาพ
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>องค์ประกอบของกลุ่มลูกค้า (201.02)</h3>
+    <ul>
+      <li><strong>จำนวนสมาชิก:</strong> ตั้งแต่ <strong>5 คนขึ้นไป</strong> (กรณีน้อยกว่า 5 คน พพธ. ต้องรับเกษตรกรหรือบุคคลเข้าเป็นลูกค้าเข้าสังกัดกลุ่มให้ได้ไม่น้อยกว่า 5 คน)</li>
+      <li><strong>หัวหน้ากลุ่มลูกค้า:</strong> 1 คน — ต้องไม่เคยถูกถอดถอนจากตำแหน่งหัวหน้ากลุ่มหรือผู้ช่วยหัวหน้ากลุ่มมาก่อน เป็นผู้มีความรู้ความเข้าใจกิจการธนาคาร ยินยอมเสียสละเวลา อุทิศตนเพื่อเป็นผู้ประสานงานระหว่างธนาคารและกลุ่ม</li>
+      <li><strong>ผู้ช่วยหัวหน้ากลุ่มลูกค้า:</strong> อย่างน้อย 1 คน — คุณสมบัติเช่นเดียวกับหัวหน้ากลุ่มลูกค้า</li>
+    </ul>
+
+    <h3>บทบาทหน้าที่ของกลุ่มลูกค้า</h3>
+    <ul>
+      <li>พิจารณาคัดเลือกเกษตรกรหรือบุคคลเข้าสังกัดกลุ่ม โดยได้รับความเห็นชอบจากธนาคาร</li>
+      <li>เลือกตั้งและถอดถอนหัวหน้ากลุ่มลูกค้าและผู้ช่วยหัวหน้ากลุ่มลูกค้า</li>
+      <li>พิจารณากำหนดวงเงินกู้ให้เหมาะสมกับขนาดการผลิตและรายได้ของลูกค้าแต่ละราย</li>
+      <li>ติดตาม กำกับ และดูแลการประกอบอาชีพ การใช้เงินกู้ให้เป็นไปตามวัตถุประสงค์</li>
+      <li>กำกับการชำระหนี้เงินกู้ของลูกค้าให้เป็นไปตามกำหนด</li>
+      <li>ส่งเสริมกระบวนการเรียนรู้ของลูกค้าภายในกลุ่ม</li>
+      <li>ส่งเสริมกิจการของธนาคาร</li>
+      <li>ส่งเสริมการประกอบอาชีพหรือการสังคมแก่กลุ่มลูกค้า</li>
+      <li>มีมติให้ลูกค้าประจำสาขาที่สังกัดในกลุ่มของตนพ้นจากกลุ่มลูกค้า</li>
+    </ul>
+
+    <h3>บทบาทหน้าที่ของหัวหน้ากลุ่มลูกค้า</h3>
+    <ul>
+      <li>เรียกประชุมกลุ่มลูกค้าและเป็นประธานในที่ประชุมกลุ่มลูกค้า</li>
+      <li>เป็นผู้ดูแลกลุ่มลูกค้าให้เข้มแข็ง</li>
+      <li>เป็นผู้ประสานงานระหว่างกลุ่มลูกค้ากับธนาคาร</li>
+      <li>ปฏิบัติกิจการอื่นๆ ตามที่ธนาคารกำหนด</li>
+      <li>แจ้งเหตุผิดปกติในส่วนตัวลูกค้าและเหตุผิดปกติอื่นๆ เช่น ภัยพิบัติ ภัยธรรมชาติ</li>
+    </ul>
+
+    <h3>บทบาทหน้าที่ของผู้ช่วยหัวหน้ากลุ่มลูกค้า</h3>
+    <ul>
+      <li>ปฏิบัติงานของกลุ่มตามที่หัวหน้ากลุ่มลูกค้ามอบหมาย</li>
+      <li>ทำการแทนหัวหน้ากลุ่มลูกค้าเมื่อหัวหน้ากลุ่มไม่อยู่หรือไม่อาจปฏิบัติหน้าที่ได้</li>
+    </ul>
+
+    <h3>บทบาทหน้าที่ของลูกค้าในกลุ่ม</h3>
+    <ul>
+      <li>เข้าประชุมกลุ่มลูกค้า ปฏิบัติตามมติของที่ประชุมกลุ่มลูกค้าที่ตนสังกัด</li>
+      <li>ให้ความร่วมมือหัวหน้ากลุ่มและผู้ช่วยหัวหน้ากลุ่มในการดำเนินงานของกลุ่มและธนาคาร</li>
+    </ul>
+
+    <h3>การประชุมกลุ่มลูกค้า</h3>
+    <h4>ผู้มีอำนาจในการเรียกประชุม</h4>
+    <div class="highlight-box green">
+      <strong>✅ ผจข. / ผช.ผจข. / พพธ. / หน.กลุ่มลูกค้า / ผช.หน.กลุ่มลูกค้า</strong>
+    </div>
+    <div class="highlight-box red">
+      <strong>❌ หนภ. (หัวหน้าหน่วย) ไม่มีอำนาจเรียกประชุมกลุ่มลูกค้า</strong>
+    </div>
+
+    <h4>องค์ประชุม</h4>
+    <ul>
+      <li>ลูกค้ามาประชุมไม่น้อยกว่า <strong>2 ใน 3</strong> ของจำนวนลูกค้าทั้งหมดที่มีอยู่ในกลุ่ม</li>
+      <li>หากไม่ครบองค์ประชุมครั้งแรก ให้เรียกประชุมใหม่ภายใน <strong>14 วัน</strong> นับถัดจากวันประชุม</li>
+      <li>การประชุมคราวหลัง ลูกค้ามาประชุมเท่าไหร่ให้ถือว่าเป็นองค์ประชุม</li>
+    </ul>
+
+    <h4>ประธานในที่ประชุม</h4>
+    <ul>
+      <li><strong>หัวหน้ากลุ่มลูกค้า</strong> เป็นประธานในที่ประชุม</li>
+      <li>ถ้าหน.กลุ่มลูกค้าไม่อยู่ ให้ <strong>ผช.หน.กลุ่มลูกค้า</strong> เป็นประธาน</li>
+      <li>ถ้าหน.กลุ่มลูกค้าและผช.หน.กลุ่มลูกค้าไม่อยู่ ให้ที่ประชุม <strong>เลือกลูกค้าคนใดคนหนึ่ง</strong> เป็นประธาน</li>
+    </ul>
+
+    <h3>มติที่ประชุม</h3>
+    <ul>
+      <li>ให้ถือเสียงข้างมาก — ลูกค้าหนึ่งคนมีสิทธิออกเสียงได้หนึ่งเสียง</li>
+      <li>หากคะแนนเสียงเท่ากัน ให้ประธานในที่ประชุมออกเสียงชี้ขาด</li>
+      <li><strong>การประชุมเพื่อรับลูกค้าเข้าสังกัดกลุ่ม:</strong> ต้องมีมติรับรองด้วยคะแนนเสียงเกินกึ่งหนึ่งของจำนวนลูกค้าทั้งหมดในกลุ่ม</li>
+    </ul>
+
+    <h3>การลงลายมือชื่อในรายงานการประชุม</h3>
+    <ul>
+      <li>ประธานและลูกค้าผู้เข้าร่วมประชุมทุกคนต้องลงลายมือชื่อ</li>
+      <li>บันทึกเรื่องที่พิจารณาและลงมติไว้ในรายงานการประชุม</li>
+      <li>หัวหน้ากลุ่มลูกค้าเก็บรายงานการประชุมไว้ในแฟ้มประจำกลุ่ม และให้นำมาทุกครั้งที่มีการประชุม</li>
+    </ul>
+  </div>
+</details>
+
+<!-- ===== SECTION 5: การรับขึ้นทะเบียนลูกค้า ===== -->
+<details class="accordion acc-blue" id="sec5">
+  <summary>
+    <span class="acc-icon">📋</span>
+    การรับขึ้นทะเบียนลูกค้า — เกณฑ์ปกติ / เกณฑ์ลดหย่อน / 3 แบบ
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>ภาพรวมการรับขึ้นทะเบียน (202.01)</h3>
+    <p>การรับเกษตรกรขึ้นทะเบียนเป็นลูกค้ามี 2 กรณีหลัก:</p>
+    <ul>
+      <li><strong>เกณฑ์ปกติ</strong> — สังกัดกลุ่ม / ไม่สังกัดกลุ่ม</li>
+      <li><strong>เกณฑ์ลดหย่อน</strong> — ยกเว้นคุณลักษณะบางประการตามข้อบังคับ</li>
+    </ul>
+
+    <h3>1. เกณฑ์ปกติ — การรับเกษตรกรขึ้นทะเบียน (ฉ.44)</h3>
+    <div class="highlight-box">
+      <strong>5 ข้อหลักของคุณสมบัติลูกค้าตามเกณฑ์ปกติ</strong>
+    </div>
+    <ol class="num-list">
+      <li><strong>สัญชาติไทย</strong></li>
+      <li><strong>อายุ 17+</strong> (บรรลุนิติภาวะ; อายุตั้งแต่ 60 ปี ต้องมีทายาทรับช่วงการเกษตร)</li>
+      <li><strong>มีถิ่นที่อยู่และประกอบอาชีพ</strong> ในท้องที่ดำเนินงานของสาขามาแล้วไม่น้อยกว่า <strong>1 ปี</strong>
+        <br>— ข้อยกเว้น: มีถิ่นที่อยู่ในท้องที่ดำเนินงาน <strong>6 เดือน</strong> / มีถิ่นที่อยู่นอกท้องที่ <strong>1 ปี</strong></li>
+      <li><strong>ประกอบอาชีพเกษตรกรรม</strong> หรือควบคุมงานเกษตรอย่างใกล้ชิดเป็นประจำ</li>
+      <li><strong>ไม่เป็นบุคคลล้มละลาย</strong></li>
+    </ol>
+
+    <h3>2. เกณฑ์ลดหย่อน — 3 กลุ่มหลัก</h3>
+    <div class="highlight-box green">
+      <strong>✅ ยกเว้นคุณลักษณะตามข้อบังคับฉบับที่ 44 ข้อ 3 (1) (5) (6) และ (10)</strong>
+    </div>
+    <ul>
+      <li><strong>กลุ่มที่ 1: โครงการนโยบายรัฐ</strong> — ธนาคารกำหนดวิธีปฏิบัติเป็นคราวๆ ตามโครงการที่ได้รับมอบหมายจากรัฐบาล ลูกค้าจะไม่สามารถกู้เงินนอกเหนือจากโครงการที่กำหนดได้ สถานะ "01"</li>
+      <li><strong>กลุ่มที่ 2: โครงการพิเศษ</strong> — สินเชื่อเพื่อสนับสนุนโครงการพิเศษของส่วนราชการ/ภาคเอกชน โดยมีธนาคารเป็นหน่วยงานสนับสนุน สถานะ "01"</li>
+      <li><strong>กลุ่มที่ 3: สหกรณ์การเกษตร / กลุ่มเกษตรกร / สถาบันการเงิน</strong> — รับสมาชิกสหกรณ์การเกษตร สมาชิกกลุ่มเกษตรกร และลูกค้าสถาบันการเงิน (Refinance)</li>
+    </ul>
+
+    <h3>3. การรับขึ้นทะเบียน 3 แบบ</h3>
+
+    <h4>แบบที่ 1: จัดตั้งกลุ่มใหม่ (202.02)</h4>
+    <ul>
+      <li>ธนาคารสามารถให้บริการและดูแลลูกค้าได้อย่างมีประสิทธิภาพทั่วถึง</li>
+      <li>สามารถใช้กลไกของกลุ่มลูกค้าเพื่อการส่งเสริมและพัฒนาลูกค้า</li>
+      <li>สามารถควบคุมหรือกำกับการนำเงินกู้ไปใช้ให้เกิดประโยชน์สูงสุด</li>
+    </ul>
+    <div class="highlight-box blue">
+      <strong>📌 ผู้จัดการสาขา / ผู้ช่วยผู้จัดการสาขา / หัวหน้าหน่วยอำเภอ ต้องเข้าร่วมประชุมชี้แจงรายละเอียดทุกครั้งที่มีการจัดตั้งกลุ่มลูกค้าใหม่</strong>
+    </div>
+
+    <h4>แบบที่ 2: เข้าสังกัดกลุ่มเดิม (202.03)</h4>
+    <ul>
+      <li>ข้อแตกต่างเฉพาะขั้นตอนการประชุมกลุ่มลูกค้า</li>
+      <li>หัวหน้ากลุ่มลูกค้าสามารถทำหน้าที่ประชุมกลุ่มแทน พพธ. ได้</li>
+      <li>การประชุมดำเนินการได้ 2 วิธี: พพธ. ประชุมเอง หรือมอบหมายหัวหน้ากลุ่มเป็นผู้ประชุม</li>
+    </ul>
+
+    <h4>แบบที่ 3: ไม่สังกัดกลุ่ม (202.04)</h4>
+    <ul>
+      <li>ขั้นตอนและวิธีปฏิบัติเหมือนการจัดตั้งกลุ่ม ยกเว้นไม่ต้องมีขั้นตอนการประชุมกลุ่มลูกค้า</li>
+      <li>ต่างกันในขั้นตอนรับแจ้งความประสงค์ รับแบบคืน และการมอบเอกสาร</li>
+    </ul>
+
+    <h3>การตรวจสอบคุณสมบัติ (202.02)</h3>
+    <ul>
+      <li>ตรวจสอบสถานะบุคคลล้มละลายจาก <strong>www.ratchakitcha.soc.go.th</strong></li>
+      <li>ตรวจสอบเพื่อทราบข้อเท็จจริงเกี่ยวกับลูกค้า <strong>(CDD)</strong></li>
+      <li>ตรวจสอบสถานะพนักงาน/ผู้ช่วยพนักงาน/คู่สมรส — <strong>ห้ามรับพนักงานหรือคู่สมรสพนักงานขึ้นทะเบียน</strong></li>
+      <li>ตรวจสอบการเป็นสมาชิกกับสถาบันเกษตรกร</li>
+    </ul>
+
+    <h3>การสอบข้อมูลลูกค้ารายคน (หน้า 17)</h3>
+    <ul>
+      <li>สอบสวนข้อมูลรายการขอขึ้นทะเบียนให้ครบถ้วน พร้อมพิจารณาจัดชั้นลูกค้า</li>
+      <li>ดำเนินการสอบสวนข้อมูลที่บ้านเรือนและสถานที่ประกอบอาชีพ — <strong>ต้องปฏิบัติอย่างเคร่งครัด</strong></li>
+      <li>ให้คู่สมรสลงลายมือชื่อในคำรับรองและยินยอม (ด้วยความสมัครใจ)</li>
+      <li>ลูกค้าใหม่ตาม ฉ.44 กำหนดชั้นเป็น <strong>ชั้น A</strong></li>
+      <li>กรณีประเมินสูงกว่าชั้น A ให้ผู้จัดการสาขาขึ้นไปเป็นผู้อนุมัติ</li>
+      <li>ปกติใช้เวลาภายใน <strong>7 วันทำการ</strong> (ให้สาขาควบคุมและวางแผนให้แล้วเสร็จภายใน <strong>10 วัน</strong>)</li>
+    </ul>
+
+    <h3>เกณฑ์ลดหย่อนเพิ่มเติม</h3>
+    <h4>การรับลูกค้าสถาบันการเงิน (Refinance) (202.09)</h4>
+    <div class="highlight-box purple">
+      6 หลักเกณฑ์การรับลูกค้าสถาบันการเงิน
+    </div>
+    <ol class="num-list">
+      <li>ต้องมีลักษณะเป็นไปตามข้อบังคับฉบับที่ 44</li>
+      <li>ต้องมีฐานะมั่นคง มีความเอาใจใส่ประกอบอาชีพ มีประวัติการชำระหนี้ดี</li>
+      <li>ให้กู้เงินเพื่อลงทุนในโครงการเพื่อชำระหนี้สินที่ได้กู้ยืมมาจากสถาบันการเงิน</li>
+      <li>หนี้สินที่มีอยู่กับสถาบันการเงินต้องเป็นหนี้สินอันเกิดมาจากการลงทุนในโครงการที่ขอกู้เท่านั้น</li>
+      <li>ผู้ขอกู้ต้องมีอัตราส่วนขั้นต่ำแห่งการลงทุนไม่น้อยกว่า <strong>ร้อยละ 20</strong> ของค่าลงทุนทั้งหมด</li>
+      <li>ผู้ขอกู้ต้องจำนองที่ดินเป็นประกันลำดับแรก และจำนองที่ดินแปลงที่ตั้งโครงการ</li>
+    </ol>
+
+    <h4>การรับเกษตรกรที่มีสถานที่ประกอบการหลายสาขา (202.10)</h4>
+    <ul>
+      <li>ให้สาขาซึ่งเป็นสถานที่ตั้งของโครงการ/แผนงาน หรือสถานที่ประกอบอาชีพส่วนใหญ่เป็นผู้รับขึ้นทะเบียน</li>
+      <li>จัดทำหนังสือขอความร่วมมือไปยังสาขาที่ผู้ขอมีภูมิลำเนาอยู่</li>
+    </ul>
+
+    <h4>การรับเกษตรกรขึ้นทะเบียนเพื่อกู้เงินรอการขายผลิตผล (202.11)</h4>
+    <ul>
+      <li>เพื่อชะลอผลิตผลการเกษตรไม่ให้ระบายออกสู่ตลาดมากเกินไป</li>
+      <li>เป็นการช่วยเหลือเกษตรกรให้มีรายได้มาชำระค่าใช้จ่ายในขณะที่ยังมิได้ขายผลผลิต</li>
+      <li><strong>ไม่สังกัดกลุ่มลูกค้า</strong></li>
+    </ul>
+  </div>
+</details>
+
+<!-- ===== SECTION 6: คุณสมบัติ ฉ.44 ===== -->
+<details class="accordion acc-green" id="sec6">
+  <summary>
+    <span class="acc-icon">🌾</span>
+    คุณสมบัติลูกค้าฉ.44 — เกษตรกร
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>คุณสมบัติผู้ขอขึ้นทะเบียนเป็นลูกค้ากู้เงิน ฉ.44 (10 ข้อ)</h3>
+    <ol class="num-list">
+      <li><strong>เป็นเกษตรกร</strong> ตามข้อบัญญัติของ พ.ร.บ. ธ.ก.ส. (ข้อยกเว้น: ประกอบอาชีพอื่นและประกอบอาชีพเกษตรกรรมด้วย / ควบคุมงานเกษตรอย่างใกล้ชิดเป็นประจำ)</li>
+      <li><strong>บรรลุนิติภาวะ</strong> (อายุตั้งแต่ 60 ปี ต้องมีทายาทรับช่วงการเกษตร)</li>
+      <li><strong>มีสัญชาติไทย</strong></li>
+      <li><strong>มีความชำนาญหรือได้รับการฝึกอบรม</strong> ในการเกษตรมาแล้วพอสมควร</li>
+      <li><strong>มีถิ่นที่อยู่และประกอบอาชีพเกษตรกรรม</strong> ส่วนใหญ่ในท้องที่ดำเนินงานของสาขาไม่น้อยกว่า <strong>1 ปี</strong>
+        <br>— ข้อยกเว้น: (1) มีถิ่นที่อยู่ + ประกอบอาชีพในท้องที่ ≥ 6 เดือน (2) มีถิ่นที่อยู่นอกท้องที่ แต่ประกอบอาชีพในท้องที่ ≥ 1 ปี</li>
+      <li><strong>ผลิตผลการเกษตร + อาชีพอย่างอื่น</strong> เพื่อขายในปีการผลิตหนึ่งๆ เป็นมูลค่าพอสมควรเพียงพอแก่การชำระหนี้
+        <br>— ข้อยกเว้น: กรณีไม่เพียงพอ ให้พิจารณารายได้ตามโครงการที่จะได้รับในอนาคต</li>
+      <li><strong>มีความซื่อสัตย์สุจริต มีชื่อเสียงดี ขยันขันแข็ง</strong> ในการประกอบอาชีพ และรู้จักประหยัด</li>
+      <li><strong>ไม่เป็นคนวิกลจริตหรือจิตฟั่นเฟือน</strong> (ความพิการทางร่างกายแต่ไม่เป็นอุปสรรคต่ออาชีพเกษตรกรรม — รับได้)</li>
+      <li><strong>ไม่เป็นบุคคลล้มละลาย</strong> หรือเป็นผู้มีหนี้สินล้นพ้นตัว</li>
+      <li><strong>ไม่เคยถูกให้ออก</strong> จากการเป็นลูกค้าประจำสาขาใดๆ ของธนาคาร</li>
+    </ol>
+
+    <div class="highlight-box red">
+      <strong>⚠️ ข้อห้ามสำคัญ:</strong> ธนาคารไม่รับบุคคลในครัวเรือนเดียวกันเป็นลูกค้าหลายคน เว้นแต่จะพิสูจน์ได้ว่าบุคคลนั้นได้แยกการทำกินต่างหากจากกันและมีทรัพย์สินเป็นสัดส่วนของตนเอง
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 7: คุณสมบัติ ฉ.45 ===== -->
+<details class="accordion acc-purple" id="sec7">
+  <summary>
+    <span class="acc-icon">🧑‍💼</span>
+    คุณสมบัติลูกค้าฉ.45 — บุคคลทั่วไป
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>หลักเกณฑ์การคัดเลือกบุคคลขึ้นทะเบียนเป็นลูกค้า ฉ.45 (9 ข้อ)</h3>
+    <ol class="num-list">
+      <li><strong>มีสัญชาติไทยโดยกำเนิด</strong></li>
+      <li><strong>อายุไม่ต่ำกว่า 20 ปีบริบูรณ์</strong></li>
+      <li><strong>มีความชำนาญหรือได้รับการฝึกอบรม</strong> ในด้านการประกอบอาชีพ</li>
+      <li><strong>มีถิ่นที่อยู่และ/หรือประกอบอาชีพ</strong> ในพื้นที่ดำเนินงานของสาขาติดต่อกันมาแล้วไม่น้อยกว่า <strong>6 เดือน</strong></li>
+      <li><strong>มีรายได้</strong> จากการประกอบอาชีพในปีหนึ่งๆ เป็นมูลค่าพอสมควร</li>
+      <li><strong>มีความซื่อสัตย์สุจริต มีชื่อเสียงดี</strong> และไม่เคยได้รับโทษจำคุกโดยคำพิพากษาถึงที่สุดให้จำคุก (เว้นแต่ความผิดลหุโทษ)</li>
+      <li><strong>ไม่เป็นคนวิกลจริตหรือจิตฟั่นเฟือน</strong> (ความพิการทางร่างกายแต่ไม่เป็นอุปสรรคต่อการประกอบอาชีพ — รับได้)</li>
+      <li><strong>ไม่เป็นบุคคลล้มละลาย</strong> หรือเป็นผู้มีหนี้สินล้นพ้นตัว</li>
+      <li><strong>ไม่เคยถูกให้ออก</strong> จากการเป็นลูกค้าประจำสาขาใดๆ ของธนาคาร</li>
+    </ol>
+
+    <h3>กรณีเกณฑ์ลดหย่อน ฉ.45</h3>
+    <ul>
+      <li>การยกเว้นลักษณะตามข้อ 3 (1) (ค) (ง) (จ) และ (ฌ) แห่งข้อบังคับฉบับที่ 45</li>
+      <li>การรับบุคคลที่มีสถานประกอบอาชีพอยู่หลายแห่ง ให้สาขาตามถิ่นที่อยู่นั้นพิจารณารับขึ้นทะเบียน</li>
+    </ul>
+  </div>
+</details>
+
+<!-- ===== SECTION 8: การย้าย/โอนลูกค้า ===== -->
+<details class="accordion acc-cyan" id="sec8">
+  <summary>
+    <span class="acc-icon">🔄</span>
+    การย้าย / โอนลูกค้า (203.01–203.06)
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>การดำเนินการหลังรับลูกค้า — ย้าย/โอน</h3>
+
+    <h4>203.01 การย้ายสังกัดกลุ่มลูกค้า</h4>
+    <ul>
+      <li>ย้ายภายในสาขาเดียวกัน</li>
+      <li><strong>ต้องไม่มีหนี้ 2 คนค้าและค้ากลุ่ม</strong></li>
+    </ul>
+
+    <h4>203.02 การโอนลูกค้าของหน่วยอำเภอหนึ่งไปอีกหน่วยอำเภอหนึ่ง</h4>
+    <ul>
+      <li>โอนภายในสาขาเดียวกัน</li>
+    </ul>
+
+    <h4>203.03 การโอนลูกค้าจากสาขาหนึ่งไปอีกสาขาหนึ่ง</h4>
+    <ul>
+      <li>โอนข้ามสาขา</li>
+    </ul>
+
+    <h4>203.04 การที่ลูกค้าประเภทไม่สังกัดกลุ่มรวมตัวกันขอจัดตั้งกลุ่มลูกค้า</h4>
+    <ul>
+      <li>ลูกค้าไม่สังกัดกลุ่มรวมตัวกันจัดตั้งกลุ่มใหม่</li>
+    </ul>
+
+    <h4>203.05 การที่ลูกค้าประเภทไม่สังกัดกลุ่มรวมตัวกับเกษตรกรทั่วไปขอจัดตั้งกลุ่มลูกค้า</h4>
+    <ul>
+      <li>ผสมระหว่างลูกค้าไม่สังกัดกลุ่มกับเกษตรกรทั่วไป</li>
+    </ul>
+
+    <h4>203.06 การให้ลูกค้าที่ไม่สังกัดกลุ่มเข้าสังกัดกลุ่มลูกค้าที่มีอยู่เดิม</h4>
+    <ul>
+      <li>นำลูกค้าไม่สังกัดกลุ่มเข้ากลุ่มที่มีอยู่แล้ว</li>
+    </ul>
+
+    <h3>การโอนลูกค้า ฉ.45 → ฉ.44 (202.13)</h3>
+    <ul>
+      <li>ให้สาขารับเข้าเป็นลูกค้าประเภทสังกัดกลุ่มเป็นลำดับแรก</li>
+      <li>กรณีขอกู้เงินโดยใช้หลักประกันจำนองและไม่สามารถเข้าสังกัดกลุ่มได้ ให้ผจ.สาขาพิจารณาผ่อนผัน</li>
+      <li>กรณียังมีหนี้เงินกู้ ฉ.45 ค้างอยู่ ให้เป็นไปตามเงื่อนไขเดิมจนกว่าจะชำระหนี้เสร็จสิ้น</li>
+    </ul>
+
+    <h4>การจัดประวัติการชำระหนี้เมื่อโอนจาก ฉ.45 → ฉ.44</h4>
+    <div class="table-wrap">
+    <table>
+      <tr><th>ระยะเวลาชำระหนี้ตามกำหนดติดต่อกัน</th><th>ประวัติที่ได้รับ</th></tr>
+      <tr><td>ตั้งแต่ 2 ปีขึ้นไป</td><td>AA</td></tr>
+      <tr><td>ตั้งแต่ 3 ปีขึ้นไป</td><td>AAA</td></tr>
+      <tr><td>ตั้งแต่ 4 ปีขึ้นไป</td><td>AAA+</td></tr>
+    </table>
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 9: การพ้นสภาพ ===== -->
+<details class="accordion acc-red" id="sec9">
+  <summary>
+    <span class="acc-icon">🚪</span>
+    การพ้นสภาพ — ให้ออก / ลาออก (203.07–203.08)
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>การพ้นสภาพของหัวหน้ากลุ่มและผู้ช่วยหัวหน้ากลุ่ม</h3>
+    <ul>
+      <li><strong>ออกตามวาระ</strong> (1 ปี) — หากปีใดยังไม่มีการเลือกตั้งใหม่ ให้ชุดเดิมอยู่ในตำแหน่งต่อไปจนกว่าจะมีการเลือกตั้งใหม่</li>
+      <li><strong>ลาออกจากตำแหน่ง</strong> ต่อที่ประชุมกลุ่มลูกค้า และที่ประชุมมีมติให้ลาออกได้</li>
+      <li><strong>พ้นสภาพ</strong> จากการเป็นลูกค้าประจำสาขาไม่ว่าเพราะเหตุใดๆ</li>
+      <li><strong>ประชุมกลุ่มลูกค้ามีมติถอดถอน</strong></li>
+    </ul>
+
+    <h3>การพ้นสภาพของลูกค้าในกลุ่ม</h3>
+    <ul>
+      <li><strong>ย้ายสังกัดกลุ่ม</strong></li>
+      <li><strong>ประชุมกลุ่มลูกค้ามีมติให้ออกจากกลุ่ม</strong> (ขาดประชุม, ไม่ปฏิบัติตามมติกลุ่ม, มีความประพฤติทำให้กลุ่มเสื่อมเสีย)</li>
+      <li><strong>พ้นสภาพ</strong> จากการเป็นลูกค้าประจำสาขาไม่ว่าเพราะเหตุใดๆ</li>
+    </ul>
+
+    <h3>203.07 การให้ออกจากการเป็นลูกค้าประจำสาขา</h3>
+    <p>ลูกค้ามีเหตุผิดปกติในส่วนตัวอันเป็นเหตุให้ไม่สามารถทำธุรกิจกับธนาคารต่อไปได้:</p>
+    <ol class="num-list">
+      <li><strong>ตาย</strong></li>
+      <li><strong>ขาดคุณสมบัติ</strong> ฉ.44 หรือ ฉ.45</li>
+      <li><strong>มีเหตุใดเหตุหนึ่ง</strong> และสั่งให้ออกจากการเป็นลูกค้าประจำสาขา</li>
+    </ol>
+
+    <h3>203.08 การลาออกจากการเป็นลูกค้าประจำสาขา</h3>
+    <ul>
+      <li><strong>ต้องไม่มีหนี้</strong> และไม่ติดภาระค้ำประกัน</li>
+      <li><strong>สอบสวนสาเหตุ</strong> ที่ขอลาออก และลูกค้าลงลายมือชื่อไว้เป็นหลักฐานในข้อมูลรายคนส่วนที่ 2</li>
+    </ul>
+
+    <div class="highlight-box red">
+      <strong>⚠️ ข้อควรจำ:</strong> การลาออกต้องไม่มีหนี้และไม่ติดภาระค้ำประกันเท่านั้น!
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 10: การจัดชั้นลูกค้า ===== -->
+<details class="accordion acc-gold" id="sec10">
+  <summary>
+    <span class="acc-icon">🏆</span>
+    การจัดชั้นลูกค้า — AAA / AA / A
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>การจัดชั้นลูกค้า (Credit Grading)</h3>
+    <p>พิจารณาจากแบบประเมินสำหรับลูกค้าใหม่ ฉ.44 โดยพิจารณาจาก: <strong>คุณลักษณะผู้ขอขึ้นทะเบียน การผลิต การตลาด การจัดการ และหลักประกันที่ใช้</strong></p>
+
+    <div class="table-wrap">
+    <table>
+      <tr><th>คะแนน</th><th>ชั้นลูกค้า</th><th>โครงสร้างอัตราดอกเบี้ย</th></tr>
+      <tr><td>80 – 100</td><td><strong style="color:var(--gold2);">AAA</strong></td><td>MRR + 0.75</td></tr>
+      <tr><td>70 – 79</td><td><strong style="color:var(--blue);">AA</strong></td><td>MRR + 1.50</td></tr>
+      <tr><td>ต่ำกว่า 70</td><td><strong style="color:var(--green);">A</strong></td><td>MRR + 2.25</td></tr>
+    </table>
+    </div>
+
+    <div class="highlight-box blue">
+      <strong>📌 หมายเหตุ:</strong> ลูกค้าใหม่ตามข้อบังคับฉบับที่ 44 กำหนดเป็น <strong>ชั้น A</strong> หากประเมินได้สูงกว่าชั้น A ให้ผู้จัดการสาขาขึ้นไปเป็นผู้อนุมัติ
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 11: การจัดประวัติการชำระหนี้ ===== -->
+<details class="accordion acc-green" id="sec11">
+  <summary>
+    <span class="acc-icon">📊</span>
+    การจัดประวัติการชำระหนี้ — AAA+ / AAA / AA / A / B
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>การจัดประวัติการชำระหนี้ลูกค้า</h3>
+    <ul>
+      <li>ลูกค้าเกษตรกรใช้การเรียกเก็บดอกเบี้ยเป็นแบบ <strong>รายสัญญา (Account-Based)</strong></li>
+      <li>จัดประวัติการชำระหนี้ลูกค้าในวันที่ <strong>30 เมษายน</strong> ของทุกปี</li>
+      <li>มีผลตั้งแต่วันที่ <strong>1 พฤษภาคม – 30 เมษายน</strong> ของปีถัดไป</li>
+    </ul>
+
+    <h3>โครงสร้างอัตราดอกเบี้ยตามประวัติการชำระหนี้ ฉ.44</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>คุณสมบัติของลูกค้า</th><th>ชั้น</th><th>อัตราดอกเบี้ย</th></tr>
+      <tr>
+        <td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>4 ปีขึ้นไป</strong></td>
+        <td><strong style="color:var(--gold2);">AAA+</strong></td>
+        <td>MRR + 0.00</td>
+      </tr>
+      <tr>
+        <td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>3 ปี</strong></td>
+        <td><strong style="color:var(--gold);">AAA</strong></td>
+        <td>MRR + 0.75</td>
+      </tr>
+      <tr>
+        <td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>2 ปี</strong></td>
+        <td><strong style="color:var(--blue);">AA</strong></td>
+        <td>MRR + 1.50</td>
+      </tr>
+      <tr>
+        <td>ชำระหนี้ได้ตามกำหนด <strong>1 ปี</strong> หรือเป็นลูกค้าใหม่</td>
+        <td><strong style="color:var(--green);">A</strong></td>
+        <td>MRR + 2.25</td>
+      </tr>
+      <tr>
+        <td>ลูกค้าผิดนัดชำระหนี้ <strong>(Default)</strong></td>
+        <td><strong style="color:var(--red);">B</strong></td>
+        <td>MRR + 3.00</td>
+      </tr>
+    </table>
+    </div>
+
+    <h3>หลักเกณฑ์การจัดประวัติฯ (กรณีมีหลายสัญญา)</h3>
+    <ul>
+      <li><strong>กรณีมีหนี้หลายสัญญา:</strong> ให้จัดชั้นตามสัญญาที่อยู่ในเกณฑ์ต่ำสุด (ยกเว้นรายที่ปรับปรุงโครงสร้างหนี้)</li>
+      <li><strong>พิจารณาจัดให้สูงขึ้น:</strong> มีรายการรับชำระหนี้ ไม่มีบิลค้างชำระ สัญญาปลอดต้น/ไม่ปลอดดอก ชำระดอกเบี้ยครบถ้วนและชำระต้นเงินได้บางส่วน</li>
+      <li><strong>คงชั้นเดิม:</strong> สัญญาปลอดต้น/ไม่ปลอดดอก ชำระดอกเบี้ยครบถ้วนตามกำหนด (ไม่ชำระต้น)</li>
+      <li><strong>เป็นลูกค้าผิดนัด (B):</strong> มีสัญญาใดสัญญาหนึ่งค้างชำระ ณ วันที่ 30 เมษายน / ชำระดอกเบี้ยไม่ครบถ้วน</li>
+    </ul>
+
+    <div class="highlight-box purple">
+      <strong>💡 ข้อควรจำ:</strong> สัญญากู้เงินที่ยกเว้นไม่นำข้อมูลมาจัดประวัติการชำระหนี้ ธนาคารจะพิจารณาเป็นคราวๆ ไป
+    </div>
+  </div>
+</details>
+
+<!-- ===== SECTION 12: การแก้ไขประวัติ ===== -->
+<details class="accordion acc-blue" id="sec12">
+  <summary>
+    <span class="acc-icon">✏️</span>
+    การแก้ไขประวัติการชำระหนี้
+    <span class="acc-arrow">▼</span>
+  </summary>
+  <div class="accordion-content">
+    <h3>สาเหตุที่ลูกค้าได้รับการจัดประวัติไม่ถูกต้อง</h3>
+
+    <h4>กรณีไม่ได้เกิดจากความผิดพลาดของลูกค้า</h4>
+    <ul>
+      <li>สามารถขออนุมัติแก้ไขประวัติจาก <strong>สนจ.</strong> ให้ถูกต้องได้</li>
+      <li>เมื่อได้รับการอนุมัติแล้ว ให้มีผลย้อนหลังตั้งแต่วันที่ 1 พฤษภาคมของปีบัญชีที่จัดผิด</li>
+      <li>แก้ไขอัตราดอกเบี้ยของสัญญากู้ตั้งแต่วันที่ 1 พฤษภาคมเป็นต้นมา</li>
+      <li>แก้ไขในเอกสารสัญญากู้เงินและในระบบ CBS ให้ตรงกัน</li>
+    </ul>
+
+    <h4>กรณีลูกค้าตกเป็นชั้น B แต่สามารถชำระหนี้ได้</h4>
+    <ul>
+      <li>ลูกค้าถูกจัดเป็นชั้น B ในวันที่ 30 เมษายน แต่สามารถชำระหนี้เสร็จสิ้น หรือได้รับการแก้ไขภายใน 0-3 เดือน ด้วยวิธี Loan Review หรือ Revolving Credit จนเป็นหนี้ปกติ</li>
+      <li>สาขาสามารถแก้ไขเป็นชั้นเดิมก่อนตกชั้นได้</li>
+      <li><strong>อำนาจอนุมัติ:</strong> ผู้จัดการสา <span class="acc-sub-label red">สำคัญ</span> โดยต้องผ่านความเห็นชอบของคณะกรรมการสินเชื่อระดับสาขา</li>
+    </ul>
+
+    <div class="highlight-box green">
+      <strong>📌 กำหนดเวลา Loan Review / Revolving Credit:</strong><br>
+      คาบมกราคม → ดำเนินการภายใน 30 เมษายน<br>
+      คาบกุมภาพันธ์ → ดำเนินการภายใน 31 พฤษภาคม<br>
+      คาบมีนาคม → ดำเนินการภายใน 30 มิถุนายน
+    </div>
+
+    <h4>กรณีลูกค้ามีเหตุผิดปกติ</h4>
+    <ul>
+      <li>เสียชีวิต / ชราภาพ / เลิกประกอบอาชีพ</li>
+      <li>มีทายาทหรือบุคคลอื่นเข้ารับใช้หนี้หรือชำระหนี้แทนจนเสร็จสิ้น</li>
+      <li>ผู้เข้าแทนสามารถขอแก้ไขประวัติการชำระหนี้เท่ากับประวัติของลูกค้าเดิมที่เข้าแทนได้</li>
+    </ul>
+
+    <div class="highlight-box red">
+      <strong>⚡ อำนาจอนุมัติแก้ไข:</strong> ผู้จัดการสาขา เป็นผู้มีอำนาจอนุมัติ (ต้องผ่านคณะกรรมการสินเชื่อระดับสาขา) / การแก้ไขกรณีผิดพลาด <strong>สนจ.</strong> เป็นผู้อนุมัติ
+    </div>
+  </div>
+</details>
+
+</div>
+
+<!-- ===== FLOATING NAV ===== -->
+<div class="study-floating-nav">
+  <a href="index.html" class="study-fab">← กลับหน้าหลัก</a>
+</div>
+
+<footer class="footer">
+  สรุปเนื้อหาจาก คู่มือสินเชื่อเล่ม 1 การรับลูกค้า — Genius 9 ธ.ก.ส. · 2569
+</footer>
+
+<script>
+// Open first accordion by default
+document.addEventListener('DOMContentLoaded', function() {
+  const firstAccordion = document.querySelector('.accordion');
+  if (firstAccordion) firstAccordion.open = true;
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('.toc a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.open = true;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
