@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏦 การบริหารจัดการหนี้ — สรุปสอบ Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--a5:#8b5cf6;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:15px;color:var(--a);margin-right:10px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+.hero{text-align:center;padding:20px 16px 24px;border-bottom:2px solid var(--b);margin-bottom:28px}
+.hero h1{font-size:24px;color:var(--a);margin-bottom:6px}
+.hero p{color:var(--t2);font-size:14px}
+.badge{display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24}.badge.red{background:#7f1d1d;color:#fca5a5}.badge.blue{background:#1e3a5f;color:#60a5fa}.badge.green{background:#064e3b;color:#34d399}.badge.purple{background:#3b0764;color:#c4b5fd}
+section{margin-bottom:28px}
+h2{font-size:20px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:14px;margin-top:8px}
+h3{font-size:16px;color:var(--a2);margin:12px 0 8px}
+h4{font-size:14px;color:var(--a3);margin:10px 0 6px;font-weight:600}
+p{margin:6px 0;font-size:14px}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;line-height:1.7}
+.c.info{border-left:4px solid var(--a3)}.c.warn{border-left:4px solid var(--a4)}.c.tip{border-left:4px solid var(--a)}.c.ok{border-left:4px solid var(--a2)}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+th{background:var(--s2);color:var(--a);padding:6px 8px;text-align:left;font-weight:600}
+td{padding:6px 8px;border-bottom:1px solid var(--b);vertical-align:top}
+tr:hover td{background:var(--s2)}
+ul,ol{padding-left:20px;margin:4px 0}li{margin-bottom:3px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mnemo{background:rgba(245,158,11,.08);border:1px dashed var(--a);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:var(--a);font-weight:500;text-align:center}
+.scenario{background:rgba(59,130,246,.08);border:1px dashed var(--a3);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0;border-radius:6px;border:1px solid var(--b)}
+.table-wrap table{min-width:480px;margin:0}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.table-wrap table{font-size:12px;min-width:420px}th,td{padding:5px 6px}nav{padding:8px 10px;gap:4px}nav h1{font-size:14px;margin-right:6px}nav a{font-size:11px;padding:3px 6px}.hero h1{font-size:20px}}
+details{margin:6px 0;background:var(--s);border-radius:8px;border:1px solid var(--b);padding:4px 12px}
+details[open]{border-color:var(--a2)}
+summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--a3);font-size:14px;list-style:none}
+summary::before{content:"▸ ";color:var(--a)}
+details[open] summary::before{content:"▾ "}
+footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
+/* Quiz */
+.qz{padding:4px 0}
+.q{border:1px solid var(--b);background:var(--s);border-radius:8px;padding:12px;margin:8px 0}
+.q p{font-size:14px;margin-bottom:6px;font-weight:500}
+.q label{display:block;font-size:13px;padding:4px 0;color:var(--t2);cursor:pointer;transition:color .15s}
+.q label:hover{color:var(--a)}
+.q input[type=radio]{margin-right:6px;accent-color:var(--a)}
+.q .btn{background:var(--a);color:#0f172a;border:none;border-radius:6px;padding:5px 14px;font-size:13px;font-weight:600;cursor:pointer;margin-top:6px}
+.q .btn:hover{opacity:.85}
+.rb.ok{color:#34d399;font-size:13px;padding:6px 0 2px;line-height:1.6}
+.rb.no{color:#fca5a5;font-size:13px;padding:6px 0 2px;line-height:1.6}
+.rb{padding:4px 0}
+.sc{margin:10px 0;font-size:14px;color:var(--t2);font-weight:500}
+.sc .btn{background:var(--a2);color:#0f172a;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-left:8px}
+.sc .btn:hover{opacity:.85}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
+.tag.red{background:#7f1d1d;color:#fca5a5}.tag.green{background:#064e3b;color:#34d399}.tag.blue{background:#1e3a5f;color:#93c5fd}.tag.gold{background:#78350f;color:#fbbf24}.tag.purple{background:#3b0764;color:#c4b5fd}
+</style>
+</head>
+<body>
+<nav>
+  <h1>🏦 การบริหารจัดการหนี้</h1>
+  <a href="#overview">📌 ภาพรวม</a>
+  <a href="#visit">🏠 เยี่ยมเยียน</a>
+  <a href="#purpose">🔄 เปลี่ยนวัตถุประสงค์</a>
+  <a href="#risk">⚖️ ผัดผ่อน</a>
+  <a href="#notice">📬 แจ้งหนี้</a>
+  <a href="#guarantor">👥 บอกกล่าวค้ำ</a>
+  <a href="#disaster">🌪️ ภัยพิบัติ</a>
+  <a href="#abnormal">⚠️ เหตุผิดปกติ</a>
+  <a href="#transfer">🔁 เปลี่ยนตัวลูกหนี้</a>
+  <a href="#collateral">🏠 หลักประกัน</a>
+  <a href="#approve">👑 อำนาจอนุมัติ</a>
+  <a href="#quiz1">📝 Quiz 1</a>
+  <a href="#quiz2">📝 Quiz 2</a>
+  <a href="c9-content.html" style="margin-left:auto;color:var(--a)">⬅ กลับหน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+<!-- ======================== HERO ======================== -->
+<div class="hero">
+  <h1>🏦 การบริหารจัดการหนี้ — สรุปสอบ Genius 9</h1>
+  <p>เอกสารอ้างอิง 201/203 · ฝ่ายกิจการสาขาภาคตะวันออก ธ.ก.ส. · ปีบัญชี 2569</p>
+  <div>
+    <span class="badge gold">💰 สินเชื่อ</span>
+    <span class="badge blue">📋 ระเบียบ</span>
+    <span class="badge green">⚖️ ผัดผ่อน</span>
+    <span class="badge red">⚠️ บอกกล่าว 60 วัน</span>
+    <span class="badge purple">🔁 เปลี่ยนตัวลูกหนี้</span>
+  </div>
+</div>
+
+<!-- ======================== OVERVIEW ======================== -->
+<section id="overview">
+<h2>📌 ภาพรวม — หลักการบริหารจัดการหนี้</h2>
+
+<p style="font-size:15px">หลังจากลูกค้าเบิกเงินกู้ไปแล้ว <strong>ธนาคารต้องติดตามดูแลอย่างใกล้ชิด</strong> เพื่อให้ลูกค้าใช้เงินตรงวัตถุประสงค์ มีความสามารถชำระหนี้ และหากเกิดปัญหา ต้องช่วยเหลือแต่เนิ่นๆ ก่อนบานปลาย</p>
+
+<div class="mnemo">
+  🎯 หัวใจการบริหารจัดการหนี้ = <strong>ติดตาม + ประเมิน + ปรับโครงสร้าง + จัดการอย่างยั่งยืน</strong>
+</div>
+
+<h3>4 เสาหลักช่วยเหลือเกษตรกร</h3>
+<div class="grid2">
+  <div class="c info">
+    <strong>1. ด้านการผลิต</strong><br>
+    ลดต้นทุน เพิ่มผลผลิต เกษตรอินทรีย์ เทคโนโลยี
+  </div>
+  <div class="c ok">
+    <strong>2. ด้านการตลาดและแปรรูป</strong><br>
+    แก้ปัญหาผลผลิตล้นตลาด รวมกลุ่มต่อรอง
+  </div>
+  <div class="c tip">
+    <strong>3. ด้านการเงินและการจัดการ</strong><br>
+    บัญชีครัวเรือน การออม เศรษฐกิจพอเพียง
+  </div>
+  <div class="c warn">
+    <strong>4. ด้านกฎหมาย/สัญญา</strong><br>
+    รักษาสิทธิ์ผู้ค้ำ จัดการหลักประกัน เปลี่ยนตัวลูกหนี้
+  </div>
+</div>
+
+<div class="c tip" style="margin-top:10px">
+  💡 <strong>จุดดักข้อสอบ:</strong> การบริหารจัดการหนี้ไม่ใช่แค่ "ทวงหนี้" แต่คือ "ดูแลลูกค้าให้อยู่รอดและชำระหนี้ได้"
+</div>
+</section>
+
+<!-- ======================== 1. VISIT ======================== -->
+<section id="visit">
+<h2>🏠 1. การเยี่ยมเยียนลูกค้าหลังการให้กู้เงิน (เอกสาร 201.01)</h2>
+
+<p><strong>วัตถุประสงค์:</strong> สร้างความสัมพันธ์ ติดตามการใช้เงิน ประเมินความสามารถชำระหนี้ ค้นหาปัญหาแต่เนิ่นๆ</p>
+
+<h3>ตารางกลุ่มลูกค้า & ความถี่ในการเยี่ยมเยียน</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>กลุ่มลูกค้า</th><th>เงื่อนไข</th><th>ความถี่</th><th>บันทึก</th></tr>
+  <tr><td><span class="tag blue">ลูกค้าทั่วไป</span></td><td>วงเงิน &lt; 2 ล้านบาท</td><td>ครั้งแรกหลังเบิกเงินกู้ / ครั้งถัดไปอย่างน้อย <strong>ปีละ 1 ครั้ง</strong></td><td>แบบข้อมูลลูกค้ารายคน ส่วนที่ 2 ข้อ 8</td></tr>
+  <tr><td><span class="tag gold">ลูกค้ารายใหญ่</span></td><td>วงเงิน &gt; 2 ล้านบาท</td><td>ปกติ <strong>ปีละ 1 ครั้ง</strong> / มีปัญหา <strong>ปีละ 2 ครั้ง</strong></td><td>ระบบบริหารจัดการหนี้ลูกค้ารายใหญ่</td></tr>
+  <tr><td><span class="tag red">เหตุผิดปกติ</span></td><td>พบปัญหาใดๆ</td><td><strong>เยี่ยมเยียนอย่างใกล้ชิด</strong>จนกว่าปัญหาคลี่คลาย</td><td>ทบทวน สรุปสาเหตุ เสนอแนวทางแก้ไข</td></tr>
+</table>
+</div>
+
+<h3>การวินิจฉัยปัญหาเมื่อพบเหตุผิดปกติ</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>สถานการณ์</th><th>ข้อสั่งการ</th></tr>
+  <tr><td>ใช้เงินกู้ผิดวัตถุประสงค์ <strong>แต่ใช้ในอาชีพ &gt; 70%</strong></td><td>✅ <span class="tag green">อนุมัติเปลี่ยนแปลงวัตถุประสงค์</span></td></tr>
+  <tr><td>ใช้เงินกู้ผิดวัตถุประสงค์ <strong>ใช้ในอาชีพ &lt; 70%</strong></td><td>⚠️ สั่งการให้นำเงินกู้ส่วนที่ผิดวัตถุประสงค์มาชำระคืนบางส่วน</td></tr>
+  <tr><td>ผิดวัตถุประสงค์ทั้งหมด / มีพฤติการณ์บิดพลิ้ว</td><td>🚨 <span class="tag red">เร่งรัดชำระหนี้ / เรียกคืนเงินกู้ / ดำเนินคดี</span></td></tr>
+</table>
+</div>
+
+<div class="mnemo">
+  🎯 จำง่าย: <strong>&gt; 70% ใช้ในอาชีพ = อนุมัติเปลี่ยนวัตถุประสงค์</strong> | &lt; 70% = ชำระคืนบางส่วน | บิดพลิ้ว = ดำเนินคดี
+</div>
+</section>
+
+<!-- ======================== 2. PURPOSE CHANGE ======================== -->
+<section id="purpose">
+<h2>🔄 2. การเปลี่ยนแปลงวัตถุประสงค์ของเงินกู้ (เอกสาร 201.02)</h2>
+
+<h3>หลักการและเงื่อนไข</h3>
+<div class="c info">
+  <strong>เหตุผลที่อนุญาต:</strong> ลูกค้านำเงินไปใช้ผิดวัตถุประสงค์ แต่ยังประกอบอาชีพเดิม/ใกล้เคียง และมีรายได้พอชำระหนี้
+</div>
+<div class="c ok">
+  <strong>สถานะหนี้:</strong> ต้องเป็นหนี้ที่ยังไม่ถึงกำหนดชำระ และไม่มีเหตุควรเรียกคืนเงินกู้
+</div>
+<div class="c warn">
+  <strong>⚠️ โควตาการเปลี่ยน:</strong> กระทำได้เพียง <strong>1 ครั้งเท่านั้น</strong> ต่อสัญญา
+</div>
+
+<h3>กฎเหล็ก: ประเภทเงินกู้ที่อนุญาต vs ห้าม</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>✅ อนุญาตเฉพาะ:</strong><br>
+    เงินกู้เพื่อเป็น <strong>ค่าใช้จ่าย</strong>
+  </div>
+  <div class="c warn">
+    <strong>❌ ไม่อนุญาตเด็ดขาด:</strong><br>
+    เงินกู้เพื่อการลงทุน (กระทบโครงสร้างหนี้ระยะยาว, ใช้เงินทุนมาก, ความเสี่ยงสูง)
+  </div>
+</div>
+
+<h3>3 หมวดวัตถุประสงค์ใหม่ที่อนุญาต</h3>
+<ol>
+  <li><strong>ประกอบอาชีพ</strong> — เกษตรกรรมหรืออาชีพอื่นๆ</li>
+  <li><strong>พัฒนาความรู้</strong> — เช่น ค่าเล่าเรียนบุตร</li>
+  <li><strong>ค่ารักษาพยาบาล</strong> — สำหรับตนเองหรือครอบครัว</li>
+</ol>
+
+<div class="mnemo">
+  🎯 <strong>กฎ 70%:</strong> ต้องใช้จ่ายในวัตถุประสงค์ใหม่ <strong>ตั้งแต่ 70% ขึ้นไป</strong> ของจำนวนเงินกู้ตามสัญญา
+</div>
+
+<h3>กรอบเวลาชำระคืน</h3>
+<div class="grid2">
+  <div class="c info"><strong>กรณีปกติ:</strong> ไม่เกิน <strong>12 เดือน</strong></div>
+  <div class="c tip"><strong>กรณีพิเศษ:</strong> ไม่เกิน <strong>18 เดือน</strong></div>
+</div>
+</section>
+
+<!-- ======================== 3. RISK & DEFERMENT ======================== -->
+<section id="risk">
+<h2>⚖️ 3. การประเมินความเสี่ยงลูกหนี้ → ผัดผ่อนชำระหนี้ (เอกสาร 201.03)</h2>
+
+<h3>เกณฑ์หลัก: กระทบฐานะการเงินเกิน 50%</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>เกณฑ์ย่อย</th><th>คำอธิบาย</th></tr>
+  <tr><td>ผลผลิตหรือบริการเสียหาย</td><td>รายได้ลดลง <strong>เกิน 50%</strong> ของรายได้ปกติ</td></tr>
+  <tr><td>ทรัพย์สินได้รับความเสียหาย</td><td>ค่าใช้จ่ายซ่อมแซม/ก่อแทนเพิ่มขึ้น <strong>เกิน 50%</strong> ของรายได้ปกติ</td></tr>
+  <tr><td>ราคาผลิตผลตกต่ำ</td><td>รายได้จากการขายลดลง <strong>เกิน 50%</strong> ของประมาณการ</td></tr>
+  <tr><td>ภาระค่าใช้จ่ายครัวเรือนพุ่งสูง</td><td>ค่ารักษาพยาบาล/ค่าศึกษาเพิ่มขึ้น <strong>เกิน 50%</strong> ของรายได้รวมครอบครัว</td></tr>
+</table>
+</div>
+
+<h3>กรอบเวลาโควตาการผัดผ่อน</h3>
+<div class="grid2">
+  <div class="c info">
+    <strong>จำนวนคราว:</strong> ผัดผ่อนต่อเนื่องสูงสุด <strong>ไม่เกิน 5 คราว</strong>
+  </div>
+  <div class="c tip">
+    <strong>ระยะเวลา:</strong> คราวละ <strong>ไม่เกิน 12 เดือน</strong>
+  </div>
+</div>
+
+<div class="c warn">
+  ⚠️ <strong>การนับ 5 คราว:</strong> นับต่อเนื่องจากวันครบกำหนดชำระเดิมเสมอ — หากเกิน 5 คราว → <strong>ต้องเข้าสู่กระบวนการปรับปรุงโครงสร้างหนี้</strong>
+</div>
+
+<h3>อัตราดอกเบี้ยตามผลการพิจารณา</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ผลการพิจารณา</th><th>อัตราดอกเบี้ย</th></tr>
+  <tr><td>✅ อนุมัติ (มีเหตุอันควรผ่อนผัน)</td><td><strong>MRR + 3.00%</strong></td></tr>
+  <tr><td>❌ ไม่อนุมัติ</td><td>MRR + 3.00% + ดอกเบี้ยปรับ 3.00% = <strong>MRR + 6.00%</strong></td></tr>
+  <tr><td>🌪️ ภัยธรรมชาติ/ภัยพิบัติร้ายแรง</td><td><span class="tag green">ไม่เรียกดอกเบี้ยปรับ</span></td></tr>
+</table>
+</div>
+
+<h3>ขั้นตอนการปฏิบัติงาน (Workflow) + SLA</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ขั้นตอน</th><th>ผู้รับผิดชอบ</th><th>รายละเอียด</th></tr>
+  <tr><td>1. รับแจ้งเหตุ</td><td>พพธ.</td><td>รับหนังสือแจ้งเหตุความเสียหาย พร้อมสมุดบัญชีเงินกู้</td></tr>
+  <tr><td>2. ตรวจสอบและให้ความเห็น</td><td>พพธ./หนก.</td><td>สอบสวนข้อเท็จจริงในพื้นที่ บันทึกความเห็น</td></tr>
+  <tr><td>3. พิจารณาอนุมัติ</td><td>ผจก.สาขา/ผอ.จ.</td><td>พิจารณาเหตุผลความจำเป็น</td></tr>
+  <tr><td>4. บันทึกข้อมูลและจัดเก็บ</td><td>พนักงานการเงิน/ธุรการ</td><td>บันทึกรายการผ่อนผันในระบบคอมพิวเตอร์</td></tr>
+</table>
+</div>
+
+<div class="c warn">
+  ⏰ <strong>SLA:</strong> ภายใน <strong>90 วัน</strong> (นับจากวันสิ้นกำหนด) — หากเกิน 90 วัน อำนาจอนุมัติเป็นของ <strong>ผอ.จ.</strong>
+</div>
+<div class="c info">
+  🔍 <strong>จุดควบคุม:</strong> หนก.ตรวจทานทุกราย / ผช.ผจบ.ตรวจสอบความถูกต้องที่รายงาน ZSCA359A
+</div>
+</section>
+
+<!-- ======================== 4. NOTICE ======================== -->
+<section id="notice">
+<h2>📬 4. การแจ้งหนี้และการเร่งรัดหนี้ (เอกสาร 201.04)</h2>
+
+<div class="grid2">
+  <div class="c info">
+    <strong>หลักการ:</strong> แจ้งล่วงหน้าเพื่อให้ลูกค้าเตรียมตัว หากชำระไม่ได้ต้องติดตามปัญหาเพื่อหาแนวทางช่วยเหลือ
+  </div>
+  <div class="c tip">
+    <strong>ระยะเวลา:</strong> ส่งใบแจ้งหนี้ให้ถึงมือลูกค้าก่อนถึงกำหนดชำระ <strong>อย่างน้อย 30 วัน</strong>
+  </div>
+</div>
+
+<h3>วิธีการจัดส่ง</h3>
+<ol>
+  <li>ส่งด้วยตนเองถึงมือผู้กู้ หรือบุคคลในครัวเรือนที่บรรลุนิติภาวะ</li>
+  <li>กรณีอยู่ไกล: จัดส่งทางไปรษณีย์ หรือประสานสาขาอื่นดำเนินการแทน</li>
+</ol>
+
+<div class="c warn">
+  🔒 ซองจดหมายต้อง <strong>ปิดผนึกมิดชิด</strong><br>
+  🚫 <strong>ห้าม</strong>มีข้อความบนซองที่ทำให้เข้าใจว่าเป็นการทวงถามหนี้ (ตาม <strong>พ.ร.บ.การทวงถามหนี้ พ.ศ. 2558</strong>)
+</div>
+
+<div class="c tip">
+  ℹ️ <strong>ข้อยกเว้น:</strong> การแจ้งหนี้ทางโทรศัพท์หรือไปรษณีย์ ใช้เฉพาะกับลูกค้าที่ "ไม่มีปัญหาการชำระหนี้" — ต้องมีบันทึก "แจ้งโดย..." ในบัญชีลูกค้ารายคน ส่วนที่ 2 ข้อ 8 สถบถ (13) เสมอ
+</div>
+</section>
+
+<!-- ======================== 5. GUARANTOR NOTICE (60 DAYS) ======================== -->
+<section id="guarantor">
+<h2>👥 5. หนังสือบอกกล่าวผู้ค้ำประกัน — กฎหมาย 60 วัน (เอกสาร 201.05)</h2>
+
+<div class="mnemo">
+  ⚖️ <strong>หัวใจ:</strong> ลูกหนี้ผิดนัด → <strong>60 วัน</strong> = เส้นแบ่งระหว่าง "รักษาสิทธิ์" กับ "ผู้ค้ำหลุดพ้น"
+</div>
+
+<div class="grid2">
+  <div class="c ok">
+    <strong>✅ แจ้งทันเวลา (Day 1-60)</strong><br>
+    ธนาคารรักษาสิทธิ์เรียกร้องหนี้และอุปกรณ์ได้ <strong>เต็มจำนวน</strong>
+  </div>
+  <div class="c warn">
+    <strong>❌ เลยกำหนด 60 วัน (Day 61+)</strong><br>
+    ผู้ค้ำประกัน <strong>หลุดพ้นความรับผิดชอบ</strong><br>
+    (ดอกเบี้ย, ค่าธรรมเนียม, ค่าสินไหมทดแทน, ค่าปรับ, อุปกรณ์)
+  </div>
+</div>
+
+<div class="c info">
+  <strong>Day 0:</strong> ลูกหนี้ผิดนัดชำระหนี้<br>
+  <strong>Day 1-60:</strong> สาขาดำเนินการพิมพ์ จัดส่ง และผู้ค้ำประกันได้รับหนังสือบอกกล่าว → รักษาสิทธิ์เต็มจำนวน<br>
+  <strong>Day 61+:</strong> สูญเสียสิทธิ์เรียกร้องดอกเบี้ย/ค่าปรับ/ค่าธรรมเนียมที่เกิดขึ้นใหม่
+</div>
+
+<h3>ขอบเขตบัญชีที่ต้องจัดทำหนังสือบอกกล่าว</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>✅ In Scope:</strong>
+    <ul style="margin-top:6px">
+      <li>สัญญากู้เงินที่ใช้บุคคลค้ำประกัน</li>
+      <li>สัญญากู้เงินที่ใช้บุคคลค้ำประกันร่วมกับหลักประกันจำนอง</li>
+      <li>หนี้ค้างชำระที่ไม่มีสถานะผิดผ่อน</li>
+    </ul>
+  </div>
+  <div class="c warn">
+    <strong>❌ Out of Scope:</strong>
+    <ul style="margin-top:6px">
+      <li>หนังสือคู่เงินรับรองรับผิดอย่างลูกหนี้ร่วมกัน</li>
+      <li>สัญญากู้เงินที่ใช้หลักประกันจำนองเพียงอย่างเดียว</li>
+    </ul>
+  </div>
+</div>
+
+<h3>4 ขั้นตอนปฏิบัติงานผ่านระบบ baacnet/Easy Loan</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ขั้นตอน</th><th>ผู้รับผิดชอบ</th><th>รายละเอียด</th></tr>
+  <tr><td>1. เรียกและตรวจรายงาน</td><td>พพธ.</td><td>ค้นหารายการหนี้ค้างชำระ พิมพ์รายงานตั้งเบี้ยปรับ</td></tr>
+  <tr><td>2. จัดทำและลงนาม</td><td>พพธ./ผจก./หนก.</td><td>สั่งพิมพ์หนังสือเป็น PDF → ผจก./หนก. ลงลายมือชื่อ</td></tr>
+  <tr><td>3. จัดส่งหนังสือ</td><td>พพธ./พรก.</td><td>นำส่งด้วยตนเอง หรือส่งไปรษณีย์ลงทะเบียนตอบรับ</td></tr>
+  <tr><td>4. จัดเก็บเอกสาร</td><td>พรก.</td><td>จัดเก็บหนังสือบอกกล่าว/ใบตอบรับเข้าแฟ้ม</td></tr>
+</table>
+</div>
+
+<div class="c warn">
+  🚫 <strong>การส่งด้วยตนเอง:</strong> ผู้มีสิทธิ์เซ็นรับเฉพาะ <strong>ผู้ค้ำประกัน หรือบุคคลในครัวเรือนที่บรรลุนิติภาวะ</strong> — <span class="tag red">ห้ามเด็ดขาด</span> หัวหน้ากลุ่มลูกค้าหรือบุคคลอื่นลงนามรับแทน<br><br>
+  📮 <strong>การส่งทางไปรษณีย์:</strong> ต้องส่งแบบ <strong>ลงทะเบียนตอบรับ</strong> ไปตามที่อยู่สำเนาทะเบียนบ้านที่แจ้งไว้เท่านั้น — สอบทานใบตอบรับให้ครบถ้วน<br><br>
+  ⚠️ <strong>ข้อควรระวังในการพิมพ์:</strong> ห้ามเลือก "พิมพ์ทั้งหมด" ในครั้งเดียว ควรเรียกพิมพ์ข้อมูลย่อยเป็นรายเขตธุรกิจ — <strong>จำกัดไม่ควรเกินครั้งละ 100 ราย</strong> — หากระบบขัดข้อง ระบบจะไม่สามารถตรวจสอบได้ว่าพิมพ์ถึงรายใดแล้ว
+</div>
+</section>
+
+<!-- ======================== 6. DISASTER ======================== -->
+<section id="disaster">
+<h2>🌪️ 6. มาตรการช่วยเหลือภัยพิบัติร้ายแรง (เอกสาร 201.09)</h2>
+
+<div class="grid2">
+  <div class="c info">
+    <strong>งบประมาณ:</strong> ไม่เกิน <strong>100 ล้านบาท/ปีบัญชี</strong> (รวมต้น ดอกเบี้ยค้างรับ และดอกเบี้ยปรับ)
+  </div>
+  <div class="c warn">
+    <strong>กรอบเวลา:</strong> ให้ความช่วยเหลือให้แล้วเสร็จภายใน <strong>90 วัน</strong> นับแต่วันเหตุการณ์สิ้นสุดลง
+  </div>
+</div>
+
+<h3>ลูกหนี้/หนี้ที่เข้าเกณฑ์</h3>
+<ol>
+  <li><strong>ผลกระทบระดับรุนแรง:</strong> ลูกหนี้/คู่สมรส/บุตร เสียชีวิตหรือสาบสูญจากภัยธรรมชาติ ภัยพิบัติ หรือโรคระบาด</li>
+  <li><strong>วัตถุประสงค์หนี้:</strong> เป็นหนี้จากการประกอบกิจการ/เกี่ยวเนื่อง หรือเพื่อพัฒนาคุณภาพชีวิต</li>
+  <li><strong>สถานะหนี้:</strong> ยังไม่ขาดอายุความ มีหลักฐานชัดแจ้ง และเป็นสินเชื่อ ธ.ก.ส. เท่านั้น</li>
+</ol>
+
+<h3>ตารางการยกเว้นหนี้และดอกเบี้ย</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ผู้สูญเสีย</th><th>หลักประกัน</th><th>ดอกเบี้ยปรับ</th><th>ดอกเบี้ยค้างรับ</th><th>ต้นเงิน</th></tr>
+  <tr><td rowspan="3">ลูกหนี้</td><td>บุคคลค้ำประกัน</td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag green">ยกหนี้ทั้งจำนวน</span></td></tr>
+  <tr><td>หลักประกันจำนอง</td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag blue">ชำระตามปกติ</span></td></tr>
+  <tr><td>จำนอง + บุคคลค้ำ</td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag blue">ยกหนี้ตามสัดส่วนมูลค่าบุคคลค้ำ</span></td></tr>
+  <tr><td>ครอบครัว (คู่สมรส/บุตร)</td><td>ทุกประเภท</td><td><span class="tag green">ยกเว้น 100%</span></td><td><span class="tag gold">ลดให้ 50%</span></td><td><span class="tag blue">ชำระตามปกติ</span></td></tr>
+</table>
+</div>
+
+<div class="c tip">
+  ℹ️ <strong>หมายเหตุ:</strong> "บุคคลสาบสูญ" = บุคคลที่ศาลมีคำสั่งให้เป็นคนสาบสูญตาม <strong>ป.พ.พ. มาตรา 61</strong>
+</div>
+</section>
+
+<!-- ======================== 7. ABNORMAL 13 EVENTS ======================== -->
+<section id="abnormal">
+<h2>⚠️ 7. เหตุผิดปกติในส่วนตัวลูกค้า 13 ประการ (4 กลุ่ม)</h2>
+
+<div class="mnemo">
+  🎯 จำง่าย: <strong>5 + 3 + 4 + 1 = 13</strong> เหตุผิดปกติ | <strong>สภาพบุคคล + กฎหมาย + พฤติกรรม + ฉุกเฉิน</strong>
+</div>
+
+<h3>กลุ่ม 1: สภาพบุคคลและถิ่นที่อยู่ (5 ข้อ)</h3>
+<ol>
+  <li>เสียชีวิต หรือสาบสูญ</li>
+  <li>วิกลจริต ทุพพลภาพ ป่วยเรื้อรัง (อุปสรรคต่ออาชีพ)</li>
+  <li>บวชไม่สึก</li>
+  <li>ต้องโทษจำคุกเกินกว่า <strong>3 ปี</strong></li>
+  <li>ย้ายถิ่นฐานไปจากภูมิลำเนา</li>
+</ol>
+
+<h3>กลุ่ม 2: กฎหมายและเศรษฐกิจ (3 ข้อ)</h3>
+<ol start="6">
+  <li>ถูกฟ้องร้อง / ยึดทรัพย์ / ล้มละลาย</li>
+  <li>มีหนี้สินภายนอกมาก</li>
+  <li>ถูกทางราชการเวนคืนที่ดิน</li>
+</ol>
+
+<h3>กลุ่ม 3: พฤติกรรมและอาชีพ (4 ข้อ)</h3>
+<ol start="9">
+  <li>เลิกประกอบอาชีพ</li>
+  <li>โอนกรรมสิทธิ์ให้ผู้อื่น</li>
+  <li>ใช้เงินกู้ผิดวัตถุประสงค์</li>
+  <li>พฤติกรรมเสี่ยง เช่น เล่นการพนัน, ติดยาเสพติด</li>
+</ol>
+
+<h3>กลุ่ม 4: เหตุฉุกเฉินในครัวเรือน (1 ข้อ)</h3>
+<ol start="13">
+  <li>มีค่าใช้จ่ายฉุกเฉินกะทันหัน เช่น ค่ารักษาพยาบาล</li>
+</ol>
+
+<div class="c warn">
+  ⚠️ <strong>ข้อยกเว้นที่ธนาคารไม่ยินยอมเปลี่ยนตัวลูกหนี้:</strong>
+  <ul style="margin-top:6px">
+    <li>ผู้กู้เพียงแค่ไปทำงานต่างประเทศชั่วคราว</li>
+    <li>ผู้กู้ต้องโทษจำคุก <strong>ไม่เกิน 3 ปี</strong></li>
+  </ul>
+</div>
+</section>
+
+<!-- ======================== 8. TRANSFER DEBTOR ======================== -->
+<section id="transfer">
+<h2>🔁 8. การเปลี่ยนตัวลูกหนี้และการรับใช้หนี้</h2>
+
+<h3>ทำไมต้องเปลี่ยนตัวลูกหนี้?</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>1. ป้องกันความเสียหายของธนาคาร</strong><br>
+    เมื่อลูกหนี้เกิดเหตุผิดปกติจนชำระหนี้ไม่ได้ ป้องกันหนี้ขาดอายุความ
+  </div>
+  <div class="c info">
+    <strong>2. บรรเทาความเดือดร้อนให้ครอบครัว</strong><br>
+    ช่วยเหลือทายาทไม่ให้รับผลกระทบหนัก โดยเฉพาะหนี้ไม่มีหลักทรัพย์
+  </div>
+  <div class="c tip">
+    <strong>3. ส่งมอบกิจการต่อเนื่อง</strong><br>
+    เปิดโอกาสให้ทายาทที่มีคุณสมบัติเหมาะสมรับช่วงต่อ
+  </div>
+</div>
+
+<h3>ลำดับผู้มีสิทธิรับช่วงต่อหนี้</h3>
+<div class="mnemo">
+  🎯 จำง่าย: <strong>คู่สมรส/บุตร → พ่อแม่ → พี่น้องร่วมบิดามารดา → พี่น้องร่วมบิดาหรือมารดา → ปู่ย่าตายาย → ลุงป้าน้าอา → ผู้ค้ำประกัน</strong>
+</div>
+<div class="table-wrap">
+<table>
+  <tr><th>อันดับ</th><th>ผู้มีสิทธิ</th></tr>
+  <tr><td>1</td><td>คู่สมรส และ/หรือ บุตรที่บรรลุนิติภาวะ</td></tr>
+  <tr><td>2</td><td>บิดามารดา</td></tr>
+  <tr><td>3</td><td>พี่น้องร่วมบิดามารดาเดียวกัน</td></tr>
+  <tr><td>4</td><td>พี่น้องร่วมบิดาหรือมารดาเดียวกัน</td></tr>
+  <tr><td>5</td><td>ปู่ ย่า ตา ยาย</td></tr>
+  <tr><td>6</td><td>ลุง ป้า น้า อา</td></tr>
+  <tr><td>สุดท้าย</td><td>หากไม่มีทายาท → พิจารณาให้ <strong>ผู้ค้ำประกัน</strong> หรือบุคคลอื่นรับแทน</td></tr>
+</table>
+</div>
+
+<h3>เปรียบเทียบ: การเปลี่ยนตัวลูกหนี้ vs การรับใช้หนี้</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>หัวข้อ</th><th>การเปลี่ยนตัวลูกหนี้</th><th>การรับใช้หนี้</th></tr>
+  <tr><td>สถานะหนี้เดิม (Trigger)</td><td><span class="tag green">หนี้ปกติ และ หนี้ 0-3 เดือน</span></td><td><span class="tag red">หนี้ NPLs เท่านั้น</span></td></tr>
+  <tr><td>สถานะผู้รับช่วง</td><td>"ผู้รับโอนหนี้"</td><td>"ผู้รับใช้หนี้"</td></tr>
+  <tr><td>การขึ้นทะเบียนลูกค้า</td><td>ต้องเป็นลูกค้าตามข้อบังคับธนาคาร</td><td>เป็นลูกค้าตามข้อบังคับ (ไม่ประสงค์ → ลูกค้าเฉพาะกิจได้)</td></tr>
+  <tr><td>รหัสสินเชื่อใน CBS</td><td><strong>8100</strong> (เงินกู้มีกำหนดระยะเวลา)</td><td><strong>8900</strong> (สินเชื่อ ปปน. และ รชบ.)</td></tr>
+  <tr><td>Subtype &amp; Market Code</td><td>Subtype 40009 | Market Code 2694</td><td>Subtype 02002 | Market Code 1633</td></tr>
+</table>
+</div>
+
+<div class="mnemo">
+  🎯 จำง่าย: <strong>เปลี่ยนตัวลูกหนี้ = หนี้ดี (8100)</strong> | <strong>รับใช้หนี้ = หนี้เสีย/NPL (8900)</strong>
+</div>
+</section>
+
+<!-- ======================== 9. COLLATERAL ======================== -->
+<section id="collateral">
+<h2>🏠 9. การจัดการหลักประกัน (กรณีหนี้เดิมมีอสังหาริมทรัพย์)</h2>
+
+<div class="c warn">
+  ⏰ <strong>หลักการ:</strong> ต้องดำเนินการให้แล้วเสร็จ <strong>ภายในวันเดียวกัน</strong>
+</div>
+
+<h3>3 ขั้นตอนหลัก</h3>
+<ol>
+  <li>รับโอนที่ดินโดยครอบจำนอง</li>
+  <li>ถอนจำนองเดิม</li>
+  <li>จดจำนองใหม่เป็นประกันหนี้</li>
+</ol>
+
+<div class="c info">
+  ℹ️ กรณีราคาประเมินที่ดินใหม่ไม่เพียงพอ → ต้องจัดหาหลักประกันเพิ่มตามข้อบังคับธนาคาร — หากไม่สามารถหาเพิ่มได้ → เสนอขออนุมัติจากธนาคารเป็นรายๆ ไป
+</div>
+
+<h3>4 กรณีให้ญาติให้บุคคลอื่นรับใช้หนี้แทน</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>กรณี</th><th>คำอธิบาย</th></tr>
+  <tr><td>1. ที่ดินผู้กู้</td><td>ทายาทรับมรดก + รับหนี้</td></tr>
+  <tr><td>2. ที่ดินคนอื่น (เจ้าของตาย)</td><td>ทายาทเจ้าของที่ดินรับมรดก + รับหนี้</td></tr>
+  <tr><td>3. ที่ดินคนอื่น (เจ้าของรับเอง)</td><td>เจ้าของที่ดินขอรับหนี้แทนเพื่อรักษาที่ดิน</td></tr>
+  <tr><td>4. ที่ดินคนอื่น (ทายาทรับหนี้)</td><td>ทายาทผู้กู้รับหนี้ + เจ้าของที่ดินยินยอมจำนองต่อ</td></tr>
+</table>
+</div>
+
+<div class="c tip">
+  ℹ️ <strong>ข้อยกเว้นพิเศษ:</strong> หนี้ใช้ที่ดินตนเองจำนอง → ทายาทยินยอมรับใช้หนี้แทน | หนี้ใช้ที่ดินผู้อื่นจำนอง → ทายาทเจ้าของที่ดิน/เจ้าของที่ดินเข้ารับใช้หนี้แทน
+</div>
+</section>
+
+<!-- ======================== 10. APPROVAL ======================== -->
+<section id="approve">
+<h2>👑 10. อำนาจอนุมัติตามระเบียบ 83 (ตารางสรุป)</h2>
+
+<div class="mnemo">
+  🎯 <strong>หลักการ:</strong> หนี้ส่วนบุคคล (ฉ.44/ฉ.45) → อนุมัติได้ง่ายกว่าหนี้ธุรกิจ (ฉ.20/23/26/31) และสหกรณ์/องค์กร
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>การดำเนินการ</th><th>หนี้บุคคล ฉ.44/ฉ.45</th><th>หนี้ธุรกิจ/สินเชื่อ ฉ.20/23/26/31</th><th>ฉ.45 กลุ่มบุคคล/ผู้ประกอบการ/กทบ./องค์กร</th></tr>
+  <tr><td>ผัดชำระเงินรายงวด/ผ่อนระยะเวลา/ขยายเวลา</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag red">✗</span> ต้องผ่าน ผอ.ฝสข./ผอ.ธญ.</td><td><span class="tag red">✗</span> ต้องผ่าน ผอ.ฝสข./ผอ.ธญ.</td></tr>
+  <tr><td>อนุมัติตารางกำหนดชำระหนี้</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag green">✓ ผอ.ฝสข.+</span></td><td><span class="tag green">✓ ผอ.ฝสข.+</span></td></tr>
+  <tr><td>เปลี่ยนแปลงวัตถุประสงค์</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag green">✓ ผอ.ฝสข.</span></td><td><span class="tag red">✗</span></td></tr>
+  <tr><td>เรียกคืนเงินกู้</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag green">✓ ผอ.ฝสข.</span></td><td><span class="tag green">✓ ผอ.ฝสข.+</span></td></tr>
+  <tr><td>หนังสือรับสภาพหนี้</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag green">✓ ผอ.ฝสข.</span></td><td><span class="tag green">✓ ผอ.ฝสข.+</span></td></tr>
+  <tr><td>ทำสัญญา รชน.</td><td><span class="tag green">✓ ผจก.</span></td><td><span class="tag green">✓ ผอ.ฝสข.</span></td><td><span class="tag green">✓ ผอ.ฝสข.</span></td></tr>
+</table>
+</div>
+
+<div class="c tip">
+  💡 <strong>ตัวย่อ:</strong> พพธ.=พนักงานสัมพันธ์ | หนก.=หัวหน้ากลุ่ม | พรก.=พนักงานธุรการ | ผจก.=ผู้จัดการสาขา | ผอ.จ.=ผู้อำนวยการสำนักงานจังหวัด | ผอ.ฝสข.=ผู้อำนวยการฝ่ายสินเชื่อ | ผอ.ธญ.=ผู้อำนวยการธนาคารออมสินยูเนี่ยน | ผช.ผจข.=ผู้ช่วยผู้จัดการใหญ่
+</div>
+</section>
+
+<!-- ======================== QUIZ 1 ======================== -->
+<section id="quiz1">
+<h2>📝 Quiz 1: ความเข้าใจพื้นฐาน (8 ข้อ)</h2>
+<h4>ทดสอบความเข้าใจเรื่อง เยี่ยมเยียน / เปลี่ยนวัตถุประสงค์ / ผัดผ่อน / แจ้งหนี้</h4>
+<div id="qz1"></div>
+<div class="sc">
+  คะแนน: <span id="sc1">0</span> / 8
+  <button class="btn" onclick="rs(1)">🔄 ทำใหม่</button>
+</div>
+</section>
+
+<!-- ======================== QUIZ 2 ======================== -->
+<section id="quiz2">
+<h2>📝 Quiz 2: กฎหมาย & อำนาจอนุมัติ (7 ข้อ)</h2>
+<h4>ทดสอบเรื่อง บอกกล่าว 60 วัน / ภัยพิบัติ / เปลี่ยนตัวลูกหนี้ / อำนาจอนุมัติ</h4>
+<div id="qz2"></div>
+<div class="sc">
+  คะแนน: <span id="sc2">0</span> / 7
+  <button class="btn" onclick="rs(2)">🔄 ทำใหม่</button>
+</div>
+</section>
+
+<footer>
+🐶✨ สรุปโดย คาร่า — วันที่ 30 มิ.ย.2569 · <a href="c9-content.html" style="color:#f59e0b">⬅ กลับหน้าหลัก</a><br>
+<span style="font-size:11px">📌 แหล่งอ้างอิง: เอกสาร ธ.ก.ส. 201.01-201.09, 203.01 · ครอบคลุม 10 หัวข้อหลัก (จาก 24/141 หน้า)</span>
+</footer>
+
+</div><!-- /ct -->
+
+<script>
+// Quiz data
+const Q1=[
+{q:"ลูกค้ารายใหญ่ (วงเงิน > 2 ล้านบาท) ต้องเยี่ยมปีละกี่ครั้งหากมีปัญหา?",c:["1 ครั้ง","2 ครั้ง","3 ครั้ง","4 ครั้ง"],a:1},
+{q:"ลูกค้าใช้เงินกู้ผิดวัตถุประสงค์ แต่ใช้ในอาชีพ 75% ธนาคารควรสั่งการอย่างไร?",c:["เร่งรัดชำระหนี้ทั้งหมด","เรียกคืนเงินกู้ทันที","อนุมัติเปลี่ยนแปลงวัตถุประสงค์","ดำเนินคดีทางกฎหมาย"],a:2},
+{q:"การเปลี่ยนแปลงวัตถุประสงค์เงินกู้ทำได้กี่ครั้งต่อสัญญา?",c:["1 ครั้ง","2 ครั้ง","3 ครั้ง","ไม่จำกัด"],a:0},
+{q:"กฎ 70% สำหรับเปลี่ยนวัตถุประสงค์ หมายความว่าอย่างไร?",c:["ต้องใช้จ่าย ≥ 70% ของเงินเดือน","ต้องใช้จ่าย ≥ 70% ของวงเงินกู้ในวัตถุประสงค์ใหม่","ลูกหนี้ต้องจ่ายคืน 70% ของหนี้","ต้นทุนการผลิต ≤ 70% ของรายได้"],a:1},
+{q:"การผัดผ่อนชำระหนี้ต่อเนื่องได้สูงสุดกี่คราว และคราวละไม่เกินกี่เดือน?",c:["3 คราว × 6 เดือน","5 คราว × 12 เดือน","10 คราว × 12 เดือน","ไม่จำกัด"],a:1},
+{q:"ลูกหนี้ผ่อนผันไม่ได้รับการอนุมัติ ต้องเสียดอกเบี้ยอัตราเท่าไร?",c:["MRR + 3%","MRR + 6%","MRR + 9%","MRR + 12%"],a:1},
+{q:"การส่งใบแจ้งหนี้ต้องส่งก่อนกำหนดชำระอย่างน้อยกี่วัน?",c:["7 วัน","15 วัน","30 วัน","60 วัน"],a:2},
+{q:"ซองจดหมายแจ้งหนี้ ห้ามมีข้อความใดบนซอง?",c:["ชื่อธนาคาร","ที่อยู่ลูกค้า","ข้อความที่ทำให้เข้าใจว่าเป็นการทวงถามหนี้","ตราประทับ"],a:2}
+];
+const E1=[
+"ลูกค้ารายใหญ่>2ล้าน: ปกติปีละ1 / มีปัญหาปีละ2 ครั้ง (เอกสาร 201.01)",
+"ใช้ในอาชีพ>70% = อนุมัติเปลี่ยนวัตถุประสงค์; <70% = ชำระคืนบางส่วน; บิดพลิ้ว = ดำเนินคดี",
+"กระทำได้เพียง 1 ครั้งเท่านั้นต่อสัญญา (เอกสาร 201.02)",
+"กฎ 70%: ใช้จ่าย ≥ 70% ของจำนวนเงินกู้ตามสัญญาในวัตถุประสงค์ใหม่",
+"ผัดผ่อนต่อเนื่องสูงสุด 5 คราว คราวละไม่เกิน 12 เดือน (นับต่อเนื่องจากวันครบกำหนดเดิม)",
+"ไม่อนุมัติ = MRR+3% + ดอกเบี้ยปรับ 3% = MRR+6%; ภัยพิบัติ = ไม่เรียกดอกเบี้ยปรับ",
+"ส่งใบแจ้งหนี้ก่อนกำหนดชำระอย่างน้อย 30 วัน (เอกสาร 201.04)",
+"ห้ามข้อความที่ทำให้เข้าใจว่าเป็นการทวงถามหนี้ (พ.ร.บ.การทวงถามหนี้ 2558)"
+];
+const Q2=[
+{q:"ลูกหนี้ผิดนัดชำระหนี้ ธนาคารต้องส่งหนังสือบอกกล่าวผู้ค้ำประกันภายในกี่วัน มิฉะนั้นผู้ค้ำจะหลุดพ้น?",c:["30 วัน","45 วัน","60 วัน","90 วัน"],a:2},
+{q:"กรณีใดไม่ต้องจัดทำหนังสือบอกกล่าวผู้ค้ำประกัน?",c:["สัญญากู้ที่ใช้บุคคลค้ำประกันอย่างเดียว","สัญญากู้ที่ใช้ค้ำประกันร่วมกับจำนอง","สัญญากู้ที่ใช้หลักประกันจำนองเพียงอย่างเดียว","สัญญากู้ที่ค้างชำระ"],a:2},
+{q:"งบประมาณช่วยเหลือภัยพิบัติร้ายแรงต่อปีบัญชีไม่เกินเท่าไหร่?",c:["50 ล้านบาท","80 ล้านบาท","100 ล้านบาท","200 ล้านบาท"],a:2},
+{q:"ลูกหนี้เสียชีวิตจากภัยพิบัติ หลักประกันเป็นบุคคลค้ำประกัน ต้นเงินจะเป็นอย่างไร?",c:["ชำระตามปกติ","ลดให้ 50%","ยกหนี้ทั้งจำนวน","ยกเว้นดอกเบี้ยเท่านั้น"],a:2},
+{q:"ลำดับผู้มีสิทธิรับช่วงหนี้อันดับ 1 คือใคร?",c:["บิดามารดา","คู่สมรส และ/หรือ บุตรที่บรรลุนิติภาวะ","พี่น้องร่วมบิดามารดา","ผู้ค้ำประกัน"],a:1},
+{q:"การเปลี่ยนตัวลูกหนี้ใช้กับหนี้ประเภทใด และมีรหัสสินเชื่อ CBS เป็นอะไร?",c:["หนี้ NPL เท่านั้น / รหัส 8900","หนี้ปกติ + 0-3 เดือน / รหัส 8100","หนี้ทุกประเภท / รหัส 9999","หนี้ภัยพิบัติ / รหัส 7777"],a:1},
+{q:"หนี้บุคคล (ฉ.44/ฉ.45) ขอเปลี่ยนแปลงวัตถุประสงค์ ใครมีอำนาจอนุมัติ?",c:["ผจก.สาขา","ผอ.ฝสข.","ผอ.ธญ.","ผจข."],a:0}
+];
+const E2=[
+"60 วันนับแต่วันผิดนัด = เส้นแบ่ง; เกิน 60 วัน ผู้ค้ำประกันหลุดพ้น (เอกสาร 201.05)",
+"Out of Scope: หนังสือคู่เงินรับรองรับผิดอย่างลูกหนี้ร่วมกัน + จำนองอย่างเดียว",
+"งบประมาณไม่เกิน 100 ล้านบาท/ปีบัญชี (รวมต้น+ดอกเบี้ยค้างรับ+ดอกเบี้ยปรับ)",
+"ตารางภัยพิบัติ: ลูกหนี้+ค้ำประกัน → ยกเว้นดอกเบี้ยปรับ+ค้างรับ 100% และยกหนี้ต้นทั้งจำนวน",
+"ลำดับ: คู่สมรส/บุตร → พ่อแม่ → พี่น้องร่วมบิดามารดา → ร่วมบิดาหรือมารดา → ปู่ย่าตายาย → ลุงป้าน้าอา",
+"เปลี่ยนตัวลูกหนี้ = หนี้ปกติ+0-3 เดือน / CBS 8100; รับใช้หนี้ = NPL / CBS 8900",
+"ระเบียบ 83: หนี้บุคคล ผจก.สาขาอนุมัติเปลี่ยนวัตถุประสงค์ได้; หนี้ธุรกิจต้องผ่าน ผอ.ฝสข."
+];
+
+function rQ(id,qs,ex){
+  const el=document.getElementById('qz'+id);
+  for(let i=0;i<qs.length;i++){
+    let d=qs[i],h='<div class="q"><p><b>'+(i+1)+'. '+d.q+'</b></p>';
+    for(let j=0;j<d.c.length;j++)h+='<label><input type="radio" name="q'+id+'_'+i+'" value="'+j+'"><span>'+String.fromCharCode(65+j)+'. '+d.c[j]+'</span></label>';
+    h+='<button class="btn" onclick="ck('+id+','+i+','+d.a+','+i+')">ตรวจ</button><div class="rb" id="r'+id+'_'+i+'"></div></div>';
+    el.innerHTML+=h;
+  }
+}
+
+const S={};
+function ck(q,i,a,exi){
+  const r=document.getElementById('r'+q+'_'+i),k='s'+q+'_'+i;
+  const ex=(q===1?E1:E2);
+  if(S[k]!==undefined){r.className='rb no';r.innerHTML='⛔ ตอบแล้ว';return}
+  const rs=document.getElementsByName('q'+q+'_'+i);let s=-1;
+  for(let j=0;j<rs.length;j++){if(rs[j].checked){s=j;break}}
+  if(s===-1){r.className='rb no';r.innerHTML='⚠️ เลือกคำตอบก่อน';return}
+  if(s===a){r.className='rb ok';r.innerHTML='✅ <strong>ถูก!</strong> '+ex[i];S[k]=1}
+  else{r.className='rb no';r.innerHTML='❌ <strong>ผิด</strong> — เฉลย: '+String.fromCharCode(65+a)+'. '+ex[i];S[k]=0}
+  up(q);
+}
+
+function up(q){let t=0;for(let k in S)if(k.startsWith('s'+q+'_'))t+=S[k];document.getElementById('sc'+q).textContent=t}
+
+function rs(q){
+  if(!confirm('เริ่มทำข้อสอบชุดนี้ใหม่?'))return;
+  for(let k in S)if(k.startsWith('s'+q+'_'))delete S[k];
+  const n=(q===1?Q1:Q2).length;
+  for(let i=0;i<n;i++){
+    const r=document.getElementById('r'+q+'_'+i);
+    if(r){r.className='rb';r.innerHTML=''}
+    const rds=document.getElementsByName('q'+q+'_'+i);
+    for(let j=0;j<rds.length;j++)rds[j].checked=false;
+  }
+  up(q);
+}
+
+// Initialize
+rQ(1,Q1,E1);
+rQ(2,Q2,E2);
+</script>
+
+</body>
+</html>

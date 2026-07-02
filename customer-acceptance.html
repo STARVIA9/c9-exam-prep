@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧑‍🌾 การรับลูกค้า — คู่มือสินเชื่อเล่ม 1 สรุปสอบ Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--a5:#8b5cf6;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:15px;color:var(--a);margin-right:10px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+.hero{text-align:center;padding:20px 16px 24px;border-bottom:2px solid var(--b);margin-bottom:28px}
+.hero h1{font-size:24px;color:var(--a);margin-bottom:6px}
+.hero p{color:var(--t2);font-size:14px}
+.badge{display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24}.badge.red{background:#7f1d1d;color:#fca5a5}.badge.blue{background:#1e3a5f;color:#60a5fa}.badge.green{background:#064e3b;color:#34d399}.badge.purple{background:#3b0764;color:#c4b5fd}
+section{margin-bottom:28px}
+h2{font-size:20px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:14px;margin-top:8px}
+h3{font-size:16px;color:var(--a2);margin:12px 0 8px}
+h4{font-size:14px;color:var(--a3);margin:10px 0 6px;font-weight:600}
+p{margin:6px 0;font-size:14px}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;line-height:1.7}
+.c.info{border-left:4px solid var(--a3)}.c.warn{border-left:4px solid var(--a4)}.c.tip{border-left:4px solid var(--a)}.c.ok{border-left:4px solid var(--a2)}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+th{background:var(--s2);color:var(--a);padding:6px 8px;text-align:left;font-weight:600}
+td{padding:6px 8px;border-bottom:1px solid var(--b);vertical-align:top}
+tr:hover td{background:var(--s2)}
+ul,ol{padding-left:20px;margin:4px 0}li{margin-bottom:3px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mnemo{background:rgba(245,158,11,.08);border:1px dashed var(--a);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:var(--a);font-weight:500;text-align:center}
+.scenario{background:rgba(59,130,246,.08);border:1px dashed var(--a3);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0;border-radius:6px;border:1px solid var(--b)}
+.table-wrap table{min-width:480px;margin:0}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.table-wrap table{font-size:12px;min-width:420px}th,td{padding:5px 6px}nav{padding:8px 10px;gap:4px}nav h1{font-size:14px;margin-right:6px}nav a{font-size:11px;padding:3px 6px}.hero h1{font-size:20px}}
+details{margin:6px 0;background:var(--s);border-radius:8px;border:1px solid var(--b);padding:4px 12px}
+details[open]{border-color:var(--a2)}
+summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--a3);font-size:14px;list-style:none}
+summary::before{content:"▸ ";color:var(--a)}
+details[open] summary::before{content:"▾ "}
+footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
+.qz{padding:4px 0}
+.q{border:1px solid var(--b);background:var(--s);border-radius:8px;padding:12px;margin:8px 0}
+.q p{font-size:14px;margin-bottom:6px;font-weight:500}
+.q label{display:block;font-size:13px;padding:4px 0;color:var(--t2);cursor:pointer;transition:color .15s}
+.q label:hover{color:var(--a)}
+.q input[type=radio]{margin-right:6px;accent-color:var(--a)}
+.q .btn{background:var(--a);color:#0f172a;border:none;border-radius:6px;padding:5px 14px;font-size:13px;font-weight:600;cursor:pointer;margin-top:6px}
+.q .btn:hover{opacity:.85}
+.rb.ok{color:#34d399;font-size:13px;padding:6px 0 2px;line-height:1.6}
+.rb.no{color:#fca5a5;font-size:13px;padding:6px 0 2px;line-height:1.6}
+.rb{padding:4px 0}
+.sc{margin:10px 0;font-size:14px;color:var(--t2);font-weight:500}
+.sc .btn{background:var(--a2);color:#0f172a;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-left:8px}
+.sc .btn:hover{opacity:.85}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
+.tag.red{background:#7f1d1d;color:#fca5a5}.tag.green{background:#064e3b;color:#34d399}.tag.blue{background:#1e3a5f;color:#93c5fd}.tag.gold{background:#78350f;color:#fbbf24}.tag.purple{background:#3b0764;color:#c4b5fd}
+</style>
+</head>
+<body>
+<nav>
+  <h1>🧑‍🌾 การรับลูกค้า</h1>
+  <a href="#overview">📌 ภาพรวม</a>
+  <a href="#propagation">📣 เผยแพร่</a>
+  <a href="#group">👥 กลุ่มลูกค้า</a>
+  <a href="#register">📝 ขึ้นทะเบียน</a>
+  <a href="#transfer">🔁 ย้าย/โอน/พ้น</a>
+  <a href="#grade">⭐ จัดชั้น/ประวัติ</a>
+  <a href="#correct">✏️ แก้ไขประวัติ</a>
+  <a href="#quiz">📝 แบบทดสอบ</a>
+  <a href="index.html">🏠 หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+<div class="hero">
+  <h1>🧑‍🌾 การรับลูกค้า — คู่มือสินเชื่อเล่ม 1</h1>
+  <p>สรุปเนื้อหาการรับลูกค้าผู้กู้ ธ.ก.ส. (ตามข้อบังคับฉบับที่ 44 และ 45) + แบบทดสอบ 20 ข้อ</p>
+  <span class="badge gold">เล่ม 1 การรับลูกค้า</span>
+  <span class="badge blue">ข้อบังคับ 44/45</span>
+  <span class="badge green">77 หน้า</span>
+  <span class="badge purple">20 ข้อสอบ</span>
+</div>
+
+<section id="overview">
+<h2>📌 ภาพรวม — การรับลูกค้าผู้กู้</h2>
+<p>การรับลูกค้า คือ การ<strong style="color:var(--a2)">ขึ้นทะเบียนผู้ขอกู้เป็นลูกค้าประจำสาขา</strong> เพื่อให้สามารถทำธุรกรรมกับ ธ.ก.ส. ได้ เช่น กู้เงิน ฝากเงิน สงเคราะห์ชีวิต</p>
+
+<div class="grid2">
+<div class="c info">
+<h4>📘 ข้อบังคับฉบับที่ 44 (ฉ.44) — ลูกค้าเกษตรกร</h4>
+<ul>
+<li>เป็นเกษตรกร มีภูมิลำเนาในเขตสาขา</li>
+<li>มีถิ่นที่อยู่ในท้องที่สาขา ≥ 6 เดือน</li>
+<li>ประกอบอาชีพเกษตรกรรมเป็นหลัก</li>
+<li>เน้น<strong style="color:var(--a)">สังกัดกลุ่มลูกค้า</strong> (ยกเว้นกรณีลดหย่อน)</li>
+</ul>
+</div>
+<div class="c ok">
+<h4>📗 ข้อบังคับฉบับที่ 45 (ฉ.45) — ลูกค้าบุคคล</h4>
+<ul>
+<li>สัญชาติไทยโดยกำเนิด อายุ ≥ 20 ปี</li>
+<li>อาชีพอื่นที่ไม่ใช่เกษตรกรรม</li>
+<li>มีถิ่นที่อยู่/อาชีพในเขตสาขา ≥ 6 เดือน</li>
+<li>ไม่สังกัดกลุ่มลูกค้า</li>
+</ul>
+</div>
+</div>
+
+<div class="c warn">
+<h4>⚠️ กฎสำคัญที่ต้องจำ</h4>
+<ul>
+<li><strong style="color:var(--a)">การย้าย/โอนลูกค้า</strong> = ต้องไม่มีหนี้ 2 คนค้ำ และค้ำกลุ่ม (ยกเว้น ผช.ผจก./หน.หน่วยอำเภอ)</li>
+<li><strong style="color:var(--a)">ใช้เวลารับลูกค้า</strong> ไม่เกิน <strong>7 วันทำการ</strong> (ควบคุมให้เสร็จภายใน 10 วัน)</li>
+<li><strong style="color:var(--a)">ผู้มีอำนาจรับขึ้นทะเบียน</strong> = ผู้จัดการสาขา / ผู้ช่วยผู้จัดการสาขา / หัวหน้าหน่วยอำเภอ</li>
+<li><strong style="color:var(--a)">กรณีมีปัญหาคุณสมบัติ</strong> = ผู้รับมอบอำนาจตามคำสั่งธนาคารเป็นผู้วินิจฉัย</li>
+</ul>
+</div>
+</section>
+
+<section id="propagation">
+<h2>📣 การเผยแพร่การดำเนินงานสินเชื่อ (201.01)</h2>
+<p>ก่อนรับลูกค้า ธนาคารต้อง<strong style="color:var(--a2)">เผยแพร่การดำเนินงานสินเชื่อ</strong>ให้เกษตรกรและประชาชนทราบ เพื่อให้เกิดการรับรู้และสมัครเข้ามาเป็นลูกค้า</p>
+
+<div class="c tip">
+<h4>ช่องทางเผยแพร่ (ตัวอย่าง)</h4>
+<ul>
+<li>ประชุมประจำเดือนของกำนัน ผู้ใหญ่บ้าน</li>
+<li>ประชุมกลุ่มลูกค้า</li>
+<li>เสียงตามสาย/วิทยุชุมชน</li>
+<li>เอกสารแผ่นพับ โปสเตอร์</li>
+<li>เว็บไซต์/Social Media ของ ธ.ก.ส.</li>
+</ul>
+<p style="margin-top:8px"><strong>⚡ เน้นย้ำท้ายการประชุม:</strong> ให้สมาชิกแจ้งข่าวต่อให้เพื่อนบ้านทราบ</p>
+</div>
+</section>
+
+<section id="group">
+<h2>👥 กลุ่มลูกค้า (201.02)</h2>
+<p><strong style="color:var(--a2)">กลุ่มลูกค้า</strong> = การรวมตัวของผู้ขอขึ้นทะเบียนเป็นลูกค้าที่มี<strong style="color:var(--a)">ภูมิลำเนาและพื้นที่การผลิตอยู่ใกล้เคียงกัน</strong> เพื่อให้ พพธ. สามารถดูแลได้ทั่วถึง ใช้กลไกกลุ่มส่งเสริมและพัฒนาลูกค้า</p>
+
+<h3>องค์ประกอบของกลุ่มลูกค้า</h3>
+<ul>
+<li><strong style="color:var(--a2)">สมาชิก ≥ 5 คน</strong> (ถ้าน้อยกว่า 5 คน ต้องมีเหตุผลและบันทึกความเห็น)</li>
+<li><strong>หัวหน้ากลุ่มลูกค้า 1 คน</strong> — ต้องไม่เคยถูกถอดถอนจากตำแหน่ง</li>
+<li><strong>ผู้ช่วยหัวหน้ากลุ่ม ≥ 1 คน</strong> — คุณสมบัติเช่นเดียวกับหัวหน้ากลุ่ม</li>
+</ul>
+
+<h3>บทบาทหน้าที่</h3>
+<div class="grid2">
+<div class="c info">
+<h4>🧑‍🤝‍🧑 กลุ่มลูกค้า</h4>
+<ul>
+<li>เลือกตั้ง/ถอดถอน หน.กลุ่มและผช.หน.กลุ่ม</li>
+<li>ส่งเสริมอาชีพ/สังคม แก่สมาชิก</li>
+<li>มีมติให้ลูกค้าพ้นจากกลุ่ม</li>
+</ul>
+</div>
+<div class="c ok">
+<h4>👨‍💼 หัวหน้ากลุ่มลูกค้า</h4>
+<ul>
+<li>เรียกประชุมกลุ่ม + เป็นประธาน</li>
+<li>ดูแลให้กลุ่มเข้มแข็ง</li>
+<li>ประสานงานกับธนาคาร</li>
+<li>ปฏิบัติงานอื่นตามที่ธนาคารกำหนด</li>
+</ul>
+</div>
+</div>
+
+<div class="c warn">
+<h4>📌 การประชุมกลุ่มลูกค้า — กฎที่ต้องจำ</h4>
+<div class="mnemo">องค์ประชุม = <strong style="color:var(--a4)">ไม่น้อยกว่า 2 ใน 3</strong> ของจำนวนลูกค้าทั้งหมด</div>
+<ul>
+<li>ถ้าไม่ครบองค์ประชุมครั้งแรก → เรียกประชุมใหม่ภายใน <strong>14 วัน</strong> นับถัดจากวันประชุม</li>
+<li>การประชุมคราวหลัง — ลูกค้ามาเท่าไหร่ก็ถือว่าครบองค์ประชุม</li>
+<li>ประธานในที่ประชุม = <strong>หัวหน้ากลุ่มลูกค้า</strong> (ถ้าหน.กลุ่มไม่อยู่ ให้ที่ประชุมเลือกลูกค้าคนใดคนหนึ่งเป็นประธาน)</li>
+</ul>
+<p><strong>🗳️ มติที่ประชุม:</strong> ถือเสียงข้างมาก — ลูกค้า 1 คนมี 1 เสียง ถ้าคะแนนเท่ากัน <strong style="color:var(--a2)">ประธานออกเสียงชี้ขาด</strong></p>
+</div>
+</section>
+
+<section id="register">
+<h2>📝 การรับขึ้นทะเบียนลูกค้า (202.x)</h2>
+
+<h3>202.01 หลักเกณฑ์การรับเกษตรกรขึ้นทะเบียน</h3>
+<p>มี <strong style="color:var(--a2)">2 กรณี</strong> คือ เกณฑ์ปกติ และเกณฑ์ลดหย่อน</p>
+
+<h3>202.02–202.07 การรับเกษตรกรขึ้นทะเบียน (เกณฑ์ปกติ)</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>ข้อ</th><th>วิธี</th><th>ขั้นตอนสำคัญ</th></tr></thead>
+<tbody>
+<tr><td>202.02</td><td>จัดตั้งกลุ่มลูกค้าใหม่</td><td>ประชุมจัดตั้งกลุ่ม ≥ 5 คน + เลือกตั้งหน.กลุ่ม</td></tr>
+<tr><td>202.03</td><td>เข้าสังกัดกลุ่มที่มีอยู่เดิม</td><td>หน.กลุ่มประชุมแทน พพธ. ได้</td></tr>
+<tr><td>202.04</td><td>ไม่สังกัดกลุ่ม</td><td>ไม่ต้องมีขั้นตอนประชุมกลุ่ม</td></tr>
+<tr><td>202.05</td><td>ยกเว้นคุณสมบัติ</td><td>ผู้จัดการสาขามีอำนาจ + บันทึกความเห็น</td></tr>
+<tr><td>202.06</td><td>เกณฑ์ลดหย่อน (กรณี 1)</td><td>สถานะ 01: ลูกค้าเฉพาะกิจ</td></tr>
+<tr><td>202.07</td><td>เกณฑ์ลดหย่อน (กรณี 2)</td><td>สถานะ 01: ลูกค้าเฉพาะกิจ</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>202.08–202.11 กรณีเกณฑ์ลดหย่อน (พิเศษ)</h3>
+<div class="grid2">
+<div class="c info">
+<h4>202.08 สมาชิกสหกรณ์/กลุ่มเกษตรกร</h4>
+<ul>
+<li>กู้ตามโครงการร่วมรัฐ-เอกชน</li>
+<li>กู้เพื่อชำระหนี้สินภายนอก</li>
+<li>กู้เพื่อลงทุน/ฟื้นฟูอาชีพเกษตร</li>
+<li>ต้องมี<strong style="color:var(--a)">หนังสือยินยอมจาก คกก.สหกรณ์</strong> + ประทับตรา "รับจากสหกรณ์การเกษตร"</li>
+</ul>
+</div>
+<div class="c warn">
+<h4>202.09 ลูกค้าสถาบันการเงิน (Refinance)</h4>
+<ul>
+<li>ต้องเป็นไปตาม ฉ.44</li>
+<li>ฐานะมั่นคง + ประวัติชำระหนี้ดี</li>
+<li>ลงทุนโครงการ ≥ 20% ของค่าลงทุน</li>
+<li>จำนองที่ดินแปลงที่ตั้งโครงการเป็นประกัน</li>
+</ul>
+</div>
+<div class="c tip">
+<h4>202.10 เกษตรกรหลายสาขา/นอกเขต</h4>
+<p>ให้สาขาที่ตั้งโครงการ/สถานที่ประกอบอาชีพส่วนใหญ่ <strong style="color:var(--a2)">เป็นผู้รับขึ้นทะเบียน</strong> + ขอความร่วมมือสาขาภูมิลำเนาให้ พพธ. ไปสอบรายการทรัพย์สิน</p>
+</div>
+<div class="c ok">
+<h4>202.11 เงินกู้เพื่อรอขายผลิตผล</h4>
+<p>ตามนโยบายรัฐ — <strong style="color:var(--a2)">ไม่สังกัดกลุ่มลูกค้า</strong></p>
+</div>
+</div>
+
+<h3>202.12 การรับบุคคลขึ้นทะเบียน (ฉ.45)</h3>
+<div class="c ok">
+<h4>คุณสมบัติเกณฑ์ปกติ — 9 ข้อ</h4>
+<ol>
+<li>สัญชาติไทยโดยกำเนิด</li>
+<li>อายุ ≥ 20 ปีบริบูรณ์</li>
+<li>มีความชำนาญ/ฝึกอบรมในการประกอบอาชีพ</li>
+<li>มีถิ่นที่อยู่/อาชีพในเขตสาขา ≥ <strong>6 เดือน</strong></li>
+<li>มีรายได้จากอาชีพพอสมควร</li>
+<li>ซื่อสัตย์ ไม่เคยต้องโทษจำคุก (เว้นลหุโทษ)</li>
+<li>ไม่วิกลจริต/จิตฟั่นเฟือน <strong style="color:var(--a)">(พิการทางกายแต่ไม่เป็นอุปสรรค → รับได้)</strong></li>
+<li>ไม่ล้มละลาย/หนี้สินล้นพ้นตัว</li>
+<li>ไม่เคยถูกให้ออกจากการเป็นลูกค้า</li>
+</ol>
+</div>
+
+<h3>202.13 การโอนลูกค้า ฉ.45 → ฉ.44</h3>
+<div class="c info">
+<p>ให้สาขารับเข้าเป็น<strong style="color:var(--a2)">ลูกค้าสังกัดกลุ่ม</strong>เป็นลำดับแรก (กรณีกู้โดยใช้จำนอง และไม่สามารถเข้าสังกัดกลุ่ม ผจก.สาขาผ่อนผันได้)</p>
+<p><strong>การจัดประวัติการชำระหนี้ (จาก ฉ.45 ที่ผ่านมา):</strong></p>
+<ul>
+<li>ชำระได้ตามกำหนด <strong>2 ปี</strong>ขึ้นไป → แก้ไขเป็น <strong style="color:var(--a2)">AA</strong></li>
+<li>ชำระได้ตามกำหนด <strong>3 ปี</strong>ขึ้นไป → แก้ไขเป็น <strong style="color:var(--a2)">AAA</strong></li>
+<li>ชำระได้ตามกำหนด <strong>4 ปี</strong>ขึ้นไป → แก้ไขเป็น <strong style="color:var(--a2)">AAA+</strong></li>
+</ul>
+</div>
+</section>
+
+<section id="transfer">
+<h2>🔁 การดำเนินการหลังรับลูกค้า (203.x)</h2>
+
+<h3>203.01–203.06 การย้าย/โอน</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>ข้อ</th><th>เรื่อง</th><th>เงื่อนไข</th></tr></thead>
+<tbody>
+<tr><td>203.01</td><td>ย้ายสังกัดกลุ่ม (สาขาเดียวกัน)</td><td><strong style="color:var(--a4)">ต้องไม่มีหนี้ 2 คนค้ำ และค้ำกลุ่ม</strong></td></tr>
+<tr><td>203.02</td><td>โอนหน่วยอำเภอหนึ่ง → อีกหน่วยหนึ่ง (สาขาเดียวกัน)</td><td>เงื่อนไขเช่นเดียวกับ 203.01</td></tr>
+<tr><td>203.03</td><td>โอนจากสาขาหนึ่ง → อีกสาขาหนึ่ง</td><td>ประสานงานระหว่างสาขาต้นทาง-ปลายทาง</td></tr>
+<tr><td>203.04</td><td>ลูกค้าไม่สังกัดกลุ่มรวมตัวขอจัดตั้งกลุ่มใหม่</td><td>ต้องมีสมาชิก ≥ 5 คน</td></tr>
+<tr><td>203.05</td><td>ลูกค้าไม่สังกัดกลุ่มรวมกับเกษตรกรทั่วไปจัดตั้งกลุ่ม</td><td>เช่นเดียววิธี 203.04</td></tr>
+<tr><td>203.06</td><td>ลูกค้าที่ไม่สังกัดกลุ่มเข้าสังกัดกลุ่มที่มีอยู่</td><td>มติกลุ่มรับเข้า</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>203.07–203.08 การให้ออก / ลาออก</h3>
+<div class="grid2">
+<div class="c warn">
+<h4>203.07 ให้ออกจากการเป็นลูกค้าประจำสาขา</h4>
+<p><strong style="color:var(--a4)">เหตุผิดปกติ 3 ข้อ:</strong></p>
+<ol>
+<li><strong style="color:var(--a4)">ตาย</strong></li>
+<li><strong style="color:var(--a4)">ขาดคุณสมบัติ ฉ.44 หรือ ฉ.45</strong></li>
+<li><strong style="color:var(--a4)">มีเหตุสั่งให้ออก</strong></li>
+</ol>
+</div>
+<div class="c ok">
+<h4>203.08 ลาออกจากการเป็นลูกค้าประจำสาขา</h4>
+<ul>
+<li>ต้อง<strong>ไม่มีหนี้</strong> และไม่ติดภาระค้ำประกัน</li>
+<li>สอบสวนสาเหตุ + ลูกค้าลงลายมือชื่อในข้อมูลรายคนส่วนที่ 2</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="grade">
+<h2>⭐ การจัดชั้นลูกค้าและจัดประวัติการชำระหนี้ (204.x)</h2>
+
+<h3>204.01 การจัดชั้นลูกค้า (ลูกค้าใหม่ ฉ.44)</h3>
+<p>พิจารณาจาก <strong>คุณลักษณะ 4 ด้าน:</strong> ผู้ขอขึ้นทะเบียน + การผลิต + การตลาด + การจัดการ + หลักประกัน</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>คะแนน</th><th>ชั้นลูกค้า</th><th>โครงสร้างอัตราดอกเบี้ย</th></tr></thead>
+<tbody>
+<tr><td>80 – 100</td><td><strong style="color:var(--a2)">AAA</strong></td><td>MRR + 0.75</td></tr>
+<tr><td>70 – 79</td><td><strong style="color:var(--a3)">AA</strong></td><td>MRR + 1.50</td></tr>
+<tr><td>ต่ำกว่า 70</td><td><strong>A</strong></td><td>MRR + 2.25</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>204.02 การจัดประวัติการชำระหนี้ (ลูกค้า ฉ.44)</h3>
+<div class="c info">
+<ul>
+<li>ใช้การเรียกเก็บดอกเบี้ยแบบ<strong>รายสัญญา (Account-Based)</strong></li>
+<li>จัดประวัติทุกวันที่ <strong style="color:var(--a2)">30 เมษายน</strong> มีผลตั้งแต่ <strong>1 พฤษภาคม – 30 เมษายน</strong> ปีถัดไป</li>
+</ul>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>คุณสมบัติของลูกค้า</th><th>ชั้นลูกค้า</th><th>อัตราดอกเบี้ย</th></tr></thead>
+<tbody>
+<tr><td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>4 ปี</strong>ขึ้นไป</td><td><strong style="color:var(--a2)">AAA+</strong></td><td>MRR + 0.00</td></tr>
+<tr><td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>3 ปี</strong></td><td><strong style="color:var(--a2)">AAA</strong></td><td>MRR + 0.75</td></tr>
+<tr><td>ชำระหนี้ได้ตามกำหนดติดต่อกัน <strong>2 ปี</strong></td><td><strong style="color:var(--a3)">AA</strong></td><td>MRR + 1.50</td></tr>
+<tr><td>ชำระหนี้ได้ตามกำหนด <strong>1 ปี</strong> หรือเป็นลูกค้าใหม่</td><td><strong>A</strong></td><td>MRR + 2.25</td></tr>
+<tr><td>ลูกค้าผิดนัดชำระหนี้ (Default)</td><td><strong style="color:var(--a4)">B</strong></td><td>MRR + 3.00</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="mnemo">จำง่าย: <strong>AAA+ = MRR, AAA = MRR+0.75, AA = MRR+1.5, A = MRR+2.25, B = MRR+3</strong><br>เพิ่มทีละ <strong>0.75</strong> ตั้งแต่ AAA ขึ้นไป และ <strong>0.75</strong> จาก A → B</div>
+
+<h3>กรณีมีหนี้หลายสัญญา</h3>
+<div class="c warn">
+<p>ให้ลูกค้าได้<strong style="color:var(--a2)">ชั้นตามสัญญาที่อยู่ในเกณฑ์ต่ำสุด</strong> ยกเว้นรายที่ทำการปรับปรุงโครงสร้างหนี้</p>
+</div>
+
+<h3>เกณฑ์จัดประวัติ (ตามสถานะ)</h3>
+<div class="c ok">
+<ul>
+<li><strong style="color:var(--a2)">↑ ปรับชั้นสูงขึ้น:</strong> มีรายการรับชำระหนี้ + ไม่มีบิลค้าง + ชำระดอกครบ + ชำระต้นบางส่วน</li>
+<li><strong style="color:var(--t)">คงชั้นเดิม:</strong> สัญญาปลอดต้นเงิน ไม่ปลอดดอก ชำระดอกครบ ไม่ชำระต้น</li>
+<li><strong style="color:var(--a4)">↓ ตกชั้น B:</strong> มีสัญญาใดสัญญาหนึ่งค้างชำระ ณ 30 เม.ย. หรือสัญญาปลอดต้นเงินไม่ปลอดดอก ชำระดอกไม่ครบ</li>
+</ul>
+</div>
+</section>
+
+<section id="correct">
+<h2>✏️ การแก้ไขประวัติการชำระหนี้</h2>
+
+<h3>กรณีจัดประวัติไม่ถูกต้อง</h3>
+<div class="c info">
+<h4>3 กรณีที่สามารถแก้ไขได้</h4>
+<ol>
+<li><strong style="color:var(--a2)">ไม่ได้เกิดจากความผิดพลาดของลูกค้า</strong> — ขออนุมัติจาก สนจ. แก้ไขย้อนหลังตั้งแต่ 1 พ.ค. ของปีบัญชีที่จัดผิด + แก้อัตราดอกเบี้ยสัญญากู้ให้ถูกต้อง (ทั้งเอกสารและ CBS)</li>
+<li><strong style="color:var(--a2)">ลูกค้าถูกจัดเป็น B (ตกชั้น) แต่ชำระเสร็จ</strong> — ภายในกำหนดเวลา (คาบ ม.ค. ภายใน 30 เม.ย. / ก.พ. ภายใน 31 พ.ค. / มี.ค. ภายใน 30 มิ.ย.) สาขาแก้เป็น<strong style="color:var(--a2)">ชั้นเดิมก่อนตกชั้นได้</strong> โดย <strong style="color:var(--a2)">ผจก.สาขาอนุมัติ + ผ่านความเห็นชอบของ คกก.สินเชื่อระดับสาขา</strong></li>
+<li><strong style="color:var(--a2)">ลูกค้ามีเหตุผิดปกติ (เสียชีวิต/ชราภาพ/เลิกอาชีพ)</strong> — ทายาทหรือบุคคลอื่นรับใช้หนี้/ชำระแทน + เข้าเป็นลูกค้าแทน ขอแก้ไขประวัติ = <strong>ประวัติของลูกค้าเดิม</strong></li>
+</ol>
+</div>
+</section>
+
+<section id="quiz">
+<h2>📝 แบบทดสอบ 20 ข้อ (จากคู่มือสินเชื่อเล่ม 1)</h2>
+<p>แบบทดสอบนี้ดึงมาจากท้ายเล่มคู่มือสินเชื่อเล่ม 1 หน้า 36-77 พร้อมเฉลยที่คำนวณจากหลักเกณฑ์ในคู่มือ</p>
+
+<div class="qz">
+
+<div class="q" data-ans="ก">
+<p><strong>1.</strong> ผู้ใดมีอำนาจในการเรียกประชุมกลุ่มลูกค้า</p>
+<label><input type="radio" name="q1" value="ก"> ก. ผู้จัดการสาขา ผู้ช่วยผู้จัดการสาขา หัวหน้าหน่วย</label>
+<label><input type="radio" name="q1" value="ข"> ข. หัวหน้าหน่วย หัวหน้ากลุ่มลูกค้า พนักงานพัฒนาธุรกิจ</label>
+<label><input type="radio" name="q1" value="ค"> ค. ผู้ช่วยผู้จัดการสาขา หัวหน้าหน่วย หัวหน้ากลุ่มลูกค้า</label>
+<label><input type="radio" name="q1" value="ง"> ง. พนักงานพัฒนาธุรกิจ หัวหน้ากลุ่มลูกค้า ผู้ช่วยหัวหน้ากลุ่มลูกค้า</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>2.</strong> ในการประชุมกลุ่มลูกค้า ต้องมีลูกค้ามาประชุมจำนวนเท่าไรจึงจะครบองค์ประชุม</p>
+<label><input type="radio" name="q2" value="ก"> ก. ไม่น้อยกว่ากึ่งหนึ่ง</label>
+<label><input type="radio" name="q2" value="ข"> ข. เกินกว่ากึ่งหนึ่ง</label>
+<label><input type="radio" name="q2" value="ค"> ค. ไม่น้อยกว่า<strong style="color:var(--a2)">สองในสาม</strong>ของจำนวนลูกค้าทั้งหมด</label>
+<label><input type="radio" name="q2" value="ง"> ง. เกินกว่าสองในสาม</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>3.</strong> ข้อใดกล่าว<strong style="color:var(--a4)">ไม่ถูกต้อง</strong>เกี่ยวกับมติที่ประชุม</p>
+<label><input type="radio" name="q3" value="ก"> ก. ลูกค้าหนึ่งคนมีสิทธิออกเสียงได้หนึ่งเสียง</label>
+<label><input type="radio" name="q3" value="ข"> ข. คะแนนเสียงเท่ากัน → ประธานออกเสียงชี้ขาด</label>
+<label><input type="radio" name="q3" value="ค"> ค. มติที่ประชุมให้ถือเสียงข้างมาก</label>
+<label><input type="radio" name="q3" value="ง"> ง. การประชุมเพื่อรับลูกค้าเข้าสังกัดกลุ่ม ต้องมีมติรับรอง<strong style="color:var(--a2)">ไม่น้อยกว่ากึ่งหนึ่ง</strong>ของจำนวนลูกค้าทั้งหมดในกลุ่ม</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ก">
+<p><strong>4.</strong> การรับผู้ขอขึ้นทะเบียนเป็นลูกค้า ใช้เวลากี่วัน</p>
+<label><input type="radio" name="q4" value="ก"> ก. ปกติใช้เวลาภายใน <strong style="color:var(--a2)">7 วันทำการ</strong> ให้สาขาควบคุมให้แล้วเสร็จภายใน <strong style="color:var(--a2)">10 วัน</strong></label>
+<label><input type="radio" name="q4" value="ข"> ข. 7 วันทำการ แล้วเสร็จภายใน 16 วัน</label>
+<label><input type="radio" name="q4" value="ค"> ค. 8 วันทำการ แล้วเสร็จภายใน 10 วัน</label>
+<label><input type="radio" name="q4" value="ง"> ง. 8 วันทำการ แล้วเสร็จภายใน 16 วัน</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>5.</strong> การรับเกษตรกรที่มีสถานที่ประกอบการหลายสาขาหรือนอกเขตการดำเนินงานของสาขา ข้อใดกล่าว<strong style="color:var(--a2)">ถูกต้อง</strong></p>
+<label><input type="radio" name="q5" value="ก"> ก. ให้สาขาภูมิลำเนารับขึ้นทะเบียน</label>
+<label><input type="radio" name="q5" value="ข"> ข. สาขาภูมิลำเนารับ + ส่ง พพธ. ไปตรวจสอบอาชีพที่สถานที่ส่วนใหญ่</label>
+<label><input type="radio" name="q5" value="ค"> ค. สาขาที่ตั้งโครงการ/อาชีพหลักรับ + ขอให้สาขาภูมิลำเนาสอบทรัพย์สิน</label>
+<label><input type="radio" name="q5" value="ง"> ง. <strong style="color:var(--a2)">ถูกทั้ง ก. และ ข.</strong></label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>6.</strong> ข้อยกเว้นคุณสมบัติตาม ฉ.44 ข้อ 3(5) ข้อใด<strong style="color:var(--a2)">ถูกต้อง</strong></p>
+<label><input type="radio" name="q6" value="ก"> ก. ถิ่นที่อยู่<strong style="color:var(--a4)">นอก</strong>เขตสาขา ต้องอยู่อาศัย ≥ 6 เดือน</label>
+<label><input type="radio" name="q6" value="ข"> ข. ถิ่นที่อยู่นอกเขตสาขา ต้องอยู่อาศัย ≥ 1 ปี</label>
+<label><input type="radio" name="q6" value="ค"> ค. ถิ่นที่อยู่<strong style="color:var(--a4)">ใน</strong>เขตสาขา ต้องอยู่อาศัย ≥ 6 เดือน</label>
+<label><input type="radio" name="q6" value="ง"> ง. ถิ่นที่อยู่<strong style="color:var(--a2)">นอก</strong>เขตสาขา ต้องประกอบอาชีพเกษตรกรรม<strong style="color:var(--a2)">ส่วนใหญ่</strong>ในเขตสาขา ≥ 6 เดือน</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>7.</strong> กรณีมีปัญหาเกี่ยวกับคุณสมบัติของผู้ขอขึ้นทะเบียนเป็นลูกค้าตาม ฉ.44 หรือมีเหตุพิเศษอันควรยกเว้น ข้อใด<strong style="color:var(--a4)">ไม่ใช่</strong>ข้อควรยกเว้น</p>
+<label><input type="radio" name="q7" value="ก"> ก. เป็นเกษตรกร</label>
+<label><input type="radio" name="q7" value="ข"> ข. ไม่เคยถูกให้ออกจากการเป็นลูกค้าประจำสาขาของธนาคารมาก่อน</label>
+<label><input type="radio" name="q7" value="ค"> ค. <strong style="color:var(--a2)">มีความชำนาญหรือได้รับการฝึกอบรมในด้านเกษตรกรรม</strong> (ตาม ฉ.44 ข้อ 3(2) ไม่ใช่ข้อยกเว้น)</label>
+<label><input type="radio" name="q7" value="ง"> ง. มีถิ่นที่อยู่และประกอบอาชีพเกษตรกรรมของตนในท้องที่ดำเนินงานของสาขา</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>8.</strong> ข้อใดกล่าว<strong style="color:var(--a2)">ถูกต้อง</strong>เกี่ยวกับการรับสมาชิกสหกรณ์การเกษตรขึ้นทะเบียนเป็นลูกค้าประจำสาขา</p>
+<label><input type="radio" name="q8" value="ก"> ก. รับขึ้นทะเบียนเฉพาะรายที่กู้ตามโครงการร่วมรัฐ-เอกชน</label>
+<label><input type="radio" name="q8" value="ข"> ข. รับขึ้นทะเบียนเฉพาะรายที่กู้เพื่อชำระหนี้สินภายนอก</label>
+<label><input type="radio" name="q8" value="ค"> ค. รับขึ้นทะเบียนเฉพาะรายที่กู้เพื่อลงทุน/ฟื้นฟูอาชีพเกษตรกรรม...</label>
+<label><input type="radio" name="q8" value="ง"> ง. <strong style="color:var(--a2)">ถูกทุกข้อ</strong></label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>9.</strong> กลุ่มลูกค้ามีลูกค้าในกลุ่มจำนวน 30 คน ต้องการประชุมเพื่อรับลูกค้าเพิ่ม 5 คน ในวันประชุมต้องมีลูกค้าเดิมในกลุ่มมาประชุมอย่างน้อยกี่คนจึงจะครบองค์ประชุม (คำนวณจาก 2 ใน 3)</p>
+<label><input type="radio" name="q9" value="ก"> ก. 15 คน</label>
+<label><input type="radio" name="q9" value="ข"> ข. 16 คน</label>
+<label><input type="radio" name="q9" value="ค"> ค. <strong style="color:var(--a2)">20 คน</strong> (30 × 2/3 = 20)</label>
+<label><input type="radio" name="q9" value="ง"> ง. 21 คน</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ข">
+<p><strong>10.</strong> จากข้อ 9 หากลูกค้ามาประชุมไม่ครบองค์ประชุม ต้องเรียกและดำเนินการประชุมใหม่ภายในกี่วัน นับ<strong style="color:var(--a2)">ถัดจาก</strong>วันประชุม</p>
+<label><input type="radio" name="q10" value="ก"> ก. 14 วัน นับจากวันประชุม</label>
+<label><input type="radio" name="q10" value="ข"> ข. <strong style="color:var(--a2)">14 วัน นับถัดจากวันประชุม</strong></label>
+<label><input type="radio" name="q10" value="ค"> ค. 15 วัน นับจากวันประชุม</label>
+<label><input type="radio" name="q10" value="ง"> ง. 15 วัน นับถัดจากวันประชุม</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>11.</strong> จากข้อ 9-10 ในการประชุมคราวหลัง ต้องมีลูกค้ามาประชุมอย่างน้อยกี่คนจึงสามารถรับลูกค้าเข้าสังกัดกลุ่มได้</p>
+<label><input type="radio" name="q11" value="ก"> ก. 15 คน</label>
+<label><input type="radio" name="q11" value="ข"> ข. 16 คน</label>
+<label><input type="radio" name="q11" value="ค"> ค. 20 คน</label>
+<label><input type="radio" name="q11" value="ง"> ง. <strong style="color:var(--a2)">21 คน</strong> — ต้องไม่น้อยกว่า<strong>เกินกึ่งหนึ่ง</strong>ของจำนวนลูกค้าทั้งหมดในกลุ่ม (40 คน)</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ข">
+<p><strong>12.</strong> กลุ่มลูกค้ามี 40 คน นัดประชุมเพื่อรับลูกค้าเข้าสังกัด 5 คน ครั้งที่ 2 มีลูกค้าเดิม 30 คน + ผู้ขอเข้ากลุ่ม 5 คน รวม 35 คน ต้องใช้มติรับรองจากสมาชิกไม่ต่ำกว่ากี่คน (2 ใน 3 ของ 40 คน)</p>
+<label><input type="radio" name="q12" value="ก"> ก. 16 คน</label>
+<label><input type="radio" name="q12" value="ข"> ข. <strong style="color:var(--a2)">21 คน</strong> (≈ 40 × 2/3 ต้องไม่น้อยกว่า 2 ใน 3)</label>
+<label><input type="radio" name="q12" value="ค"> ค. 27 คน</label>
+<label><input type="radio" name="q12" value="ง"> ง. 30 คน</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>13.</strong> กลุ่มลูกค้ามี 30 คน มาประชุมเพื่อพิจารณา<strong style="color:var(--a2)">เลือกตั้งและถอดถอน</strong>หัวหน้ากลุ่มลูกค้า จะต้องมีองค์ประชุมและมติเสียงอย่างน้อยเท่าใด</p>
+<label><input type="radio" name="q13" value="ก"> ก. ร่วมประชุม 16 คน มติเสียงข้างมาก</label>
+<label><input type="radio" name="q13" value="ข"> ข. ร่วมประชุม 20 คน มติเสียงข้างมาก</label>
+<label><input type="radio" name="q13" value="ค"> ค. <strong style="color:var(--a2)">ร่วมประชุม 20 คน มติเสียงเกินกึ่งหนึ่งของจำนวนลูกค้าในกลุ่ม</strong> (เลือกตั้ง/ถอดถอนใช้ครึ่งหนึ่ง ไม่ใช่ 2 ใน 3)</label>
+<label><input type="radio" name="q13" value="ง"> ง. ร่วมประชุม 16 คน มติเสียงเกินกึ่งหนึ่งของจำนวนลูกค้าในกลุ่ม</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ง">
+<p><strong>14.</strong> นาย ก. มีภูมิลำเนา จ.ชลบุรี มีสวนทุเรียนอยู่ จ.ระยอง 20 ไร่ (ปลูก 20 ปี) ต้องการกู้ 500,000 บาท ปรับปรุงสวน ถ้าท่านเป็น พนง.สาขาแกลง ท่านจะดำเนินการอย่างไร</p>
+<label><input type="radio" name="q14" value="ก"> ก. ให้สาขาชลบุรีรับขึ้นทะเบียน + ขอให้สาขาแกลงตรวจที่ตั้งโครงการ</label>
+<label><input type="radio" name="q14" value="ข"> ข. สาขาแกลงรับ + ส่ง พนง. ไปสอบที่ภูมิลำเนานาย ก.</label>
+<label><input type="radio" name="q14" value="ค"> ค. สาขาแกลงรับ + ทำหนังสือให้สาขาชลบุรีส่ง พนง. มาร่วมสอบที่ภูมิลำเนา</label>
+<label><input type="radio" name="q14" value="ง"> ง. <strong style="color:var(--a2)">สาขาแกลงรับขึ้นทะเบียน ณ ที่ตั้งโครงการ + จัดทำหนังสือขอความร่วมมือไปยังสาขาชลบุรี เพื่อสอบสวนทรัพย์สิน ณ ภูมิลำเนา</strong></label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>15.</strong> น.ส. ข. มีภูมิลำเนา จ.ฉะเชิงเทรา เปิดร้านอาหารทะเลที่ จ.ระยอง เมื่อ 3 เดือนก่อน มาขอกู้เงินขยายร้านที่สาขาระยอง ท่านจะแนะนำอย่างไร</p>
+<label><input type="radio" name="q15" value="ก"> ก. ให้ติดต่อขอขึ้นทะเบียนที่สาขาฉะเชิงเทราตามภูมิลำเนา</label>
+<label><input type="radio" name="q15" value="ข"> ข. ขอขึ้นทะเบียนที่สาขาระยองเพราะเป็นที่ตั้งสถานประกอบการ</label>
+<label><input type="radio" name="q15" value="ค"> ค. <strong style="color:var(--a2)">สาขาฉะเชิงเทรารับขึ้นทะเบียน เว้นแต่ผู้ขอสะดวกจะใช้บริการจากสาขาระยองก็ให้สาขาระยองพิจารณารับได้</strong> (ลูกค้า ฉ.45 ตามภูมิลำเนา)</label>
+<label><input type="radio" name="q15" value="ง"> ง. ให้ติดต่อขอขึ้นทะเบียนที่สาขาฉะเชิงเทราตามภูมิลำเนา เพราะประกอบกิจการในเขตอำเภอเมืองระยองน้อยกว่า 6 เดือน</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ก">
+<p><strong>16.</strong> จากข้อ 15 (น.ส. ข. ภูมิลำเนาฉะเชิงเทรา อยู่ระยอง 3 เดือน) หากขึ้นทะเบียนที่สาขาระยอง ผู้ใดมีอำนาจรับขึ้นทะเบียน</p>
+<label><input type="radio" name="q16" value="ก"> ก. <strong style="color:var(--a2)">ผู้จัดการสาขา ผู้ช่วยผู้จัดการสาขา หัวหน้าหน่วย</strong></label>
+<label><input type="radio" name="q16" value="ข"> ข. ผู้จัดการสาขา ผู้ช่วยผู้จัดการสาขา</label>
+<label><input type="radio" name="q16" value="ค"> ค. ผู้จัดการสาขา</label>
+<label><input type="radio" name="q16" value="ง"> ง. ไม่สามารถขึ้นทะเบียนที่สาขาระยองได้</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>17.</strong> ข้อใดกล่าว<strong style="color:var(--a4)">ไม่ถูกต้อง</strong>ในการโอนลูกค้าบุคคลตาม ฉ.45 เป็นเกษตรกรลูกค้าตาม ฉ.44</p>
+<label><input type="radio" name="q17" value="ก"> ก. ให้สาขารับเข้าเป็นลูกค้าสังกัดกลุ่มเป็นลำดับแรก</label>
+<label><input type="radio" name="q17" value="ข"> ข. ลูกค้าที่มีประวัติการชำระหนี้ ฉ.45 ได้ตามกำหนดติดต่อกัน 2 ปี ให้แก้ไขเป็น AA</label>
+<label><input type="radio" name="q17" value="ค"> ค. <strong style="color:var(--a2)">กรณีลูกค้ายังมีหนี้เงินกู้ ฉ.45 ยังชำระไม่เสร็จสิ้น เงื่อนไขสัญญากู้เงินเดิม (เช่น อัตราดอกเบี้ย) ให้<strong style="color:var(--a4)">เปลี่ยนแปลง</strong>ตามเงื่อนไขของชั้นลูกค้าใหม่</strong> <span class="tag red">ผิด — ต้องคงเดิมจนกว่าจะชำระเสร็จ</span></label>
+<label><input type="radio" name="q17" value="ง"> ง. ขณะที่รับขึ้นทะเบียนเป็นลูกค้า ฉ.45 ไว้แล้ว และข้อมูลไม่เปลี่ยนแปลง ธนาคารอนุโลมให้ไม่ต้องสอบสวนข้อมูลใหม่</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ข">
+<p><strong>18.</strong> นาย ง. ขึ้นทะเบียนลูกค้าใหม่สาขาแกลง ได้รับคะแนนประเมินจัดชั้นลูกค้า <strong>79 คะแนน</strong> นาย ง. จะได้รับชั้นลูกค้าชั้นใดและอัตราดอกเบี้ยเท่าไหร่</p>
+<label><input type="radio" name="q18" value="ก"> ก. ชั้น AA โครงสร้างอัตราดอกเบี้ย MRR + 0.75</label>
+<label><input type="radio" name="q18" value="ข"> ข. <strong style="color:var(--a2)">ชั้น AA โครงสร้างอัตราดอกเบี้ย MRR + 1.50</strong> (คะแนน 70-79 = AA = MRR+1.50)</label>
+<label><input type="radio" name="q18" value="ค"> ค. ชั้น AAA โครงสร้างอัตราดอกเบี้ย MRR + 0.75</label>
+<label><input type="radio" name="q18" value="ง"> ง. ชั้น AAA โครงสร้างอัตราดอกเบี้ย MRR + 1.50</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>19.</strong> ข้อใดกล่าว<strong style="color:var(--a4)">ไม่ถูกต้อง</strong>เกี่ยวกับการพิจารณาจัดประวัติการชำระหนี้ให้<strong>สูงขึ้น</strong></p>
+<label><input type="radio" name="q19" value="ก"> ก. ลูกค้ามีหนี้เงินกู้ที่ปลอดชำระต้นเงิน ไม่ปลอดดอกเบี้ย และชำระดอกเบี้ยได้ตามกำหนด (ไม่มีบิลค้าง)</label>
+<label><input type="radio" name="q19" value="ข"> ข. การพิจารณาสัญญาจะไม่รวมหนี้สัญญาตามโครงการนโยบายรัฐ และสัญญาที่ได้รับการยกเว้นไม่นำมาจัดประวัติ</label>
+<label><input type="radio" name="q19" value="ค"> ค. <strong style="color:var(--a2)">ลูกค้าที่มีการชำระหนี้และ<strong style="color:var(--a4)">มี</strong>หนี้เงินกู้สัญญาใดสัญญาหนึ่งค้างชำระ ณ วันที่ 30 เมษายน</strong> <span class="tag red">ผิด — ถ้าค้าง = ตกชั้น B ไม่ใช่ปรับสูงขึ้น</span></label>
+<label><input type="radio" name="q19" value="ง"> ง. สัญญา Revolving Credit ลูกค้าชำระดอกเบี้ยครบ ไม่มีบิลค้าง และได้รับการขยายระยะเวลาชำระหนี้</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+<div class="q" data-ans="ค">
+<p><strong>20.</strong> ลูกค้าถูกจัดประวัติเป็นลูกค้าผิดนัด (ตกชั้น B) ณ 30 เมษายน แต่ลูกค้าสามารถชำระหนี้เสร็จ/แก้ไขด้วย Loan Review หรือ Revolving Credit จนเป็นหนี้ปกติ (คาบ ม.ค. ภายใน 30 เม.ย. / ก.พ. ภายใน 31 พ.ค. / มี.ค. ภายใน 30 มิ.ย.) สาขาสามารถแก้ไขประวัติเป็น<strong>ชั้นเดิมก่อนตกชั้น</strong>ได้ โดย</p>
+<label><input type="radio" name="q20" value="ก"> ก. ผู้จัดการสาขาอนุมัติ + ผ่านความเห็นชอบของผู้อำนวยการ ธ.ก.ส. จังหวัด</label>
+<label><input type="radio" name="q20" value="ข"> ข. ผู้อำนวยการ ธ.ก.ส. จังหวัดอนุมัติ + ผ่านความเห็นชอบของผู้จัดการสาขา</label>
+<label><input type="radio" name="q20" value="ค"> ค. <strong style="color:var(--a2)">ผู้จัดการสาขาอนุมัติ + ผ่านความเห็นชอบของ คณะกรรมการสินเชื่อระดับสาขา</strong> (ธนาคารผ่อนปรนให้ ผจก.สาขามีอำนาจ)</label>
+<label><input type="radio" name="q20" value="ง"> ง. ผู้อำนวยการ ธ.ก.ส. จังหวัดอนุมัติ + ผ่านความเห็นชอบของ คณะกรรมการสินเชื่อระดับสาขา</label>
+<button class="btn" onclick="check(this)">ตรวจ</button>
+</div>
+
+</div>
+
+<div class="sc">
+📊 คะแนน: <span id="score">0</span> / 20
+<button class="btn" onclick="resetAll()">เริ่มใหม่</button>
+</div>
+</section>
+
+<footer>
+<p>📚 แหล่งอ้างอิง: <strong>คู่มือสินเชื่อเล่ม 1 "การรับลูกค้า"</strong> ธ.ก.ส. (77 หน้า)</p>
+<p>🌐 <a href="index.html" style="color:var(--a)">กลับหน้าหลัก c9-exam-prep</a> | <a href="debt-management.html" style="color:var(--a)">การบริหารจัดการหนี้</a> | <a href="credit-policy.html" style="color:var(--a)">นโยบายสินเชื่อ</a></p>
+<p style="margin-top:8px;font-size:11px">⚠️ เฉลยคำนวณจากหลักเกณฑ์ในคู่มือ หากพบข้อผิดพลาด โปรดแจ้ง Perawit เพื่อตรวจสอบ</p>
+</footer>
+
+</div>
+
+<script>
+function check(btn){
+  var q = btn.parentElement;
+  var ans = q.getAttribute('data-ans');
+  var sel = q.querySelector('input[type=radio]:checked');
+  if(!sel){ alert('เลือกคำตอบก่อนนะค่ะ'); return; }
+  var existing = q.querySelector('.rb');
+  if(existing) existing.remove();
+  var rb = document.createElement('div');
+  rb.className = 'rb ' + (sel.value===ans?'ok':'no');
+  if(sel.value===ans){
+    rb.textContent = '✓ ถูกต้อง! เฉลย: '+ans;
+  } else {
+    rb.textContent = '✗ ผิด — เฉลยที่ถูกคือ "'+ans+'"';
+  }
+  q.appendChild(rb);
+  updateScore();
+}
+function updateScore(){
+  var total = document.querySelectorAll('.q').length;
+  var correct = document.querySelectorAll('.rb.ok').length;
+  document.getElementById('score').textContent = correct+' / '+total;
+}
+function resetAll(){
+  document.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});
+  document.querySelectorAll('.rb').forEach(function(r){r.remove();});
+  document.getElementById('score').textContent='0 / 20';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
