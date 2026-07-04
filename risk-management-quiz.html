@@ -52,6 +52,22 @@ button.secondary:hover{background:#566573}
 @media(max-width:700px){.controls{flex-direction:column;align-items:stretch;}.filter-btn{font-size:.75em;}}
 </style>
 <link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 <header>
@@ -258,5 +274,6 @@ renderQuiz();
 <a href="index.html" style="padding:12px 30px;font-size:1em;border-radius:10px;background:#7f8c8d;color:#fff;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;">🏠 หน้าหลัก</a>
 </div>
 <script src="study-ui.js" defer></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>

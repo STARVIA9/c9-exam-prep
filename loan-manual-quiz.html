@@ -101,6 +101,22 @@ body.study-enhanced { padding-bottom: 100px; }
 
 .footer-bar { text-align: center; padding: 20px; color: var(--text3); font-size: 0.76rem; }
 </style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body class="study-enhanced">
 
@@ -327,5 +343,6 @@ function resetQuiz() {
 renderQuiz();
 </script>
 <script src="study-ui.js" defer></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>

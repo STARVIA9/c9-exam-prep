@@ -53,6 +53,22 @@ li{margin-bottom:4px;font-size:13px}
 .sc .btn{background:var(--a2);color:#0f172a;border:none;border-radius:5px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;margin-left:6px}
 footer{text-align:center;padding:16px;color:var(--t2);font-size:11px;border-top:1px solid var(--b);margin-top:20px}
 </style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 <nav>
@@ -274,5 +290,6 @@ function resetQuiz() {
 renderQuiz();
 </script>
 
+  <script src="auth.js" defer></script>
 </body>
 </html>

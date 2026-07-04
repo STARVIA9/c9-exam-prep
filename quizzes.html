@@ -34,6 +34,22 @@ h4{font-size:15px;color:var(--a3);margin:16px 0 8px;font-weight:600}
 .rb.ok{color:#34d399;font-size:13px;padding:4px 0} .rb.no{color:#fca5a5;font-size:13px;padding:4px 0}
 footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
 </style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 
@@ -160,5 +176,6 @@ function rs(q){
 
 rQ(1,Q1,E1);rQ(2,Q2,E2);
 </script>
+  <script src="auth.js" defer></script>
 </body>
 </html>

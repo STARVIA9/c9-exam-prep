@@ -49,6 +49,22 @@ footer a{color:var(--a);text-decoration:none}
 .cat.cls{background:#7c2d12;color:#fed7aa}
 .cat.fn{background:#1e3a8a;color:#93c5fd}
 </style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 <nav>
@@ -273,5 +289,6 @@ function reset() {
 }
 </script>
 
+  <script src="auth.js" defer></script>
 </body>
 </html>

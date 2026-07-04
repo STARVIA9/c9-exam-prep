@@ -65,6 +65,22 @@ details[open] summary::before{content:"▼"}
 .section-link{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:8px;background:var(--gold-dim);color:var(--gold);font-size:12px;text-decoration:none;margin:4px 0;transition:.2s}
 .section-link:hover{background:var(--gold-dim);color:var(--gold2);transform:translateY(-1px)}
 </style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 
@@ -684,5 +700,6 @@ details[open] summary::before{content:"▼"}
 </div>
 
 </div><!-- end ct -->
+  <script src="auth.js" defer></script>
 </body>
 </html>

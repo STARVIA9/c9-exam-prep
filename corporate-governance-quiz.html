@@ -67,21 +67,22 @@ button.sec{background:#7f8c8d}button.sec:hover{background:#566573}
 /* === Auth Gate: ใช้ html.cg-locked ซ่อน body (CSS อยู่ใน inline script ด้านบน) === */
 </style>
 <link rel="stylesheet" href="study-ui.css">
-<script>
-/* Inline immediate lock — ทำงานทันทีก่อน JS อื่นโหลด เพื่อป้องกัน content flash */
+
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
 (function(){
   try {
     if (localStorage.getItem('cg_auth_v1') !== '1') {
-      document.documentElement.classList.add('cg-locked');
+      document.documentElement.classList.add('site-locked');
     }
-  } catch(e){ document.documentElement.classList.add('cg-locked'); }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
 })();
 </script>
 <style>
-/* ซ่อนทุกอย่างเมื่อ html มี class cg-locked */
-html.cg-locked body { visibility: hidden !important; }
-html.cg-locked body #cg-login-overlay,
-html.cg-locked body #cg-content-cloak { visibility: visible !important; }
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
 </style>
 </head>
 <body>
@@ -466,6 +467,6 @@ window.onload=()=>startQuiz();
   กลับ CG
 </a>
 <script src="study-ui.js" defer></script>
-<script src="cg-auth.js" defer></script>
+  <script src="auth.js" defer></script>
 </body>
 </html>
