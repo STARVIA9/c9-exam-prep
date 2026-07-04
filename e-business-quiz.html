@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ ธุรกิจอิเล็กทรอนิกส์ — BAAC Mobile · ATM · บัตรเดบิต · Digital</title>
+<style>
+:root {
+  --bg: #0f1923; --card: #1a2836; --card-hover: #1f3040;
+  --text: #e8e8e8; --text2: #a0b4c8; --accent: #ffd54f;
+  --green: #4caf50; --red: #ef5350; --blue: #42a5f5; --purple: #ab47bc;
+  --border: #2a3f52; --shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+* { margin:0; padding:0; box-sizing:border-box }
+body { font-family:'Sarabun','Noto Sans Thai',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; overflow-x: hidden; }
+nav { background:linear-gradient(135deg,#0d1b2a,#1b2838); padding:20px 30px; position:sticky; top:0; z-index:100; border-bottom:2px solid var(--accent) }
+nav h1 { color:var(--accent); font-size:1.3em; text-align:center }
+nav .stats { display:flex; justify-content:center; gap:30px; margin-top:10px }
+nav .stats span { color:var(--text2); font-size:.9em }
+nav .stats strong { color:var(--accent) }
+.tabs { display:flex; justify-content:center; gap:8px; padding:15px; flex-wrap:wrap }
+.tab { background:var(--card); border:1px solid var(--border); color:var(--text2); padding:8px 20px; border-radius:25px; cursor:pointer; transition:.2s; font-size:.9em }
+.tab:hover, .tab.active { background:var(--accent); color:#000; border-color:var(--accent) }
+.container { max-width:900px; margin:0 auto; padding:15px }
+.q-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:25px; margin:15px 0; box-shadow:var(--shadow); transition:.3s }
+.q-card:hover { border-color:var(--accent); transform:translateY(-2px) }
+.q-num { display:inline-block; background:var(--accent); color:#000; font-weight:bold; padding:2px 12px; border-radius:15px; font-size:.85em; margin-bottom:10px }
+.q-topic { display:inline-block; padding:2px 10px; border-radius:15px; font-size:.75em; margin-left:8px }
+.topic-mobile { background:#1b5e20; color:#a5d6a7 }
+.topic-corp { background:#0d47a1; color:#90caf9 }
+.topic-sms { background:#4a148c; color:#ce93d8 }
+.topic-atm { background:#bf360c; color:#ffab91 }
+.topic-card { background:#e65100; color:#ffcc80 }
+.topic-digital { background:#006064; color:#80deea }
+.q-text { font-size:1.05em; margin-bottom:15px; color:var(--text) }
+.q-opts label { display:block; padding:10px 15px; margin:6px 0; background:#152230; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:.2s }
+.q-opts label:hover { background:#1f3040; border-color:var(--blue) }
+.q-opts input[type="radio"] { display:none }
+.q-opts input[type="radio"]:checked + span { font-weight:bold; color:var(--accent) }
+.q-opts label.correct { background:#1b3a1b; border-color:var(--green); color:#a5d6a7 }
+.q-opts label.wrong { background:#3a1b1b; border-color:var(--red); color:#ef9a9a }
+.q-opts label.show-correct { border-color:var(--green); border-width:2px }
+.q-btn { background:var(--blue); color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; margin-top:12px; font-size:.95em; transition:.2s }
+.q-btn:hover { background:#1e88e5 }
+.explain { display:none; margin-top:12px; padding:15px; background:#152230; border-left:4px solid var(--accent); border-radius:0 8px 8px 0; color:var(--text2); font-size:.92em }
+.explain strong { color:var(--accent) }
+.footer { text-align:center; padding:30px; color:#556; font-size:.85em }
+.score-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:linear-gradient(135deg,#1a3a4a,#0d2137); padding:15px; text-align:center; border-top:2px solid var(--accent); z-index:100 }
+.score-bar span { color:var(--accent); font-size:1.3em; font-weight:bold }
+@media(max-width:600px) { .q-card { padding:18px } nav { padding:15px } }
+</style>
+<link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>📝 แบบทดสอบ ธุรกิจอิเล็กทรอนิกส์ — BAAC Mobile · ATM · บัตรเดบิต · Digital</h1>
+  <div class="stats">
+    <span>📊 ทั้งหมด <strong>10</strong> ข้อ</span>
+    <span>⏱️ ไม่จำกัดเวลา</span>
+    <span>🎯 ทำเสร็จกดตรวจ</span>
+  </div>
+</nav>
+
+<div class="tabs">
+  <div class="tab active" onclick="filterTab('all')">📋 ทั้งหมด</div>
+  <div class="tab" onclick="filterTab('mobile')">📱 BAAC Mobile</div>
+  <div class="tab" onclick="filterTab('corp')">🏦 Corporate Banking</div>
+  <div class="tab" onclick="filterTab('sms')">📲 SMS Alert</div>
+  <div class="tab" onclick="filterTab('atm')">🏧 ตู้ ATM</div>
+  <div class="tab" onclick="filterTab('card')">💳 บัตรเดบิต</div>
+  <div class="tab" onclick="filterTab('digital')">🌐 Digital</div>
+</div>
+
+<div class="container" id="quizContainer">
+
+<!-- ===== Q1: BAAC Mobile ===== -->
+<div class="q-card" data-topic="mobile">
+  <span class="q-num">1</span><span class="q-topic topic-mobile">📱 BAAC Mobile</span>
+  <div class="q-text">คุณสมบัติผู้ขอสมัครใช้บริการแอปพลิเคชัน BAAC Mobile ข้อใดถูก</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>A. บุคคลธรรมดาที่มีสัญชาติไทย อายุ 15 ปีบริบูรณ์ขึ้นไป</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>B. ลงทะเบียนพิสูจน์ และยืนยันตัวตนทางอิเล็กทรอนิกส์ (e-KYC)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>C. ลูกค้า 1 CIF สามารถลงทะเบียนได้ 1 หมายเลขโทรศัพท์</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>D. บัญชีเงินฝากประเภทเจ้าของคนเดียว (Single) สถานะบัญชี Active และไม่ติดสถานะอายัด</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q1"><span>E. ถูกทุกข้อ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e1')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e1"><strong>คำตอบ: E (ถูกทุกข้อ)</strong><br>คุณสมบัติผู้สมัคร BAAC Mobile ครบถ้วนทุกข้อ: สัญชาติไทย อายุ 15 ปี+, e-KYC, 1 CIF ต่อ 1 เบอร์โทร, บัญชี Single Active ไม่อายัด</div>
+</div>
+
+<!-- ===== Q2: BAAC Mobile ===== -->
+<div class="q-card" data-topic="mobile">
+  <span class="q-num">2</span><span class="q-topic topic-mobile">📱 BAAC Mobile</span>
+  <div class="q-text">ลูกค้าต้องใช้ Mobile PIN และสแกนใบหน้าในการยืนยันการทำธุรกรรม BAAC Mobile ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>A. โอนเงินไปยังบุคคลอื่น ตั้งแต่ 20,000 บาท/รายการ และ 100,000 บาท/วัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>B. โอนเงินภายในบัญชีตนเอง ตั้งแต่ 20,000,000 บาท/รายการ และ 20,000,000 บาท/วัน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q2"><span>C. โอนเงินภายในบัญชีตนเองจำนวน 50,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>D. โอนเงินไปบัญชีต่างธนาคารจำนวน 50,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>E. โอนเงินไปบัญชี ธ.ก.ส. จำนวน 50,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e2')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e2"><strong>คำตอบ: C</strong><br>โอนเงินภายในบัญชีตนเองจำนวน 50,000 บาท ไม่จำเป็นต้องใช้ Mobile PIN และสแกนใบหน้า เพราะเป็นยอดต่ำกว่าเกณฑ์ที่กำหนด</div>
+</div>
+
+<!-- ===== Q3: BAAC Mobile ===== -->
+<div class="q-card" data-topic="mobile">
+  <span class="q-num">3</span><span class="q-topic topic-mobile">📱 BAAC Mobile</span>
+  <div class="q-text">การใช้บริการ BAAC Mobile ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>A. วงเงินการถอนเงินไม่ใช้บัตรผ่านตัวแทน Banking Agent ไม่เกิน 5,000 บาท/รายการ และไม่เกิน 20,000 บาท/วัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>B. กรณีโอนเงินไป ธ.อาคารสงเคราะห์ และ ธ.ซิตี้แบงก์ จะโอนได้ไม่เกินครั้งละ 700,000 บาท/ครั้ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>C. ลูกค้าสามารถเพิ่มบัญชีได้ไม่จำกัดจำนวนบัญชีบนแอปพลิเคชัน ธ.ก.ส. BAAC Mobile</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>D. การยกเลิกใช้บริการแอปพลิเคชัน BAAC Mobile ลูกค้าสามารถยกเลิกการใช้บริการด้วยเอง โดยไปที่เมนูตั้งค่า > บัญชี > ยกเลิกการใช้บริการ BAAC Mobile</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q3"><span>E. กรณีลูกค้าสมัครใช้บริการ BAAC Mobile ใหม่ เมื่อได้รับอนุมัติการขอผ่อนผัน หรือแก้ไขเกณฑ์การถ่ายภาพใบหน้าแล้ว ต้องดำเนินการสมัครใช้บริการให้แล้วเสร็จภายในระยะเวลา 24 ชม.</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e3')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e3"><strong>คำตอบ: E</strong><br>ระยะเวลาที่ถูกต้องคือ <strong>ภายใน 60 นาที</strong> ไม่ใช่ 24 ชม. หลังได้รับอนุมัติการขอผ่อนผันหรือแก้ไขเกณฑ์การถ่ายภาพใบหน้า ต้องดำเนินการสมัครให้แล้วเสร็จภายใน 60 นาที</div>
+</div>
+
+<!-- ===== Q4: Corporate Banking ===== -->
+<div class="q-card" data-topic="corp">
+  <span class="q-num">4</span><span class="q-topic topic-corp">🏦 Corporate Banking</span>
+  <div class="q-text">การใช้บริการ BAAC Corporate Banking ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>A. สามารถเรียกดูรายการ Statement ย้อนหลังได้ไม่เกิน 1 ปี และเรียกดูรายงานในระบบได้คราวละ 90 วัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>B. สามารถสั่งซื้อสมุดเช็คผ่านระบบได้ไม่เกิน 100 เล่ม</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>C. ค่าธรรมเนียมโอนเงินแบบบัญชี จำนวนไม่เกิน 20,000 บาท 25 บาท/ครั้ง โอนมากกว่า 20,000 บาท แต่ไม่เกิน 2,000,000 บาท 35 บาท/ครั้ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>D. ค่าธรรมเนียมโอนเงินพร้อมเพย์จำนวนเงินไม่เกิน 100,000 บาท 10 บาท/ครั้ง โอนมากกว่า 100,000 บาท แต่ไม่เกิน 2,000,000 บาท 15 บาท/ครั้ง</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q4"><span>E. ค่าธรรมเนียมแรกเข้า 2,000 บาท ค่าธรรมเนียมรายปี 1,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e4')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e4"><strong>คำตอบ: E</strong><br>ค่าธรรมเนียมแรกเข้าและรายปีของ BAAC Corporate Banking ไม่ใช่ 2,000 บาท / 1,000 บาท ตามที่ระบุในข้อนี้</div>
+</div>
+
+<!-- ===== Q5: SMS Alert ===== -->
+<div class="q-card" data-topic="sms">
+  <span class="q-num">5</span><span class="q-topic topic-sms">📲 SMS Alert</span>
+  <div class="q-text">การใช้บริการ BAAC SMS Alert ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>A. เป็นบุคคลธรรมดาอายุตั้งแต่ 15 ปี</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>B. สาขาสามารถรับสมัคร เปลี่ยนแปลง และยกเลิกการใช้บริการ SMS ได้ โดยไม่จำเป็นต้องเป็นสาขาเจ้าของ CIF หรือสาขาเจ้าของบัญชีเงินฝาก</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>C. สามารถผูก 1 หมายเลขโทรศัพท์ได้กับหลายบัญชี</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q5"><span>D. สมัครผ่านช่องทางเคาน์เตอร์ธ.ก.ส.สาขา เท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>E. ค่าธรรมเนียมรายเดือน 20 บาท/บัญชี รายปี 199 บาท/บัญชี (โปรโมชั่นถึง 31 มี.ค.70)</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e5')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e5"><strong>คำตอบ: D</strong><br>BAAC SMS Alert ไม่ได้จำกัดเฉพาะช่องทางเคาน์เตอร์เท่านั้น — ลูกค้าสามารถสมัครผ่านช่องทางอื่นได้ด้วย</div>
+</div>
+
+<!-- ===== Q6: ATM ===== -->
+<div class="q-card" data-topic="atm">
+  <span class="q-num">6</span><span class="q-topic topic-atm">🏧 ตู้ ATM</span>
+  <div class="q-text">การเปลี่ยนกล่องเงิน ATM ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>A. กรรมการตรวจนับเงินสดในเครื่อง ATM ทั้ง 3 คน ร่วมกันตรวจนับเงินสดที่เตรียมไว้หน้ากล้อง CCTV</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>B. ห้ามใส่กล่องเปล่าโดยไม่บรรจุธนบัตร</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>C. กรรมการตรวจนับเงินสดในเครื่อง ATM ประกอบด้วย ผู้ถือกุญแจ ATM ชุด ข และ ผู้ถือกุญแจ ATM ชุด ค ต้องร่วมกันเปลี่ยนกล่องเงิน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q6"><span>D. ต้องเปลี่ยนกล่องเงินอย่างน้อยสัปดาห์ละ 1 ครั้ง และเปลี่ยนพร้อมกันทุกเครื่อง เดือนละ 1 ครั้ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>E. ต้องบรรจุธนบัตรอย่างน้อยกล่องละ 100 ฉบับ และต้องไม่เกินกล่องละ 2,500 ฉบับ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e6')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e6"><strong>คำตอบ: D</strong><br>ธนาคาร <strong>ยกเลิก</strong>การเปลี่ยนกล่องเงินพร้อมกันทุกเครื่องเดือนละ 1 ครั้งแล้ว ข้อนี้จึงเป็นข้อมูลที่ไม่ถูกต้องอีกต่อไป</div>
+</div>
+
+<!-- ===== Q7: บัตรเดบิต ===== -->
+<div class="q-card" data-topic="card">
+  <span class="q-num">7</span><span class="q-topic topic-card">💳 บัตรเดบิต</span>
+  <div class="q-text">บัตรเดบิตแบบมีประกันภัย ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,true)"><input type="radio" name="q7"><span>A. บุคคลธรรมดาที่มีอายุตั้งแต่ 20 ปีบริบูรณ์ และไม่เกินอายุที่กำหนดขึ้นอยู่กับประเภทบัตร</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>B. ลูกค้าอายุ 75 ปี 8 เดือน สามารถสมัครบัตรอิเล็กทรอนิกส์แบบมีประกันภัยได้</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>C. ลูกค้า 1 ราย สมัครใช้บริการบัตรเดบิตแบบมีประกันภัยได้คนละ 3 ประเภทบัตร ประเภทบัตรละ 1 ใบ เท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>D. การเบิกค่ารักษาพยาบาลต้องใช้ใบเสร็จรับเงินต้นฉบับ เท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>E. กรณีเกิดอุบัติเหตุที่ต่างประเทศสามารถเคลมประกันได้แต่ลูกค้าต้องสำรองจ่ายก่อน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e7')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e7"><strong>คำตอบ: A</strong><br>บัตรเดบิตแบบมีประกันภัยบางประเภทอนุญาตให้ลูกค้าอายุต่ำกว่า 20 ปีสมัครได้ (เช่น อายุ 15 ปีขึ้นไป) ดังนั้นการระบุว่าต้องอายุ 20 ปีบริบูรณ์จึงไม่ถูกต้องสำหรับทุกประเภทบัตร</div>
+</div>
+
+<!-- ===== Q8: Branchless/Digital ===== -->
+<div class="q-card" data-topic="digital">
+  <span class="q-num">8</span><span class="q-topic topic-digital">🌐 Branchless</span>
+  <div class="q-text">ข้อใดไม่ใช่ช่องทางบริการ Branchless touchpoint</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>A. Mobile Banking</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>B. ATM</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>C. Banking Agent</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>D. เคาน์เตอร์ 7-11</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q8"><span>E. สาขา</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e8')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e8"><strong>คำตอบ: E (สาขา)</strong><br>Branchless touchpoint หมายถึงช่องทางที่ <strong>ไม่ใช่สาขา</strong> เช่น Mobile Banking, ATM, Banking Agent, เคาน์เตอร์ 7-11 "สาขา" จึงไม่จัดเป็น Branchless touchpoint</div>
+</div>
+
+<!-- ===== Q9: Digital ===== -->
+<div class="q-card" data-topic="digital">
+  <span class="q-num">9</span><span class="q-topic topic-digital">🌐 เป้าหมาย Digital 2569</span>
+  <div class="q-text">ข้อใดไม่ใช่เป้าหมายการส่งเสริมการใช้ดิจิทัลปี 2569</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>A. สัดส่วน Digital Transaction (Digital) 75 : 25 (Traditional)</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q9"><span>B. สัดส่วน Digital Transaction (Digital) 70 : 30 (Traditional)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>C. เป้าหมายรวม 740.92 ล้านธุรกรรม</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>D. ปริมาณธุรกรรม BAAC Mobile เพิ่มขึ้นไม่น้อยกว่า 100 ล้านธุรกรรม</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>E. คำนวณจากปริมาณธุรกรรม BAAC Mobile หาร ผลรวมปริมาณธุรกรรมทุกช่องทาง (รายเดือน) ต้องมากกว่า 75%</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e9')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e9"><strong>คำตอบ: B</strong><br>เป้าหมายสัดส่วน Digital Transaction ปี 2569 คือ <strong>75:25</strong> (Digital : Traditional) ไม่ใช่ 70:30 ข้อ B จึงไม่ใช่เป้าหมายที่ถูกต้อง</div>
+</div>
+
+<!-- ===== Q10: บัตรเดบิต ===== -->
+<div class="q-card" data-topic="card">
+  <span class="q-num">10</span><span class="q-topic topic-card">💳 บัตรเดบิต</span>
+  <div class="q-text">บัตรอิเล็กทรอนิกส์วงเงินถอนเงินสูงสุด 120,000 บาท/วัน ข้อใดผิด</div>
+  <div class="q-opts">
+    <label onclick="check(this,true)"><input type="radio" name="q10"><span>A. บัตรเดบิตเขียวส่อง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>B. บัตรเดบิตบุษย์น้ำทอง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>C. บัตรเดบิตพลอยไพฑูรย์</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>D. บัตรเดบิตเพชรน้ำหนึ่ง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>E. บัตรเดบิต VISA A-Smart</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e10')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e10"><strong>คำตอบ: A</strong><br>บัตรเดบิตเขียวส่องมีวงเงินถอนเงินสูงสุด <strong>60,000 บาท/วัน</strong> ไม่ใช่ 120,000 บาท/วัน บัตรที่มีวงเงิน 120,000 บาท/วัน ได้แก่ บัตรเดบิตบุษย์น้ำทอง, พลอยไพฑูรย์, เพชรน้ำหนึ่ง, และ VISA A-Smart</div>
+</div>
+
+</div><!-- /container -->
+
+<div class="score-bar" id="scoreBar">
+  ✅ ทำไปแล้ว <span id="answeredCount">0</span>/10 ข้อ |
+  ถูก <span id="correctCount" style="color:#4caf50">0</span> ข้อ |
+  ผิด <span id="wrongCount" style="color:#ef5350">0</span> ข้อ
+</div>
+
+<div class="footer">
+  📚 เนื้อหาจาก แนวข้อสอบคู่มือปฏิบัติงานธุรกิจอิเล็กทรอนิกส์ — ธ.กส.<br>
+  🎯 ศูนย์เตรียมสอบ C9 Genius 9
+</div>
+
+<script>
+let correct=0, wrong=0, answered=0;
+const answeredSet = new Set();
+
+function check(el, isCorrect) {
+  const card = el.closest('.q-card');
+  const name = el.querySelector('input').name;
+  if (answeredSet.has(name)) return;
+  answeredSet.add(name);
+  
+  const opts = card.querySelectorAll('.q-opts label');
+  opts.forEach(o => {
+    o.style.pointerEvents = 'none';
+    if (o === el) {
+      o.classList.add(isCorrect ? 'correct' : 'wrong');
+    }
+  });
+  
+  if (!isCorrect) {
+    opts.forEach(o => {
+      if (o.querySelector('input').name === name && o.onclick && o.onclick.toString().includes('true')) {
+        o.classList.add('show-correct');
+      }
+    });
+  }
+  
+  answered++;
+  if (isCorrect) correct++; else wrong++;
+  
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('scoreBar').style.display = 'block';
+}
+
+function toggleExplain(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function filterTab(topic) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.q-card').forEach(card => {
+    if (topic === 'all' || card.dataset.topic === topic) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+<style>
+.back-home {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(19, 29, 51, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Noto Sans Thai','Sarabun',sans-serif;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.back-home:hover {
+  background: rgba(29, 39, 64, 0.95);
+  border-color: rgba(212,148,47,0.3);
+  color: #e8b84f;
+  transform: translateY(-1px);
+}
+.back-home svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.back-home:hover svg { transform: translateX(-2px); }
+</style>
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"/></svg>
+  กลับหน้าหลัก
+</a>
+
+<script src="study-ui.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>
