@@ -215,6 +215,7 @@ th { background: rgba(212,148,47,.12); color: #ffd28a; }
 }
 .quiz-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(212,148,47,.35); }
 .footer-note { color: var(--muted); text-align:center; font-size:.86rem; margin-top:30px; }
+
 @media (max-width: 700px) {
   .topbar { justify-content:flex-start; overflow-x:auto; flex-wrap: nowrap; }
   .hero { padding-top: 34px; }
@@ -224,6 +225,22 @@ th { background: rgba(212,148,47,.12); color: #ffd28a; }
 }
 </style>
 <link rel="stylesheet" href="study-ui.css">
+<script>
+/* Inline immediate lock — ทำงานทันทีก่อน JS อื่นโหลด เพื่อป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('cg-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('cg-locked'); }
+})();
+</script>
+<style>
+/* ซ่อนทุกอย่างเมื่อ html มี class cg-locked */
+html.cg-locked body { visibility: hidden !important; }
+html.cg-locked body #cg-login-overlay,
+html.cg-locked body #cg-content-cloak { visibility: visible !important; }
+</style>
 </head>
 <body>
 <nav class="topbar" aria-label="เมนูเนื้อหา CG">
@@ -676,5 +693,6 @@ th { background: rgba(212,148,47,.12); color: #ffd28a; }
   <p class="footer-note">แหล่งอ้างอิง: <strong>คู่มือการกำกับดูแลกิจการที่ดี ปีบัญชี 2569</strong> สำนักส่งเสริมธรรมาภิบาลและกำกับการปฏิบัติตามกฎเกณฑ์ ธ.ก.ส. · จัดรูปแบบสำหรับ Genius 9</p>
 </main>
 <script src="study-ui.js" defer></script>
+<script src="cg-auth.js" defer></script>
 </body>
 </html>
