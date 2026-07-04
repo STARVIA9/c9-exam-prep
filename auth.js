@@ -267,15 +267,40 @@
     `;
     btn.addEventListener('click', function() {
       if (confirm('ต้องการออกจากระบบและล้างการจำรหัสผ่าน?\n(จะต้องใส่รหัสใหม่เมื่อเข้าหน้าถัดไป)')) {
+        // Apply lock ทันทีก่อน reload เพื่อป้องกัน content flash
+        document.documentElement.classList.add('site-locked');
+        // Force hide body ทันที (inline style เพื่อ override ทุกอย่าง)
+        document.body.style.cssText = 'visibility: hidden !important;';
         clearAuth();
-        location.reload();
+        // หน่วงเวลาเล็กน้อยให้ CSS apply ก่อน reload
+        setTimeout(function() { location.reload(); }, 50);
       }
     });
     document.body.appendChild(btn);
   }
 
   // === MAIN ===
+  // Apply lock ทันที (ก่อน DOMContentLoaded) เพื่อป้องกัน content flash
+  // ใช้ inline style บน documentElement แทน class เพื่อให้ CSS apply ทันที
+  (function immediateLock() {
+    if (isPublicPage()) return;
+    if (!isAuthed()) {
+      // Apply ทั้ง class + inline style เพื่อความแน่นอน
+      document.documentElement.classList.add('site-locked');
+      document.documentElement.style.visibility = 'visible'; // ให้ html แสดง (login overlay จะอยู่ใน body)
+      // Inline style ซ่อน body — จะถูกลบเมื่อ unlock
+      const style = document.createElement('style');
+      style.id = 'site-immediate-lock';
+      style.textContent = 'body { visibility: hidden !important; }';
+      document.head.appendChild(style);
+    }
+  })();
+
   document.addEventListener('DOMContentLoaded', function() {
+    // ลบ immediate lock style ถ้ามี (DOM พร้อมแล้ว)
+    const immediateLock = document.getElementById('site-immediate-lock');
+    if (immediateLock) immediateLock.remove();
+
     // หน้า public (เช่น index) — ไม่ล็อค แต่ให้ปุ่ม logout ถ้า auth แล้ว
     if (isPublicPage()) {
       if (isAuthed()) addLogoutButton();
