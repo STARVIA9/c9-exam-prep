@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 แบบทดสอบ BMIS — 15 ข้อ | ศูนย์เตรียมสอบ C9</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f172a; --s:#1e293b; --s2:#334155;
+  --a:#f59e0b; --a2:#10b981; --a3:#3b82f6; --a4:#ef4444;
+  --t:#f1f5f9; --t2:#94a3b8; --b:#475569
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:16px;color:var(--a);margin-right:6px}
+nav a{color:var(--t2);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover{background:var(--s2);color:var(--a)}
+nav a.back{margin-left:auto;color:var(--a);font-weight:600}
+.ct{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+.hero{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid var(--a);border-radius:14px;padding:24px;text-align:center;margin-bottom:24px}
+.hero h1{color:var(--a);font-size:1.5rem;margin-bottom:6px}
+.hero p{color:var(--t2);font-size:0.9rem}
+.sc{background:var(--s2);padding:14px 20px;border-radius:10px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:20px 0}
+.sc-info{font-size:0.9rem;color:var(--t2)}
+.sc-info b{color:var(--a);font-size:1.1rem}
+.btn{display:inline-block;padding:8px 18px;background:var(--a);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.9rem;text-decoration:none}
+.btn:hover{background:#fbbf24}
+.btn.secondary{background:var(--s2);color:var(--t)}
+.btn.secondary:hover{background:var(--b);color:var(--a)}
+.q{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:18px;margin:14px 0;border-left:4px solid var(--s2)}
+.q.answered{border-left-color:var(--a)}
+.q label{display:block;padding:10px 14px;margin:6px 0;background:var(--bg);border:1px solid var(--b);border-radius:8px;cursor:pointer;transition:all 0.2s}
+.q label:hover:not(.disabled){background:var(--s2);border-color:var(--a3)}
+.q label.correct{background:#14532d;border-color:var(--a2);color:#86efac;font-weight:600}
+.q label.wrong{background:#7f1d1d;border-color:var(--a4);color:#fca5a5;text-decoration:line-through}
+.q label.disabled{cursor:not-allowed;opacity:0.7}
+.q b{color:var(--a);display:block;margin-bottom:8px}
+.q button{margin-top:10px}
+.rb{margin-top:10px;padding:10px 14px;border-radius:6px;display:none;font-size:0.9rem}
+.rb.show{display:block}
+.rb.ok{background:#14532d;color:#86efac;border-left:3px solid var(--a2)}
+.rb.no{background:#7f1d1d;color:#fca5a5;border-left:3px solid var(--a4)}
+footer{text-align:center;padding:30px 16px;color:var(--t2);font-size:0.8rem;border-top:1px solid var(--b);margin-top:40px}
+footer a{color:var(--a);text-decoration:none}
+.cat{display:inline-block;background:var(--s2);color:var(--t2);padding:2px 10px;border-radius:10px;font-size:0.72rem;margin-left:8px}
+.cat.bm{background:#14532d;color:#86efac}
+.cat.cls{background:#7c2d12;color:#fed7aa}
+.cat.fn{background:#1e3a8a;color:#93c5fd}
+</style>
+</head>
+<body>
+<nav>
+  <h1>📊 ข้อสอบ BMIS</h1>
+  <a href="bmis.html">📖 สรุปเนื้อหา</a>
+  <a href="#q1">⬇ เริ่มทำข้อสอบ</a>
+  <a href="index.html">🏠 หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+  <div class="hero">
+    <h1>📊 แบบทดสอบ BMIS — 15 ข้อ</h1>
+    <p>ระบบงาน BMIS · การจัดชั้นสินทรัพย์ · เกณฑ์ AA/NA · Yield/Cost/NIM · การวิเคราะห์ 6 มิติ</p>
+  </div>
+
+  <div class="sc">
+    <div class="sc-info">คะแนน: <b id="sc">0</b> / 15 · ตอบแล้ว: <span id="ans">0</span>/15</div>
+    <div>
+      <button class="btn" onclick="showAll()">✅ เฉลยทั้งหมด</button>
+      <button class="btn secondary" onclick="reset()">🔄 เริ่มใหม่</button>
+    </div>
+  </div>
+
+  <div id="quiz"></div>
+
+  <footer>
+    <p>📊 <b>แบบทดสอบ BMIS</b> · 15 ข้อ · พร้อมเฉลยละเอียด</p>
+    <p style="margin-top:8px"><a href="bmis.html">📖 กลับไปอ่านสรุปเนื้อหา</a> · <a href="index.html">🏠 หน้าหลัก</a></p>
+  </footer>
+
+</div>
+
+<script>
+// คำถาม BMIS — ดึงจาก PDF สไลด์ 33 หน้า (สานิตา สุขนิยม)
+// หมวด: bm=BMIS Overview, cls=จัดชั้น/สำรอง, fn=การเงิน/สูตร, an=วิเคราะห์
+const Q = [
+  // กลุ่ม 1: ระบบงาน BMIS (ข้อ 1-3)
+  {
+    cat:"bm",
+    q:"BMIS (Branch Management Information System) คืออะไร?",
+    c:["ระบบบัญชีแยกประเภททั่วไป","รายงาน One Page แสดงข้อมูลการเงินของ สาขา/ธนค./ฝสข. เพื่อการบริหาร","ระบบจัดการลูกค้าสัมพันธ์ CRM","โปรแกรมคำนวณดอกเบี้ยอัตโนมัติ"],
+    a:1,
+    e:"<b>BMIS</b> = Branch Management Information System = <b>รายงาน One Page</b> แสดงข้อมูลการเงินของสาขา ธนค. ฝสข. เพื่อใช้ในการบริหาร (ข้อมูล Day-1, รองรับ Scenario + Forecast + Comparison)"
+  },
+  {
+    cat:"bm",
+    q:"ข้อมูลใน BMIS ประมวลผลทุกสิ้นวัน เรียกว่าอะไร และข้อมูลรายเดือนใช้ได้เมื่อใด?",
+    c:["Real Time ทันที / วันแรกของเดือนถัดไป","Near Real time (Day-1) / ไม่เกินวันที่ 7 ของเดือนถัดไป","Batch Process ทุกสัปดาห์ / ไม่เกินวันที่ 14","End of Day ทุกเดือน / วันสุดท้ายของเดือน"],
+    a:1,
+    e:"ประมวลผลทุกสิ้นวันจากสามกลาง = <b>Near Real time (Day-1)</b> · ข้อมูลรายเดือนผ่านกระบวนการปรับปรุงรายการทางบัญชี ใช้ได้<b>ไม่เกินวันที่ 7 ของเดือนถัดไป</b>"
+  },
+  {
+    cat:"bm",
+    q:"ช่องทางเข้าถึง BMIS และระดับสิทธิ์ที่กำหนดไว้ เป็นอย่างไร?",
+    c:["ช่องทางเดียว: Internet / พนักงานทุกระดับ","2 ช่องทาง: Intranet (ทุกระดับ) และ VPN (ระดับ 10 ขึ้นไป) / สิทธิ์เข้าถึง: พนักงานระดับ 8 ขึ้นไป","3 ช่องทาง: Mobile, Web, Desktop / พนักงานทุกคน","ช่องทางเดียว: VPN / เฉพาะผู้บริหาร"],
+    a:1,
+    e:"BMIS เข้าถึงได้ <b>2 ช่องทาง</b>: <b>Intranet</b> (ทุกระดับ) และ <b>VPN</b> (ระดับ 10 ขึ้นไป) · พนักงานระดับ <b>8 ขึ้นไป</b> สาขา/สนธ./ฝสข. เข้าถึงข้อมูลได้"
+  },
+
+  // กลุ่ม 2: โครงสร้างรายงาน 6 ส่วน (ข้อ 4-5)
+  {
+    cat:"bm",
+    q:"รายงาน BMIS มีกี่ส่วน และส่วนใดแสดง 'อัตราดอกเบี้ยเงินโอน (Transfer Price Rate)'?",
+    c:["4 ส่วน / ส่วนที่ 2 เงินให้สินเชื่อ","5 ส่วน / ส่วนที่ 4 ผลประกอบการ","6 ส่วน / ส่วนที่ 5 ข้อมูลเพิ่มเติม","7 ส่วน / ส่วนที่ 6 อัตราส่วนทางการเงิน"],
+    a:2,
+    e:"รายงาน BMIS มี <b>6 ส่วน</b>: (1) ข้อมูลทั่วไป (2) เงินให้สินเชื่อ (3) เงินรับฝาก (4) ผลประกอบการ (5) <b>ข้อมูลเพิ่มเติม = อัตราดอกเบี้ยเงินโอน + จำนวนพนักงาน</b> (6) อัตราส่วนทางการเงิน"
+  },
+  {
+    cat:"bm",
+    q:"KPI 'LDR' (เงินให้สินเชื่อ / เงินรับฝาก) ในส่วนที่ 6 ของรายงาน BMIS มีความหมายว่าอย่างไร?",
+    c:["ความสามารถในการทำกำไร","สัดส่วนสินเชื่อเทียบเงินฝาก — สะท้อนดุลยภาพระหว่างแหล่งเงินและการใช้เงิน","อัตราหนี้เสีย","อัตราผลตอบแทนต่อสินทรัพย์"],
+    a:1,
+    e:"<b>LDR = Loan to Deposit Ratio</b> = เงินให้สินเชื่อ ÷ เงินรับฝาก · ใช้วัดดุลยภาพระหว่างแหล่งเงินทุน (เงินฝาก) กับการใช้เงิน (สินเชื่อ) ตัวอย่างในสไลด์ = 101.99%"
+  },
+
+  // กลุ่ม 3: การจัดชั้นสินทรัพย์ + กันสำรอง (ข้อ 6-10)
+  {
+    cat:"cls",
+    q:"หนี้ค้างชำระ 4 เดือน จัดอยู่ในชั้นใด และใช้เกณฑ์อะไรในการรับรู้รายได้?",
+    c:["ชั้น 1 ปกติ / เกณฑ์คงค้าง (AA)","ชั้น 2 กล่าวถึงเป็นพิเศษ / เกณฑ์คงค้าง (AA)","ชั้น 3 ต่ำกว่ามาตรฐาน / เกณฑ์เงินสด (NA)","ชั้น 4 สงสัย / เกณฑ์เงินสด (NA)"],
+    a:2,
+    e:"หนี้ค้าง <b>3-6 เดือน</b> = <b>ชั้น 3 ต่ำกว่ามาตรฐาน</b> · รับรู้รายได้ด้วย<b>เกณฑ์เงินสด (NA)</b> · กันเงินสำรอง <b>100%</b> ทั้ง ธปท. และ ธ.ก.ส."
+  },
+  {
+    cat:"cls",
+    q:"ข้อใดคือความแตกต่างสำคัญระหว่างเกณฑ์การกันเงินสำรองของ ธปท. กับ ธ.ก.ส.?",
+    c:["เหมือนกันทุกชั้น","ธ.ก.ส. กัน 100% ตั้งแต่ชั้น 1 (รวมเชิงคุณภาพ) ส่วน ธปท. กัน 1-2% ในชั้น 1-2 แล้วกระโดดเป็น 100% ที่ชั้น 3","ธ.ก.ส. กัน 50% ทุกชั้น","ธปท. ไม่มีชั้น 5"],
+    a:1,
+    e:"<b>ธ.ก.ส.</b> กันเงินสำรองรวม <b>100%</b> ตั้งแต่ชั้น 1 (เพราะรวมเชิงคุณภาพ) · <b>ธปท.</b> กัน 1-2% ในชั้น 1-2 แล้วกระโดดเป็น 100% ที่ชั้น 3 เป็นต้นไป"
+  },
+  {
+    cat:"cls",
+    q:"หลักเกณฑ์เชิงคุณภาพที่บังคับใช้ปีบัญชี 2569: 'ลูกหนี้ใช้เงินกู้ผิดวัตถุประสงค์' จัดชั้นใด และกันสำรองเท่าใด?",
+    c:["ชั้น 1 / กัน 1%","ชั้น 2 / กัน 2%","ชั้น 3 / กัน 100%","ชั้น 4 / กัน 100% (NA)"],
+    a:3,
+    e:"ลูกหนี้ใช้เงินกู้ผิดวัตถุประสงค์ → <b>ชั้น 4 สงสัย</b> · กันเงินสำรอง <b>100%</b> · รับรู้รายได้แบบ <b>NA</b> (เงินสด) · เริ่มใช้ปีบัญชี 2569 เป็นต้นไป"
+  },
+  {
+    cat:"cls",
+    q:"หนี้ที่ค้างชำระ 12 เดือน และดำเนินคดีแล้ว จัดอยู่ในชั้นใด?",
+    c:["ชั้น 3 ต่ำกว่ามาตรฐาน","ชั้น 4 สงสัย","ชั้น 5 สงสัยจะสูญ","ชั้น 6 สูญ"],
+    a:2,
+    e:"ค้าง <b>≥ 12 เดือน</b> + <b>ดำเนินคดี</b> = <b>ชั้น 5 สงสัยจะสูญ</b> · กัน 100% · NA · ธ.ก.ส. ไม่มีชั้น 6 (ไปที่ตัดหนี้สูญทันที)"
+  },
+  {
+    cat:"cls",
+    q:"ลูกหนี้ถึงแก่ความตาย จัดชั้นใด และใช้เกณฑ์รับรู้รายได้แบบใด?",
+    c:["ชั้น 1 / AA","ชั้น 3 / AA","ชั้น 5 / NA (กันสำรอง 100%)","ชั้น 6 / NA ตัดหนี้สูญ"],
+    a:2,
+    e:"ลูกหนี้ถึงแก่ความตาย (เชิงคุณภาพ) → <b>ชั้น 5 สงสัยจะสูญ</b> · กันเงินสำรอง <b>100%</b> · รับรู้รายได้แบบ <b>NA</b> · บังคับใช้ปีบัญชี 2569"
+  },
+
+  // กลุ่ม 4: เกณฑ์ AA/NA (ข้อ 11-12)
+  {
+    cat:"fn",
+    q:"สัญญาในข้อใดต้อง 'หยุดรับรู้รายได้' (NA ตลอดอายุสัญญา)?",
+    c:["ลูกหนี้ค้าง 1 เดือน แต่ชำระปกติ","ลูกหนี้ค้างดอกเบี้ยเกิน 15 เดือน / สัญญา ปปน. / ลูกหนี้สิ้นละลาย / เงินกู้ครู","ลูกหนี้ค้าง 2 เดือน ที่จ่ายดอกเบี้ยตรงเวลา","ลูกหนี้ที่จ่ายดอกเบี้ยล่วงหน้า 1 ปี"],
+    a:1,
+    e:"สัญญา NA ตลอดอายุ = (1) ค้างดอกเบี้ยเกิน 15 เดือน (450 วัน) (2) สัญญา ปปน. Type 8900/TDR (3) นโยบายรัฐ (เงินกู้ครู, สปกช.) (4) ลูกหนี้สิ้นละลาย"
+  },
+  {
+    cat:"fn",
+    q:"หนี้ค้างชำระครบ 3 เดือน จะเปลี่ยนเกณฑ์รับรู้รายได้อย่างไร?",
+    c:["ยังคงใช้ AA (คงค้าง)","เปลี่ยนจาก AA เป็น NA (เงินสด) ทันที","ยกเลิกการรับรู้รายได้ทั้งหมด","ไม่มีผลกระทบ"],
+    a:1,
+    e:"หนี้ค้างครบ <b>3 เดือน</b> = เปลี่ยนจาก <b>AA → NA</b> ทันที · <b>ผลกระทบ</b>: ดอกเบี้ยค้างรับ ↓, รายได้ดอกเบี้ย ↓, งบดุลและงบกำไรขาดทุนลดลง"
+  },
+
+  // กลุ่ม 5: สูตร/คำนวณ (ข้อ 13-15)
+  {
+    cat:"fn",
+    q:"สูตรคำนวณดอกเบี้ยต่อวันของเงินกู้ 10,000 บาท อัตราดอกเบี้ย 6% ต่อปี คือข้อใด?",
+    c:["10,000 × 6% × 365","10,000 × 6% ÷ 365 ≈ 1.64 บาท","10,000 ÷ 6% × 365","(10,000 + 6%) ÷ 365"],
+    a:1,
+    e:"ดอกเบี้ยต่อวัน = (เงินต้น × อัตราดอกเบี้ย) ÷ 365 = (10,000 × 6%) ÷ 365 = 600 ÷ 365 ≈ <b>1.64 บาท/วัน</b> · ใช้ Simple Interest"
+  },
+  {
+    cat:"fn",
+    q:"สูตร Yield (อัตราผลตอบแทน) คือข้อใด?",
+    c:["รายได้ดอกเบี้ย ÷ สินทรัพย์รวมทั้งหมด","(รายได้ดอกเบี้ยสะสม ÷ สินทรัพย์ก่อให้เกิดรายได้ตัวเฉลี่ย) × (12 ÷ เดือนรายงาน) × 100","(ดอกเบี้ยจ่าย ÷ เงินฝาก) × 100","(กำไรสุทธิ ÷ สินทรัพย์) × 100"],
+    a:1,
+    e:"<b>Yield</b> = (รายได้ดอกเบี้ยสะสม ÷ <b>สินทรัพย์ที่ก่อให้เกิดรายได้</b>ตัวเฉลี่ย) × (12 ÷ เดือนที่ทำรายงาน) × 100 · ต่างจาก Cost ที่ใช้ดอกเบี้ยจ่าย ÷ หนี้สินที่มีต้นทุน"
+  },
+  {
+    cat:"fn",
+    q:"กรณีใดชดเชยเงินโอน (Transfer Price) เป็น 'ต้นทุน' (หักออกจากกำไรสุทธิ)?",
+    c:["เงินรับฝาก > เงินให้สินเชื่อ","เงินให้สินเชื่อ > เงินรับฝาก","พนักงานเท่ากัน 18 คน","NPL = 0%"],
+    a:1,
+    e:"<b>กรณีที่ 2:</b> เงินให้สินเชื่อ > เงินรับฝาก → ชดเชยเงินโอนเป็น<b>ต้นทุน</b>ที่ธนาคารคิดจากสาขา · <b>หัก</b>ออกจากกำไรสุทธิ · ตัวอย่างสไลด์: กำไรสุทธิ 4,697 หักชดเชย 5,805 = ขาดทุน 1,108"
+  },
+];
+
+// Render
+const quizEl = document.getElementById('quiz');
+const scEl = document.getElementById('sc');
+const ansEl = document.getElementById('ans');
+const S = {};
+
+Q.forEach((d, i) => {
+  const num = i+1;
+  const div = document.createElement('div');
+  div.className = 'q';
+  div.id = 'q' + num;
+  let html = `<b>ข้อ ${num}. ${d.q} <span class="cat ${d.cat}">${catLabel(d.cat)}</span></b>`;
+  d.c.forEach((opt, j) => {
+    html += `<label id="q${num}_o${j}"><input type="radio" name="q${num}" value="${j}"><span>${String.fromCharCode(65+j)}. ${opt}</span></label>`;
+  });
+  html += `<button class="btn" onclick="ck(${num})">✅ ตรวจ</button>`;
+  html += `<div class="rb" id="r${num}"></div>`;
+  div.innerHTML = html;
+  quizEl.appendChild(div);
+});
+
+function catLabel(c) {
+  return ({bm:'BMIS Overview', cls:'จัดชั้น/สำรอง', fn:'การเงิน/สูตร'})[c] || c;
+}
+
+function ck(num) {
+  const d = Q[num-1];
+  const sel = document.querySelector(`input[name="q${num}"]:checked`);
+  if (!sel) { alert('กรุณาเลือกคำตอบก่อนครับ'); return; }
+  if (S[num]) return; // already answered
+  const chosen = parseInt(sel.value);
+  S[num] = chosen;
+  // lock labels
+  document.querySelectorAll(`#q${num} label`).forEach((l, j) => {
+    l.classList.add('disabled');
+    if (j === d.a) l.classList.add('correct');
+    if (j === chosen && chosen !== d.a) l.classList.add('wrong');
+  });
+  // result box
+  const rb = document.getElementById('r' + num);
+  rb.classList.add('show');
+  if (chosen === d.a) {
+    rb.classList.add('ok');
+    rb.innerHTML = `✅ <b>ถูกต้อง!</b><br>${d.e}`;
+  } else {
+    rb.classList.add('no');
+    rb.innerHTML = `❌ <b>ผิด</b> · คำตอบที่ถูกคือข้อ ${String.fromCharCode(65+d.a)}<br>${d.e}`;
+  }
+  // update score
+  let correct = Object.values(S).filter((v,i) => v === Q[i].a).length;
+  scEl.textContent = correct;
+  ansEl.textContent = Object.keys(S).length;
+  // mark answered
+  document.getElementById('q' + num).classList.add('answered');
+}
+
+function showAll() {
+  Q.forEach((d, i) => {
+    if (S[i+1]) return;
+    document.querySelector(`#q${i+1} input[value="${d.a}"]`).checked = true;
+    ck(i+1);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function reset() {
+  if (!confirm('เริ่มทำข้อสอบใหม่ทั้งหมด?')) return;
+  location.reload();
+}
+</script>
+
+</body>
+</html>

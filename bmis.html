@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 BMIS — วิเคราะห์และบริหาร | ศูนย์เตรียมสอบ C9</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f172a; --s:#1e293b; --s2:#334155;
+  --a:#f59e0b; --a2:#10b981; --a3:#3b82f6; --a4:#ef4444;
+  --t:#f1f5f9; --t2:#94a3b8; --b:#475569
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:16px;color:var(--a);margin-right:6px}
+nav a{color:var(--t2);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover{background:var(--s2);color:var(--a)}
+nav a.back{margin-left:auto;color:var(--a);font-weight:600}
+.ct{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+.hero{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid var(--a);border-radius:14px;padding:28px 24px;margin-bottom:28px;text-align:center}
+.hero h1{color:var(--a);font-size:1.8rem;margin-bottom:8px}
+.hero p{color:var(--t2);font-size:0.95rem}
+.hero .meta{margin-top:14px;font-size:0.78rem;color:var(--t2)}
+.hero .meta span{display:inline-block;margin:0 6px;padding:2px 10px;background:var(--s);border-radius:10px}
+section{margin-bottom:32px}
+section h2{color:var(--a);border-left:4px solid var(--a);padding-left:12px;margin-bottom:16px;font-size:1.4rem}
+h3{color:var(--a2);margin:18px 0 10px;font-size:1.1rem}
+h4{color:var(--a3);margin:14px 0 8px;font-size:1rem}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:14px 18px;margin:10px 0}
+.c.info{border-left:4px solid var(--a3)}
+.c.warn{border-left:4px solid var(--a4)}
+.c.tip{border-left:4px solid var(--a)}
+.c.ok{border-left:4px solid var(--a2)}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.78rem;margin:2px;background:var(--s2);color:var(--t2)}
+.tag.gold{background:#78350f;color:#fbbf24}
+.tag.green{background:#14532d;color:#86efac}
+.tag.red{background:#7f1d1d;color:#fca5a5}
+.tag.blue{background:#1e3a8a;color:#93c5fd}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.9rem}
+table th,table td{padding:8px 10px;border:1px solid var(--b);text-align:left}
+table th{background:var(--s2);color:var(--a);font-weight:600}
+table tbody tr:nth-child(even){background:rgba(255,255,255,0.02)}
+table.highlight-warning tr:nth-child(2){background:#7f1d1d33}
+.mnemo{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px dashed var(--a);border-radius:10px;padding:14px 18px;margin:14px 0;text-align:center;color:var(--a);font-weight:600}
+.scenario{border:2px dashed var(--a3);border-radius:8px;padding:12px 16px;margin:10px 0;color:var(--a3);background:rgba(59,130,246,0.05)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.code{font-family:'Courier New',monospace;background:#000;color:#fbbf24;padding:10px;border-radius:6px;font-size:0.95rem;display:block;margin:8px 0}
+details{background:var(--s);border:1px solid var(--b);border-radius:8px;margin:10px 0;padding:12px 16px}
+summary{cursor:pointer;color:var(--a);font-weight:600;font-size:1rem}
+footer{text-align:center;padding:30px 16px;color:var(--t2);font-size:0.8rem;border-top:1px solid var(--b);margin-top:40px}
+footer a{color:var(--a);text-decoration:none}
+ul,ol{margin:8px 0 8px 24px}
+li{margin:4px 0}
+</style>
+</head>
+<body>
+<nav>
+  <h1>📊 BMIS</h1>
+  <a href="#s1">🏛️ ระบบ BMIS</a>
+  <a href="#s2">📋 6 ส่วนรายงาน</a>
+  <a href="#s3">🛡️ จัดชั้น/สำรอง</a>
+  <a href="#s4">💰 AA/NA</a>
+  <a href="#s5">🧮 Yield/Cost/NIM</a>
+  <a href="#s6">📊 วิเคราะห์ 6 มิติ</a>
+  <a href="#s7">⚠️ แก้ไขขาดทุน</a>
+  <a href="#qz">📝 ข้อสอบ</a>
+  <a href="bmis-quiz.html" class="back">🎯 ไปหน้าข้อสอบ →</a>
+  <a href="index.html">🏠 หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>📊 การวิเคราะห์และบริหาร BMIS</h1>
+    <p>การบริหารสินทรัพย์/หนี้สิน (ALM) · การวิเคราะห์งบการเงิน</p>
+    <div class="meta">
+      <span>📑 33 สไลด์</span>
+      <span>👩‍🏫 สานิตา สุขนิยม (ผจข.วังสมบูรณ์ สนจ.สระแก้ว)</span>
+      <span>🎓 Burapha Team</span>
+    </div>
+  </div>
+
+  <!-- Section 1: ระบบงาน BMIS -->
+  <section id="s1">
+    <h2>🏛️ 1. ระบบงาน BMIS (Branch Management Information System)</h2>
+
+    <h3>📖 ความหมาย</h3>
+    <div class="c info">
+      <b>BMIS</b> คือ <b>รายงาน One Page</b> ที่แสดงข้อมูลทางการเงินของ <b>สาขา ธนค. และ ฝสข.</b> เพื่อใช้ในการบริหารงาน โดยแสดงข้อมูลทุกสิ้นวัน (Day-1) สามารถจำลองสถานการณ์ (Scenario), คาดการณ์ (Forecast) และเปรียบเทียบผลงานภายในวันปัจจุบันได้
+    </div>
+
+    <h3>⚙️ คุณสมบัติเด่น 5 ประการ</h3>
+    <div class="grid2">
+      <div class="c"><b>1) ประมวลผล Near Real time (Day-1)</b><br>ทุกสิ้นวันจากสามกลาง — ข้อมูลรายเดือนใช้ได้ไม่เกินวันที่ 7 ของเดือนถัดไป</div>
+      <div class="c"><b>2) ข้อมูลหลักในระบบ</b><br>เงินให้สินเชื่อ · เงินรับฝาก · อัตราดอกเบี้ยรับ-จ่ายเฉลี่ย · ผลประกอบการ · อัตราส่วนทางการเงิน (ROA, NPL/Loan)</div>
+      <div class="c"><b>3) ช่องทางเข้าถึง 2 ช่องทาง</b><br>🔹 ระบบ <b>Intranet</b> (ทุกระดับ)<br>🔹 ระบบ <b>VPN</b> (ระดับ 10 ขึ้นไป)</div>
+      <div class="c"><b>4) สิทธิ์เข้าถึง</b><br>พนักงานระดับ 8 ขึ้นไป สาขา · สนธ. · ฝสข.</div>
+    </div>
+
+    <h3>👥 สิทธิ์การเข้าถึงข้อมูล</h3>
+    <table>
+      <tr><th>ระดับผู้ใช้งาน</th><th>สิทธิ์ที่ได้รับ</th></tr>
+      <tr><td><b>พนักงานสาขา</b></td><td>เข้าถึงข้อมูลรายตนเอง + สาขาอื่นในสังกัด สนธ. เดียวกัน</td></tr>
+      <tr><td><b>พนักงานประจำ สนธ.</b></td><td>เข้าถึงทุกสาขาในสังกัด + ภาพรวม สนธ./ฝสข. ตนเองและอื่น</td></tr>
+      <tr><td><b>พนักงานประจำ ฝสข.</b></td><td>เข้าถึงทุกสาขาในสังกัด + ภาพรวม ฝสข. ตนเองและอื่น</td></tr>
+    </table>
+
+    <div class="mnemo">🎯 "BMIS = One Page ของ สาขา ธนค. ฝสข. = ข้อมูล Day-1 + Scenario + Forecast + Comparison"</div>
+  </section>
+
+  <!-- Section 2: 6 ส่วนรายงาน -->
+  <section id="s2">
+    <h2>📋 2. โครงสร้างรายงาน BMIS — 6 ส่วน</h2>
+
+    <h3>📌 ส่วนที่ 1: ข้อมูลทั่วไป</h3>
+    <div class="c">ชื่อสาขา · วันที่ข้อมูล (เช่น ข้อมูล ณ วันที่ 30 กันยายน 2567)</div>
+
+    <h3>💰 ส่วนที่ 2: เงินให้สินเชื่อ</h3>
+    <table>
+      <tr><th>หมวด</th><th>รายละเอียด</th></tr>
+      <tr><td><b>S1 - ปกติ</b></td><td>ปกติ + ค้าง 0-3 เดือน + NPL + ปรับโครงสร้าง (PL/NPL)</td></tr>
+      <tr><td><b>S2 - ปกติ</b></td><td>เหมือน S1 แต่เป็นกลุ่ม Port ที่ 2 (ปกติยอดใหญ่ที่สุด)</td></tr>
+      <tr><td><b>S3 - ปกติ</b></td><td>กลุ่ม Port ที่ 3</td></tr>
+      <tr><td><b>รายใหม่</b></td><td>ลูกหนี้ที่ปล่อยใหม่</td></tr>
+      <tr><td><b>รวมเงินให้สินเชื่อ</b></td><td>100% ของเงินให้สินเชื่อ — แสดงต้นเดือน vs สิ้นเดือน</td></tr>
+      <tr><td><b>รวม NPL</b></td><td>ยอด + % NPL/Loan</td></tr>
+    </table>
+
+    <h3>🏦 ส่วนที่ 3: เงินรับฝาก</h3>
+    <table>
+      <tr><th>ผลิตภัณฑ์</th><th>% ตัวอย่าง</th></tr>
+      <tr><td>ออมทรัพย์ & กระแสรายวัน</td><td>~22%</td></tr>
+      <tr><td>ออมทรัพย์ทวีโชค</td><td>~31%</td></tr>
+      <tr><td>ออมทรัพย์ชีวิตสุข</td><td>~2%</td></tr>
+      <tr><td>ออมทรัพย์ทวีชีวิต & กึ่งมงคล</td><td>~10%</td></tr>
+      <tr><td>ออมทรัพย์พันธุ์</td><td>~8%</td></tr>
+      <tr><td>ประจำ</td><td>~5%</td></tr>
+      <tr><td><b>ภาครัฐ</b></td><td>~21%</td></tr>
+    </table>
+
+    <h3>📊 ส่วนที่ 4: ผลประกอบการ (งบกำไรขาดทุน)</h3>
+    <div class="grid2">
+      <div class="c info">
+        <b>ฝั่งรายได้</b><br>
+        • ดอกเบี้ยเงินให้สินเชื่อ (หลัก)<br>
+        • ค่าธรรมเนียมและบริการ<br>
+        • รายได้อื่นๆ (ค่าเช่าสถานที่, รายได้ปรับปรุง)
+      </div>
+      <div class="c warn">
+        <b>ฝั่งค่าใช้จ่าย</b><br>
+        • ดอกเบี้ยจ่าย<br>
+        • ค่าใช้จ่ายพนักงาน<br>
+        • หนี้สูญ / หนี้สงสัยจะสูญ<br>
+        • อาคารสถานที่, ค่าสื่อสาร
+      </div>
+    </div>
+
+    <h3>👥 ส่วนที่ 5: ข้อมูลเพิ่มเติม</h3>
+    <div class="c tip">
+      • <b>จำนวนพนักงาน</b> ณ ปัจจุบัน<br>
+      • <b>อัตราดอกเบี้ยเงินโอน (Transfer Price Rate)</b> ≈ 1.15-1.18% — เป็นต้นทุนทางการเงินที่สาขาจ่ายให้ส่วนกลาง
+    </div>
+
+    <h3>📈 ส่วนที่ 6: อัตราส่วนทางการเงิน (KPI)</h3>
+    <table>
+      <tr><th>KPI</th><th>ความหมาย</th><th>ตัวอย่าง</th></tr>
+      <tr><td><b>เงินให้สินเชื่อ / เงินรับฝาก (LDR)</b></td><td>สัดส่วนปล่อยสินเชื่อเทียบเงินฝาก</td><td>101.99%</td></tr>
+      <tr><td><b>NPL / Loan</b></td><td>สัดส่วนหนี้ไม่ก่อให้เกิดรายได้</td><td>3.45%</td></tr>
+      <tr><td><b>ROA</b></td><td>ผลตอบแทนต่อสินทรัพย์</td><td>0.99%</td></tr>
+      <tr><td><b>Cost / Income</b></td><td>ค่าใช้จ่ายดำเนินงาน / รายได้สุทธิ</td><td>26.05%</td></tr>
+      <tr><td><b>Growth สินเชื่อ</b></td><td>เติบโตเงินให้สินเชื่อ</td><td>+3.58%</td></tr>
+      <tr><td><b>Growth เงินฝาก</b></td><td>เติบโตเงินรับฝาก</td><td>-13.71% ⚠️</td></tr>
+    </table>
+  </section>
+
+  <!-- Section 3: จัดชั้น + สำรอง -->
+  <section id="s3">
+    <h2>🛡️ 3. เกณฑ์จัดชั้นสินทรัพย์ & กันเงินสำรอง (ธปท. vs ธ.ก.ส.)</h2>
+    <div class="c info">
+      <b>อ้างอิง:</b> บันทึก บช/ว 3066 วันที่ 28 ตุลาคม 2568 · เริ่มใช้ปีบัญชี 2569 เป็นต้นไป · กันเงินสำรอง + จัดชั้นทุกสิ้นเดือน
+    </div>
+
+    <table class="highlight-warning">
+      <tr>
+        <th rowspan="2">ชั้น</th><th rowspan="2">ชื่อชั้น</th><th rowspan="2">อายุหนี้ค้าง</th>
+        <th rowspan="2">รับรู้รายได้</th>
+        <th colspan="2">ธปท. (กันสำรอง)</th>
+        <th colspan="2">ธ.ก.ส. (กันสำรอง)</th>
+      </tr>
+      <tr>
+        <th>ปกติ</th><th>ตามจำเป็น</th><th>ปกติ</th><th>ตามจำเป็น</th>
+      </tr>
+      <tr><td>1</td><td>ปกติ</td><td>≤ 1 เดือน</td><td>AA</td><td>1%</td><td>1%</td><td>1%</td><td>99%</td></tr>
+      <tr><td>2 (ค้าง 1-3 ม.)</td><td>กล่าวถึงเป็นพิเศษ</td><td>> 1–3 เดือน</td><td>AA</td><td>2%</td><td>2%*</td><td>2%*</td><td>98%</td></tr>
+      <tr><td>2 (ค้าง = 3 ม.)</td><td>กล่าวถึงเป็นพิเศษ</td><td>3 เดือน</td><td><b>NA</b></td><td>2%</td><td>2%*</td><td>2%*</td><td>98%</td></tr>
+      <tr><td>3</td><td>ต่ำกว่ามาตรฐาน</td><td>> 3–6 เดือน</td><td>NA</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
+      <tr><td>4</td><td>สงสัย</td><td>> 6–12 เดือน</td><td>NA</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td></tr>
+      <tr><td>5</td><td>สงสัยจะสูญ</td><td>≥ 12 ด. + ดำเนินคดี</td><td>NA</td><td>100%</td><td>–</td><td>100%</td><td>–</td></tr>
+      <tr><td>6</td><td>สูญ (ธ.ก.ส. ไม่มี)</td><td>–</td><td>NA</td><td colspan="2">ตัดหนี้สูญ</td><td colspan="2">ตัดหนี้สูญ</td></tr>
+    </table>
+
+    <div class="c warn">
+      <b>⚠️ ความแตกต่างสำคัญ:</b> <b>ธ.ก.ส.</b> กันเงินสำรองรวม <b>100%</b> ตั้งแต่ชั้น 1 (เพราะรวมส่วนเชิงคุณภาพ) ขณะที่ <b>ธปท.</b> กันเพียง 1-2% ชั้น 1-2 แล้วกระโดดเป็น 100% ที่ชั้น 3
+    </div>
+
+    <h3>📐 หลักเกณฑ์เชิงคุณภาพ 6 ข้อ (ชั้น 4-5 บังคับใช้ปี 69)</h3>
+    <table>
+      <tr><th>ลำดับ</th><th>ลักษณะลูกหนี้</th><th>ชั้น</th><th>กันสำรอง</th></tr>
+      <tr><td>1</td><td>ลูกหนี้ถึงแก่ความตาย</td><td>5</td><td>100% (NA)</td></tr>
+      <tr><td>2</td><td>ลูกหนี้หายสาบสูญ</td><td>5</td><td>100% (NA)</td></tr>
+      <tr><td>3</td><td>ลูกหนี้หยุดดำเนินกิจการ/เลิกอาชีพ</td><td>5</td><td>100% (NA)</td></tr>
+      <tr><td>4</td><td>ลูกหนี้ใช้เงินกู้ผิดวัตถุประสงค์</td><td>4</td><td>100% (NA)</td></tr>
+      <tr><td>5</td><td>ลูกหนี้ประวิงการชำระ/หลบเลี่ยง</td><td>4</td><td>100% (NA)</td></tr>
+      <tr><td>6</td><td>ลูกหนี้ธนาคารติดต่อไม่ได้/ตามตัวไม่พบ</td><td>4</td><td>100% (NA)</td></tr>
+    </table>
+
+    <div class="mnemo">🎯 <b>เกณฑ์คุณภาพ → ชั้น 4/5 + สำรอง 100% + NA</b><br>"ตาย-หาย-เลิก-ผิดวัตถุ-ประวิง-หนี"</div>
+  </section>
+
+  <!-- Section 4: AA / NA -->
+  <section id="s4">
+    <h2>💰 4. เกณฑ์การรับรู้รายได้ (AA vs NA)</h2>
+
+    <div class="grid2">
+      <div class="c ok">
+        <b>🟢 เกณฑ์คงค้าง (Accrual Basis : AA)</b><br><br>
+        <b>หลักการ:</b> รับรู้ดอกเบี้ยค้างรับทุกวันในสัญญาเป็นรายได้สาขา<br><br>
+        <b>ใช้กับ:</b><br>
+        • ชั้น 1: หนี้ปกติ/ค้าง 0-1 เดือน<br>
+        • ชั้น 2: ค้าง 2 เดือน / ไม่ถึง 3 เดือน<br><br>
+        <b>ผล:</b> ดอกเบี้ยค้างรับ ↑ รายได้ดอกเบี้ย ↑
+      </div>
+      <div class="c warn">
+        <b>🔴 เกณฑ์เงินสด (Cash Basis : NA)</b><br><br>
+        <b>หลักการ:</b> ไม่รับรู้ดอกเบี้ยค้างรับเป็นรายได้ จนกว่าลูกค้าจะจ่ายจริง<br><br>
+        <b>ใช้กับ:</b><br>
+        1. ค้างตั้งแต่ 3 เดือน<br>
+        2. ค้างดอกเบี้ยเกิน 15 เดือน (450 วัน)<br>
+        3. สัญญา ปปน. (Type 8900/TDR)<br>
+        4. นโยบายรัฐ (เงินกู้ครู, สปกช.)<br>
+        5. ลูกหนี้สิ้นละลาย<br><br>
+        <b>ผล:</b> ดอกเบี้ยค้างรับ ↓ รายได้ดอกเบี้ย ↓
+      </div>
+    </div>
+
+    <h3>⏰ หลักการหยุดรับรู้รายได้</h3>
+    <table>
+      <tr><th>เงื่อนไข</th><th>ความถี่</th></tr>
+      <tr><td>ระบบ CBS ตรวจการหยุดรับรู้รายได้ในสัญญา</td><td><b>ทุกสิ้นวัน</b> / ทุกสิ้นเดือน</td></tr>
+      <tr><td>สัญญาค้างชำระดอกเบี้ยเกิน 15 เดือน → หยุดรับรู้รายได้</td><td><b>ทุกสิ้นเดือน</b></td></tr>
+    </table>
+  </section>
+
+  <!-- Section 5: Yield/Cost/NIM -->
+  <section id="s5">
+    <h2>🧮 5. สูตรการเงินสำคัญ</h2>
+
+    <h3>📐 สูตรพื้นฐาน (จากเงินกู้ 10,000 บาท ดบ. 6%)</h3>
+    <code class="code">ดอกเบี้ยต่อวัน = เงินต้น × ดบ./ปี ÷ 365 = 10,000 × 6% ÷ 365 = 1.64 บาท
+สำรองทั้งปี    = เงินต้น × อัตราสำรอง (1%) = 100 บาท/ปี
+สำรองต่อเดือน  = สำรองทั้งปี ÷ 12 = 8.33 บาท/เดือน</code>
+
+    <h3>📈 Yield · Cost · NIM · Spread</h3>
+    <code class="code">Yield  = (ดบ.รับสะสม ÷ สินทรัพย์ก่อรายได้เฉลี่ย) × (12 ÷ เดือนรายงาน) × 100
+Cost   = (ดบ.จ่ายสะสม ÷ หนี้สินที่มีต้นทุนเฉลี่ย) × (12 ÷ เดือนรายงาน) × 100
+NIM    = ((ดบ.รับ − ดบ.จ่าย) ÷ สินทรัพย์ก่อรายได้เฉลี่ย) × (12 ÷ เดือนรายงาน) × 100
+Spread = Yield − Cost</code>
+
+    <div class="mnemo">🎯 <b>สินทรัพย์ก่อรายได้</b> = สินเชื่อ + เงินลงทุน + เงินฝากธนาคาร · รับรู้รายได้แบบคงค้าง<br>💰 <b>สินทรัพย์ไม่ก่อรายได้</b> = เงินสดในมือ + ที่ดิน อาคาร + ลูกหนี้รอติดตาม · Cash Basis</div>
+
+    <h3>💵 กำไร (ขาดทุน) สุทธิหลังชดเชยเงินโอน</h3>
+    <code class="code">กำไรสุทธิหลังชดเชยเงินโอน = กำไรสุทธิ ± ชดเชยเงินโอน</code>
+
+    <div class="grid2">
+      <div class="c ok">
+        <b>กรณีที่ 1: เงินฝาก > สินเชื่อ</b><br>
+        → ชดเชยเงินโอนเป็น <b>รายได้</b> (บวก)
+      </div>
+      <div class="c warn">
+        <b>กรณีที่ 2: สินเชื่อ > เงินฝาก</b><br>
+        → ชดเชยเงินโอนเป็น <b>ต้นทุน</b> (หัก)
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: 6 มิติ -->
+  <section id="s6">
+    <h2>📊 6. มุมมองการวิเคราะห์ (วิเคราะห์ 2 ด้าน)</h2>
+
+    <h3>💰 วิเคราะห์เงินให้สินเชื่อ 6 มิติ</h3>
+    <table>
+      <tr><th>#</th><th>มิติ</th><th>เครื่องมือ</th></tr>
+      <tr><td>1</td><td>สัดส่วนเงินให้สินเชื่อตาม Port</td><td>Composition % (วิเคราะห์แนวตั้ง)</td></tr>
+      <tr><td>2</td><td>อัตราผลตอบแทนเฉลี่ยต่อ Port</td><td>Yield/Return</td></tr>
+      <tr><td>3</td><td>นโยบายบัญชี & การกันสำรอง</td><td>Provisioning</td></tr>
+      <tr><td>4</td><td>การเติบโต (ต้นปี vs ปัจจุบัน)</td><td>Growth</td></tr>
+      <tr><td>5</td><td>วิเคราะห์แนวโน้มหลายช่วงเวลา</td><td>กราฟ / Trend</td></tr>
+      <tr><td>6</td><td>เปรียบเทียบกับคู่เทียบ</td><td>Benchmarking</td></tr>
+    </table>
+
+    <h3>🏦 วิเคราะห์เงินรับฝาก 5 มิติ + 3 หลัก ALC</h3>
+    <table>
+      <tr><th>#</th><th>มิติ</th><th>เครื่องมือ</th></tr>
+      <tr><td>1</td><td>สัดส่วนเงินฝากตาม Port</td><td>Composition %</td></tr>
+      <tr><td>2</td><td>ต้นทุน (Port ใดต้นทุนสูง/ต่ำ)</td><td>อัตราดอกเบี้ยจ่ายเฉลี่ย</td></tr>
+      <tr><td>3</td><td>เปลี่ยนแปลงเทียบช่วงเวลา</td><td>Growth</td></tr>
+      <tr><td>4</td><td>วิเคราะห์แนวโน้ม</td><td>กราฟ</td></tr>
+      <tr><td>5</td><td>เปรียบเทียบคู่แข่ง/สังกัดเดียวกัน</td><td>Benchmarking</td></tr>
+    </table>
+
+    <div class="mnemo">🎯 <b>3 หลัก ALC = Adequacy + Liquidity + Cost</b><br>"ความพอเพียง · สภาพคล่อง · ต้นทุน"</div>
+  </section>
+
+  <!-- Section 7: แก้ไขขาดทุน -->
+  <section id="s7">
+    <h2>⚠️ 7. แนวทางแก้ไขปัญหาขาดทุน</h2>
+
+    <div class="grid2">
+      <div class="c info">
+        <b>1) บริหารจัดการหนี้</b><br>
+        • ประเมินศักยภาพลูกค้าจริง<br>
+        • เลือกเครื่องมือจัดการหนี้ที่เหมาะสม<br>
+        • เจรจาและติดตามอย่างใกล้ชิด
+      </div>
+      <div class="c warn">
+        <b>2) ติดตามหนี้เข้มงวด</b><br>
+        • หนี้ NPLs · ดบ.ค้างเกิน 15 เดือน<br>
+        • หนี้ต้องโอนขายพิเศษ<br>
+        • รับชำระเป็นเงินสด ป้องกันหนี้หล่นชั้น
+      </div>
+      <div class="c tip">
+        <b>3) ขยายสินเชื่อคุณภาพ</b><br>
+        • เพิ่มกลุ่มลูกค้าที่มีศักยภาพ<br>
+        • เพิ่มรายได้ดอกเบี้ย
+      </div>
+      <div class="c ok">
+        <b>4) ลดต้นทุนเงินฝาก</b><br>
+        • บริหารพอร์ตเงินฝากให้ต้นทุนต่ำ<br>
+        • ลดค่าใช้จ่ายดอกเบี้ยจ่าย
+      </div>
+    </div>
+
+    <h3>🛑 รายได้ดอกเบี้ยลด/ติดลบ เกิดจาก 3 สาเหตุ</h3>
+    <div class="c warn">
+      <b>1)</b> สถานะหนี้เปลี่ยน <b>AA → NA</b> เมื่อค้างครบ 3 เดือน<br>
+      <b>2)</b> <b>Reverse</b> ดอกเบี้ยเมื่อค้างรับเกิน <b>15 เดือน</b><br>
+      <b>3)</b> ทำ <b>ปปน.</b> (ปรับปรุงโครงสร้างหนี้) หนี้ non-NPL — ปิดสัญญาเดิมพร้อมดอกเบี้ย ทำให้รายได้ถูก reverse ทั้งจำนวน
+    </div>
+
+    <details>
+      <summary>💡 ตัวอย่างโจทย์วิเคราะห์ (สไลด์หน้า 13)</summary>
+      <p style="margin-top:10px;color:var(--t2)">
+        <b>คำถาม:</b> เปรียบเทียบสาขา 1 vs สาขา 2 โดยใช้ 3 ตัวชี้วัด<br><br>
+        <b>1) บริหารจัดการหนี้:</b> ดูจาก NPL → สาขา 1 มี NPL 5.78% vs สาขา 2 = 2.64% → <b>สาขา 2 ดีกว่า</b><br>
+        <b>2) เรียกเก็บหนี้:</b> ดูจากดอกเบี้ยค้างจ่าย<br>
+        <b>3) สินทรัพย์ก่อรายได้:</b> ดูจากอัตราดอกเบี้ยรับเฉลี่ย → สาขา 2 = 4.36% vs สาขา 1 = 3.80% → <b>สาขา 2 ดีกว่า</b>
+      </p>
+    </details>
+  </section>
+
+  <!-- Quiz teaser -->
+  <section id="qz">
+    <h2>📝 แบบทดสอบ BMIS — 15 ข้อ</h2>
+    <div class="c info">
+      🎯 พร้อมทดสอบความเข้าใจแล้วหรือยัง? คลิกปุ่มด้านล่างเพื่อไปทำแบบทดสอบ 15 ข้อ (เฉลยละเอียดทุกข้อ)
+    </div>
+    <div style="text-align:center;margin:20px 0">
+      <a href="bmis-quiz.html" class="btn" style="display:inline-block;padding:12px 32px;background:var(--a);color:#000;border-radius:10px;text-decoration:none;font-weight:700;font-size:1.05rem">🎯 ไปทำข้อสอบ BMIS (15 ข้อ) →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>📊 <b>BMIS วิเคราะห์และบริหาร</b> · สไลด์โดย Burapha Team · บรรยายโดย สานิตา สุขนิยม (ผจข.วังสมบูรณ์)</p>
+    <p style="margin-top:8px"><a href="index.html">🏠 หน้าหลัก</a> · <a href="credit-policy.html">🏦 นโยบายสินเชื่อ</a> · <a href="central-content.html">📚 เนื้อหากลาง</a> · <a href="quizzes.html">📝 ข้อสอบทั้งหมด</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
