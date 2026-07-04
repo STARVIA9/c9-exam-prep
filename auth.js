@@ -15,15 +15,11 @@
   const AUTH_TS = 'cg_auth_ts';
   const EXPIRE_DAYS = 30;
 
-  // หน้าที่ไม่ต้องล็อค (ถ้ามี)
-  const PUBLIC_PATHS = [
-    '/index.html',
-    '/'
-  ];
+  // ล็อคทุกหน้ารวม index.html (4 ก.ค.69)
+  const PUBLIC_PATHS = [];
 
   function isPublicPage() {
-    const path = location.pathname;
-    return PUBLIC_PATHS.some(p => path === p || path.endsWith(p));
+    return false;
   }
 
   function isAuthed() {

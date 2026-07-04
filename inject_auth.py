@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 HTML_DIR = Path('/home/kara/exam-center-genius9')
-PUBLIC_PAGES = {'index.html'}  # หน้าที่ไม่ต้องล็อค
+PUBLIC_PAGES = set()  # ล็อคทุกหน้ารวม index.html (ตามคำสั่งพ่อ 4 ก.ค.69)
 
 # Inline guard script — apply class ทันทีเพื่อป้องกัน content flash
 INLINE_GUARD = '''<script>
