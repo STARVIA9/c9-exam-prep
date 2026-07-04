@@ -1,0 +1,27 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;36m[check][0m checking aml-ctf.html
+[1;32m  ✓[0m aml-ctf.html: inline JS syntax OK (31 script blocks)
+[1;36m[check][0m checking burapha-quiz-69.html
+[1;32m  ✓[0m burapha-quiz-69.html: inline JS syntax OK (83 script blocks)
+[1;36m[check][0m checking central-content.html
+[1;32m  ✓[0m central-content.html: inline JS syntax OK (8 script blocks)
+[1;36m[check][0m checking credit-policy.html
+[1;32m  ✓[0m credit-policy.html: inline JS syntax OK (72 script blocks)
+[1;36m[check][0m checking debt-management.html
+[1;32m  ✓[0m debt-management.html: inline JS syntax OK (90 script blocks)
+[1;36m[check][0m checking index.html
+[1;32m  ✓[0m index.html: inline JS syntax OK (40 script blocks)
+[1;36m[check][0m checking life-deposit-quiz.html
+[1;32m  ✓[0m life-deposit-quiz.html: inline JS syntax OK (164 script blocks)
+[1;36m[check][0m checking life-deposit.html
+[1;32m  ✓[0m life-deposit.html: inline JS syntax OK (8 script blocks)
+[1;36m[check][0m checking policy-projects.html
+[1;32m  ✓[0m policy-projects.html: inline JS syntax OK (85 script blocks)
+[1;36m[check][0m checking praw-law.html
+[1;32m  ✓[0m praw-law.html: inline JS syntax OK (27 script blocks)
+[1;36m[check][0m checking quizzes.html
+[1;32m  ✓[0m quizzes.html: inline JS syntax OK (97 script blocks)
+
+[1;32m✅ pre-check OK[0m · 11 file(s) checked
+[1;32m  ✓[0m pre-check passed (12 file(s))
+[1;36m[deploy][0m step 2/5: commit local changes
