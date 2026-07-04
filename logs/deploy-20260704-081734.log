@@ -1,0 +1,40 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation)
+[1;36m[check][0m checking aml-ctf.html
+[1;32m  ✓[0m aml-ctf.html: inline JS syntax OK (22 script blocks)
+[1;36m[check][0m checking bmis.html
+[1;36m[check][0m checking bmis-quiz.html
+[1;32m  ✓[0m bmis-quiz.html: inline JS syntax OK (188 script blocks)
+[1;36m[check][0m checking burapha-quiz-69.html
+[1;32m  ✓[0m burapha-quiz-69.html: inline JS syntax OK (74 script blocks)
+[1;36m[check][0m checking c9-content.html
+[1;32m  ✓[0m c9-content.html: inline JS syntax OK (95 script blocks)
+[1;36m[check][0m checking cash-key-atm-quiz.html
+[1;32m  ✓[0m cash-key-atm-quiz.html: inline JS syntax OK (50 script blocks)
+[1;36m[check][0m checking cash-management-quiz.html
+[1;32m  ✓[0m cash-management-quiz.html: inline JS syntax OK (353 script blocks)
+[1;36m[check][0m checking central-content.html
+[1;36m[check][0m checking competency-c9.html
+[1;36m[check][0m checking corporate-governance.html
+[1;36m[check][0m checking credit-policy.html
+[1;32m  ✓[0m credit-policy.html: inline JS syntax OK (63 script blocks)
+[1;36m[check][0m checking customer-acceptance.html
+[1;32m  ✓[0m customer-acceptance.html: inline JS syntax OK (28 script blocks)
+[1;36m[check][0m checking debt-management.html
+[1;32m  ✓[0m debt-management.html: inline JS syntax OK (81 script blocks)
+[1;36m[check][0m checking financial-ratio-quiz.html
+[1;32m  ✓[0m financial-ratio-quiz.html: inline JS syntax OK (368 script blocks)
+[1;36m[check][0m checking index.html
+[1;32m  ✓[0m index.html: inline JS syntax OK (31 script blocks)
+[1;36m[check][0m checking life-deposit.html
+[1;36m[check][0m checking life-deposit-quiz.html
+[1;32m  ✓[0m life-deposit-quiz.html: inline JS syntax OK (155 script blocks)
+[1;36m[check][0m checking loan-manual-quiz.html
+[1;32m  ✓[0m loan-manual-quiz.html: inline JS syntax OK (203 script blocks)
+[1;36m[check][0m checking loan-manual-summary.html
+[1;32m  ✓[0m loan-manual-summary.html: inline JS syntax OK (18 script blocks)
+[1;36m[check][0m checking loan-manual-vol2-quiz.html
+[1;32m  ✓[0m loan-manual-vol2-quiz.html: inline JS syntax OK (415 script blocks)
+[1;36m[check][0m checking loan-manual-vol2-summary.html
+[1;36m[check][0m checking market-conduct.html
+[1;32m  ✓[0m market-conduct.html: inline JS syntax OK (39 script blocks)
+[1;36m[check][0m checking mastery.html

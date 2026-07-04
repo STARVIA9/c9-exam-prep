@@ -1,0 +1,15 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;33m  ![0m no .html in changed set — skipping pre-check
+[1;36m[deploy][0m step 2/5: commit local changes
+[1;36m[deploy][0m [dry-run] would add: PATTERN-ANALYSIS.md logs/ scripts/
+[1;36m[deploy][0m [dry-run] would commit: deploy: 2026-07-04 08:18 · PATTERN-ANALYSIS.md, logs/, scripts/
+[1;32m  ✓[0m git working tree clean
+[1;36m[deploy][0m step 3/5: push to 'c9-prep/main' (= GitHub Pages production)
+[1;36m[deploy][0m [dry-run] would: git push c9-prep main
+[1;32m  ✓[0m pushed c6144f1
+[1;36m[deploy][0m step 4/5: verify Pages live (3 attempts × 15s)
+[1;36m[deploy][0m   attempt 1/3: HTTP 200 from https://peatlaonado-star.github.io/c9-exam-prep/
+
+[1;32m  ✓[0m content match: index.html = 52153 bytes (local == Pages)
+[1;32m✅ DEPLOY SUCCESS[0m · https://peatlaonado-star.github.io/c9-exam-prep/
+[2m  log: logs/deploy-20260704-081855.log[0m
