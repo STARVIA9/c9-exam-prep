@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบทดสอบ CG — การกำกับดูแลกิจการที่ดี ธ.ก.ส. ปีบัญชี 2569 | Genius 9</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun',Arial,sans-serif;background:#f0f4f8;color:#222;font-size:16px;overflow-x: hidden;
+}
+header{background:linear-gradient(135deg,#1a2855,#3a5a8c);color:#fff;padding:22px 24px;text-align:center}
+header h1{font-size:1.45em;margin-bottom:6px}
+header p{font-size:.9em;opacity:.92;line-height:1.6}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.tag-badge{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:.78em}
+.controls{background:#fff;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:2px solid #ddd;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+select,button{padding:7px 13px;border-radius:8px;border:1px solid #ccc;font-family:inherit;font-size:.88em;cursor:pointer}
+button{background:#1a2855;color:#fff;border:none;font-weight:700;transition:.2s}
+button:hover{background:#0d1a3a}
+button.sec{background:#7f8c8d}button.sec:hover{background:#566573}
+.score-box{background:#fff;border:2px solid #1a2855;border-radius:10px;padding:6px 16px;font-weight:700;color:#1a2855;white-space:nowrap;margin-left:auto}
+#quiz-area{max-width:870px;margin:22px auto;padding:0 14px 60px}
+.cat-hdr{background:#1a2855;color:#fff;border-radius:10px 10px 0 0;padding:10px 18px;font-weight:700;font-size:.95em;margin-top:26px}
+.q-card{background:#fff;padding:20px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.q-card+.q-card{border-top:1px solid #f0f0f0}
+.q-card:last-child{border-radius:0 0 10px 10px}
+.q-hdr{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.q-num{background:#1a2855;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.78em;font-weight:700;flex-shrink:0;margin-top:2px}
+.q-txt{font-weight:600;line-height:1.65;flex:1}
+.meta{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.tag{font-size:.72em;padding:2px 9px;border-radius:12px;font-weight:600}
+.tc{background:#e3eaf7;color:#1a2855}
+.tl{background:#fef9e7;color:#9a7d0a}
+.tl.จำ{background:#eafaf1;color:#1e8449}
+.tl.เข้าใจ{background:#eaf2fb;color:#1a5276}
+.tl.ประยุกต์{background:#fef5e7;color:#b7770d}
+.tl.วิเคราะห์{background:#fdedec;color:#c0392b}
+.genius{background:#fef0ff;border:1px dashed #9b59b6;color:#6c3483;font-size:.74em;padding:3px 10px;border-radius:10px}
+.opts{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.opt{padding:10px 14px;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;transition:.15s;line-height:1.5}
+.opt:hover{border-color:#1a2855;background:#eaf0fb}
+.opt.selected{border-color:#1a2855;background:#dde6f6}
+.opt.correct{border-color:#27ae60;background:#eafaf1;font-weight:700}
+.opt.wrong{border-color:#e74c3c;background:#fdedec}
+.btn-ans{background:#27ae60;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit;font-size:.88em;transition:.2s}
+.btn-ans:hover{background:#1e8449}
+.btn-ans:disabled{background:#bdc3c7;cursor:not-allowed}
+.exp{background:#fafafa;border-left:4px solid #1a2855;padding:12px 14px;border-radius:0 8px 8px 0;font-size:.87em;line-height:1.7;margin-top:8px;display:none}
+.exp.show{display:block}
+.exp .ref{font-size:.8em;color:#888;margin-top:6px;font-style:italic}
+#summary{display:none;max-width:870px;margin:28px auto;padding:0 14px 60px}
+.sum-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,.1);text-align:center}
+.big-score{font-size:3em;font-weight:800;color:#1a2855;margin:12px 0}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
+.si{background:#f8f9fa;border-radius:10px;padding:12px;text-align:center}
+.sv{font-size:1.4em;font-weight:700;color:#1a2855}
+.sl{font-size:.78em;color:#666;margin-top:4px}
+@media (max-width: 600px) {
+  .controls { padding: 10px 12px; gap: 8px; }
+  .controls select, .controls button { padding: 6px 10px; font-size: 13px; }
+  .controls .score-display { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+  .quiz-area { padding: 0 10px; }
+  .q-card { padding: 16px; }
+  .opt { font-size: 13px; padding: 10px 12px; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+</head>
+<body>
+<header>
+  <h1>📋 แบบทดสอบ CG — การกำกับดูแลกิจการที่ดี ธ.ก.ส.</h1>
+  <p>สรุปจาก <strong>คู่มือการกำกับดูแลกิจการที่ดี ปีบัญชี 2569</strong> · ครอบคลุม 11 หัวข้อ · เตรียมสอบ ผช.ผจข.</p>
+  <div class="tag-row">
+    <span class="tag-badge">🏛️ บัญญัติ 9 ประการ</span>
+    <span class="tag-badge">✨ SPARK/HEART</span>
+    <span class="tag-badge">🏢 โครงสร้าง 12 คณะ</span>
+    <span class="tag-badge">📚 9 หมวด CG</span>
+    <span class="tag-badge">🚫 Anti-Bribery</span>
+    <span class="tag-badge">📣 Whistle Blowing</span>
+    <span class="tag-badge">🤝 ผู้มีส่วนได้ส่วนเสีย 6 กลุ่ม</span>
+  </div>
+</header>
+<div class="controls">
+  <label>หมวด:</label>
+  <select id="filterCat">
+    <option value="all">ทั้งหมด</option>
+    <option>บัญญัติ 9 ประการ</option>
+    <option>วิสัยทัศน์/พันธกิจ</option>
+    <option>SPARK/HEART</option>
+    <option>โครงสร้าง 12 คณะ</option>
+    <option>9 หมวด CG</option>
+    <option>Anti-Bribery</option>
+    <option>Whistle Blowing</option>
+    <option>ผู้มีส่วนได้ส่วนเสีย</option>
+    <option>ความยั่งยืน/นวัตกรรม</option>
+  </select>
+  <label>ระดับ:</label>
+  <select id="filterLvl">
+    <option value="all">ทั้งหมด</option>
+    <option>จำ</option><option>เข้าใจ</option><option>ประยุกต์</option><option>วิเคราะห์</option>
+  </select>
+  <label>จำนวน:</label>
+  <select id="filterN">
+    <option value="all">ทั้งหมด</option>
+    <option value="10">10 ข้อ</option>
+    <option value="20">20 ข้อ</option>
+    <option value="30">30 ข้อ</option>
+  </select>
+  <button onclick="startQuiz()">▶ เริ่มทำ</button>
+  <button class="sec" onclick="showSummary()">📊 ดูผล</button>
+  <div class="score-box">คะแนน: <span id="sd">0</span>/<span id="td">0</span></div>
+</div>
+<div id="quiz-area"></div>
+<div id="summary">
+  <div class="sum-card">
+    <h2>🏆 สรุปผลการทำข้อสอบ CG</h2>
+    <div class="big-score" id="sumScore">-</div>
+    <div class="sg" id="sumGrid"></div>
+    <a href="corporate-governance.html" style="display:inline-block;margin-top:10px;padding:10px 22px;background:#1a2855;color:#fff;text-decoration:none;border-radius:8px;font-weight:700">📖 กลับไปทบทวนเนื้อหา</a>
+    <button onclick="startQuiz()" style="margin-top:8px">🔄 ทำใหม่</button>
+  </div>
+</div>
+<script>
+const Q = [
+// ===== บัญญัติ 9 ประการ =====
+{id:1,cat:"บัญญัติ 9 ประการ",level:"จำ",
+q:"บัญญัติ 9 ประการ ของ ธ.ก.ส. ถูกกำหนดโดยใคร?",
+opts:["อาจารย์จำเนียร สาระนาค (ผู้จัดการ ธ.ก.ส. คนแรก)","คณะกรรมการ ธ.ก.ส. ชุดปัจจุบัน","กระทรวงการคลัง","ธนาคารแห่งประเทศไทย"],
+ans:0,exp:"บัญญัติ 9 ประการ กำหนดโดย อาจารย์จำเนียร สาระนาค ผู้จัดการ ธ.ก.ส. คนแรก เพื่อหล่อหลอมวัฒนธรรมองค์กรและให้พนักงานยึดถือปฏิบัติจนถึงปัจจุบัน",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 4-5"},
+
+{id:2,cat:"บัญญัติ 9 ประการ",level:"จำ",
+q:"หากพนักงาน ธ.ก.ส. มีพฤติการณ์ทุจริต จะถูกลงโทษอย่างไร?",
+opts:["ตักเตือนเป็นลายลักษณ์อักษร","ภาคทัณฑ์","พักงาน 3 เดือน","ไล่ออก (สถานเดียว)"],
+ans:3,exp:"ตามบัญญัติข้อบังคับฉบับที่ 9 ถ้ามีพฤติการณ์ทุจริต ธ.ก.ส. จะสอบสวนทุกราย และเมื่อได้ความเป็นสัตย์ ลงโทษสถานเดียวคือ 'ไล่ออก'",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 4"},
+
+{id:3,cat:"บัญญัติ 9 ประการ",level:"จำ",
+q:"ข้อใดไม่อยู่ในบัญญัติ 9 ประการ?",
+opts:["การทุจริต","การหลับในที่ทำงาน","การออมเงินเดือน","การรับอามิสสินจ้าง"],
+ans:2,exp:"บัญญัติ 9 ประการ ได้แก่ (1) การทุจริต (2) การมีเมียมากกว่าคนเดียว (3) การกู้ยืมเงินจากลูกค้า (4) การเป็นตัวโผทอดผ้าป่า (5) การเรี่ยไรเงินลูกค้า (6) การหาผลประโยชน์จากลูกค้า (7) การรับอามิสสินจ้าง (8) การไม่ซื่อต่องาน (9) การหลับในที่ทำงาน",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 4"},
+
+// ===== วิสัยทัศน์/พันธกิจ =====
+{id:4,cat:"วิสัยทัศน์/พันธกิจ",level:"จำ",
+q:"วิสัยทัศน์ของ ธ.ก.ส. คือข้อใด?",
+opts:["ธนาคารชั้นนำระดับโลก","ธนาคารพัฒนาชนบทที่ยั่งยืน","ธนาคารดิจิทัลเต็มรูปแบบ","ธนาคารที่มีกำไรสูงสุด"],
+ans:1,exp:"วิสัยทัศน์ ธ.ก.ส. คือ 'ธนาคารพัฒนาชนบทที่ยั่งยืน' เป็นผู้ให้บริการทางการเงินที่รับผิดชอบ สร้างการเติบโตระยะยาว ยกระดับเศรษฐกิจฐานราก",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 5"},
+
+{id:5,cat:"วิสัยทัศน์/พันธกิจ",level:"จำ",
+q:"ธ.ก.ส. จัดตั้งขึ้นตามพระราชบัญญัติ พ.ศ. ใด และเปิดดำเนินงานเมื่อใด?",
+opts:["พ.ศ. 2499 เปิด 1 ม.ค. 2500","พ.ศ. 2509 เปิด 1 พ.ย. 2509","พ.ศ. 2519 เปิด 1 ม.ค. 2520","พ.ศ. 2529 เปิด 1 พ.ย. 2530"],
+ans:1,exp:"ธ.ก.ส. จัดตั้งตามพระราชบัญญัติ พ.ศ. 2509 มาตรา 9 เปิดดำเนินงาน 1 พฤศจิกายน 2509 ด้วยสินทรัพย์ 355 ล้านบาท",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 1-2"},
+
+// ===== SPARK/HEART =====
+{id:6,cat:"SPARK/HEART",level:"จำ",
+q:"ค่านิยม SPARK ของ ธ.ก.ส. ตัว S ย่อมาจากอะไร?",
+opts:["Service (การบริการ)","Sustainability & Good Governance (ความยั่งยืนและการบริหารจัดการที่ดี)","Strategy (กลยุทธ์)","System (ระบบ)"],
+ans:1,exp:"SPARK เรียงตามลำดับ: S = Sustainability & Good Governance, P = Professionalism, A = Accountability, R = Respect, K = Knowledge",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 7"},
+
+{id:7,cat:"SPARK/HEART",level:"จำ",
+q:"ข้อใดเป็นค่านิยม SPARK ที่ถูกต้องครบทั้ง 5 ข้อ?",
+opts:["S-Service, P-Profit, A-Accuracy, R-Responsibility, K-Knowledge","S-Sustainability & Good Governance, P-Professionalism, A-Accountability, R-Respect, K-Knowledge","S-Strategy, P-People, A-Asset, R-Risk, K-Key","S-Speed, P-Power, A-Authority, R-Result, K-Key"],
+ans:1,exp:"SPARK ได้แก่ (1) Sustainability & Good Governance (2) Professionalism (3) Accountability (4) Respect (5) Knowledge",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 7"},
+
+{id:8,cat:"SPARK/HEART",level:"จำ",
+q:"วัฒนธรรมองค์กร HEART ตัว A มาจาก Art of Hearing หมายถึงอะไร?",
+opts:["ศิลปะการพูด","ศิลปะการใช้ใจฟัง ถึงความต้องการของลูกค้าเกษตรกร","ศิลปะการเขียน","ศิลปะการวาดภาพ"],
+ans:1,exp:"HEART มาจาก Art of Hearing = ศิลปะการใช้ใจฟัง ถึงความต้องการของลูกค้าเกษตรกร",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 8"},
+
+{id:9,cat:"SPARK/HEART",level:"เข้าใจ",
+q:"สถานการณ์: ผู้จัดการสาขาตัดสินใจอนุมัติสินเชื่อลูกค้ารายใหญ่ โดยยึดหลักข้อมูลและเหตุผลที่ถูกต้อง แม้จะมีลูกค้ารายอื่นรออยู่ ตรงกับค่านิยม SPARK ข้อใด?",
+opts:["S - Sustainability","P - Professionalism","A - Accountability","K - Knowledge"],
+ans:1,exp:"P - Professionalism คือ มีความเป็นมืออาชีพ กล้าตัดสินใจในสิ่งที่ถูกต้องด้วยข้อมูลและเหตุผลที่ถูกต้องเป็นปัจจุบันและเพียงพอ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 7"},
+
+// ===== โครงสร้าง 12 คณะ =====
+{id:10,cat:"โครงสร้าง 12 คณะ",level:"จำ",
+q:"ปีบัญชี 2569 คณะกรรมการ ธ.ก.ส. แต่งตั้งคณะกรรมการและคณะอนุกรรมการรวมกี่คณะ?",
+opts:["9 คณะ","10 คณะ","12 คณะ","15 คณะ"],
+ans:2,exp:"ปีบัญชี 2569 มีคณะกรรมการและคณะอนุกรรมการที่คณะกรรมการ ธ.ก.ส. แต่งตั้ง จำนวน 12 คณะ แบ่งเป็น 5+4+3 (กฎหมาย/ระเบียบ/ภารกิจ)",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 14"},
+
+{id:11,cat:"โครงสร้าง 12 คณะ",level:"จำ",
+q:"คณะกรรมการที่แต่งตั้งตามกฎหมายมีกี่คณะ และข้อใดจัดอยู่ในกลุ่มนี้?",
+opts:["3 คณะ เช่น คณะกรรมการตรวจสอบ (AC)","5 คณะ เช่น คณะกรรมการตรวจสอบ (AC), คณะกรรมการกำกับความเสี่ยง (ROC)","4 คณะ เช่น คณะอนุกรรมการธรรมาภิบาล","3 คณะ เช่น คณะอนุกรรมการบริหารเทคโนโลยีดิจิทัล"],
+ans:1,exp:"คณะกรรมการที่แต่งตั้งตามกฎหมาย 5 คณะ ได้แก่ (1) คณะกรรมการตรวจสอบ ธ.ก.ส. (AC) (2) คณะกรรมการกำกับความเสี่ยง (ROC) (3) คณะกรรมการกิจการสัมพันธ์ (4) คณะกรรมการประเมินผลการปฏิบัติงานผู้จัดการ (5) คณะกรรมการสรรหาและกำหนดค่าตอบแทน",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 14"},
+
+{id:12,cat:"โครงสร้าง 12 คณะ",level:"เข้าใจ",
+q:"คณะกรรมการกำกับความเสี่ยง (ROC) มีบทบาทหน้าที่ในการ?",
+opts:["อนุมัติสินเชื่อรายใหญ่","กำกับดูแลการบริหารความเสี่ยงขององค์กร รายงานต่อคณะกรรมการ ธ.ก.ส.","ตรวจสอบบัญชีและการเงิน","พิจารณาอุทธรณ์ของพนักงาน"],
+ans:1,exp:"ROC (Risk Oversight Committee) มีบทบาทกำกับดูแลการบริหารความเสี่ยง เป็นอิสระจากฝ่ายบริหาร ให้ความเห็นความเพียงพอของระบบบริหารความเสี่ยง รายงานต่อคณะกรรมการ ธ.ก.ส.",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 14, 51"},
+
+// ===== 9 หมวด CG =====
+{id:13,cat:"9 หมวด CG",level:"จำ",
+q:"หลักเกณฑ์การกำกับดูแลกิจการที่ดีของรัฐวิสาหกิจมีกี่หมวด?",
+opts:["7 หมวด","8 หมวด","9 หมวด","10 หมวด"],
+ans:2,exp:"หลักเกณฑ์การกำกับดูแลกิจการที่ดีมี 9 หมวด ตามประกาศคณะกรรมการนโยบายรัฐวิสาหกิจ พ.ศ. 2568",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 3"},
+
+{id:14,cat:"9 หมวด CG",level:"จำ",
+q:"หมวดที่ 1 ของหลักเกณฑ์ CG 9 หมวด คือเรื่องใด?",
+opts:["บทบาทของภาครัฐ","สิทธิของผู้ถือหุ้น","คณะกรรมการ","จรรยาบรรณ"],
+ans:0,exp:"หมวดที่ 1 บทบาทของภาครัฐ (Role of the State) - เน้นการแยกบทบาทกำหนดนโยบาย/กำกับดูแล/ประเมินผล",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 3, 16"},
+
+{id:15,cat:"9 หมวด CG",level:"จำ",
+q:"หมวดที่ 9 ของหลักเกณฑ์ CG 9 หมวด กำหนดให้คณะกรรมการติดตามผลการดำเนินงานบ่อยแค่ไหน?",
+opts:["ทุกเดือน","ทุกไตรมาส (อย่างน้อยไตรมาสละ 1 ครั้ง)","ทุก 6 เดือน","ทุกปี"],
+ans:1,exp:"หมวดที่ 9 การติดตามผลการดำเนินงาน กำหนดให้คณะกรรมการติดตามผลทั้งด้านการเงินและไม่ใช่การเงิน อย่างน้อยไตรมาสละ 1 ครั้ง พร้อมข้อสังเกต/ข้อเสนอแนะ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 56"},
+
+{id:16,cat:"9 หมวด CG",level:"เข้าใจ",
+q:"หมวดใดเน้นเรื่อง Tone at the Top และ Board Independence?",
+opts:["หมวด 1 บทบาทภาครัฐ","หมวด 3 คณะกรรมการ","หมวด 5 ความยั่งยืน","หมวด 7 บริหารความเสี่ยง"],
+ans:1,exp:"หมวด 3 คณะกรรมการ เน้นเรื่องความเป็นอิสระของคณะกรรมการ (Board Independence) และการสร้าง Tone at the Top เป็นแบบอย่างด้านจริยธรรม",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 23"},
+
+// ===== Anti-Bribery =====
+{id:17,cat:"Anti-Bribery",level:"จำ",
+q:"นโยบายต่อต้านการให้หรือรับสินบน (Anti-Bribery Policy) ของ ธ.ก.ส. กำหนดมูลค่าของขวัญตามประเพณีนิยมไว้ไม่เกินเท่าใดต่อโอกาส?",
+opts:["1,000 บาท","2,000 บาท","3,000 บาท","5,000 บาท"],
+ans:2,exp:"นโยบาย Anti-Bribery กำหนดว่าการให้/รับของขวัญตามประเพณีนิยม แต่ละโอกาสต้องมีมูลค่าไม่เกิน 3,000 บาท และต้องเป็นการรักษามิตรภาพ/น้ำใจ/ความสัมพันธ์อันดีเท่านั้น",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 63"},
+
+{id:18,cat:"Anti-Bribery",level:"จำ",
+q:"ตามนโยบาย Anti-Bribery ของ ธ.ก.ส. 'สินบน' หมายถึงอะไร?",
+opts:["เฉพาะเงินสดเท่านั้น","เงินหรือทรัพย์สินหรือประโยชน์อื่นใด ที่เสนอ/สัญญา/มอบ/รับ/ร้องขอ เพื่อจูงใจให้กระทำ/ไม่กระทำการ เพื่อเอื้อประโยชน์ที่ขัดกฎหมาย/หน้าที่","เฉพาะการรับของขวัญในเทศกาล","การบริจาคเพื่อการกุศล"],
+ans:1,exp:"สินบน (Bribery) = เงิน/ทรัพย์สิน/ประโยชน์อื่นใด ที่เสนอว่าจะให้/สัญญาว่าจะให้/มอบให้/การยอมรับการให้/ร้องขอ เพื่อจูงใจให้กระทำ/ไม่กระทำการ เพื่อให้ได้มาซึ่งธุรกิจที่ขัดกฎหมาย/หน้าที่/ธรรมเนียมที่เป็นธรรม",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 62"},
+
+{id:19,cat:"Anti-Bribery",level:"เข้าใจ",
+q:"สถานการณ์: พนักงานสินเชื่อได้รับของขวัญเป็นกระเช้าผลไม้มูลค่า 2,500 บาท จากลูกค้าเกษตรกรในวันขึ้นปีใหม่ไทย พนักงานควรทำอย่างไร?",
+opts:["ปฏิเสธทันที เพราะห้ามรับของขวัญทุกกรณี","รับได้ เพราะเป็นเทศกาลประเพณีนิยม และมูลค่าไม่เกิน 3,000 บาท","รับแล้วนำไปแจกจ่ายในสำนักงาน","รับแล้วนำส่งผู้บังคับบัญชาทันที"],
+ans:1,exp:"ตามนโยบาย การรับของขวัญตามประเพณีนิยม (เช่น ปีใหม่ สงกรานต์) มูลค่าไม่เกิน 3,000 บาท สามารถรับได้ เพราะเป็นการรักษามิตรภาพ/น้ำใจ/ความสัมพันธ์อันดี",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 63"},
+
+{id:20,cat:"Anti-Bribery",level:"ประยุกต์",
+q:"สถานการณ์: ผู้รับเหมาก่อสร้างเสนอบัตรกำนัลห้างสรรพสินค้า 5,000 บาท ให้พนักงาน ธ.ก.ส. เพื่อแลกกับการเร่งอนุมัติงาน พนักงานปฏิเสธ จะมีผลอย่างไร?",
+opts:["ธ.ก.ส. จะลงโทษพนักงานที่ปฏิเสธเพราะทำให้เสียโอกาสทางธุรกิจ","ธ.ก.ส. จะไม่ลงโทษและให้ความคุ้มครองพนักงาน แม้การปฏิเสธจะทำให้สูญเสียโอกาสทางธุรกิจ","พนักงานต้องรับเพราะเป็นธรรมเนียม","พนักงานต้องรายงานตำรวจ"],
+ans:1,exp:"ธ.ก.ส. ให้ความเป็นธรรมและคุ้มครองพนักงานที่ปฏิเสธการให้หรือรับสินบน โดยจะไม่ลงโทษหรือให้ผลลบ แม้ว่าการกระทำนั้นจะทำให้ ธ.ก.ส. สูญเสียโอกาสทางธุรกิจ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 64"},
+
+{id:21,cat:"Anti-Bribery",level:"จำ",
+q:"ธ.ก.ส. มีจุดยืนเรื่องการสนับสนุนทางการเมืองอย่างไร?",
+opts:["สนับสนุนทุกพรรคการเมืองเท่าเทียมกัน","สนับสนุนพรรครัฐบาลเป็นพิเศษ","เป็นองค์กรกลางทางการเมือง ไม่ช่วยเหลือพรรคการเมืองใดๆ ไม่ว่าทางตรงหรือทางอ้อม","ไม่มีนโยบายชัดเจนเรื่องการเมือง"],
+ans:2,exp:"ธ.ก.ส. เป็นองค์กรที่เป็นกลางทางการเมือง สนับสนุนการปฏิบัติตามกฎหมายและการปกครองระบอบประชาธิปไตย ไม่มีแนวปฏิบัติที่จะให้การช่วยเหลือทางการเมืองแก่พรรคการเมืองใดๆ ไม่ว่าทางตรงหรือทางอ้อม",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 63"},
+
+// ===== Whistle Blowing =====
+{id:22,cat:"Whistle Blowing",level:"จำ",
+q:"ช่องทางอีเมลหลักสำหรับแจ้งเบาะแสการทุจริตของ ธ.ก.ส. คืออะไร?",
+opts:["customer@baac.or.th","fraud@baac.or.th","whistle@baac.or.th","audit@baac.or.th"],
+ans:1,exp:"ช่องทางอีเมลหลักสำหรับแจ้งเบาะแสการกระทำผิดคือ fraud@baac.or.th",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 72"},
+
+{id:23,cat:"Whistle Blowing",level:"จำ",
+q:"หากพบว่าผู้จัดการ ธ.ก.ส. กระทำผิด ควรแจ้งเบาะแสต่อใคร?",
+opts:["ประธานกรรมการ ธ.ก.ส.","คณะกรรมการกำกับความเสี่ยง (ROC)","ผู้ช่วยผู้จัดการสายงาน","ผู้อำนวยการสำนักทรัพยากรบุคคล"],
+ans:1,exp:"กรณีเป็นการกระทำผิดของคณะกรรมการ และผู้จัดการ ให้แจ้งเบาะแสต่อคณะกรรมการกำกับความเสี่ยง (Risk Oversight Committee: ROC)",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 72"},
+
+{id:24,cat:"Whistle Blowing",level:"จำ",
+q:"ข้อใดไม่ใช่ช่องทางการแจ้งเบาะแสของ ธ.ก.ส.?",
+opts:["จดหมายถึงสำนักงานใหญ่","Line ID: @fraudbaac","เบอร์โทรศัพท์ 02-558-6444","Facebook Messenger ส่วนตัวของพนักงาน ธ.ก.ส."],
+ans:3,exp:"ช่องทางการแจ้งเบาะแสที่ ธ.ก.ส. กำหนด ได้แก่ จดหมาย, E-Mail fraud@baac.or.th, โทรศัพท์ 02-558-6444/02-587-9254, Website, Line @fraudbaac, VOC, Walk-in ส่วน Facebook Messenger ส่วนตัวพนักงานไม่ใช่ช่องทางทางการ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 72"},
+
+{id:25,cat:"Whistle Blowing",level:"เข้าใจ",
+q:"ผู้แจ้งเบาะแสได้รับความคุ้มครองอย่างไรบ้าง?",
+opts:["ได้รับเงินรางวัลตอบแทน","ธ.ก.ส. จะไม่เปิดเผยชื่อ/ข้อมูล และไม่ลงโทษหรือให้ผลลบ แม้จะสูญเสียโอกาสทางธุรกิจ","ได้รับการเลื่อนตำแหน่งอัตโนมัติ","ไม่มีการคุ้มครองใดๆ"],
+ans:1,exp:"ธ.ก.ส. จะไม่เปิดเผยชื่อ/ข้อมูลผู้แจ้งเบาะแส ปกป้องมิให้ถูกข่มขู่ คุกคาม กลั่นแกล้ง ไม่เปลี่ยนแปลงตำแหน่ง/สถานที่ทำงาน/พักงาน/ไล่ออก และไม่ลงโทษแม้จะสูญเสียโอกาสทางธุรกิจ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 73-74"},
+
+// ===== ผู้มีส่วนได้ส่วนเสีย =====
+{id:26,cat:"ผู้มีส่วนได้ส่วนเสีย",level:"จำ",
+q:"ธ.ก.ส. แบ่งกลุ่มผู้มีส่วนได้ส่วนเสียออกเป็นกี่กลุ่ม?",
+opts:["4 กลุ่ม","5 กลุ่ม","6 กลุ่ม","7 กลุ่ม"],
+ans:2,exp:"ผู้มีส่วนได้ส่วนเสียของ ธ.ก.ส. มี 6 กลุ่ม ได้แก่ (1) พนักงาน/ลูกจ้าง (2) ลูกค้า/ผู้ใช้บริการ (3) ผู้ส่งมอบ (4) คู่ค้า/คู่ความร่วมมือ (5) หน่วยงานกำกับภาครัฐ/คณะกรรมการ/ผู้ถือหุ้น (6) ชุมชน/สังคม",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 41"},
+
+{id:27,cat:"ผู้มีส่วนได้ส่วนเสีย",level:"จำ",
+q:"ข้อใดไม่ใช่กลุ่มผู้มีส่วนได้ส่วนเสีย 6 กลุ่มของ ธ.ก.ส.?",
+opts:["พนักงาน/ลูกจ้าง ธ.ก.ส.","ลูกค้า/ผู้ใช้บริการ","ผู้ส่งมอบ","คู่แข่งทางธุรกิจ"],
+ans:3,exp:"กลุ่มผู้มีส่วนได้ส่วนเสีย 6 กลุ่ม ได้แก่ พนักงาน/ลูกจ้าง, ลูกค้า/ผู้ใช้บริการ, ผู้ส่งมอบ, คู่ค้า/คู่ความร่วมมือ, หน่วยงานกำกับภาครัฐ/คณะกรรมการ/ผู้ถือหุ้น, ชุมชน/สังคม ส่วน 'คู่แข่งทางธุรกิจ' ไม่อยู่ใน 6 กลุ่มนี้",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 41"},
+
+{id:28,cat:"ผู้มีส่วนได้ส่วนเสีย",level:"เข้าใจ",
+q:"SODs ที่ ธ.ก.ส. ต้องปฏิบัติตาม ย่อมาจากอะไร และเกี่ยวข้องกับผู้มีส่วนได้ส่วนเสียกลุ่มใด?",
+opts:["Statement of Directions - กลุ่มผู้ถือหุ้นภาครัฐ (ผู้ถือหุ้น)","Standard of Doing - กลุ่มลูกค้า","Service Operation Directive - กลุ่มพนักงาน","System of Data Security - กลุ่มผู้ส่งมอบ"],
+ans:0,exp:"SODs = Statement of Directions = แนวนโยบายผู้ถือหุ้นภาครัฐ ธ.ก.ส. ดำเนินกิจการตามแนวนโยบายผู้ถือหุ้นภาครัฐ (SODs) เกี่ยวข้องกับกลุ่มที่ 5 หน่วยงานกำกับภาครัฐ/คณะกรรมการ ธ.ก.ส. และผู้ถือหุ้น",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 42"},
+
+// ===== ความยั่งยืน/นวัตกรรม =====
+{id:29,cat:"ความยั่งยืน/นวัตกรรม",level:"เข้าใจ",
+q:"ธ.ก.ส. นำ BCG Model มาใช้ในการพัฒนาเศรษฐกิจฐานราก โดย BCG ประกอบด้วยอะไรบ้าง?",
+opts:["Banking, Credit, Government","Bio-Circular-Green Economy","Business, Customer, Growth","Bond, Cash, Guarantee"],
+ans:1,exp:"BCG Model = Bio-Circular-Green Economy = เศรษฐกิจชีวภาพ-เศรษฐกิจหมุนเวียน-เศรษฐกิจสีเขียว เป็นการพัฒนาเศรษฐกิจแบบองค์รวม",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 4"},
+
+// ===== วิเคราะห์ =====
+{id:30,cat:"9 หมวด CG",level:"วิเคราะห์",
+q:"สถานการณ์: คณะกรรมการ ธ.ก.ส. ต้องการติดตามผลการดำเนินงาน โดยให้มีการรายงานทั้งด้านการเงินและไม่ใช่การเงิน พร้อมข้อเสนอแนะ หมวดใดของ CG 9 หมวด ที่เกี่ยวข้อง?",
+opts:["หมวด 3 คณะกรรมการ","หมวด 6 การเปิดเผยข้อมูล","หมวด 9 การติดตามผลการดำเนินงาน","หมวด 7 บริหารความเสี่ยง"],
+ans:2,exp:"หมวด 9 การติดตามผลการดำเนินงาน กำหนดให้คณะกรรมการติดตามผลทั้งด้านการเงินและไม่ใช่การเงิน อย่างน้อยไตรมาสละ 1 ครั้ง พร้อมมอบข้อสังเกต/ข้อเสนอแนะ และติดตามผลสำเร็จ",
+ref:"คู่มือ CG ปีบัญชี 2569 หน้า 56"},
+];
+
+let activeQ=[],answered={},score=0;
+
+function startQuiz(){
+  const cat=document.getElementById('filterCat').value;
+  const lvl=document.getElementById('filterLvl').value;
+  const n=document.getElementById('filterN').value;
+  let pool=Q.filter(q=>(cat==='all'||q.cat===cat)&&(lvl==='all'||q.level===lvl));
+  pool=shuffle(pool);
+  if(n!=='all') pool=pool.slice(0,parseInt(n));
+  activeQ=pool; answered={}; score=0;
+  document.getElementById('sd').textContent='0';
+  document.getElementById('td').textContent=pool.length;
+  document.getElementById('summary').style.display='none';
+  renderQuiz();
+}
+
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+
+function renderQuiz(){
+  const area=document.getElementById('quiz-area');
+  if(!activeQ.length){area.innerHTML='<div style="text-align:center;padding:40px;color:#666">ไม่พบข้อสอบ</div>';return;}
+  const cats=[...new Set(activeQ.map(q=>q.cat))];
+  let html='';
+  cats.forEach(cat=>{
+    const qs=activeQ.filter(q=>q.cat===cat);
+    html+=`<div class="cat-hdr">📂 ${cat}</div>`;
+    qs.forEach(q=>{
+      const so=shuffle(q.opts.map((o,i)=>({t:o,orig:i})));
+      const ci=so.findIndex(o=>o.orig===q.ans);
+      html+=`<div class="q-card" id="qc-${q.id}">
+        <div class="q-hdr"><div class="q-num">${activeQ.indexOf(q)+1}</div><div class="q-txt">${q.q}</div></div>
+        <div class="meta">
+          <span class="tag tc">${q.cat}</span>
+          <span class="tag tl ${q.level}">${q.level}</span>
+          <span class="genius">🎯 ${q.ref}</span>
+        </div>
+        <div class="opts" id="op-${q.id}">`;
+      so.forEach((o,oi)=>{
+        html+=`<div class="opt" id="opt-${q.id}-${oi}" onclick="sel(${q.id},${oi},${ci})">${String.fromCharCode(65+oi)}. ${o.t}</div>`;
+      });
+      html+=`</div>
+        <button class="btn-ans" id="btn-${q.id}" onclick="sub(${q.id},${ci})" disabled>✔ ตอบ</button>
+        <div class="exp" id="ex-${q.id}"><strong>💡 เฉลย:</strong> ${q.exp}<div class="ref">📌 ${q.ref}</div></div>
+      </div>`;
+    });
+  });
+  area.innerHTML=html;
+}
+
+function sel(qid,oi,ci){
+  if(answered[qid]!==undefined) return;
+  document.querySelectorAll(`#op-${qid} .opt`).forEach(e=>e.classList.remove('selected'));
+  document.getElementById(`opt-${qid}-${oi}`).classList.add('selected');
+  const btn=document.getElementById(`btn-${qid}`);
+  btn.dataset.sel=oi; btn.disabled=false;
+}
+
+function sub(qid,ci){
+  const btn=document.getElementById(`btn-${qid}`);
+  const sel=parseInt(btn.dataset.sel);
+  if(isNaN(sel)) return;
+  answered[qid]=sel;
+  document.querySelectorAll(`#op-${qid} .opt`).forEach((e,i)=>{
+    e.onclick=null;
+    if(i===ci) e.classList.add('correct');
+    else if(i===sel&&sel!==ci) e.classList.add('wrong');
+  });
+  if(sel===ci){score++;document.getElementById('sd').textContent=score;btn.textContent='✅ ถูกต้อง!';btn.style.background='#27ae60';}
+  else{btn.textContent='❌ ผิด';btn.style.background='#e74c3c';}
+  btn.disabled=true;
+  document.getElementById(`ex-${qid}`).classList.add('show');
+}
+
+function showSummary(){
+  const tot=activeQ.length;
+  const pct=tot?Math.round(score/tot*100):0;
+  document.getElementById('sumScore').textContent=`${score}/${tot} (${pct}%)`;
+  const bl={},bt={};
+  activeQ.forEach(q=>{bt[q.level]=(bt[q.level]||0)+1;});
+  activeQ.forEach(q=>{if(answered[q.id]===q.ans)(bl[q.level]=(bl[q.level]||0)+1);});
+  let g='';
+  ['จำ','เข้าใจ','ประยุกต์','วิเคราะห์'].forEach(l=>{
+    if(bt[l])g+=`<div class="si"><div class="sv">${bl[l]||0}/${bt[l]}</div><div class="sl">ระดับ${l}</div></div>`;
+  });
+  const bc={},bct={};
+  activeQ.forEach(q=>{bct[q.cat]=(bct[q.cat]||0)+1;if(answered[q.id]===q.ans)bc[q.cat]=(bc[q.cat]||0)+1;});
+  Object.keys(bct).forEach(c=>{g+=`<div class="si"><div class="sv">${bc[c]||0}/${bct[c]}</div><div class="sl">${c}</div></div>`;});
+  document.getElementById('sumGrid').innerHTML=g;
+  document.getElementById('summary').style.display='block';
+  document.getElementById('summary').scrollIntoView({behavior:'smooth'});
+}
+
+window.onload=()=>startQuiz();
+</script>
+<style>
+.back-home {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(19, 29, 51, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Noto Sans Thai','Sarabun',sans-serif;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.back-home:hover {
+  background: rgba(29, 39, 64, 0.95);
+  border-color: rgba(212,148,47,0.3);
+  color: #e8b84f;
+  transform: translateY(-1px);
+}
+.back-home svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.back-home:hover svg { transform: translateX(-2px); }
+</style>
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"/></svg>
+  กลับหน้าหลัก
+</a>
+<a href="corporate-governance.html" class="back-home" style="left:auto;right:24px;background:rgba(212,148,47,.92);color:#1a1a1a">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+  กลับ CG
+</a>
+<script src="study-ui.js" defer></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>การกำกับดูแลกิจการที่ดี (Corporate Governance: CG) | Genius 9</title>
+<title>การกำกับดูแลกิจการที่ดี (CG) — คู่มือ ธ.ก.ส. ปีบัญชี 2569 | Genius 9</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,6 +48,7 @@ body {
   background: rgba(7,16,31,.78);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(14px);
+  flex-wrap: wrap;
 }
 .topbar a {
   color: var(--muted);
@@ -55,8 +56,9 @@ body {
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 7px 12px;
-  font-size: .86rem;
+  font-size: .82rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 .topbar a:hover { color: var(--gold2); border-color: rgba(212,148,47,.28); background: rgba(212,148,47,.08); }
 .hero {
@@ -102,6 +104,7 @@ h1 {
   color: var(--text);
   text-decoration: none;
   font-weight: 700;
+  font-size: .92rem;
 }
 .toc a:hover { border-color: rgba(232,184,79,.45); background: rgba(212,148,47,.08); }
 .section {
@@ -122,17 +125,20 @@ h1 {
   line-height: 1.35;
 }
 .section h3 { color: #83d5ff; margin: 18px 0 8px; font-size: 1.05rem; }
+.section h4 { color: #c9b4f5; margin: 14px 0 6px; font-size: .98rem; }
 ul, ol { padding-left: 1.35rem; }
 li { margin: 7px 0; }
 strong { color: #fff; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
 .mini-card {
   padding: 15px;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: rgba(7,16,31,.48);
 }
-.mini-card h3 { margin-top: 0; }
+.mini-card h3 { margin-top: 0; font-size: 1rem; }
+.mini-card h4 { margin: 6px 0 4px; font-size: .88rem; color: #ffd28a; }
 .callout {
   margin: 14px 0;
   padding: 15px 18px;
@@ -142,6 +148,8 @@ strong { color: #fff; }
 }
 .callout.red { border-left-color: var(--red); background: rgba(229,92,92,.08); }
 .callout.green { border-left-color: var(--green); background: rgba(34,166,126,.08); }
+.callout.blue { border-left-color: var(--blue); background: rgba(75,123,236,.08); }
+.callout.purple { border-left-color: var(--purple); background: rgba(155,123,233,.08); }
 .exam-traps { counter-reset: trap; }
 .trap {
   position: relative;
@@ -166,16 +174,53 @@ strong { color: #fff; }
   color: #fff;
   font-weight: 800;
 }
-.trap h3 { margin-top: 0; color: #ffb4b4; }
+.trap h3 { margin-top: 0; color: #ffb4b4; font-size: 1rem; }
 .keyword-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 .keyword { padding: 5px 10px; border-radius: 999px; background: rgba(75,123,236,.14); color:#9cc2ff; font-size:.82rem; font-weight:700; }
+.keyword.gold { background: rgba(212,148,47,.14); color: #ffd28a; }
+.keyword.green { background: rgba(34,166,126,.14); color: #6ee0b3; }
+.keyword.red { background: rgba(229,92,92,.14); color: #ff9b9b; }
+.chapter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+.chapter-list li {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(7,16,31,.45);
+  border: 1px solid var(--border);
+  margin: 0;
+  font-size: .92rem;
+}
+.chapter-list li strong { color: var(--gold2); margin-right: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .9rem; }
+th, td { padding: 9px 12px; border: 1px solid var(--border); text-align: left; }
+th { background: rgba(212,148,47,.12); color: #ffd28a; }
+.quiz-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #d4942f, #e8b84f);
+  color: #1a1a1a;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1rem;
+  border: none;
+  box-shadow: 0 8px 22px rgba(212,148,47,.25);
+}
+.quiz-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(212,148,47,.35); }
 .footer-note { color: var(--muted); text-align:center; font-size:.86rem; margin-top:30px; }
 @media (max-width: 700px) {
-  .topbar { justify-content:flex-start; overflow-x:auto; }
+  .topbar { justify-content:flex-start; overflow-x:auto; flex-wrap: nowrap; }
   .hero { padding-top: 34px; }
   .container { padding-inline: 14px; }
   .section { padding: 17px; }
-  .grid-2 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
 }
 </style>
 <link rel="stylesheet" href="study-ui.css">
@@ -183,150 +228,452 @@ strong { color: #fff; }
 <body>
 <nav class="topbar" aria-label="เมนูเนื้อหา CG">
   <a href="index.html">⌂ หน้าหลัก</a>
-  <a href="#meaning">ความหมาย</a>
-  <a href="#principles">หลักการ</a>
+  <a href="#intro">บทนำ</a>
+  <a href="#vision">วิสัยทัศน์</a>
+  <a href="#values">SPARK/HEART</a>
+  <a href="#strategy">ยุทธศาสตร์</a>
+  <a href="#gov-vision">วิสัยทัศน์ CG</a>
   <a href="#structure">โครงสร้าง</a>
-  <a href="#grc">GRC</a>
+  <a href="#9chapters">9 หมวด</a>
+  <a href="#antibribery">Anti-Bribery</a>
+  <a href="#whistle">Whistle Blowing</a>
   <a href="#stakeholders">ผู้มีส่วนได้ส่วนเสีย</a>
   <a href="#exam">จุดดักข้อสอบ</a>
 </nav>
 
 <header class="hero">
-  <div class="badge">🏛️ Corporate Governance · CG</div>
-  <h1>การกำกับดูแลกิจการที่ดี</h1>
-  <p>สรุปจาก NotebookLM สำหรับเตรียมสอบ ผช.ผจข. ธ.ก.ส. เน้นความโปร่งใส ตรวจสอบได้ จริยธรรม GRC และการตัดสินใจเชิงสถานการณ์</p>
+  <div class="badge">🏛️ Corporate Governance · CG · ปีบัญชี 2569</div>
+  <h1>การกำกับดูแลกิจการที่ดี ธ.ก.ส.</h1>
+  <p>สรุปจาก <strong>คู่มือการกำกับดูแลกิจการที่ดี ปีบัญชี 2569</strong> สำนักส่งเสริมธรรมาภิบาลและกำกับการปฏิบัติตามกฎเกณฑ์ · เตรียมสอบ ผช.ผจข. ธ.ก.ส.</p>
+  <a href="corporate-governance-quiz.html" class="quiz-btn">📝 ทำแบบทดสอบ CG 30 ข้อ</a>
 </header>
 
 <main class="container">
   <div class="toc">
-    <a href="#meaning">1. ความหมายและวัตถุประสงค์</a>
-    <a href="#principles">2. หลักการสำคัญและจริยธรรม</a>
-    <a href="#structure">3. คณะกรรมการและฝ่ายจัดการ</a>
-    <a href="#grc">4. เชื่อมโยง GRC</a>
-    <a href="#stakeholders">5. ผู้มีส่วนได้ส่วนเสีย</a>
-    <a href="#exam">6. จุดดักข้อสอบ</a>
+    <a href="#intro">1. บทนำและประวัติ</a>
+    <a href="#vision">2. วิสัยทัศน์/พันธกิจ</a>
+    <a href="#values">3. ค่านิยม SPARK/HEART</a>
+    <a href="#strategy">4. ยุทธศาสตร์ 2569</a>
+    <a href="#gov-vision">5. วิสัยทัศน์ธรรมาภิบาล</a>
+    <a href="#structure">6. โครงสร้าง 12 คณะ</a>
+    <a href="#9chapters">7. หลักเกณฑ์ 9 หมวด</a>
+    <a href="#antibribery">8. นโยบายต่อต้านสินบน</a>
+    <a href="#whistle">9. Whistle Blowing</a>
+    <a href="#stakeholders">10. ผู้มีส่วนได้ส่วนเสีย 6 กลุ่ม</a>
+    <a href="#exam">11. จุดดักข้อสอบ</a>
   </div>
 
-  <section class="section" id="meaning">
-    <h2>📌 1. ความหมายและวัตถุประสงค์ของ CG</h2>
-    <p><strong>Corporate Governance (CG)</strong> คือระบบ โครงสร้าง กระบวนการ และกลไกในการบริหารจัดการองค์กรให้มีความโปร่งใส ตรวจสอบได้ มีจริยธรรม และคำนึงถึงผู้มีส่วนได้ส่วนเสียทุกฝ่าย</p>
+  <!-- ===== 1. บทนำ ===== -->
+  <section class="section" id="intro">
+    <h2>📌 1. บทนำและประวัติ ธ.ก.ส.</h2>
+    <p><strong>ธ.ก.ส.</strong> (ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร) จัดตั้งตาม พ.ร.บ. ธ.ก.ส. พ.ศ. 2509 มาตรา 9 เปิดดำเนินงาน 1 พ.ย. 2509 ด้วยสินทรัพย์ 355 ล้านบาท มี <strong>อาจารย์จำเนียร สาระนาค</strong> เป็นผู้จัดการคนแรก ผู้วางรากฐานธรรมาภิบาลและหล่อหลอม <strong>บัญญัติ 9 ประการ</strong> ให้พนักงานยึดถือจนถึงปัจจุบัน</p>
+    <div class="callout red">
+      <strong>🪨 บัญญัติ 9 ประการ ของอาจารย์จำเนียร สาระนาค</strong> — พนักงาน ธ.ก.ส. ต้องอยู่ในวินัยตามข้อบังคับฉบับที่ 9 โดยเคร่งครัด ถ้ามีพฤติการณ์ทุจริต ธ.ก.ส. จะสอบสวนทุกราย และลงโทษสถานเดียวคือ<strong>"ไล่ออก"</strong>
+    </div>
+    <ol>
+      <li><strong>การทุจริต</strong> — ห้ามโดยเด็ดขาด</li>
+      <li><strong>การมีเมียมากกว่าคนเดียว</strong> — ห้ามมีเมียหลายคน เข้าไนต์คลับ เล่นการพนัน</li>
+      <li><strong>การกู้ยืมเงินจากลูกค้า</strong> — เสียความเที่ยงธรรมและความไว้วางใจ</li>
+      <li><strong>การเป็นตัวโผทอดผ้าป่า</strong> — ห้ามอาศัยงานในหน้าที่ให้ลูกค้าบริจาค</li>
+      <li><strong>การเรี่ยไรเงินลูกค้าซื้อของใช้ประจำที่ทำการ</strong> — เบียดเบียนลูกค้า โทษไล่ออก</li>
+      <li><strong>การหาผลประโยชน์จากลูกค้า</strong> เช่น ขายปุ๋ย ลงทุนทำไร่ร่วมกับลูกค้า</li>
+      <li><strong>การรับอามิสสินจ้าง</strong> — ห้ามรับสิ่งตอบแทน</li>
+      <li><strong>การไม่ซื่อต่องาน</strong> — ต้องซื่อสัตย์ต่อหน้าที่</li>
+      <li><strong>การหลับในที่ทำงาน</strong> — ทำให้ประชาชนดูหมิ่นสถาบัน</li>
+    </ol>
+    <h3>🌳 6 ทศวรรษ ธ.ก.ส.</h3>
     <div class="grid-2">
       <div class="mini-card">
-        <h3>วัตถุประสงค์หลัก</h3>
-        <ul>
-          <li>สร้างความเชื่อมั่นให้ลูกค้า ประชาชน ผู้กำกับดูแล และสังคม</li>
-          <li>ป้องกันการทุจริตและการขัดกันแห่งผลประโยชน์</li>
-          <li>ทำให้องค์กรเติบโตอย่างยั่งยืนตามพันธกิจของธนาคาร</li>
-        </ul>
+        <h4>ทศวรรษที่ 1 (2509-2519)</h4>บุกเบิกสินเชื่อเกษตร — เน้นจ่ายสินเชื่อรายคน ลดปัญหาเงินกู้นอกระบบ
       </div>
       <div class="mini-card">
-        <h3>แก่นที่ต้องจำ</h3>
-        <ul>
-          <li>โปร่งใส</li>
-          <li>ตรวจสอบได้</li>
-          <li>มีจริยธรรม</li>
-          <li>รับผิดชอบต่อผู้มีส่วนได้ส่วนเสีย</li>
-        </ul>
+        <h4>ทศวรรษที่ 2 (2520-2529)</h4>สินเชื่อบูรณาการ + บริการอื่นๆ — ส่งเสริมการตลาด พัฒนาเป็นสินเชื่อครบวงจร
+      </div>
+      <div class="mini-card">
+        <h4>ทศวรรษที่ 3 (2530-2539)</h4>ขยาย Project Loan — ครอบคลุมทุกภาค เกษตรกรชั้นเล็ก ก่อตั้ง สกต.
+      </div>
+      <div class="mini-card">
+        <h4>ทศวรรษที่ 4 (2540-2549)</h4>ปรับระบบทันสมัย + เศรษฐกิจพอเพียง — สู่ธนาคารอิเล็กทรอนิกส์
+      </div>
+      <div class="mini-card">
+        <h4>ทศวรรษที่ 5 (2550-2559)</h4>แก้ปัญหาหนี้นอกระบบอย่างยั่งยืน — ขยายสินเชื่อสู่บุคคล กองทุนหมู่บ้าน
+      </div>
+      <div class="mini-card">
+        <h4>ทศวรรษที่ 6 (2560-ปัจจุบัน)</h4>สถาบันการเงินเพื่อพัฒนาชนบทครบวงจร — Customer Centric + BCG Model + Go Green
       </div>
     </div>
   </section>
 
-  <section class="section" id="principles">
-    <h2>✨ 2. หลักการสำคัญ จริยธรรม และความโปร่งใส</h2>
-    <p>ในบริบท ธ.ก.ส. หลัก CG เชื่อมโยงกับค่านิยม <strong>SPARK</strong> วัฒนธรรมองค์กร <strong>HEART</strong> และสมรรถนะด้าน <strong>Integrity & Transparency</strong></p>
-    <div class="callout green">
-      <strong>หลักจำ:</strong> พนักงานต้องซื่อสัตย์สุจริต พูดและทำในสิ่งที่ถูกต้อง ดำรงตนสมฐานะ ไม่ให้ปัจจัยภายนอกแทรกแซงการทำงาน และปฏิเสธสินบนหรือผลประโยชน์ที่ไม่เหมาะสมทุกรูปแบบ
-    </div>
-    <ul>
-      <li><strong>Ethics:</strong> ปฏิบัติงานด้วยความซื่อสัตย์ มีจรรยาบรรณ และกล้าตัดสินใจในสิ่งที่ถูกต้อง</li>
-      <li><strong>Transparency:</strong> เปิดเผยข้อมูลความเสี่ยงและผลการดำเนินงานอย่างถูกต้อง ครบถ้วน ทันเวลา</li>
-      <li><strong>Accountability:</strong> รับผิดชอบต่อผลของการตัดสินใจและสามารถอธิบายเหตุผลตามหลักเกณฑ์ได้</li>
-    </ul>
-  </section>
-
-  <section class="section" id="structure">
-    <h2>🏢 3. โครงสร้างคณะกรรมการ ฝ่ายจัดการ และบทบาทหน้าที่</h2>
-    <div class="grid-2">
-      <div class="mini-card">
-        <h3>คณะกรรมการธนาคาร</h3>
-        <ul>
-          <li>กำหนดนโยบายและทิศทางสำคัญขององค์กร</li>
-          <li>ทำหน้าที่กำกับดูแลและถ่วงดุลฝ่ายบริหาร</li>
-          <li>ต้องมีความเป็นอิสระจากฝ่ายบริหาร</li>
-          <li>สร้าง <strong>Tone at the Top</strong> เป็นแบบอย่างด้านจริยธรรม</li>
-        </ul>
-      </div>
-      <div class="mini-card">
-        <h3>ฝ่ายจัดการ</h3>
-        <ul>
-          <li>นำนโยบายไปปฏิบัติจริง</li>
-          <li>จัดโครงสร้างองค์กร สายการรายงาน และอำนาจหน้าที่ให้เหมาะสม</li>
-          <li>ควบคุมการปฏิบัติงานให้สอดคล้องกับระเบียบและเป้าหมาย</li>
-          <li>รายงานผลและประเด็นความเสี่ยงต่อคณะกรรมการอย่างโปร่งใส</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="grc">
-    <h2>🛡️ 4. CG ต้องเชื่อมกับ GRC: Governance · Risk · Compliance</h2>
-    <p>CG ไม่ได้แยกจากงานประจำ แต่เป็นกรอบคิดในการบริหารงานร่วมกับการบริหารความเสี่ยงและการปฏิบัติตามกฎเกณฑ์</p>
-    <ul>
-      <li><strong>Governance:</strong> มีโครงสร้างกำกับดูแลและการตัดสินใจที่โปร่งใส</li>
-      <li><strong>Risk Management:</strong> บริหารความเสี่ยงโดยคำนึงถึงต้นทุนและประโยชน์ ภายใต้ Risk Limit ที่กำหนด</li>
-      <li><strong>Compliance:</strong> ปฏิบัติตามกฎหมาย ระเบียบ คำสั่ง และนโยบายของธนาคาร</li>
-      <li><strong>Internal Control:</strong> มีการควบคุมภายในและประเมินความเสี่ยงด้านทุจริตอย่างครอบคลุม</li>
-    </ul>
+  <!-- ===== 2. วิสัยทัศน์/พันธกิจ ===== -->
+  <section class="section" id="vision">
+    <h2>🎯 2. วิสัยทัศน์ พันธกิจ และข้อมูล ธ.ก.ส.</h2>
     <div class="callout">
-      <strong>คำสำคัญออกสอบ:</strong> Tone at the Top, Fraud Risk Assessment, Conflict of Interest, No Gift Policy, Transparency, Accountability
+      <strong>วิสัยทัศน์:</strong> "ธนาคารพัฒนาชนบทที่ยั่งยืน" — เป็นผู้ให้บริการทางการเงินที่รับผิดชอบ สร้างการเติบโตระยะยาว ยกระดับเศรษฐกิจฐานรากด้วยเงินทุน ความรู้ นวัตกรรม และตลาด
     </div>
-  </section>
-
-  <section class="section" id="stakeholders">
-    <h2>🤝 5. การดูแลผู้มีส่วนได้ส่วนเสีย</h2>
-    <p>การกำกับดูแลที่ดีต้องคำนึงถึงผู้มีส่วนได้ส่วนเสียทั้งภายในและภายนอกอย่างเสมอภาคและเท่าเทียม เพื่อสร้างความสำเร็จระยะยาวร่วมกัน</p>
+    <h3>พันธกิจ 4 ข้อ</h3>
     <ul>
-      <li>เปิดช่องทางการสื่อสารแบบสองทิศทางเพื่อรับฟังความคิดเห็น</li>
-      <li>มีระบบรับข้อร้องเรียนที่เหมาะสมและตรวจสอบได้</li>
-      <li>ประสานประโยชน์ให้เกิดความเข้าใจและผลประโยชน์ร่วมกันแบบ Win-Win</li>
-      <li>ไม่เลือกปฏิบัติและไม่เอื้อประโยชน์ให้ฝ่ายใดฝ่ายหนึ่งโดยไม่เป็นธรรม</li>
+      <li><strong>M1</strong> ศูนย์กลางทางการเงินที่ให้บริการครบวงจร ทันสมัยแก่ภาคชนบท ควบคู่การดูแลสังคมและสิ่งแวดล้อม</li>
+      <li><strong>M2</strong> พัฒนาการบริหารทรัพยากรด้วยเทคโนโลยีดิจิทัลและนวัตกรรม สู่องค์กรประสิทธิภาพสูงอย่างมีธรรมาภิบาล</li>
+      <li><strong>M3</strong> สนับสนุนเงินทุน + ความรู้ เทคโนโลยี นวัตกรรม เชื่อมโยงตลาด ยกระดับการแข่งขันเกษตรกรและชุมชน</li>
+      <li><strong>M4</strong> ส่งเสริมการบริหารกิจกรรมทางเศรษฐกิจของชุมชน ตอบสนองการเปลี่ยนแปลงสภาพภูมิอากาศ และความหลากหลายทางชีวภาพ</li>
+    </ul>
+    <h3>ความได้เปรียบเชิงยุทธศาสตร์ (SA)</h3>
+    <ul>
+      <li><strong>SA1</strong> สถาบันการเงินที่เป็นเลิศในการให้สินเชื่อภาคการเกษตรและชนบท</li>
+      <li><strong>SA2</strong> มีศักยภาพในการพัฒนาลูกค้าและชุมชน รวมกับเครือข่ายสร้างช่องทางการตลาดด้วยเทคโนโลยี</li>
+    </ul>
+    <h3>ความสามารถพิเศษขององค์กร (CC)</h3>
+    <ul>
+      <li><strong>CC1</strong> ความเชี่ยวชาญในการเป็นแหล่งเงินทุนภาคการเกษตร</li>
+      <li><strong>CC2</strong> เชี่ยวชาญการพัฒนาลูกค้าและชุมชนด้วยเครือข่าย</li>
+      <li><strong>CC3</strong> เชี่ยวชาญการสนับสนุนการเงินที่ยั่งยืน (ผลิตภัณฑ์/กระบวนการ/บุคลากร)</li>
     </ul>
   </section>
 
+  <!-- ===== 3. ค่านิยม SPARK/HEART ===== -->
+  <section class="section" id="values">
+    <h2>✨ 3. ค่านิยมองค์กร (SPARK) และวัฒนธรรมองค์กร (HEART)</h2>
+    <p>ธ.ก.ส. บูรณาการค่านิยม <strong>SPARK</strong> + วัฒนธรรม <strong>HEART</strong> + หลักธรรมาภิบาล (CG) + Core Competency (SE-AM) เข้าด้วยกัน เพื่อสร้างพฤติกรรมพึงประสงค์ขององค์กร</p>
+
+    <h3>🌟 ค่านิยม SPARK (5 ข้อ)</h3>
+    <div class="grid-2">
+      <div class="mini-card">
+        <h4><strong>S</strong> – Sustainability & Good Governance</h4>
+        <p>มีการบริหารจัดการที่ดี ยึดมั่นหลักจริยธรรมและความโปร่งใส</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>P</strong> – Professionalism</h4>
+        <p>มีความเป็นมืออาชีพ กล้าตัดสินใจในสิ่งที่ถูกต้องด้วยข้อมูลที่เพียงพอ</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>A</strong> – Accountability</h4>
+        <p>รับผิดชอบในงาน มีสำนึกรับผิดชอบ ตรงต่อเวลา ยึดมั่นเป้าหมาย</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>R</strong> – Respect</h4>
+        <p>เคารพและให้เกียรติ ปฏิบัติด้วยความเสมอภาค ยกย่องชมเชย</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>K</strong> – Knowledge</h4>
+        <p>รู้สึก รู้จริง ใฝ่หาความรู้ ถ่ายทอดแบ่งปัน แก้ไขปัญหาได้</p>
+      </div>
+    </div>
+
+    <h3>💛 วัฒนธรรมองค์กร HEART (5 ข้อ)</h3>
+    <p>HEART มาจาก <strong>Art of Hearing = ศิลปะการใช้ใจฟัง ถึงความต้องการของลูกค้าเกษตรกร</strong></p>
+    <div class="grid-2">
+      <div class="mini-card">
+        <h4><strong>H</strong> – Humility (ถ่อมตน)</h4>
+        <p>อ่อนน้อมถ่อมตน ไม่ถือตัว ให้เกียรติทุกฝ่าย</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>E</strong> – Equity (ยุติธรรม เท่าเทียม)</h4>
+        <p>ปฏิบัติต่อผู้มีส่วนได้ส่วนเสียอย่างเสมอภาค ไม่เลือกปฏิบัติ</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>A</strong> – Art of Hearing (ศิลปะการใช้ใจฟัง)</h4>
+        <p>รับฟังลูกค้าเกษตรกรด้วยใจ เข้าใจความต้องการที่แท้จริง</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>R</strong> – Responsibility (รับผิดชอบ)</h4>
+        <p>รับผิดชอบต่อผลการปฏิบัติงาน ต่อสังคมและสิ่งแวดล้อม</p>
+      </div>
+      <div class="mini-card">
+        <h4><strong>T</strong> – Teamwork (ทำงานเป็นทีม)</h4>
+        <p>ร่วมคิด ร่วมทำ สร้างเครือข่ายการทำงานที่ดี</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. ยุทธศาสตร์ ===== -->
+  <section class="section" id="strategy">
+    <h2>🚀 4. ยุทธศาสตร์ ธ.ก.ส. ปี 2569 (6 ยุทธศาสตร์ 13 กลยุทธ์)</h2>
+    <ol>
+      <li><strong>ยุทธศาสตร์ที่ 1:</strong> เพิ่มเสถียรภาพทางการเงินที่มั่นคง — กลยุทธ์ 1-3 (สร้างขีดความสามารถสินเชื่อ, ยกระดับพอร์ตกลุ่มเปราะบาง, จัดหาเงินทุน)</li>
+      <li><strong>ยุทธศาสตร์ที่ 2:</strong> เพิ่มการบริหารจัดการคุณภาพสินเชื่อ — กลยุทธ์ 4-5 (บริหารหนี้ถึงกำหนด, บริหารพอร์ตด้อยคุณภาพ)</li>
+      <li><strong>ยุทธศาสตร์ที่ 3:</strong> เพิ่มศักยภาพการแข่งขันลูกค้าสู่การสร้างมูลค่าเกษตร — กลยุทธ์ 6-7 (ฟื้นฟูตามกลุ่มลูกค้า, เชื่อมโยงสร้างมูลค่าเพิ่ม)</li>
+      <li><strong>ยุทธศาสตร์ที่ 4:</strong> เพิ่มขีดความสามารถองค์กรด้วยเทคโนโลยีดิจิทัลและนวัตกรรม — กลยุทธ์ 8-9</li>
+      <li><strong>ยุทธศาสตร์ที่ 5:</strong> เพิ่มขีดความสามารถบุคคล และ GRC — กลยุทธ์ 10-11 (ขยายขีดความสามารถบุคลากร, ยกระดับการบูรณาการ GRC อย่างยั่งยืน)</li>
+      <li><strong>ยุทธศาสตร์ที่ 6:</strong> ส่งเสริมการบริหารจัดการองค์กรและชุมชน ภายใต้ ESG — กลยุทธ์ 12-13 (ขับเคลื่อนภายใต้ ESG, มุ่งสู่ Net Zero Emissions)</li>
+    </ol>
+  </section>
+
+  <!-- ===== 5. วิสัยทัศน์ธรรมาภิบาล ===== -->
+  <section class="section" id="gov-vision">
+    <h2>🛡️ 5. วิสัยทัศน์การกำกับดูแลกิจการที่ดี</h2>
+    <div class="callout gold">
+      <strong>"เป็นธนาคารที่มีธรรมาภิบาล มุ่งสู่การบริหารจัดการที่ดี เพื่อความยั่งยืน"</strong>
+    </div>
+    <p>ธ.ก.ส. บูรณาการ <strong>CG × Risk Management × Compliance (GRC)</strong> เพื่อสร้างคุณค่าและความน่าเชื่อถือ เฝ้าระวังความเสี่ยง เตรียมพร้อมทำงานทั้งภาวะปกติและวิกฤต รวมถึงรับมือการถูกฟ้องร้อง ดำเนินคดี เรียกร้องค่าปรับ/ค่าเสียหาย และให้ข้อมูลที่เชื่อถือได้ทันเวลาต่อผู้มีส่วนได้ส่วนเสีย</p>
+  </section>
+
+  <!-- ===== 6. โครงสร้าง 12 คณะ ===== -->
+  <section class="section" id="structure">
+    <h2>🏢 6. โครงสร้างการกำกับดูแลกิจการ 12 คณะ (ปีบัญชี 2569)</h2>
+    <p>คณะกรรมการ ธ.ก.ส. แต่งตั้งคณะกรรมการและคณะอนุกรรมการ <strong>12 คณะ</strong> แบ่งเป็น 3 กลุ่ม:</p>
+    <div class="grid-3">
+      <div class="mini-card" style="border-left: 3px solid #4b7bec;">
+        <h3 style="color:#9cc2ff">📜 ตามกฎหมาย (5 คณะ)</h3>
+        <ol>
+          <li>คณะกรรมการตรวจสอบ ธ.ก.ส. (AC)</li>
+          <li>คณะกรรมการกำกับความเสี่ยง (ROC)</li>
+          <li>คณะกรรมการกิจการสัมพันธ์ ธ.ก.ส.</li>
+          <li>คณะกรรมการประเมินผลการปฏิบัติงานผู้จัดการ ธ.ก.ส.</li>
+          <li>คณะกรรมการสรรหาและกำหนดค่าตอบแทน</li>
+        </ol>
+      </div>
+      <div class="mini-card" style="border-left: 3px solid #d4942f;">
+        <h3 style="color:#ffd28a">📋 ตามระเบียบ/ข้อบังคับ (4 คณะ)</h3>
+        <ol>
+          <li>คณะอนุกรรมการพิจารณาอุทธรณ์</li>
+          <li>คณะอนุกรรมการนวัตกรรม วิจัยและพัฒนา</li>
+          <li>คณะอนุกรรมการธรรมาภิบาลและกำกับการปฏิบัติตามกฎเกณฑ์</li>
+          <li>คณะอนุกรรมการพัฒนาเศรษฐกิจฐานรากและความรับผิดชอบต่อสังคมและสิ่งแวดล้อม</li>
+        </ol>
+      </div>
+      <div class="mini-card" style="border-left: 3px solid #22a67e;">
+        <h3 style="color:#6ee0b3">🎯 ตามภารกิจ (3 คณะ)</h3>
+        <ol>
+          <li>คณะอนุกรรมการที่ปรึกษากฎหมาย</li>
+          <li>คณะอนุกรรมการกลั่นกรอง</li>
+          <li>คณะอนุกรรมการบริหารเทคโนโลยีดิจิทัล</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. 9 หมวด ===== -->
+  <section class="section" id="9chapters">
+    <h2>📚 7. หลักเกณฑ์การกำกับดูแลกิจการที่ดี 9 หมวด</h2>
+    <p>อ้างอิงตามประกาศคณะกรรมการนโยบายรัฐวิสาหกิจ เรื่อง การกำกับดูแลกิจการที่ดีในรัฐวิสาหกิจ พ.ศ. 2568 และ พ.ร.บ. การกำกับดูแลและบริหารรัฐวิสาหกิจ พ.ศ. 2562</p>
+    <ol class="chapter-list">
+      <li><strong>หมวด 1</strong> บทบาทของภาครัฐ</li>
+      <li><strong>หมวด 2</strong> สิทธิและความเท่าเทียมกันของผู้ถือหุ้น</li>
+      <li><strong>หมวด 3</strong> คณะกรรมการ</li>
+      <li><strong>หมวด 4</strong> บทบาทของผู้มีส่วนได้ส่วนเสีย</li>
+      <li><strong>หมวด 5</strong> ความยั่งยืนและนวัตกรรม</li>
+      <li><strong>หมวด 6</strong> การเปิดเผยข้อมูล</li>
+      <li><strong>หมวด 7</strong> การบริหารความเสี่ยงและการควบคุมภายใน</li>
+      <li><strong>หมวด 8</strong> จรรยาบรรณ</li>
+      <li><strong>หมวด 9</strong> การติดตามผลการดำเนินงาน</li>
+    </ol>
+    <h3>สาระสำคัญแต่ละหมวด</h3>
+    <div class="grid-2">
+      <div class="mini-card">
+        <h4>หมวด 1 — บทบาทภาครัฐ</h4>
+        <p>ภาครัฐแยกบทบาทกำหนดนโยบาย/กำกับดูแล/ประเมินผล ใช้หลักธรรมาภิบาลการลงทุน (Investment Governance) ในฐานะเจ้าของ</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 2 — สิทธิผู้ถือหุ้น</h4>
+        <p>จัดประชุมใหญ่ภายใน 150 วัน ให้สิทธิ์ผู้ถือหุ้นเสนอชื่อกรรมการ/ส่งคำถามล่วงหน้า ลงมติแยกแต่ละวาระ ใช้เทคโนโลยีในการประชุม</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 3 — คณะกรรมการ</h4>
+        <p>อิสระจากฝ่ายบริหาร มีความหลากหลาย (Board Diversity) เปิดเผยนโยบายค่าตอบแทน Tone at the Top</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 4 — ผู้มีส่วนได้ส่วนเสีย</h4>
+        <p>ดูแล 6 กลุ่ม จัดทำนโยบาย Whistle Blowing เปิดรับข้อร้องเรียน คุ้มครองผู้แจ้งเบาะแส</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 5 — ความยั่งยืนและนวัตกรรม</h4>
+        <p>บูรณาการ ESG + IP Management + Incentive System + Fiscal Support เพื่อสร้างความยั่งยืน</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 6 — การเปิดเผยข้อมูล</h4>
+        <p>เปิดเผยข้อมูลถูกต้อง ครบถ้วน ทันเวลา ทั้งรายงานประจำปี เว็บไซต์ ช่องทางสื่อสาร ปฏิบัติตาม PDPA</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 7 — บริหารความเสี่ยงและควบคุมภายใน</h4>
+        <p>คณะกรรมการกำหนดนโยบาย มี ROC, RMC, AC กำกับดูแล ต่อต้านทุจริตและคอร์รัปชัน</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 8 — จรรยาบรรณ</h4>
+        <p>จัดทำคู่มือจรรยาบรรณ สื่อสารให้พนักงาน/กรรมการ/ผู้บริหาร/ลูกจ้างทุกระดับรับทราบและลงนาม</p>
+      </div>
+      <div class="mini-card">
+        <h4>หมวด 9 — ติดตามผลการดำเนินงาน</h4>
+        <p>ติดตามทั้งด้านการเงินและไม่ใช่การเงิน อย่างน้อย<strong>ไตรมาสละ 1 ครั้ง</strong> มีข้อสังเกต/ข้อเสนอแนะ ติดตามผลสำเร็จ</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. Anti-Bribery ===== -->
+  <section class="section" id="antibribery">
+    <h2>🚫 8. นโยบายต่อต้านการให้หรือรับสินบน (Anti-Bribery Policy)</h2>
+    <p>ธ.ก.ส. มุ่งมั่นต่อต้านการให้/รับสินบนทุกรูปแบบ เพราะเป็นส่วนหนึ่งของการทุจริตคอร์รัปชัน ขัดต่อคุณธรรมจริยธรรม และผิดกฎหมาย ร่วมกับ สำนักงาน ป.ป.ช. ในการสร้างมาตรฐานธุรกิจโปร่งใส</p>
+
+    <h3>📖 คำนิยามสำคัญ</h3>
+    <ul>
+      <li><strong>สินบน (Bribery)</strong> = เงิน ทรัพย์สิน หรือประโยชน์อื่นใด ที่เสนอว่าจะให้/สัญญาว่าจะให้/มอบให้/รับ/ร้องขอ เพื่อจูงใจให้กระทำ/ไม่กระทำการ เพื่อให้ได้มาซึ่งธุรกิจหรือเอื้อประโยชน์ที่ขัดต่อกฎหมาย/หน้าที่/ธรรมเนียมที่เป็นธรรม</li>
+      <li><strong>ของขวัญ</strong> = เงิน/ทรัพย์สิน/ประโยชน์อื่นใดที่ให้เพื่ออัธยาศัยไมตรี รวมถึงรางวัล สิ่งสงเคราะห์ สินน้ำใจ สิทธิพิเศษ ค่าเดินทาง ค่าที่พัก ค่าอาหาร ตั๋ว บัตร</li>
+      <li><strong>ประเพณีนิยม</strong> = เทศกาล/วันสำคัญ เช่น ปีใหม่ สงกรานต์ แสดงความยินดี ขอบคุณ ต้อนรับ เสียใจ ช่วยเหลือตามมารยาทสังคม</li>
+    </ul>
+
+    <h3>📏 แนวปฏิบัติ Code of Conduct</h3>
+    <div class="callout red">
+      <strong>⚠️ กฎ 3,000 บาท:</strong> การให้/รับของขวัญตามประเพณีนิยม แต่ละโอกาสต้องมีมูลค่า<strong>ไม่เกิน 3,000 บาท</strong> และต้องเป็นการรักษามิตรภาพ/น้ำใจ/ความสัมพันธ์อันดี เท่านั้น
+    </div>
+    <ul>
+      <li><strong>การสนับสนุนทางการเมือง:</strong> ธ.ก.ส. เป็นองค์กรกลางทางการเมือง ไม่ช่วยเหลือพรรคการเมืองใดๆ ไม่ว่าทางตรงหรือทางอ้อม</li>
+      <li><strong>การบริจาคกุศล:</strong> ต้องโปร่งใส ถูกกฎหมาย มีหลักฐานชัดเจน ผ่านขั้นตอนอนุมัติ ไม่ใช้เป็นข้ออ้างสำหรับการให้สินบน</li>
+      <li><strong>ธ.ก.ส. ไม่เรียกร้อง/ร้องขอ</strong> สิ่งของหรือประโยชน์ใดๆ กับบุคคลที่เกี่ยวข้อง</li>
+      <li><strong>คุ้มครองพนักงานที่ปฏิเสธ</strong> — จะไม่ลงโทษหรือให้ผลลบ แม้การปฏิเสธจะทำให้ ธ.ก.ส. สูญเสียโอกาสทางธุรกิจ</li>
+      <li><strong>Role Model:</strong> ผู้บริหารสูงสุดและทุกระดับต้องปฏิบัติตนเป็นแบบอย่างที่ดี</li>
+      <li><strong>ครอบคลุม HR:</strong> ตั้งแต่การสรรหา คัดเลือก ฝึกอบรม เลื่อนตำแหน่ง ประเมินผล</li>
+      <li><strong>พบเห็นการฝ่าฝืน:</strong> ต้องไม่ละเลย ให้แจ้งตาม Whistle Blowing Policy</li>
+    </ul>
+  </section>
+
+  <!-- ===== 9. Whistle Blowing ===== -->
+  <section class="section" id="whistle">
+    <h2>📣 9. การแจ้งเบาะแสการกระทำผิด (Whistle Blowing)</h2>
+    <p>ธ.ก.ส. เปิดรับการแจ้งเบาะแสการกระทำผิด เพื่อแสดงความมุ่งมั่นในการบริหารงานโปร่งใส สุจริต เป็นธรรม และสร้างวัฒนธรรมองค์กรที่ปราศจากการทุจริตทุกรูปแบบ</p>
+
+    <h3>🎯 วัตถุประสงค์ 4 ข้อ</h3>
+    <ol>
+      <li>สร้างวัฒนธรรมองค์กรปราศจากการทุจริต ให้ทุกคนมีส่วนร่วมแสดงความไม่เห็นด้วยต่อการกระทำที่น่าสงสัย</li>
+      <li>ป้องปรามและปราบปรามการทุจริตทุกรูปแบบอย่างจริงจัง</li>
+      <li>คุ้มครองผู้แจ้งเบาะแสด้วยความเป็นธรรม ปลอดภัยจากการคุกคาม ข่มขู่ กลั่นแกล้ง เปลี่ยนตำแหน่ง พักงาน ไล่ออก</li>
+      <li>ให้การพิจารณาเรื่องแจ้งเบาะแสเป็นไปอย่างโปร่งใส ยุติธรรม มีช่องทางที่ปลอดภัย รักษาข้อมูลเป็นความลับ</li>
+    </ol>
+
+    <h3>⚖️ ลักษณะการกระทำผิดที่รับแจ้ง</h3>
+    <ol>
+      <li>การทุจริตต่อหน้าที่</li>
+      <li>การใช้อำนาจในตำแหน่งโดยมิชอบ เพื่อให้ได้มาซึ่งทรัพย์สิน/ประโยชน์</li>
+      <li>การเรียกรับ/ยอมรับทรัพย์สินโดยผิดกฎหมาย</li>
+      <li>การไม่ปฏิบัติตามกฎหมาย กฎ ระเบียบ ข้อบังคับ</li>
+      <li>การปฏิบัติไม่ถูกต้องตามจริยธรรมและจรรยาบรรณ</li>
+      <li>การละเว้นการปฏิบัติหน้าที่โดยมิชอบ</li>
+      <li>การใช้ทรัพย์สิน/สิ่งอำนวยความสะดวกโดยไม่ได้รับอนุญาต</li>
+      <li>การเปิดเผยข้อมูล ธ.ก.ส. โดยมิได้รับอนุญาต</li>
+      <li>การไม่รายงานความขัดแย้งทางผลประโยชน์</li>
+    </ol>
+
+    <h3>📬 ช่องทางการแจ้งเบาะแส (7 ช่องทาง)</h3>
+    <table>
+      <thead><tr><th>ช่องทาง</th><th>รายละเอียด</th></tr></thead>
+      <tbody>
+        <tr><td>📮 จดหมาย</td><td>ธ.ก.ส. เลขที่ 48/8 หมู่ 18 ถ.ประชาชื่น แขวงลาดยาว เขตจตุจักร กทม. 10900</td></tr>
+        <tr><td>📧 E-Mail</td><td><strong>fraud@baac.or.th</strong></td></tr>
+        <tr><td>📞 โทรศัพท์</td><td><strong>02-558-6444, 02-587-9254</strong></td></tr>
+        <tr><td>🌐 Website</td><td>https://www.baac.or.th/th/content-whistleblowing.php</td></tr>
+        <tr><td>💬 Social Media</td><td>Line ID: <strong>@fraudbaac</strong></td></tr>
+        <tr><td>📞 VOC</td><td>ระบบการรับฟังเสียงของลูกค้า (Voice of Customer)</td></tr>
+        <tr><td>🚶 Walk-in</td><td>มาแจ้งด้วยตนเอง</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🛡️ มาตรการคุ้มครองผู้แจ้งเบาะแส</h3>
+    <ul>
+      <li>ผู้แจ้งสามารถ<strong>ไม่เปิดเผยตนเอง</strong>ได้ หากเห็นว่าจะเกิดความไม่ปลอดภัย</li>
+      <li>ธ.ก.ส. จะ<strong>ไม่เปิดเผยชื่อ/ข้อมูล</strong>ที่ทำให้ทราบตัวผู้แจ้ง เว้นแต่ผู้มีอำนาจตามกฎหมายร้องขอ หรือผู้แจ้งยินยอม</li>
+      <li><strong>ปกป้อง</strong>มิให้ถูกข่มขู่ คุกคาม กลั่นแกล้ง เปลี่ยนแปลงตำแหน่ง/ลักษณะงาน/สถานที่ทำงาน/พักงาน/ไล่ออก</li>
+      <li>ห้ามลงโทษหรือให้ผลลบต่อผู้แจ้งเบาะแส</li>
+    </ul>
+  </section>
+
+  <!-- ===== 10. ผู้มีส่วนได้ส่วนเสีย ===== -->
+  <section class="section" id="stakeholders">
+    <h2>🤝 10. ผู้มีส่วนได้ส่วนเสีย 6 กลุ่ม + แนวปฏิบัติ</h2>
+    <div class="grid-3">
+      <div class="mini-card">
+        <h4>1️⃣ พนักงาน/ลูกจ้าง ธ.ก.ส.</h4>
+        <p>ปฏิบัติตามกฎหมาย มาตรฐานด้านแรงงาน เคารพสิทธิมนุษยชน โปร่งใส ตรวจสอบได้</p>
+      </div>
+      <div class="mini-card">
+        <h4>2️⃣ ลูกค้า/ผู้ใช้บริการ</h4>
+        <p>ยึดมาตรฐานจริยธรรม ความรับผิดชอบ โปร่งใส เป็นธรรม บนพื้นฐานจริยธรรมทางธุรกิจ</p>
+      </div>
+      <div class="mini-card">
+        <h4>3️⃣ ผู้ส่งมอบ</h4>
+        <p>กระบวนการจัดซื้อจัดจ้างและสัญญาที่เป็นธรรม ปฏิบัติตามนโยบายอย่างเคร่งครัด</p>
+      </div>
+      <div class="mini-card">
+        <h4>4️⃣ คู่ค้า/คู่ความร่วมมือ</h4>
+        <p>มีข้อตกลงที่เป็นธรรม กำหนดระยะเวลา บทบาท ผลประโยชน์ชัดเจน</p>
+      </div>
+      <div class="mini-card">
+        <h4>5️⃣ หน่วยงานกำกับ/คณะกรรมการ/ผู้ถือหุ้น</h4>
+        <p>ปฏิบัติตามกฎหมาย ดำเนินการตาม SODs (Statement of Directions)</p>
+      </div>
+      <div class="mini-card">
+        <h4>6️⃣ ชุมชน/สังคม</h4>
+        <p>คำนึงผลกระทบเชิงลบ/บวก พัฒนาชุมชนและสิ่งแวดล้อม</p>
+      </div>
+    </div>
+    <h3>แนวปฏิบัติเพิ่มเติม 2 ข้อ</h3>
+    <ul>
+      <li><strong>การแข่งขันอย่างเป็นธรรม</strong> — ประกอบธุรกิจเปิดเผย โปร่งใส ไม่สร้างความได้เปรียบอย่างไม่เป็นธรรม</li>
+      <li><strong>การต่อต้านทุจริตและคอร์รัปชัน</strong> — ปฏิบัติตามนโยบายป้องกันและปราบปรามการทุจริต, AML/CFT, Anti-Bribery, Conflict of Interest</li>
+    </ul>
+  </section>
+
+  <!-- ===== 11. จุดดักข้อสอบ ===== -->
   <section class="section" id="exam">
-    <h2>🚨 6. จุดดักข้อสอบและแนวถามวิเคราะห์</h2>
+    <h2>🚨 11. จุดดักข้อสอบและแนวถามวิเคราะห์</h2>
     <div class="exam-traps">
       <div class="trap">
-        <h3>Conflict of Interest</h3>
-        <p>ถ้าพนักงานหรือผู้บริหารมีส่วนได้ส่วนเสียกับลูกค้า คู่ค้า หรือผู้รับเหมา ต้องเปิดเผยและแจ้งให้ธนาคารทราบทันที การปกปิดเป็นการละเมิดหลัก CG</p>
+        <h3>บัญญัติ 9 ประการ — โทษสถานเดียวคือ "ไล่ออก"</h3>
+        <p>ถ้าโจทย์ถามว่าเมื่อพนักงาน ธ.ก.ส. ทุจริต จะถูกลงโทษอย่างไร → ตอบ <strong>"ไล่ออก" สถานเดียว</strong> ไม่ใช่ตักเตือน ภาคทัณฑ์ หรือพักงาน</p>
       </div>
       <div class="trap">
-        <h3>No Gift Policy</h3>
-        <p>ระวังโจทย์ของขวัญจากลูกค้า ลูกน้อง หรือคู่ค้า โดยเฉพาะกรณีไม่ใช่เทศกาลประเพณี หรือมีมูลค่าเกินเกณฑ์ที่ระเบียบกำหนด อย่าเลือกตอบแบบ “รับไว้ก่อน”</p>
+        <h3>SPARK & HEART ต้องจำให้ได้</h3>
+        <p>SPARK 5 ข้อ: <strong>S</strong>ustainability & Good Governance, <strong>P</strong>rofessionalism, <strong>A</strong>ccountability, <strong>R</strong>espect, <strong>K</strong>nowledge / HEART 5 ข้อ: <strong>H</strong>umility, <strong>E</strong>quity, <strong>A</strong>rt of Hearing, <strong>R</strong>esponsibility, <strong>T</strong>eamwork</p>
       </div>
       <div class="trap">
-        <h3>Integrity Test</h3>
-        <p>ถ้าลูกค้ารายใหญ่หรือผู้มีอิทธิพลขอให้ลัดขั้นตอน คำตอบที่ถูกคือยึดระเบียบ โปร่งใส ตรวจสอบได้ และอธิบายเหตุผลอย่างสุภาพ</p>
+        <h3>Anti-Bribery — กฎ 3,000 บาท</h3>
+        <p>ของขวัญตามประเพณีนิยม <strong>ไม่เกิน 3,000 บาท/โอกาส</strong> และต้องเป็นการรักษามิตรภาพเท่านั้น หากเกินต้องปฏิเสธ</p>
       </div>
       <div class="trap">
-        <h3>Board Independence</h3>
-        <p>คณะกรรมการต้องมีความเป็นอิสระจากฝ่ายบริหาร เพื่อกำกับ ตรวจสอบ และถ่วงดุลได้อย่างมีประสิทธิภาพ</p>
+        <h3>Whistle Blowing — แจ้งใคร</h3>
+        <p>กรรมการ → แจ้ง<strong>ประธานกรรมการ ธ.ก.ส.</strong> / ผู้จัดการ → แจ้ง<strong>ROC</strong> / พนักงาน/ลูกจ้าง → แจ้ง<strong>ผู้จัดการหรือผู้ช่วยผู้จัดการสายกำกับการปฏิบัติงาน</strong></p>
+      </div>
+      <div class="trap">
+        <h3>Whistle Blowing — ช่องทาง</h3>
+        <p>จำให้ขึ้นใจ: <strong>fraud@baac.or.th</strong>, Line <strong>@fraudbaac</strong>, โทร <strong>02-558-6444</strong> / 02-587-9254</p>
+      </div>
+      <div class="trap">
+        <h3>คณะกรรมการตามกฎหมาย 5 คณะ</h3>
+        <p>AC, ROC, กิจการสัมพันธ์, ประเมินผลผู้จัดการ, สรรหาและกำหนดค่าตอบแทน — รวมแล้ว 12 คณะ (5+4+3)</p>
+      </div>
+      <div class="trap">
+        <h3>หมวด 9 — ติดตามผล "ไตรมาสละ 1 ครั้ง"</h3>
+        <p>คณะกรรมการต้องติดตามผลทั้งการเงินและไม่ใช่การเงิน <strong>อย่างน้อยไตรมาสละ 1 ครั้ง</strong> พร้อมข้อสังเกต/ข้อเสนอแนะ</p>
+      </div>
+      <div class="trap">
+        <h3>ค่านิยม SPARK เริ่มต้นด้วยตัว S = Sustainability</h3>
+        <p>ถ้าโจทย์ถามลำดับ SPARK = <strong>S</strong>ustainability, <strong>P</strong>rofessionalism, <strong>A</strong>ccountability, <strong>R</strong>espect, <strong>K</strong>nowledge — ตัว K อยู่ท้าย ไม่ใช่ตัวแรก</p>
+      </div>
+      <div class="trap">
+        <h3>ผู้มีส่วนได้ส่วนเสีย = 6 กลุ่ม</h3>
+        <p>พนักงาน/ลูกค้า/ผู้ส่งมอบ/คู่ค้า/หน่วยกำกับ-ผู้ถือหุ้น/ชุมชน — ไม่ใช่ 5 กลุ่ม และไม่ใช่ 7 กลุ่ม</p>
       </div>
     </div>
     <div class="callout red">
-      <strong>คาถาเข้าห้องสอบ:</strong> กฎระเบียบมาก่อนความเกรงใจ และถ้าเป็นเรื่องจริยธรรมให้ตอบทางเลือกที่โปร่งใส ตรวจสอบได้ ไม่ลัดขั้นตอน
+      <strong>คาถาเข้าห้องสอบ:</strong> กฎระเบียบมาก่อนความเกรงใจ ถ้าเป็นเรื่องจริยธรรมให้ตอบทางเลือกที่โปร่งใส ตรวจสอบได้ ไม่ลัดขั้นตอน และจำตัวเลขสำคัญ: <strong>9 บัญญัติ, SPARK/HEART 5 ข้อ, 12 คณะ, 9 หมวด, 6 กลุ่มผู้มีส่วนได้ส่วนเสีย, 3,000 บาท</strong>
     </div>
     <div class="keyword-row">
-      <span class="keyword">CG</span>
-      <span class="keyword">GRC</span>
+      <span class="keyword gold">CG</span>
+      <span class="keyword gold">GRC</span>
+      <span class="keyword gold">SPARK</span>
+      <span class="keyword gold">HEART</span>
+      <span class="keyword gold">บัญญัติ 9 ประการ</span>
       <span class="keyword">Tone at the Top</span>
       <span class="keyword">No Gift Policy</span>
       <span class="keyword">Conflict of Interest</span>
-      <span class="keyword">Fraud Risk</span>
+      <span class="keyword green">Anti-Bribery</span>
+      <span class="keyword green">Whistle Blowing</span>
+      <span class="keyword red">fraud@baac.or.th</span>
+      <span class="keyword red">@fraudbaac</span>
+      <span class="keyword">3,000 บาท</span>
     </div>
+
+    <a href="corporate-governance-quiz.html" class="quiz-btn" style="display:block; text-align:center; margin-top: 28px;">📝 ทำแบบทดสอบ CG 30 ข้อ →</a>
   </section>
 
-  <p class="footer-note">แหล่งสังเคราะห์: NotebookLM - Banking Operations and Cash Management Manual · จัดรูปแบบสำหรับ Genius 9</p>
+  <p class="footer-note">แหล่งอ้างอิง: <strong>คู่มือการกำกับดูแลกิจการที่ดี ปีบัญชี 2569</strong> สำนักส่งเสริมธรรมาภิบาลและกำกับการปฏิบัติตามกฎเกณฑ์ ธ.ก.ส. · จัดรูปแบบสำหรับ Genius 9</p>
 </main>
 <script src="study-ui.js" defer></script>
 </body>
