@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📜 พ.ร.บ. ธ.ก.ส. พ.ศ. 2509 — สรุปเนื้อหา + ข้อสอบ | ผช.ผจข.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0d1425;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --surface3: #22324f;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --gold-dim: rgba(212,148,47,0.12);
+  --gold-soft: rgba(212,148,47,0.06);
+  --green: #22a67e;
+  --green-dim: rgba(34,166,126,0.12);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75,123,236,0.10);
+  --purple: #9772e6;
+  --purple-dim: rgba(151,114,230,0.10);
+  --red: #e55c5c;
+  --red-dim: rgba(229,92,92,0.10);
+  --cyan: #36b5c4;
+  --cyan-dim: rgba(54,181,196,0.10);
+  --orange: #f09b3a;
+  --orange-dim: rgba(240,155,58,0.10);
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --glow: 0 0 60px rgba(212,148,47,0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 40%, rgba(212,148,47,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 85% 20%, rgba(75,123,236,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(151,114,230,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  background: rgba(7,11,20,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; z-index: 100;
+}
+.top-nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text2); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  padding: 6px 14px; border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.top-nav a:hover { color: var(--gold2); background: var(--gold-dim); }
+.top-nav .logo { color: var(--gold2); font-weight: 700; font-size: 0.9rem; }
+.top-nav .logo small { font-weight: 400; font-size: 0.75rem; color: var(--text3); }
+.top-nav .nav-links { display: flex; gap: 4px; }
+.top-nav .nav-links a { font-size: 0.8rem; }
+.top-nav .nav-links a.active { color: var(--gold2); background: var(--gold-dim); }
+
+/* ===== MAIN ===== */
+.container {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto; padding: 80px 20px 120px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center; padding: 48px 0 40px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 14px; border-radius: 100px;
+  background: var(--gold-dim); color: var(--gold2);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3px;
+  margin-bottom: 16px; border: 1px solid rgba(212,148,47,0.25);
+}
+.hero h1 {
+  font-size: clamp(28px,5vw,44px); font-weight: 700; line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--gold2); }
+.hero p {
+  color: var(--text2); font-size: 0.95rem; max-width: 640px; margin: 0 auto;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 24px;
+  margin-top: 20px; font-size: 0.8rem; color: var(--text3);
+  flex-wrap: wrap;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ===== SECTION ===== */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.section-title .icon {
+  width: 30px; height: 30px; border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  background: var(--gold-dim); color: var(--gold2); flex-shrink: 0;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: all 0.2s;
+}
+.card:hover { border-color: rgba(212,148,47,0.2); }
+.card-title {
+  font-size: 1rem; font-weight: 600;
+  margin-bottom: 8px; color: var(--text);
+}
+.card-title .sub {
+  font-weight: 400; font-size: 0.8rem; color: var(--text3);
+  display: block; margin-top: 2px;
+}
+.card p, .card li { font-size: 0.88rem; color: var(--text2); line-height: 1.8; }
+.card ul, .card ol { padding-left: 18px; margin-top: 6px; }
+.card li { margin-bottom: 4px; }
+.card li strong { color: var(--text); }
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-block; padding: 1px 10px; border-radius: 100px;
+  font-size: 0.7rem; font-weight: 600; margin-right: 4px;
+}
+.tag-gold  { background: var(--gold-dim); color: var(--gold2); }
+.tag-red   { background: var(--red-dim); color: var(--red); }
+.tag-green { background: var(--green-dim); color: var(--green); }
+.tag-blue  { background: var(--blue-dim); color: var(--blue); }
+.tag-purple{ background: var(--purple-dim); color: var(--purple); }
+.tag-cyan  { background: var(--cyan-dim); color: var(--cyan); }
+.tag-orange{ background: var(--orange-dim); color: var(--orange); }
+
+/* ===== ALERT CARD ===== */
+.card-alert { border-left: 3px solid var(--red); }
+.card-warn  { border-left: 3px solid var(--orange); }
+.card-info  { border-left: 3px solid var(--blue); }
+.card-success{ border-left: 3px solid var(--green); }
+.card-aml-red { border-left: 3px solid var(--red); background: var(--red-dim); }
+.card-aml-red .card-title { color: var(--red); }
+
+/* ===== HIGHLIGHT ===== */
+.hl-gold { color: var(--gold2); font-weight: 600; }
+.hl-red  { color: var(--red); font-weight: 600; }
+.hl-green{ color: var(--green); font-weight: 600; }
+.hl-blue { color: var(--blue); font-weight: 600; }
+
+/* ===== FORM TABLE (for reports) ===== */
+.form-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.form-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.form-item:hover { border-color: rgba(212,148,47,0.15); }
+.form-icon {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.form-body { flex: 1; }
+.form-body .f-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.form-body .f-detail { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+.form-body .f-threshold { display: inline-block; margin-top: 4px; font-size: 0.78rem; }
+
+/* ===== PROCESS FLOW ===== */
+.process-flow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin: 14px 0; flex-wrap: wrap;
+}
+.process-step {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px 16px;
+  text-align: center; min-width: 100px;
+}
+.process-step .step-num { font-size: 0.7rem; color: var(--gold2); font-weight: 600; }
+.process-step .step-name { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+.process-step .step-desc { font-size: 0.75rem; color: var(--text3); }
+.process-arrow { color: var(--text3); font-size: 1.1rem; }
+
+/* ===== DIVIDER ===== */
+.divider {
+  border: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 40px 0;
+}
+
+/* ===== QUIZ ===== */
+.quiz-intro {
+  background: linear-gradient(135deg, var(--surface), var(--bg2));
+  border: 1px solid rgba(212,148,47,0.2);
+  border-radius: var(--radius);
+  padding: 20px 22px; margin-bottom: 24px; text-align: center;
+}
+.quiz-intro h2 { font-size: 1.3rem; color: var(--gold2); margin-bottom: 4px; }
+.quiz-intro p { font-size: 0.85rem; color: var(--text2); }
+
+.q-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 20px;
+  transition: all 0.2s;
+}
+.q-card:hover { border-color: rgba(212,148,47,0.25); }
+.q-num {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 2px 12px; border-radius: 100px;
+  background: var(--gold-dim); color: var(--gold2);
+  font-size: 0.75rem; font-weight: 600; margin-bottom: 10px;
+}
+.q-text {
+  font-size: 0.95rem; font-weight: 500; line-height: 1.7;
+  margin-bottom: 12px; color: var(--text);
+}
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg2);
+  font-size: 0.85rem; line-height: 1.6; cursor: pointer;
+  transition: all 0.2s; color: var(--text2);
+}
+.q-opt:hover {
+  border-color: var(--gold); background: var(--gold-soft); color: var(--text);
+}
+.q-opt .letter {
+  flex-shrink: 0; width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 0.75rem; font-weight: 600; color: var(--text3);
+  transition: all 0.2s;
+}
+.q-opt:hover .letter {
+  background: var(--gold-dim); border-color: var(--gold); color: var(--gold2);
+}
+.q-opt.correct {
+  border-color: var(--green) !important; background: var(--green-dim) !important;
+}
+.q-opt.correct .letter {
+  background: var(--green) !important; border-color: var(--green) !important;
+  color: #fff !important;
+}
+.q-opt.wrong {
+  border-color: var(--red) !important; background: var(--red-dim) !important;
+}
+.q-opt.wrong .letter {
+  background: var(--red) !important; border-color: var(--red) !important;
+  color: #fff !important;
+}
+
+.answer-reveal {
+  display: none; margin-top: 12px;
+  padding: 14px 16px; border-radius: var(--radius-sm);
+  background: var(--bg2); border-left: 3px solid var(--gold);
+}
+.answer-reveal.show { display: block; }
+.answer-reveal .a-label { font-weight: 600; color: var(--gold2); margin-bottom: 4px; font-size: 0.9rem; }
+.answer-reveal .a-ref { font-size: 0.78rem; color: var(--text3); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.answer-reveal p { font-size: 0.84rem; color: var(--text2); line-height: 1.7; }
+
+.btn-check {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding: 6px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--gold); background: transparent;
+  color: var(--gold2); font-size: 0.8rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.btn-check:hover { background: var(--gold-dim); color: var(--text); }
+
+/* ===== FLOATING BACK ===== */
+.float-back {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text2); text-decoration: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: all 0.2s; font-family: inherit; font-size: 0.85rem;
+}
+.float-back:hover {
+  border-color: var(--gold); color: var(--gold2); background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .container { padding: 72px 14px 100px; }
+  .top-nav { padding: 0 10px; }
+  .top-nav .logo { font-size: 0.8rem; }
+  .top-nav .nav-links a { padding: 4px 8px; font-size: 0.72rem; }
+  .hero-meta { gap: 12px; flex-direction: column; align-items: center; }
+  .card { padding: 16px; }
+  .process-flow { flex-direction: column; }
+  .process-arrow { transform: rotate(90deg); }
+  .form-item { flex-direction: column; }
+  .float-back { bottom: 14px; right: 14px; padding: 8px 14px; font-size: 0.8rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  .top-nav, .float-back { display: none; }
+  body { background: #fff; color: #111; }
+  .card, .q-card, .quiz-intro { border-color: #ccc; background: #f9f9f9; }
+  .q-opt { border-color: #ddd; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="top-nav">
+  <a href="index.html" class="logo">📜 พ.ร.บ. ธ.ก.ส. <small>2509</small></a>
+  <div class="nav-links">
+    <a href="#content">เนื้อหา</a>
+    <a href="#exam">ข้อสอบ</a>
+    <a href="c9-content.html">📚 Master</a>
+    <a href="index.html">← หน้าหลัก</a>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="container">
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-badge">🏛️ กฎหมายแม่ของ ธ.ก.ส.</div>
+    <h1>พระราชบัญญัติ ธ.ก.ส.<br><span>พ.ศ. 2509 (แก้ไขถึง ฉบับที่ 7 พ.ศ. 2550)</span></h1>
+    <p>สรุปเนื้อหา <strong>10 หมวด</strong> — การจัดตั้ง วัตถุประสงค์ คณะกรรมการ การให้กู้ การเงิน บทเบ็ดเสร็จ พร้อม <strong>ข้อสอบใหม่ 25 ข้อ</strong> อ้างอิงมาตราและเฉลยอธิบาย</p>
+    <div class="hero-meta">
+      <span>📘 10 หมวด / 43 มาตรา</span>
+      <span>✍️ 25 ข้อสอบใหม่</span>
+      <span>📊 Cheat Sheet ตัวเลขจำง่าย</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--  CONTENT  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section id="content">
+
+    <!-- ══════ หมวด 0: ภาพรวม ══════ -->
+    <div class="section" id="s0">
+      <h2 class="section-title"><span class="icon">🗺️</span> 0. ภาพรวม พ.ร.บ. ธ.ก.ส. — แผนที่จำง่าย</h2>
+
+      <div class="card">
+        <div class="card-title">📍 พ.ร.บ. ธ.ก.ส. คืออะไร?</div>
+        <p>คือ <span class="hl-gold">"กฎหมายแม่"</span> ที่ให้อำนาจ ธ.ก.ส. ดำเนินกิจการ ประกาศใช้เมื่อ <strong>พ.ศ. 2509</strong> และมีการแก้ไขเพิ่มเติมถึง <strong>ฉบับที่ 7 พ.ศ. 2550</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 โครงสร้าง 10 หมวด</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>หมวด</th><th>เรื่อง</th><th>มาตราสำคัญ</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>การจัดตั้ง</td><td>ม. 5-8</td></tr>
+            <tr><td><strong>2</strong></td><td>วัตถุประสงค์</td><td>ม. 9-11</td></tr>
+            <tr><td><strong>3</strong></td><td>การกำกับและการจัดการ</td><td>ม. 12-26</td></tr>
+            <tr><td><strong>4-5</strong></td><td>ประชุมใหญ่ + การให้กู้</td><td>ม. 27-32</td></tr>
+            <tr><td><strong>6-10</strong></td><td>การเงิน + บทเบ็ดเสร็จ</td><td>ม. 33-43</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout" style="margin-top:14px">
+          💡 <strong>เคล็ดลับจำ:</strong> "ตั้ง-ตน-กำกับ-ประชุม-กู้-เงิน-จบ" → จัดตั้ง → วัตถุประสงค์/อำนาจ → กำกับ/จัดการ → ประชุมใหญ่ → การให้กู้ → การเงิน → บทเบ็ดเสร็จ
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📊 Cheat Sheet ตัวเลขจำง่าย</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ตัวเลข</th><th>ความหมาย</th></tr></thead>
+          <tbody>
+            <tr><td><strong>4,000 ล้าน</strong></td><td>ทุนเรือนหุ้นเริ่มต้น</td></tr>
+            <tr><td><strong>40 ล้านหุ้น / 100 บาท</strong></td><td>จำนวนหุ้น / มูลค่าหุ้นละ</td></tr>
+            <tr><td><strong>75%</strong></td><td>กระทรวงการคลังถือหุ้นขั้นต่ำ</td></tr>
+            <tr><td><strong>5%</strong></td><td>บุคคลทั่วไปถือหุ้นสูงสุด</td></tr>
+            <tr><td><strong>20%</strong></td><td>สัดส่วนเงินกู้ ม. 9(1) ค, ง</td></tr>
+            <tr><td><strong>12 คน</strong></td><td>กรรมการสูงสุด (ที่ ครม. แต่งตั้ง)</td></tr>
+            <tr><td><strong>3 ปี</strong></td><td>วาระกรรมการ</td></tr>
+            <tr><td><strong>150 วัน</strong></td><td>ประชุมใหญ่ / งบดุล</td></tr>
+            <tr><td><strong>20 คน + 1/4</strong></td><td>องค์ประชุม (คน + หุ้น)</td></tr>
+            <tr><td><strong>1 ปี / 2,000 บาท</strong></td><td>โทษจำคุก/ปรับ ม. 32</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- ══════ หมวด 1: จัดตั้ง ══════ -->
+    <div class="section" id="s1">
+      <h2 class="section-title"><span class="icon">🏛️</span> 1. การจัดตั้ง (ม. 5-8)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 5 — จัดตั้งธนาคาร</div>
+        <p>"ให้จัดตั้งธนาคารขึ้นเรียกว่า <span class="hl-gold">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร</span> (ธ.ก.ส.) ให้ธนาคารนี้เป็น <strong>นิติบุคคล</strong>"</p>
+        <p style="margin-top:8px"><strong>จุดสำคัญ:</strong> ธ.ก.ส. = นิติบุคคล (แยกตัวออกจากกระทรวงการคลัง) — มีสิทธิฟ้องร้อง/ถูกฟ้องร้องได้</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 6 — สำนักงาน/สาขา</div>
+        <ul>
+          <li>ตั้ง <strong>สำนักงานใหญ่</strong> ในกรุงเทพฯ <strong>หรือจังหวัดอื่น</strong></li>
+          <li>ตั้ง <strong>สาขา/ตัวแทน</strong> ได้ทั้งในและนอกราชอาณาจักร</li>
+          <li>⚠️ <span class="hl-red">ตั้งนอกราชอาณาจักร ต้องได้รับอนุมัติจากรัฐมนตรีก่อน</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 7 — ทุนเรือนหุ้น</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>หัวข้อ</th><th>รายละเอียด</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ทุนเริ่มต้น</strong></td><td>4,000 ล้านบาท</td></tr>
+            <tr><td><strong>จำนวนหุ้น</strong></td><td>40 ล้านหุ้น</td></tr>
+            <tr><td><strong>มูลค่าหุ้นละ</strong></td><td>100 บาท</td></tr>
+            <tr><td><strong>กระทรวงการคลังถือหุ้น</strong></td><td>ไม่น้อยกว่าร้อยละ 75</td></tr>
+            <tr><td><strong>บุคคลทั่วไปถือหุ้น</strong></td><td>ไม่เกินร้อยละ 5</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout" style="margin-top:12px">
+          📌 <strong>ปัจจุบัน (31 มี.ค. 68):</strong> 800,000,000 หุ้น × 100 บาท = <strong>80,000 ล้านบาท</strong> | กระทรวงการคลังถือ <strong>99.79%</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 7 ทวิ — การเพิ่มทุน</div>
+        <p>"ธนาคารมีความจำเป็นต้องเพิ่มทุนเรือนหุ้น → ขอเพิ่มทุนได้อีกเป็น <strong>คราวๆ</strong> โดยขออนุมัติ <span class="hl-gold">คณะรัฐมนตรี (ครม.)</span>"</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 8 — ความรับผิด</div>
+        <p>ผู้ถือหุ้นรับผิด <strong>จำกัดเพียงมูลค่าหุ้นที่ถือ</strong> (Limited Liability)</p>
+      </div>
+    </div>
+
+    <!-- ══════ หมวด 2: วัตถุประสงค์ ══════ -->
+    <div class="section" id="s2">
+      <h2 class="section-title"><span class="icon">🎯</span> 2. วัตถุประสงค์ (ม. 9-11)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 9 — วัตถุประสงค์ 4 ข้อ (หัวใจของ พ.ร.บ.)</div>
+        <div class="callout">
+          💡 <strong>จำง่าย: "ช่วย-ส่งเสริม-พัฒนา-สหกรณ์"</strong>
+        </div>
+        <div class="table-wrap" style="margin-top:12px"><table>
+          <thead><tr><th>ข้อ</th><th>วัตถุประสงค์</th></tr></thead>
+          <tbody>
+            <tr><td><strong>(1)</strong></td><td><strong>ช่วยเหลือทางการเงิน</strong>แก่เกษตรกร/กลุ่มเกษตรกร/สหกรณ์การเกษตร เพื่อ (ก) ประกอบอาชีพเกษตรกรรม (ข) ประกอบอาชีพอื่นเพิ่มรายได้ (ค) พัฒนาความรู้/คุณภาพชีวิต (ง) โครงการส่งเสริมเกษตรกรรม</td></tr>
+            <tr><td><strong>(2)</strong></td><td><strong>ส่งเสริมเกษตรกรรม</strong> — ประกอบธุรกิจอื่นอันเป็นการส่งเสริม/สนับสนุนการประกอบเกษตรกรรม</td></tr>
+            <tr><td><strong>(3)</strong></td><td><strong>พัฒนาชนบท</strong> — เป็นสถาบันการเงินเพื่อพัฒนาชนบท ช่วยบุคคล กลุ่มบุคคล ผู้ประกอบการ กองทุนหมู่บ้าน/ชุมชน องค์กรสนับสนุนอาชีพเกษตรกร</td></tr>
+            <tr><td><strong>(4)</strong></td><td><strong>ช่วยเหลือสหกรณ์</strong> — ให้ความช่วยเหลือทางการเงินแก่สหกรณ์ ภายใต้ขอบเขตวัตถุประสงค์การจัดตั้งสหกรณ์</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 10 — อำนาจกระทำกิจการ (17 ข้อ)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ข้อ</th><th>อำนาจ</th></tr></thead>
+          <tbody>
+            <tr><td>(1)</td><td><span class="hl-gold">ให้กู้เงิน</span> เพื่อวัตถุประสงค์ ม. 9</td></tr>
+            <tr><td>(2)</td><td>ค้ำประกัน ตามข้อบังคับ</td></tr>
+            <tr><td>(3)</td><td>จัดหาเงินทุน</td></tr>
+            <tr><td>(4)</td><td>จัดให้ได้มา/ถือกรรมสิทธิ์/ทรัพยสิทธิ/ครอบครอง</td></tr>
+            <tr><td>(5)</td><td><strong>รับฝากเงิน</strong> จ่ายคืนเมื่อทวงถามหรือครบกำหนด</td></tr>
+            <tr><td>(6)</td><td>ให้กู้/ออกหนังสือค้ำประกันแก่ผู้ฝากเงิน</td></tr>
+            <tr><td>(7)</td><td>ออก ซื้อ ขายตั๋วเงินหรือ
+<section id="content">
+
+    <!-- section 0: overview -->
+    <div class="section" id="s0">
+      <h2 class="section-title"><span class="icon">🗺️</span> 0. ภาพรวม พ.ร.บ. ธ.ก.ส. — แผนที่จำง่าย</h2>
+
+      <div class="card">
+        <div class="card-title">📍 พ.ร.บ. ธ.ก.ส. คืออะไร?</div>
+        <p>คือ <span class="hl-gold">"กฎหมายแม่"</span> ที่ให้อำนาจ ธ.ก.ส. ดำเนินกิจการ ประกาศใช้เมื่อ <strong>พ.ศ. 2509</strong> และมีการแก้ไขเพิ่มเติมถึง <strong>ฉบับที่ 7 พ.ศ. 2550</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 โครงสร้าง 10 หมวด</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>หมวด</th><th>เรื่อง</th><th>มาตราสำคัญ</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>การจัดตั้ง</td><td>ม. 5-8</td></tr>
+            <tr><td><strong>2</strong></td><td>วัตถุประสงค์</td><td>ม. 9-11</td></tr>
+            <tr><td><strong>3</strong></td><td>การกำกับและการจัดการ</td><td>ม. 12-26</td></tr>
+            <tr><td><strong>4-5</strong></td><td>ประชุมใหญ่ + การให้กู้</td><td>ม. 27-32</td></tr>
+            <tr><td><strong>6-10</strong></td><td>การเงิน + บทเบ็ดเสร็จ</td><td>ม. 33-43</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout" style="margin-top:14px">
+          💡 <strong>เคล็ดลับจำ:</strong> "ตั้ง-ตน-กำกับ-ประชุม-กู้-เงิน-จบ"
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📊 Cheat Sheet ตัวเลขจำง่าย</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ตัวเลข</th><th>ความหมาย</th></tr></thead>
+          <tbody>
+            <tr><td><strong>4,000 ล้าน</strong></td><td>ทุนเรือนหุ้นเริ่มต้น</td></tr>
+            <tr><td><strong>40 ล้าน / 100 บาท</strong></td><td>จำนวนหุ้น / มูลค่าหุ้นละ</td></tr>
+            <tr><td><strong>75%</strong></td><td>กระทรวงการคลังถือหุ้นขั้นต่ำ</td></tr>
+            <tr><td><strong>5%</strong></td><td>บุคคลทั่วไปถือหุ้นสูงสุด</td></tr>
+            <tr><td><strong>20%</strong></td><td>สัดส่วนเงินกู้ ม. 9(1) ค, ง</td></tr>
+            <tr><td><strong>12 คน</strong></td><td>กรรมการสูงสุด (ที่ ครม. แต่งตั้ง)</td></tr>
+            <tr><td><strong>3 ปี</strong></td><td>วาระกรรมการ</td></tr>
+            <tr><td><strong>150 วัน</strong></td><td>ประชุมใหญ่ / งบดุล</td></tr>
+            <tr><td><strong>20 คน + 1/4</strong></td><td>องค์ประชุม (คน + หุ้น)</td></tr>
+            <tr><td><strong>1 ปี / 2,000 บาท</strong></td><td>โทษจำคุก/ปรับ ม. 32</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- section 1: จัดตั้ง -->
+    <div class="section" id="s1">
+      <h2 class="section-title"><span class="icon">🏛️</span> 1. การจัดตั้ง (ม. 5-8)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 5 — จัดตั้งธนาคาร</div>
+        <p>"ให้จัดตั้งธนาคารขึ้นเรียกว่า <span class="hl-gold">ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร</span> (ธ.ก.ส.) ให้ธนาคารนี้เป็น <strong>นิติบุคคล</strong>"</p>
+        <p style="margin-top:8px"><strong>จุดสำคัญ:</strong> ธ.ก.ส. = นิติบุคคล — มีสิทธิฟ้องร้อง/ถูกฟ้องร้องได้</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 6 — สำนักงาน/สาขา</div>
+        <ul>
+          <li>ตั้ง <strong>สำนักงานใหญ่</strong> ในกรุงเทพฯ <strong>หรือจังหวัดอื่น</strong></li>
+          <li>ตั้ง <strong>สาขา/ตัวแทน</strong> ได้ทั้งในและนอกราชอาณาจักร</li>
+          <li>⚠️ <span class="hl-red">ตั้งนอกราชอาณาจักร ต้องได้รับอนุมัติจากรัฐมนตรีก่อน</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 7 — ทุนเรือนหุ้น</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>หัวข้อ</th><th>รายละเอียด</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ทุนเริ่มต้น</strong></td><td>4,000 ล้านบาท</td></tr>
+            <tr><td><strong>จำนวนหุ้น</strong></td><td>40 ล้านหุ้น</td></tr>
+            <tr><td><strong>มูลค่าหุ้นละ</strong></td><td>100 บาท</td></tr>
+            <tr><td><strong>กระทรวงการคลังถือหุ้น</strong></td><td>ไม่น้อยกว่าร้อยละ 75</td></tr>
+            <tr><td><strong>บุคคลทั่วไปถือหุ้น</strong></td><td>ไม่เกินร้อยละ 5</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout" style="margin-top:12px">
+          📌 <strong>ปัจจุบัน (31 มี.ค. 68):</strong> 800 ล้านหุ้น × 100 บาท = <strong>80,000 ล้านบาท</strong> | กระทรวงการคลังถือ <strong>99.79%</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 7 ทวิ — การเพิ่มทุน</div>
+        <p>"ธนาคารมีความจำเป็นต้องเพิ่มทุนเรือนหุ้น → ขอเพิ่มทุนได้อีกเป็น <strong>คราวๆ</strong> โดยขออนุมัติ <span class="hl-gold">คณะรัฐมนตรี (ครม.)</span>"</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 8 — ความรับผิด</div>
+        <p>ผู้ถือหุ้นรับผิด <strong>จำกัดเพียงมูลค่าหุ้นที่ถือ</strong> (Limited Liability)</p>
+      </div>
+    </div>
+<div class="section" id="s2">
+      <h2 class="section-title"><span class="icon">🎯</span> 2. วัตถุประสงค์ (ม. 9-11)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 9 — วัตถุประสงค์ 4 ข้อ (หัวใจของ พ.ร.บ.)</div>
+        <div class="callout">💡 <strong>จำง่าย: "ช่วย-ส่งเสริม-พัฒนา-สหกรณ์"</strong></div>
+        <div class="table-wrap" style="margin-top:12px"><table>
+          <thead><tr><th>ข้อ</th><th>วัตถุประสงค์</th></tr></thead>
+          <tbody>
+            <tr><td><strong>(1)</strong></td><td><strong>ช่วยเหลือทางการเงิน</strong>แก่เกษตรกร/กลุ่มเกษตรกร/สหกรณ์การเกษตร เพื่อ (ก) ประกอบอาชีพเกษตรกรรม (ข) ประกอบอาชีพอื่นเพิ่มรายได้ (ค) พัฒนาความรู้/คุณภาพชีวิต (ง) โครงการส่งเสริมเกษตรกรรม</td></tr>
+            <tr><td><strong>(2)</strong></td><td><strong>ส่งเสริมเกษตรกรรม</strong> — ประกอบธุรกิจอื่นอันเป็นการส่งเสริม/สนับสนุนการประกอบเกษตรกรรม</td></tr>
+            <tr><td><strong>(3)</strong></td><td><strong>พัฒนาชนบท</strong> — เป็นสถาบันการเงินเพื่อพัฒนาชนบท ช่วยบุคคล กลุ่มบุคคล ผู้ประกอบการ กองทุนหมู่บ้าน/ชุมชน องค์กรสนับสนุนอาชีพเกษตรกร</td></tr>
+            <tr><td><strong>(4)</strong></td><td><strong>ช่วยเหลือสหกรณ์</strong> — ให้ความช่วยเหลือทางการเงินแก่สหกรณ์ ภายใต้ขอบเขตวัตถุประสงค์การจัดตั้งสหกรณ์</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 10 — อำนาจกระทำกิจการ (17 ข้อ)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ข้อ</th><th>อำนาจ</th></tr></thead>
+          <tbody>
+            <tr><td>(1)</td><td><span class="hl-gold">ให้กู้เงิน</span> เพื่อวัตถุประสงค์ ม. 9</td></tr>
+            <tr><td>(2)</td><td>ค้ำประกัน ตามข้อบังคับ</td></tr>
+            <tr><td>(3)</td><td>จัดหาเงินทุน</td></tr>
+            <tr><td>(4)</td><td>จัดให้ได้มา/ถือกรรมสิทธิ์/ทรัพยสิทธิ/ครอบครอง</td></tr>
+            <tr><td>(5)</td><td><strong>รับฝากเงิน</strong> จ่ายคืนเมื่อทวงถามหรือครบกำหนด</td></tr>
+            <tr><td>(6)</td><td>ให้กู้/ออกหนังสือค้ำประกันแก่ผู้ฝากเงิน</td></tr>
+            <tr><td>(7)</td><td>ออก ซื้อ ขายตั๋วเงินหรือตราสารเปลี่ยนมือ</td></tr>
+            <tr><td>(8)</td><td>มีบัญชีเงินฝากกับสถาบันการเงินอื่น</td></tr>
+            <tr><td>(9)</td><td><strong>ซื้อหลักทรัพย์รัฐบาล</strong> (พันธบัตร ตั๋วเงินคลัง)</td></tr>
+            <tr><td>(10)</td><td>เรียกเก็บดอกเบี้ย/ค่าธรรมเนียม/ค่าบริการ</td></tr>
+            <tr><td>(11)</td><td>เป็นตัวแทนรัฐวิสาหกิจ (จ่าย/เรียกเก็บค่าที่ดิน ค่าชดเชย)</td></tr>
+            <tr><td>(12)</td><td>รับฝากเงินเพื่อสงเคราะห์ชีวิตเกษตรกร</td></tr>
+            <tr><td>(13)</td><td>ร่วมโครงการชดเชยภัยธรรมชาติ</td></tr>
+            <tr><td>(14)</td><td><strong>จัดตั้งบริษัทจำกัด/มหาชน</strong> (ต้องได้รับความเห็นชอบจากรัฐมนตรี + เสนอ ครม. ทราบ)</td></tr>
+            <tr><td>(15)</td><td>ร่วมลงทุนกับนิติบุคคล</td></tr>
+            <tr><td>(16)</td><td>สงเคราะห์ผู้จัดการ พนักงาน ลูกจ้าง</td></tr>
+            <tr><td>(17)</td><td>กระทำกิจการอื่นที่เกี่ยวกับวัตถุประสงค์</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 11 — ข้อห้าม (4 ข้อหลัก)</div>
+        <div class="callout" style="background:rgba(229,92,92,0.08);border-color:rgba(229,92,92,0.25)">
+          ❌ <strong>ห้าม!</strong>
+          <ol style="margin-top:8px">
+            <li>ให้กรรมการ/ผู้จัดการ/คู่สมรส <strong>กู้ยืมเงิน</strong></li>
+            <li><strong>รับหุ้นของธนาคารเองเป็นประกัน</strong></li>
+            <li>จ่ายค่านายหน้า/ตอบแทนธุรกิจแก่บุคลากร (นอกจากเงินที่พึงจ่ายตามกฎหมาย)</li>
+            <li><strong>ซื้อหรือมีไว้ซึ่งอสังหาริมทรัพย์</strong> เว้นแต่ (ก) ใช้เป็นสถานที่ดำเนินธุรกิจ/ที่พัก (ข) ได้มาจากการชำระหนี้/ประกันต้นเงินกู้/ซื้อจากการขายทอดตลาด</li>
+          </ol>
+        </div>
+        <p style="margin-top:10px"><strong>เหตุผล:</strong> ป้องกันผู้บริหารเอื้อประโยชน์ตัวเอง + ป้องกันธนาคารถืออสังหาริมทรัพย์มากเกินไป</p>
+      </div>
+<div class="section" id="s3">
+      <h2 class="section-title"><span class="icon">🏢</span> 3. การกำกับและการจัดการ (ม. 12-26)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 12-13 — อำนาจรัฐมนตรี</div>
+        <ul>
+          <li><strong>รัฐมนตรีว่าการกระทรวงการคลัง</strong> มีอำนาจหน้าที่ <strong>กำกับดูแล ธ.ก.ส. โดยทั่วไป</strong></li>
+          <li>เป็นผู้ <strong>นำเรื่องที่คณะกรรมการเสนอ ไปยังคณะรัฐมนตรี</strong></li>
+          <li>💡 <em>จำง่าย:</em> รัฐมนตรี = กำกับทั่วไป + ส่งเรื่องให้ ครม.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 14 — คณะกรรมการ ธ.ก.ส. (โครงสร้าง)</div>
+        <p>คณะกรรมการ ธ.ก.ส. ประกอบด้วยบุคคล 4 ประเภท ดังนี้:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>ตำแหน่ง</th><th>จำนวน</th><th>ผู้ดำรงตำแหน่ง</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ประธานกรรมการ</strong></td><td>1 คน</td><td><span class="hl-gold">รัฐมนตรีว่าการกระทรวงการคลัง</span> (โดยตำแหน่ง)</td></tr>
+            <tr><td><strong>รองประธานกรรมการ</strong></td><td>1 คน</td><td>คณะรัฐมนตรีแต่งตั้ง</td></tr>
+            <tr><td><strong>กรรมการอื่น</strong></td><td>ไม่เกิน <strong>12 คน</strong></td><td>คณะรัฐมนตรีแต่งตั้ง</td></tr>
+            <tr><td><strong>กรรมการและเลขานุการ</strong></td><td>1 คน</td><td><span class="hl-gold">ผู้จัดการ ธ.ก.ส.</span> (โดยตำแหน่ง)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout" style="margin-top:14px">
+          ⚠️ <strong>ผู้แทนที่ต้องมีอย่างน้อย 1 คน ในกรรมการที่ ครม. แต่งตั้ง:</strong>
+          <ol style="margin-top:8px">
+            <li>ผู้แทนกระทรวงการคลัง</li>
+            <li>ผู้แทนกระทรวงเกษตรและสหกรณ์</li>
+            <li>ผู้แทนกรมส่งเสริมสหกรณ์</li>
+            <li>ผู้แทนสำนักงานการปฏิรูปที่ดินเพื่อเกษตรกรรม (ส.ป.ก.)</li>
+            <li>ผู้แทนธนาคารแห่งประเทศไทย (ธปท.)</li>
+            <li>ผู้แทนสหกรณ์การเกษตรผู้ถือหุ้น</li>
+          </ol>
+        </div>
+        <p style="margin-top:14px"><strong>อายุตำแหน่ง:</strong> รองประธานกรรมการหรือกรรมการซึ่ง ครม. แต่งตั้ง อยู่ในตำแหน่ง <strong>คราวละ 3 ปี</strong> ผู้ที่พ้นจากตำแหน่งตามวาระจะแต่งตั้งให้เป็นกรรมการอีกก็ได้</p>
+        <p style="margin-top:8px"><em>💡 จำง่าย: "ประธาน=คลัง / รอง=1 / อื่น=12 / เลขา=ผจก."</em></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 18 — อำนาจหน้าที่คณะกรรมการ</div>
+        <p>"ให้คณะกรรมการมีอำนาจหน้าที่ <strong>วางนโยบายและควบคุมดูแลทั่วไปซึ่งกิจการของธนาคาร</strong>" — อำนาจนี้รวมถึงการออกข้อบังคับ 10 ด้าน:</p>
+        <ol style="margin-top:10px">
+          <li><strong>การออกข้อบังคับว่าด้วยหุ้น</strong>ของธนาคาร</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการค้ำประกันเงินกู้</strong>ตาม ม. 10 (2)</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการมอบอำนาจ</strong>ของผู้จัดการให้แก่พนักงาน (ม. 23)</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการให้กู้เงิน</strong> (ม. 31)</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการขายหรือขายลดช่วงตั๋วเงิน</strong>แก่สถาบันการเงิน (ม. 33)</li>
+          <li><strong>การออกข้อบังคับกำหนดอัตราตำแหน่ง เงินเดือน ค่าจ้าง ค่าพาหนะ เบี้ยเลี้ยง ค่าเช่าที่พัก ค่ารับรอง และเงินเพิ่มอย่างอื่น</strong> สำหรับพนักงานและลูกจ้าง</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการบรรจุ การแต่งตั้ง การเรียกประกัน การเลื่อนเงินเดือน การถอดถอน วินัย การสอบสวน และการลงโทษ</strong> สำหรับพนักงานและลูกจ้าง</li>
+          <li><strong>การออกข้อบังคับว่าด้วยการสงเคราะห์</strong>ผู้จัดการ พนักงาน ลูกจ้าง หรือผู้ซึ่งพ้นจากการเป็นดังกล่าว และครอบครัว</li>
+          <li><strong>การตั้งสาขาหรือตัวแทน</strong>ของธนาคาร</li>
+          <li><strong>การออกข้อบังคับเกี่ยวกับธุรกิจอื่นๆ</strong>ของธนาคาร</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 20 — คุณสมบัติผู้จัดการ</div>
+        <p>ธนาคารต้องมีผู้จัดการ 1 คน โดยต้องมีคุณสมบัติดังนี้:</p>
+        <ul>
+          <li>มี<strong>สัญชาติไทย</strong></li>
+          <li>มี<strong>ความรู้เกี่ยวกับการธนาคาร เศรษฐกิจ เกษตร สหกรณ์ หรือกฎหมาย</strong></li>
+          <li><strong>ทำงานให้ธนาคารได้เต็มเวลา</strong> (ไม่ทำงานอื่นในเวลาเดียวกัน)</li>
+        </ul>
+        <p style="margin-top:10px">⚠️ <strong>หมายเหตุ:</strong> ม. 20 <strong>ไม่ได้กำหนด</strong>ว่าผู้จัดการต้องเป็นข้าราชการสังกัดกระทรวงการคลัง</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 22-24 — อำนาจของผู้จัดการ</div>
+        <div class="callout">💡 <strong>จำเป็น 5 กลุ่ม: "บริหาร-แทน-บรรจุ-ระเบียบ-บังคับบัญชา"</strong></div>
+        <ol style="margin-top:10px">
+          <li><strong>บริหารกิจการ</strong>ให้เป็นไปตามนโยบายและข้อบังคับ</li>
+          <li><strong>เป็นผู้แทนธนาคาร</strong>ในกิจการที่เกี่ยวกับบุคคลภายนอก</li>
+          <li><strong>บรรจุ แต่งตั้ง เลื่อนตำแหน่ง/เงินเดือน ลงโทษวินัยพนักงาน</strong> (ระดับสูงต้องขอความเห็นชอบคณะกรรมการ)</li>
+          <li><strong>วางระเบียบ</strong>วิธีดำเนินการและปฏิบัติงานของพนักงาน</li>
+          <li>มีอำนาจ<strong>บังคับบัญชาพนักงาน</strong></li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 25 — ผู้รักษาการแทน</div>
+        <p>"เมื่อตำแหน่งผู้จัดการ<strong>ว่างลง</strong> ให้<strong>รองผู้จัดการ</strong>เป็นผู้<strong>รักษาการแทน</strong>"</p>
+        <p style="margin-top:10px">💡 <em>ข้อสังเกต: ม. 25 ไม่ได้ระบุว่าต้องเป็นรองประธานกรรมการ หรือกรรมการ — แต่เป็น "รองผู้จัดการ" เท่านั้น</em></p>
+      </div>
+
+  </section>
+
+  <hr class="divider"><div class="section" id="s4">
+      <h2 class="section-title"><span class="icon">👥</span> 4-5. การประชุมใหญ่ และ การให้กู้ (ม. 27-32)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 27-29 — การประชุมใหญ่</div>
+        <p>ธนาคารต้องจัดให้มี<strong>การประชุมใหญ่</strong>ของผู้ถือหุ้นเพื่อพิจารณากิจการทั่วไป ดังนี้:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>หัวข้อ</th><th>รายละเอียด</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ความถี่</strong></td><td>ประชุมสามัญ <strong>ปีละ 1 ครั้ง</strong></td></tr>
+            <tr><td><strong>ระยะเวลา</strong></td><td>ภายใน <strong>150 วัน</strong> หลังสิ้นปีบัญชี</td></tr>
+            <tr><td><strong>องค์ประชุม</strong></td><td>ผู้ถือหุ้น/ผู้แทน <strong>ไม่น้อยกว่า 20 คน</strong> และมีหุ้นรวมกัน <strong>ไม่น้อยกว่า 1 ใน 4</strong> ของจำนวนหุ้นทั้งหมด</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:14px">💡 <em>จำง่าย: "ปีละ 1 / ภายใน 150 วัน / 20 คน + 1 ใน 4 หุ้น"</em></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 31-32 — การให้กู้</div>
+        <div class="callout">
+          ⚠️ <strong>การให้กู้เพื่อพัฒนาความรู้/คุณภาพชีวิต (ม. 9 (1) ค, ง):</strong> รวมกันต้อง<strong>ไม่เกินร้อยละ 20</strong> ของเงินที่ให้กู้ในแต่ละรอบปี
+        </div>
+        <p style="margin-top:14px"><strong>ทรัพย์สินที่ผู้กู้ได้กรรมสิทธิ์จากเงินกู้:</strong></p>
+        <ul>
+          <li>หาก<strong>ในเอกสารการกู้เงิน</strong>ได้ระบุ<strong>ห้ามการโอน จำนอง หรือจำนำ</strong>ไว้</li>
+          <li>ผู้กู้จะ<strong>โอน จำนอง หรือจำนำทรัพย์สินนั้นไม่ได้</strong></li>
+          <li>หากฝ่าฝืน — โทษตาม <strong>ม. 43: จำคุกไม่เกิน 1 ปี หรือปรับไม่เกิน 2,000 บาท</strong></li>
+        </ul>
+        <p style="margin-top:12px">💡 <em>เหตุผล: ป้องกันผู้กู้นำทรัพย์สินไปเป็นหลักประกันหนี้อื่น ทำให้ธนาคารไม่สามารถติดตามทรัพย์คืนได้</em></p>
+      </div>
+    </div>
+
+    <div class="section" id="s5">
+      <h2 class="section-title"><span class="icon">💰</span> 6-10. การเงิน และ บทเบ็ดเสร็จ (ม. 33-43)</h2>
+
+      <div class="card">
+        <div class="card-title">มาตรา 33 — การจัดหาทุน</div>
+        <p>ธนาคารมีวิธีการจัดหาทุนเพื่อใช้ในการดำเนินงาน 5 วิธี ดังนี้:</p>
+        <ul>
+          <li><strong>กู้ยืมเงิน</strong> (จากสถาบันการเงินหรือแหล่งอื่น)</li>
+          <li><strong>ออกพันธบัตรหรือตราสาร</strong> (เพื่อระดมทุนจากประชาชน)</li>
+          <li><strong>ขายลดตั๋วเงิน</strong> (ระยะสั้น)</li>
+          <li><strong>รับเงินอุดหนุน</strong> (จากรัฐบาล)</li>
+          <li><strong>ออกสลากออมทรัพย์</strong> (ระดมเงินฝากจากประชาชน)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 35-40 — การสอบบัญชี/การจัดสรรกำไร</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>เรื่อง</th><th>รายละเอียด</th></tr></thead>
+          <tbody>
+            <tr><td><strong>การจัดสรรกำไร</strong></td><td>ธนาคารต้อง<strong>โอนกำไรสุทธิเข้ากำไรสะสม</strong></td></tr>
+            <tr><td><strong>เงินปันผล</strong></td><td>หากจะจ่ายปันผล ต้อง<strong>สำรองเงินไว้อย่างน้อยกึ่งหนึ่ง</strong> ของกำไรก่อน</td></tr>
+            <tr><td><strong>งบดุล</strong></td><td>เสนอต่อที่ประชุมใหญ่<strong>ภายใน 150 วัน</strong> นับแต่สิ้นปีบัญชี</td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:14px">💡 <em>เหตุผล: เนื่องจาก ธ.ก.ส. เป็นสถาบันการเงินเพื่อส่งเสริมเกษตรกรรม จึงต้องเก็บกำไรสะสมไว้เพื่อขยายการดำเนินงาน ไม่ใช่จ่ายปันผลเต็มที่เหมือนธนาคารพาณิชย์ทั่วไป</em></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">มาตรา 41-43 — บทเบ็ดเสร็จ</div>
+        <div class="callout" style="background:rgba(212,148,47,0.08);border-color:rgba(212,148,47,0.25)">
+          <strong>ม. 41 — ยกเว้นภาษีอากร:</strong> ธนาคารได้รับการยกเว้นภาษีอากรตาม<strong>ประมวลรัษฎากร</strong> เพื่อลดภาระและให้สามารถนำทุนไปช่วยเหลือเกษตรกรได้มากขึ้น
+        </div>
+        <div class="callout" style="background:rgba(229,92,92,0.08);border-color:rgba(229,92,92,0.25);margin-top:12px">
+          ❌ <strong>ม. 42-43 — บทกำหนดโทษ:</strong> ผู้ฝ่าฝืน ม. 32 (โอน/จำนอง/จำนำทรัพย์ที่ระบุห้ามไว้ในเอกสารกู้) — <span class="hl-red"><strong>จำคุกไม่เกิน 1 ปี หรือปรับไม่เกิน 2,000 บาท</strong></span>
+        </div>
+        <p style="margin-top:14px">💡 <em>จำ: โทษ "1 ปี / 2,000 บาท" — เป็นโทษค่อนข้างเบาเมื่อเทียบกับ พ.ร.บ. อื่นๆ เพราะเป็นความผิดเล็กน้อย</em></p>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider"><!-- ══════════════════════════════════════════════════ -->
+  <!--  EXAM  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section id="exam">
+
+    <div class="quiz-intro">
+      <h2>📝 ข้อสอบใหม่ 25 ข้อ — พ.ร.บ. ธ.ก.ส.</h2>
+      <p>25 ข้อ · เลือกตอบ · ครอบคลุมการจัดตั้ง วัตถุประสงค์ อำนาจ คณะกรรมการ ผู้จัดการ ประชุมใหญ่ การเงิน และบทเบ็ดเสร็จ · ทุกข้ออ้างอิงมาตรา</p>
+    </div>
+
+    <!-- ─── Q1 ─── -->
+    <div class="q-card" id="q1">
+      <div class="q-num">ข้อ 1 · การจัดตั้ง (ม. 5) ⭐</div>
+      <div class="q-text">ข้อใดกล่าว<strong>ถูกต้อง</strong>เกี่ยวกับการจัดตั้ง ธ.ก.ส.?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q1" data-correct="3"><span class="letter">ก</span>จัดตั้งโดยพระราชกฤษฎีกา</div>
+        <div class="q-opt" data-q="q1" data-correct="3"><span class="letter">ข</span>จัดตั้งโดยพระราชบัญญัติ และไม่เป็นนิติบุคคล</div>
+        <div class="q-opt" data-q="q1" data-correct="3"><span class="letter">ค</span>จัดตั้งโดยพระราชบัญญัติ และเป็นนิติบุคคล</div>
+        <div class="q-opt" data-q="q1" data-correct="3"><span class="letter">ง</span>จัดตั้งโดยคำสั่งคณะรัฐมนตรี</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q1')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q1">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ตาม ม. 5 "ให้จัดตั้งธนาคาร... ให้ธนาคารนี้เป็นนิติบุคคล" — นิติบุคคลมีสิทธิฟ้องร้อง/ถูกฟ้องร้องได้</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 5</div>
+      </div>
+    </div>
+
+    <!-- ─── Q2 ─── -->
+    <div class="q-card" id="q2">
+      <div class="q-num">ข้อ 2 · สำนักงาน (ม. 6) ⭐</div>
+      <div class="q-text">ธ.ก.ส. จะตั้งสาขา<strong>ภายนอกราชอาณาจักร</strong>ได้หรือไม่?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q2" data-correct="3"><span class="letter">ก</span>ทำไม่ได้เลย</div>
+        <div class="q-opt" data-q="q2" data-correct="3"><span class="letter">ข</span>ทำได้โดยไม่ต้องขออนุมัติ</div>
+        <div class="q-opt" data-q="q2" data-correct="3"><span class="letter">ค</span>ทำได้ แต่ต้องได้รับอนุมัติจากรัฐมนตรี</div>
+        <div class="q-opt" data-q="q2" data-correct="3"><span class="letter">ง</span>ทำได้เฉพาะเมื่อคณะกรรมการเห็นชอบ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q2')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q2">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 6 "การจะตั้งสาขาหรือตัวแทนภายนอกราชอาณาจักร ต้องได้รับอนุมัติจากรัฐมนตรีก่อน"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 6</div>
+      </div>
+    </div>
+
+    <!-- ─── Q3 ─── -->
+    <div class="q-card" id="q3">
+      <div class="q-num">ข้อ 3 · ทุนเรือนหุ้น (ม. 7) ⭐⭐</div>
+      <div class="q-text">ทุนเรือนหุ้นเริ่มต้นของ ธ.ก.ส. มีจำนวนเท่าใด?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q3" data-correct="3"><span class="letter">ก</span>2,000 ล้านบาท</div>
+        <div class="q-opt" data-q="q3" data-correct="3"><span class="letter">ข</span>3,000 ล้านบาท</div>
+        <div class="q-opt" data-q="q3" data-correct="3"><span class="letter">ค</span>4,000 ล้านบาท</div>
+        <div class="q-opt" data-q="q3" data-correct="3"><span class="letter">ง</span>5,000 ล้านบาท</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q3')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q3">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 7 กำหนดทุนเรือนหุ้นไว้ 4,000 ล้านบาท แบ่งเป็น 40 ล้านหุ้น หุ้นละ 100 บาท</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 7</div>
+      </div>
+    </div>
+
+    <!-- ─── Q4 ─── -->
+    <div class="q-card" id="q4">
+      <div class="q-num">ข้อ 4 · ทุนเรือนหุ้น (ม. 7) ⭐⭐</div>
+      <div class="q-text">กระทรวงการคลังต้องถือหุ้น ธ.ก.ส. ไม่น้อยกว่าร้อยละเท่าใด?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q4" data-correct="3"><span class="letter">ก</span>50%</div>
+        <div class="q-opt" data-q="q4" data-correct="3"><span class="letter">ข</span>60%</div>
+        <div class="q-opt" data-q="q4" data-correct="3"><span class="letter">ค</span>75%</div>
+        <div class="q-opt" data-q="q4" data-correct="3"><span class="letter">ง</span>99%</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q4')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q4">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 7 "กระทรวงการคลังถือหุ้นไม่น้อยกว่าร้อยละ 75" — ปัจจุบันถือจริง 99.79% แต่กฎหมายขั้นต่ำคือ 75%</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 7</div>
+      </div>
+    </div>
+
+    <!-- ─── Q5 ─── -->
+    <div class="q-card" id="q5">
+      <div class="q-num">ข้อ 5 · ทุนเรือนหุ้น (ม. 7) ⭐⭐</div>
+      <div class="q-text">บุคคลทั่วไปจะถือหุ้น ธ.ก.ส. เกินร้อยละเท่าใดไม่ได้?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q5" data-correct="3"><span class="letter">ก</span>1%</div>
+        <div class="q-opt" data-q="q5" data-correct="3"><span class="letter">ข</span>3%</div>
+        <div class="q-opt" data-q="q5" data-correct="3"><span class="letter">ค</span>5%</div>
+        <div class="q-opt" data-q="q5" data-correct="3"><span class="letter">ง</span>10%</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q5')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q5">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 7 "บุคคลใดจะถือหุ้นเกินร้อยละ 5 มิได้" — เพื่อป้องกันการผูกขาด</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 7</div>
+      </div>
+    </div><!-- ─── Q6 ─── -->
+    <div class="q-card" id="q6">
+      <div class="q-num">ข้อ 6 · การเพิ่มทุน (ม. 7 ทวิ) ⭐⭐</div>
+      <div class="q-text">การเพิ่มทุนเรือนหุ้นของ ธ.ก.ส. ต้องได้รับอนุมัติจากใคร?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q6" data-correct="3"><span class="letter">ก</span>คณะกรรมการ ธ.ก.ส.</div>
+        <div class="q-opt" data-q="q6" data-correct="3"><span class="letter">ข</span>รัฐมนตรีว่าการกระทรวงการคลัง</div>
+        <div class="q-opt" data-q="q6" data-correct="3"><span class="letter">ค</span>คณะรัฐมนตรี</div>
+        <div class="q-opt" data-q="q6" data-correct="3"><span class="letter">ง</span>ธนาคารแห่งประเทศไทย</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q6')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q6">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 7 ทวิ "ขอเพิ่มทุนเรือนหุ้นได้อีกเป็นคราวๆ โดยขออนุมัติคณะรัฐมนตรี"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 7 ทวิ</div>
+      </div>
+    </div>
+
+    <!-- ─── Q7 ─── -->
+    <div class="q-card" id="q7">
+      <div class="q-num">ข้อ 7 · วัตถุประสงค์ (ม. 9) ⭐</div>
+      <div class="q-text">วัตถุประสงค์ของ ธ.ก.ส. ตาม ม. 9 มีกี่ข้อ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ก</span>2 ข้อ</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ข</span>3 ข้อ</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ค</span>4 ข้อ</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ง</span>5 ข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q7')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q7">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 9 มี 4 วัตถุประสงค์: (1) ช่วยเหลือทางการเงิน (2) ส่งเสริมเกษตรกรรม (3) พัฒนาชนบท (4) ช่วยเหลือสหกรณ์</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 9</div>
+      </div>
+    </div>
+
+    <!-- ─── Q8 ─── -->
+    <div class="q-card" id="q8">
+      <div class="q-num">ข้อ 8 · วัตถุประสงค์ (ม. 9) ⭐⭐</div>
+      <div class="q-text">ข้อใด <strong>"ไม่ใช่"</strong> วัตถุประสงค์ของ ธ.ก.ส.?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q8" data-correct="4"><span class="letter">ก</span>ช่วยเหลือทางการเงินแก่เกษตรกรเพื่อประกอบอาชีพเกษตรกรรม</div>
+        <div class="q-opt" data-q="q8" data-correct="4"><span class="letter">ข</span>ประกอบธุรกิจอื่นอันเป็นการส่งเสริมการประกอบเกษตรกรรม</div>
+        <div class="q-opt" data-q="q8" data-correct="4"><span class="letter">ค</span>ดำเนินงานเป็นสถาบันการเงินเพื่อการพัฒนาชนบท</div>
+        <div class="q-opt" data-q="q8" data-correct="4"><span class="letter">ง</span>หารายได้จากการปล่อยกู้ดอกเบี้ยสูงเพื่อผลกำไรสูงสุด</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q8')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q8">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p>ธ.ก.ส. ไม่ได้มีวัตถุประสงค์เพื่อ "ผลกำไรสูงสุด" แต่เน้น "ส่งเสริม/สนับสนุน" เกษตรกรและชนบท — เป็นสถาบันการเงินเพื่อพัฒนา ไม่ใช่เพื่อกำไรสูงสุด</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 9</div>
+      </div>
+    </div>
+
+    <!-- ─── Q9 ─── -->
+    <div class="q-card" id="q9">
+      <div class="q-num">ข้อ 9 · อำนาจ (ม. 10) ⭐</div>
+      <div class="q-text">ธ.ก.ส. มีอำนาจกระทำกิจการตาม ม. 10 ทั้งหมดกี่ข้อ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ก</span>10 ข้อ</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ข</span>15 ข้อ</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ค</span>17 ข้อ</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ง</span>20 ข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q9')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q9">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 10 มีอำนาจ 17 ข้อ ตั้งแต่การให้กู้ ค้ำประกัน รับฝากเงิน ไปจนถึงจัดตั้งบริษัท</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 10</div>
+      </div>
+    </div>
+
+    <!-- ─── Q10 ─── -->
+    <div class="q-card" id="q10">
+      <div class="q-num">ข้อ 10 · อำนาจจัดตั้งบริษัท (ม. 10 (14)) ⭐⭐⭐</div>
+      <div class="q-text">การจัดตั้งบริษัทจำกัด/มหาชนของ ธ.ก.ส. ต้องได้รับความเห็นชอบจากใคร?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q10" data-correct="3"><span class="letter">ก</span>ผู้จัดการ ธ.ก.ส.</div>
+        <div class="q-opt" data-q="q10" data-correct="3"><span class="letter">ข</span>คณะกรรมการ ธ.ก.ส.</div>
+        <div class="q-opt" data-q="q10" data-correct="3"><span class="letter">ค</span>รัฐมนตรี + เสนอ ครม. ทราบ</div>
+        <div class="q-opt" data-q="q10" data-correct="3"><span class="letter">ง</span>ธนาคารแห่งประเทศไทย</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q10')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q10">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 10 (14) "โดยได้รับความเห็นชอบจากรัฐมนตรี และเสนอคณะรัฐมนตรีเพื่อทราบ"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 10 (14)</div>
+      </div>
+    </div><!-- ─── Q11 ─── -->
+    <div class="q-card" id="q11">
+      <div class="q-num">ข้อ 11 · ข้อห้าม (ม. 11) ⭐⭐</div>
+      <div class="q-text">ข้อใด <strong>"ไม่ใช่"</strong> ข้อห้ามตาม ม. 11?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q11" data-correct="4"><span class="letter">ก</span>ห้ามให้กรรมการ/ผู้จัดการ/คู่สมรสกู้ยืมเงิน</div>
+        <div class="q-opt" data-q="q11" data-correct="4"><span class="letter">ข</span>ห้ามรับหุ้นของธนาคารเองเป็นประกัน</div>
+        <div class="q-opt" data-q="q11" data-correct="4"><span class="letter">ค</span>ห้ามซื้อหรือมีไว้ซึ่งอสังหาริมทรัพย์ (เว้นแต่ใช้เป็นสถานที่ดำเนินธุรกิจ)</div>
+        <div class="q-opt" data-q="q11" data-correct="4"><span class="letter">ง</span>ห้ามรับฝากเงินจากประชาชน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q11')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q11">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p>ม. 10 (5) กลับระบุว่า ธ.ก.ส. "มีอำนาจรับฝากเงิน" ดังนั้นจึงไม่ใช่ข้อห้าม — ตรงกันข้าม ธ.ก.ส. รับฝากเงินได้</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 11 + เทียบกับ มาตรา 10 (5)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q12 ─── -->
+    <div class="q-card" id="q12">
+      <div class="q-num">ข้อ 12 · คณะกรรมการ (ม. 14) ⭐⭐</div>
+      <div class="q-text">ใครดำรงตำแหน่ง<strong>ประธานกรรมการ ธ.ก.ส.</strong>?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q12" data-correct="3"><span class="letter">ก</span>ผู้จัดการ ธ.ก.ส.</div>
+        <div class="q-opt" data-q="q12" data-correct="3"><span class="letter">ข</span>รัฐมนตรีว่าการกระทรวงเกษตรและสหกรณ์</div>
+        <div class="q-opt" data-q="q12" data-correct="3"><span class="letter">ค</span>รัฐมนตรีว่าการกระทรวงการคลัง</div>
+        <div class="q-opt" data-q="q12" data-correct="3"><span class="letter">ง</span>ผู้ว่าการธนาคารแห่งประเทศไทย</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q12')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q12">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 14 "รัฐมนตรีว่าการกระทรวงการคลัง เป็นประธานกรรมการ" (โดยตำแหน่ง)</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 14</div>
+      </div>
+    </div>
+
+    <!-- ─── Q13 ─── -->
+    <div class="q-card" id="q13">
+      <div class="q-num">ข้อ 13 · คณะกรรมการ (ม. 14) ⭐⭐</div>
+      <div class="q-text">คณะกรรมการ ธ.ก.ส. ประกอบด้วย<strong>กรรมการอื่น (ที่ ครม. แต่งตั้ง) ไม่เกินกี่คน</strong>?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q13" data-correct="3"><span class="letter">ก</span>8 คน</div>
+        <div class="q-opt" data-q="q13" data-correct="3"><span class="letter">ข</span>10 คน</div>
+        <div class="q-opt" data-q="q13" data-correct="3"><span class="letter">ค</span>12 คน</div>
+        <div class="q-opt" data-q="q13" data-correct="3"><span class="letter">ง</span>15 คน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q13')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q13">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 14 "รองประธานกรรมการหนึ่งคนและกรรมการอื่นอีกไม่เกินสิบสองคนซึ่งคณะรัฐมนตรีแต่งตั้ง"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 14</div>
+      </div>
+    </div>
+
+    <!-- ─── Q14 ─── -->
+    <div class="q-card" id="q14">
+      <div class="q-num">ข้อ 14 · คณะกรรมการ (ม. 14) ⭐</div>
+      <div class="q-text">ผู้จัดการ ธ.ก.ส. มีตำแหน่งเป็นอะไรในคณะกรรมการ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ก</span>ประธานกรรมการ</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ข</span>กรรมการ</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ค</span>กรรมการและเลขานุการ</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ง</span>ที่ปรึกษาคณะกรรมการ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q14')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q14">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 14 "ให้ผู้จัดการเป็นกรรมการและเลขานุการ"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 14</div>
+      </div>
+    </div>
+
+    <!-- ─── Q15 ─── -->
+    <div class="q-card" id="q15">
+      <div class="q-num">ข้อ 15 · กรรมการ (ม. 14) ⭐⭐</div>
+      <div class="q-text">กรรมการที่ ครม. แต่งตั้ง อยู่ในตำแหน่ง<strong>คราวละกี่ปี</strong>?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q15" data-correct="2"><span class="letter">ก</span>2 ปี</div>
+        <div class="q-opt" data-q="q15" data-correct="2"><span class="letter">ข</span>3 ปี</div>
+        <div class="q-opt" data-q="q15" data-correct="2"><span class="letter">ค</span>4 ปี</div>
+        <div class="q-opt" data-q="q15" data-correct="2"><span class="letter">ง</span>5 ปี</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q15')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q15">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p>ม. 14 "รองประธานกรรมการหรือกรรมการซึ่งคณะรัฐมนตรีแต่งตั้ง อยู่ในตำแหน่งคราวละสามปี" — ผู้ที่พ้นจากตำแหน่งตามวาระจะแต่งตั้งใหม่ได้</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 14</div>
+      </div>
+    </div><!-- ─── Q16 ─── -->
+    <div class="q-card" id="q16">
+      <div class="q-num">ข้อ 16 · อำนาจคณะกรรมการ (ม. 18) ⭐⭐</div>
+      <div class="q-text">การออกข้อบังคับเพื่อวางนโยบายและควบคุมดูแลกิจการ เป็นอำนาจของใคร?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ก</span>ธนาคารแห่งประเทศไทย</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ข</span>คณะกรรมการธนาคาร</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ค</span>ผู้จัดการธนาคาร</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ง</span>รัฐมนตรีว่าการกระทรวงการคลัง</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q16')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q16">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p>ม. 18 "ให้คณะกรรมการมีอำนาจหน้าที่วางนโยบายและควบคุมดูแลทั่วไปซึ่งกิจการของธนาคาร" + มีอำนาจออกข้อบังคับ 10 ด้าน</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 18</div>
+      </div>
+    </div>
+
+    <!-- ─── Q17 ─── -->
+    <div class="q-card" id="q17">
+      <div class="q-num">ข้อ 17 · ผู้จัดการ (ม. 20) ⭐⭐</div>
+      <div class="q-text">ข้อใด <strong>"ไม่ใช่"</strong> คุณสมบัติของผู้จัดการ ธ.ก.ส.?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ก</span>มีสัญชาติไทย</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ข</span>มีความรู้เกี่ยวกับการธนาคาร เศรษฐกิจ เกษตร สหกรณ์ หรือกฎหมาย</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ค</span>ทำงานให้ธนาคารได้เต็มเวลา</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ง</span>ต้องเป็นข้าราชการสังกัดกระทรวงการคลัง</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q17')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q17">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p>ม. 20 ไม่ได้กำหนดให้ผู้จัดการต้องเป็นข้าราชการ — เน้นแค่ "สัญชาติไทย + ความรู้ + เต็มเวลา"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 20</div>
+      </div>
+    </div>
+
+    <!-- ─── Q18 ─── -->
+    <div class="q-card" id="q18">
+      <div class="q-num">ข้อ 18 · ผู้รักษาการ (ม. 25) ⭐</div>
+      <div class="q-text">เมื่อตำแหน่งผู้จัดการ ธ.ก.ส. <strong>ว่างลง</strong> ใครเป็นผู้รักษาการแทน?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q18" data-correct="2"><span class="letter">ก</span>รองประธานกรรมการ</div>
+        <div class="q-opt" data-q="q18" data-correct="2"><span class="letter">ข</span>รองผู้จัดการ</div>
+        <div class="q-opt" data-q="q18" data-correct="2"><span class="letter">ค</span>กรรมการที่อาวุโสสุด</div>
+        <div class="q-opt" data-q="q18" data-correct="2"><span class="letter">ง</span>ประธานกรรมการ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q18')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q18">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p>ม. 25 "เมื่อตำแหน่งผู้จัดการว่างลง ให้รองผู้จัดการเป็นผู้รักษาการแทน"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 25</div>
+      </div>
+    </div>
+
+    <!-- ─── Q19 ─── -->
+    <div class="q-card" id="q19">
+      <div class="q-num">ข้อ 19 · การประชุมใหญ่ (ม. 27-29) ⭐⭐</div>
+      <div class="q-text">การประชุมสามัญผู้ถือหุ้นของ ธ.ก.ส. ต้องจัดขึ้น<strong>ภายในกี่วัน</strong>หลังสิ้นปีบัญชี?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ก</span>90 วัน</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ข</span>120 วัน</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ค</span>150 วัน</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ง</span>180 วัน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q19')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q19">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 27 "ประชุมสามัญปีละ 1 ครั้ง ภายใน 150 วันหลังสิ้นปีบัญชี"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 27</div>
+      </div>
+    </div>
+
+    <!-- ─── Q20 ─── -->
+    <div class="q-card" id="q20">
+      <div class="q-num">ข้อ 20 · องค์ประชุม (ม. 27-29) ⭐⭐</div>
+      <div class="q-text">องค์ประชุมใหญ่ของ ธ.ก.ส. ต้องมีผู้ถือหุ้น/ผู้แทน <strong>ไม่น้อยกว่ากี่คน</strong>?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q20" data-correct="3"><span class="letter">ก</span>10 คน</div>
+        <div class="q-opt" data-q="q20" data-correct="3"><span class="letter">ข</span>15 คน</div>
+        <div class="q-opt" data-q="q20" data-correct="3"><span class="letter">ค</span>20 คน</div>
+        <div class="q-opt" data-q="q20" data-correct="3"><span class="letter">ง</span>25 คน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q20')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q20">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 27 "องค์ประชุม: ผู้ถือหุ้น/ผู้แทนไม่น้อยกว่า 20 คน และมีหุ้นรวมไม่น้อยกว่า 1 ใน 4"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 27</div>
+      </div>
+    </div><!-- ─── Q21 ─── -->
+    <div class="q-card" id="q21">
+      <div class="q-num">ข้อ 21 · การให้กู้ (ม. 31) ⭐⭐⭐</div>
+      <div class="q-text">เงินกู้เพื่อพัฒนาความรู้/คุณภาพชีวิต (ม. 9 (1) ค, ง) รวมกันต้อง<strong>ไม่เกินร้อยละเท่าใด</strong>ของเงินให้กู้ในแต่ละรอบปี?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q21" data-correct="2"><span class="letter">ก</span>10%</div>
+        <div class="q-opt" data-q="q21" data-correct="2"><span class="letter">ข</span>20%</div>
+        <div class="q-opt" data-q="q21" data-correct="2"><span class="letter">ค</span>25%</div>
+        <div class="q-opt" data-q="q21" data-correct="2"><span class="letter">ง</span>30%</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q21')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q21">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p>ม. 31 กำหนดสัดส่วนสูงสุดไว้ 20% — เพื่อไม่ให้เงินกู้เพื่อพัฒนาคุณภาพชีวิตครอบงำเงินกู้เพื่อการเกษตรหลัก</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 31</div>
+      </div>
+    </div>
+
+    <!-- ─── Q22 ─── -->
+    <div class="q-card" id="q22">
+      <div class="q-num">ข้อ 22 · ทรัพย์สินจากเงินกู้ (ม. 31-32) ⭐⭐⭐</div>
+      <div class="q-text">ทรัพย์สินที่ผู้กู้ได้กรรมสิทธิ์จากเงินกู้ ธ.ก.ส. ถ้าเอกสารกู้ระบุห้ามโอน/จำนอง/จำนำ ผู้กู้จะทำอย่างไร?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q22" data-correct="3"><span class="letter">ก</span>โอนได้ แต่จำนองไม่ได้</div>
+        <div class="q-opt" data-q="q22" data-correct="3"><span class="letter">ข</span>จำนองได้ แต่จำนำไม่ได้</div>
+        <div class="q-opt" data-q="q22" data-correct="3"><span class="letter">ค</span>โอน จำนอง จำนำ ไม่ได้เลย</div>
+        <div class="q-opt" data-q="q22" data-correct="3"><span class="letter">ง</span>ทำได้ทุกอย่าง ถ้าได้รับอนุญาตจากผู้จัดการ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q22')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q22">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 31 "ผู้กู้จะโอน จำนอง หรือจำนำทรัพย์สินนั้นไม่ได้" — หากฝ่าฝืน ม. 43 กำหนดโทษจำคุกไม่เกิน 1 ปี หรือปรับไม่เกิน 2,000 บาท</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 31 + 42-43</div>
+      </div>
+    </div>
+
+    <!-- ─── Q23 ─── -->
+    <div class="q-card" id="q23">
+      <div class="q-num">ข้อ 23 · การจัดหาทุน (ม. 33) ⭐</div>
+      <div class="q-text">ข้อใด <strong>"ไม่ใช่"</strong> วิธีการจัดหาทุนของ ธ.ก.ส.?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q23" data-correct="4"><span class="letter">ก</span>กู้ยืมเงิน</div>
+        <div class="q-opt" data-q="q23" data-correct="4"><span class="letter">ข</span>ออกพันธบัตร</div>
+        <div class="q-opt" data-q="q23" data-correct="4"><span class="letter">ค</span>ออกสลากออมทรัพย์</div>
+        <div class="q-opt" data-q="q23" data-correct="4"><span class="letter">ง</span>ออกหุ้นกู้แปลงสภาพ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q23')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q23">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p>ม. 33 ระบุวิธีจัดหาทุนไว้ 5 วิธี: กู้ยืมเงิน / ออกพันธบัตรหรือตราสาร / ขายลดตั๋วเงิน / รับเงินอุดหนุน / ออกสลากออมทรัพย์ — ไม่มี "หุ้นกู้แปลงสภาพ"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 33</div>
+      </div>
+    </div>
+
+    <!-- ─── Q24 ─── -->
+    <div class="q-card" id="q24">
+      <div class="q-num">ข้อ 24 · เงินปันผล (ม. 35-40) ⭐⭐</div>
+      <div class="q-text">ก่อนจ่ายเงินปันผล ธ.ก.ส. ต้อง<strong>สำรองเงินไว้อย่างน้อยเท่าใด</strong>?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q24" data-correct="3"><span class="letter">ก</span>1 ใน 4</div>
+        <div class="q-opt" data-q="q24" data-correct="3"><span class="letter">ข</span>1 ใน 3</div>
+        <div class="q-opt" data-q="q24" data-correct="3"><span class="letter">ค</span>กึ่งหนึ่ง</div>
+        <div class="q-opt" data-q="q24" data-correct="3"><span class="letter">ง</span>2 ใน 3</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q24')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q24">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p>ม. 35-40 "จ่ายปันผลต้องสำรองไว้อย่างน้อยกึ่งหนึ่ง" — เพื่อรักษาฐานะการเงินและขยายงาน</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 35-40</div>
+      </div>
+    </div>
+
+    <!-- ─── Q25 ─── -->
+    <div class="q-card" id="q25">
+      <div class="q-num">ข้อ 25 · บทเบ็ดเสร็จ (ม. 41-43) ⭐⭐</div>
+      <div class="q-text">ผู้ฝ่าฝืน ม. 32 (โอน/จำนอง/จำนำทรัพย์ที่ระบุห้าม) จะได้รับโทษอย่างไร?</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q25" data-correct="2"><span class="letter">ก</span>จำคุกไม่เกิน 6 เดือน หรือปรับไม่เกิน 1,000 บาท</div>
+        <div class="q-opt" data-q="q25" data-correct="2"><span class="letter">ข</span>จำคุกไม่เกิน 1 ปี หรือปรับไม่เกิน 2,000 บาท</div>
+        <div class="q-opt" data-q="q25" data-correct="2"><span class="letter">ค</span>จำคุกไม่เกิน 2 ปี หรือปรับไม่เกิน 4,000 บาท</div>
+        <div class="q-opt" data-q="q25" data-correct="2"><span class="letter">ง</span>จำคุกไม่เกิน 3 ปี หรือปรับไม่เกิน 6,000 บาท</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q25')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q25">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p>ม. 42-43 "บทกำหนดโทษสำหรับผู้ฝ่าฝืน ม. 32 (จำคุกไม่เกิน 1 ปี หรือปรับไม่เกิน 2,000 บาท)"</p>
+        <div class="a-ref">📖 อ้างอิง: มาตรา 42-43</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ═══ FLOATING BACK ═══ -->
+<a href="c9-content.html" class="float-back" style="right:90px;background:#1e293b;border-color:#334155;font-size:0.75rem">
+  📚 Master
+</a>
+<a href="index.html" class="float-back">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+  กลับหน้าหลัก
+</a>
+
+<!-- ═══ JS ═══ -->
+<script>
+function reveal(id) {
+  const el = document.getElementById('ans-' + id);
+  if (el) el.classList.toggle('show');
+}
+
+document.querySelectorAll('.q-opt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const qid = this.dataset.q;
+    const correct = this.dataset.correct;
+    const siblings = this.closest('.q-options').querySelectorAll('.q-opt');
+    siblings.forEach(s => s.classList.remove('correct', 'wrong'));
+    const idx = Array.from(siblings).indexOf(this) + 1;
+    if (String(idx) === correct) {
+      this.classList.add('correct');
+    } else {
+      this.classList.add('wrong');
+      siblings[parseInt(correct) - 1].classList.add('correct');
+    }
+    const ansEl = document.getElementById('ans-' + qid);
+    if (ansEl) ansEl.classList.add('show');
+  });
+});
+</script>
+
+<script src="study-ui.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>
