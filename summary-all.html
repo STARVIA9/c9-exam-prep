@@ -215,8 +215,24 @@ blockquote {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+.mnemo {
+  background: #1e293b;
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #fbbf24;
+}
+.tag.r { background: #7f1d1d; color: #fca5a5; padding: 2px 6px; border-radius: 8px; font-size: 10px; font-weight: 600; margin-left: 4px; }
 @media (max-width: 640px) {
-  .grid2 { grid-template-columns: 1fr; }
+  .grid2, .grid3 { grid-template-columns: 1fr; }
 
   .table-wrap { margin: 8px 0; }
   table { font-size: 13px; min-width: 400px; }
@@ -572,6 +588,54 @@ summary {
     <td>สินเชื่อยั่งยืน ≥ 25% ของสินเชื่อรวม</td>
   </tr>
 </table>
+</div>
+
+<h3>📊 KPIs 3 ระยะ (ตามที่ ธ.ก.ส. กำหนด พ.ศ. 2569)</h3>
+<div class="mnemo"><b>🎯 ที่มา:</b> คู่มือเฉลยนโยบายและยุทธศาสตร์ ผช.บูรพา 69 + แผนวิสาหกิจ ธ.ก.ส. ฉบับปี 2569</div>
+
+<div class="table-wrap"><table>
+<tr><th>ตัวชี้วัด</th><th>ระยะสั้น (67-68)</th><th>ระยะกลาง (69-71) <span class="tag r">ปัจจุบัน</span></th><th>ระยะยาว (72-75)</th></tr>
+<tr><td>ROA</td><td>≥ 0.40%</td><td>≥ 0.40%</td><td>≥ 0.40%</td></tr>
+<tr><td>รายได้เกษตรกร/ชุมชน</td><td>+20% จากปีฐาน</td><td>+20% จากปีฐาน</td><td>+20% จากปีฐาน</td></tr>
+<tr><td>สินเชื่อเพื่อความยั่งยืน</td><td>≥ 25% สินเชื่อรวม</td><td>≥ 25% สินเชื่อรวม</td><td>≥ 25% สินเชื่อรวม</td></tr>
+<tr><td>ลด GHG Scope 1-3</td><td>≥ 30% จากปีฐาน</td><td>≥ 15% (เขต 1-2,3)</td><td>≥ 30% จากปีฐาน</td></tr>
+<tr><td>พอร์ตสินเชื่อ เกษตร:นอกเกษตร</td><td>-</td><td><b>84:16</b></td><td>-</td></tr>
+<tr><td>รายได้จากช่องทางดิจิทัล</td><td>-</td><td><b>30% ของรายได้รวม</b></td><td>-</td></tr>
+<tr><td>Digital Roadmap</td><td>-</td><td>100%</td><td>-</td></tr>
+<tr><td><b>HCROI</b> (Human Capital ROI)</td><td>-</td><td><b>≥ 4 เท่า</b></td><td>-</td></tr>
+<tr><td>สินเชื่อเพื่อความยั่งยืน (สะสม)</td><td>-</td><td><b>100,000 ล้านบาท</b></td><td>-</td></tr>
+<tr><td>NPLs / Loan</td><td>-</td><td><b>≤ 5%</b></td><td>-</td></tr>
+<tr><td>ชุมชนที่มี Business Value เพิ่ม</td><td>-</td><td>+10% จากปีฐาน</td><td>+10% จากปีฐาน</td></tr>
+</table></div>
+
+<h4>🎯 KPIs ทางการเงินปี 2569 (เพิ่มเติมในเอกสารบูรพา 69)</h4>
+<div class="grid3">
+<div class="c ok">
+<b>💰 Cost to Income Ratio</b><br>
+เป้าหมาย: <b>&lt; 41.69</b><br>
+หมายถึง: ต้นทุนต้องไม่เกิน 41.69% ของรายได้ (ควบคุมค่าใช้จ่าย)
+</div>
+<div class="c ok">
+<b>🏛️ BIS Ratio</b><br>
+เป้าหมาย: <b>> 12.88%</b><br>
+หมายถึง: เงินกองทุนหนาแน่น พร้อมขยายธุรกิจ
+</div>
+<div class="c ok">
+<b>📊 Liquidity Ratio</b><br>
+เป้าหมาย: <b>> 12.00%</b><br>
+หมายถึง: สภาพคล่องเพียงพอ ต่อยอดเงินทุนต้นทุนต่ำ
+</div>
+</div>
+<div class="mnemo">
+🏦 <b>เป้ากำไรปี 2569:</b> 9,919 ล้านบาท — สะท้อนการควบคุมค่าใช้จ่ายและรักษาสภาพคล่อง
+</div>
+
+<h4>🔑 คำถามที่ออกสอบบ่อย (เอกสารบูรพา)</h4>
+<div class="c info">
+<b>Q: SO ใดเกี่ยวข้องกับ Digital Transformation?</b> → <b>SO4</b> (เพิ่มขีดความสามารถองค์กรด้วยเทคโนโลยีดิจิทัล)<br>
+<b>Q: SO ใดเกี่ยวข้องกับ ESG และ Net Zero?</b> → <b>SO6</b> (Net Zero Emissions)<br>
+<b>Q: SO ใดเกี่ยวข้องกับการพัฒนาคน (HCROI)?</b> → <b>SO5</b> (เพิ่มศักยภาพบุคลากร+GRC)<br>
+<b>Q: SO ใดเกี่ยวข้องกับคุณภาพสินเชื่อ (NPL)?</b> → <b>SO2</b> (บริหารคุณภาพสินเชื่อ)
 </div>
 </section>
 
