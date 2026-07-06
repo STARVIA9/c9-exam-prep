@@ -75,9 +75,9 @@ questions.forEach((q,i)=>{
 const card=document.createElement("div");
 card.className="question-card";
 card.id="q-"+q.num;
-let ch=q.choices.map(c=>{
-const isA=c.key===q.answer;
-return '<div class="choice" data-q="'+q.num+'" data-key="'+c.key+'" data-correct="'+isA+'" onclick="selectChoice(this)"><span class="key">'+c.key+'. </span>'+c.text+'</div>';
+let ch=Object.entries(q.choices).map(([key,text])=>{
+const isA=key===q.answer;
+return '<div class="choice" data-q="'+q.num+'" data-key="'+key+'" data-correct="'+isA+'" onclick="selectChoice(this)"><span class="key">'+key+'. </span>'+text+'</div>';
 }).join("");
 card.innerHTML='<div class="q-num">ข้อ '+q.num+'</div><div class="q-text">'+q.q+'</div>'+ch;
 area.appendChild(card);
