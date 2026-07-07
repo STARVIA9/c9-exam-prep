@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✍️ ระเบียบฉบับที่ 3 การบริหารเงินสด — แบบทดสอบ 37 ข้อ | ธ.ก.ส.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0d1425;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --surface3: #22324f;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --gold-dim: rgba(212,148,47,0.12);
+  --gold-soft: rgba(212,148,47,0.06);
+  --green: #22a67e;
+  --green-dim: rgba(34,166,126,0.12);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75,123,186,0.10);
+  --purple: #9772e6;
+  --purple-dim: rgba(151,114,230,0.10);
+  --red: #e55c5c;
+  --red-dim: rgba(229,92,92,0.10);
+  --cyan: #36b5c4;
+  --cyan-dim: rgba(54,181,196,0.10);
+  --orange: #f09b3a;
+  --orange-dim: rgba(240,155,58,0.10);
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 40%, rgba(212,148,47,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 85% 20%, rgba(75,123,186,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(151,114,230,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  background: rgba(7,11,20,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; z-index: 100;
+}
+.top-nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text2); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  padding: 6px 14px; border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.top-nav a:hover { color: var(--gold2); background: var(--gold-dim); }
+.top-nav .logo { color: var(--gold2); font-weight: 700; font-size: 0.9rem; }
+.top-nav .logo small { font-weight: 400; font-size: 0.75rem; color: var(--text3); }
+.top-nav .nav-links { display: flex; gap: 4px; }
+.top-nav .nav-links a { font-size: 0.8rem; }
+.top-nav .nav-links a.active { color: var(--gold2); background: var(--gold-dim); }
+
+/* ===== MAIN ===== */
+.container {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto; padding: 80px 20px 120px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center; padding: 48px 0 40px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 14px; border-radius: 100px;
+  background: var(--gold-dim); color: var(--gold2);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3px;
+  margin-bottom: 16px; border: 1px solid rgba(212,148,47,0.25);
+}
+.hero h1 {
+  font-size: clamp(26px,4.5vw,40px); font-weight: 700; line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--gold2); }
+.hero p {
+  color: var(--text2); font-size: 0.95rem; max-width: 640px; margin: 0 auto;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 24px;
+  margin-top: 20px; font-size: 0.8rem; color: var(--text3);
+  flex-wrap: wrap;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ===== QUIZ INTRO ===== */
+.quiz-intro {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.quiz-intro h2 { font-size: 1.3rem; color: var(--gold2); margin-bottom: 4px; }
+.quiz-intro p { font-size: 0.85rem; color: var(--text2); }
+
+/* ===== QUIZ CARD ===== */
+.q-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 20px;
+  transition: all 0.2s;
+}
+.q-card:hover { border-color: rgba(212,148,47,0.25); }
+.q-num {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 2px 12px; border-radius: 100px;
+  background: var(--gold-dim); color: var(--gold2);
+  font-size: 0.75rem; font-weight: 600; margin-bottom: 10px;
+}
+.q-text {
+  font-size: 0.95rem; font-weight: 500; line-height: 1.7;
+  margin-bottom: 12px; color: var(--text);
+}
+.q-options { display: flex; flex-direction: column; gap: 6px; }
+.q-opt {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg2);
+  font-size: 0.85rem; line-height: 1.6; cursor: pointer;
+  transition: all 0.2s; color: var(--text2);
+}
+.q-opt:hover {
+  border-color: var(--gold); background: var(--gold-soft); color: var(--text);
+}
+.q-opt .letter {
+  flex-shrink: 0; width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 0.75rem; font-weight: 600; color: var(--text3);
+  transition: all 0.2s;
+}
+.q-opt:hover .letter {
+  background: var(--gold-dim); border-color: var(--gold); color: var(--gold2);
+}
+.q-opt.correct {
+  border-color: var(--green) !important; background: var(--green-dim) !important;
+}
+.q-opt.correct .letter {
+  background: var(--green) !important; border-color: var(--green) !important;
+  color: #fff !important;
+}
+.q-opt.wrong {
+  border-color: var(--red) !important; background: var(--red-dim) !important;
+}
+.q-opt.wrong .letter {
+  background: var(--red) !important; border-color: var(--red) !important;
+  color: #fff !important;
+}
+
+.answer-reveal {
+  display: none; margin-top: 12px;
+  padding: 14px 16px; border-radius: var(--radius-sm);
+  background: var(--bg2); border-left: 3px solid var(--gold);
+}
+.answer-reveal.show { display: block; }
+.answer-reveal .a-label { font-weight: 600; color: var(--gold2); margin-bottom: 4px; font-size: 0.9rem; }
+.answer-reveal .a-ref { font-size: 0.78rem; color: var(--text3); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.answer-reveal p { font-size: 0.84rem; color: var(--text2); line-height: 1.7; }
+
+.btn-check {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding: 6px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--gold); background: transparent;
+  color: var(--gold2); font-size: 0.8rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s; font-family: inherit;
+}
+.btn-check:hover { background: var(--gold-dim); color: var(--text); }
+
+/* ===== FLOATING BACK ===== */
+.float-back {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text2); text-decoration: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: all 0.2s; font-family: inherit; font-size: 0.85rem;
+}
+.float-back:hover {
+  border-color: var(--gold); color: var(--gold2); background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .container { padding: 72px 14px 100px; }
+  .top-nav { padding: 0 10px; }
+  .top-nav .logo { font-size: 0.8rem; }
+  .top-nav .nav-links a { padding: 4px 8px; font-size: 0.72rem; }
+  .hero-meta { gap: 12px; flex-direction: column; align-items: center; }
+  .q-card { padding: 16px; }
+  .float-back { bottom: 14px; right: 14px; padding: 8px 14px; font-size: 0.8rem; }
+}
+
+@media print {
+  .top-nav, .float-back { display: none; }
+  body { background: #fff; color: #111; }
+  .q-card { border-color: #ccc; background: #f9f9f9; }
+  .q-opt { border-color: #ddd; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="top-nav">
+  <a href="index.html" class="logo">💰 ระเบียบ ฉ.3 <small>แบบทดสอบ</small></a>
+  <div class="nav-links">
+    <a href="cash-regulation3.html">📘 เนื้อหา</a>
+    <a href="#exam" class="active">✍️ ข้อสอบ</a>
+    <a href="index.html">← หน้าหลัก</a>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="container">
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-badge">✍️ แบบทดสอบ · ระเบียบฉบับที่ 3</div>
+    <h1>ทดสอบความเข้าใจ<br><span>การบริหารเงินสด</span></h1>
+    <p>แบบทดสอบ 37 ข้อ ครอบคลุมเนื้อหา 4 ส่วน: วงเงินสำรอง / MMS-KCIM / การขนย้าย-ธนบัตร / ประกันภัยเงิน พร้อมเฉลยพร้อมเหตุผลอ้างอิง</p>
+    <div class="hero-meta">
+      <span>✍️ 37 ข้อ</span>
+      <span>📋 4 หมวด</span>
+      <span>🎯 มีเฉลยละเอียด</span>
+    </div>
+  </section>
+
+  <!-- ─── QUIZ INTRO ─── -->
+  <div class="quiz-intro">
+    <h2>📋 วิธีทำ</h2>
+    <p>คลิกตัวเลือกที่ต้องการ → ระบบจะไฮไลต์สีเขียว/แดงอัตโนมัติ + กดปุ่ม "✅ เฉลย" เพื่อดูเหตุผลอ้างอิง</p>
+  </div>
+
+  <section id="exam">
+
+    <!-- ─── Q1: นิยามเงินคงเหลือ ─── -->
+    <div class="q-card" id="q1">
+      <div class="q-num">ข้อ 1 · นิยามเงินคงเหลือ</div>
+      <div class="q-text">คำนิยาม <strong>"เงินคงเหลือ"</strong> หมายถึงข้อใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q1" data-correct="1"><span class="letter">ก</span>จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ รายการเงินสดในมือ, เงินสดใน ATM และเงินฝากธนาคาร</div>
+        <div class="q-opt" data-q="q1" data-correct="1"><span class="letter">ข</span>จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ รายการเงินสดในมือ และเงินสดใน ATM</div>
+        <div class="q-opt" data-q="q1" data-correct="1"><span class="letter">ค</span>จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ รายการเงินสดในมือ</div>
+        <div class="q-opt" data-q="q1" data-correct="1"><span class="letter">ง</span>ไม่มีข้อถูก</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q1')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q1">
+        <div class="a-label">✅ เฉลย: ข้อ ก</div>
+        <p><strong>เหตุผล:</strong> เงินคงเหลือ หมายถึง จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ <strong>เงินสดในมือ + เงินสดใน ATM + เงินฝากธนาคาร</strong> (ตามกธ.39 บทที่ 201.03.01)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (นิยาม)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q2: นิยามวงเงินสำรอง ─── -->
+    <div class="q-card" id="q2">
+      <div class="q-num">ข้อ 2 · นิยามวงเงินสำรอง</div>
+      <div class="q-text">คำนิยาม <strong>"วงเงินสำรอง"</strong> หมายถึงข้อใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q2" data-correct="2"><span class="letter">ก</span>จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ รายการเงินสดในมือ, เงินสดใน ATM และเงินฝากธนาคาร</div>
+        <div class="q-opt" data-q="q2" data-correct="2"><span class="letter">ข</span>จำนวนเงินคงเหลือที่เฉลี่ยสูงสุดในช่วงเวลาใดเวลาหนึ่ง</div>
+        <div class="q-opt" data-q="q2" data-correct="2"><span class="letter">ค</span>วงเงินสำรองที่ธนาคารกำหนดให้ สนจ.</div>
+        <div class="q-opt" data-q="q2" data-correct="2"><span class="letter">ง</span>วงเงินสำรองที่ สนจ. กำหนดให้สาขาในสังกัด</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q2')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q2">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> วงเงินสำรอง หมายถึง <strong>จำนวนเงินคงเหลือที่เฉลี่ยสูงสุดในช่วงเวลาใดเวลาหนึ่ง</strong> (ข้อ ก คือนิยาม "เงินคงเหลือ" / ข้อ ค, ง คือ "วงเงินที่ธนาคาร/สนจ. กำหนด")</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (นิยาม)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q3: เกณฑ์กำหนดวงเงินสำรอง ─── -->
+    <div class="q-card" id="q3">
+      <div class="q-num">ข้อ 3 · เกณฑ์กำหนดวงเงินสำรอง</div>
+      <div class="q-text">ธนาคารจะกำหนดวงเงินสำรองคงเหลือในภาพรวมของ สนจ. ในแต่ละไตรมาส โดยพิจารณาจากข้อมูลใดเป็นหลัก</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q3" data-correct="2"><span class="letter">ก</span>อัตราการเจริญเติบโตของประชากรในพื้นที่</div>
+        <div class="q-opt" data-q="q3" data-correct="2"><span class="letter">ข</span>ปริมาณธุรกิจของสาขา ปริมาณการใช้เงินในระบบ MMS และตารางเดินรถ KCIM</div>
+        <div class="q-opt" data-q="q3" data-correct="2"><span class="letter">ค</span>ยอดเงินฝากสะสมคงเหลือ ณ วันสิ้นปีบัญชีของปีที่ผ่านมา</div>
+        <div class="q-opt" data-q="q3" data-correct="2"><span class="letter">ง</span>จำนวนพนักงานการเงิน (Teller) และปริมาณธุรกิจแต่ละสาขา</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q3')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q3">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> วงเงินสำรองกำหนดจาก <strong>ปริมาณธุรกิจของสาขา</strong> เช่น ปริมาณการใช้เงินของสาขา ตารางเดินรถ KCIM สาขาห่างไกล ในแต่ละไตรมาส (กธ.39 บทที่ 201.03.01)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (หลักเกณฑ์การกำหนดวงเงินสำรอง)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q4: อำนาจอนุมัติวงเงิน ─── -->
+    <div class="q-card" id="q4">
+      <div class="q-num">ข้อ 4 · อำนาจอนุมัติวงเงิน</div>
+      <div class="q-text">การอนุมัติ "กำหนดวงเงิน การขยายวงเงิน และการเพิ่มวงเงินสำรองคงเหลือในภาพรวมของสำนักงาน ธ.ก.ส. จังหวัด" เป็นอำนาจหน้าที่ของบุคคลใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q4" data-correct="4"><span class="letter">ก</span>ผู้จัดการสาขา</div>
+        <div class="q-opt" data-q="q4" data-correct="4"><span class="letter">ข</span>ผู้อำนวยการสำนักงาน ธ.ก.ส. จังหวัด</div>
+        <div class="q-opt" data-q="q4" data-correct="4"><span class="letter">ค</span>ผู้อำนวยการฝ่ายกิจการสาขาภาค</div>
+        <div class="q-opt" data-q="q4" data-correct="4"><span class="letter">ง</span>ผู้อำนวยการสำนักธุรกรรมการเงิน หรือผู้ช่วยผู้อำนวยการสำนักธุรกรรมการเงิน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q4')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q4">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> การกำหนดวงเงิน การขยายวงเงิน และการเพิ่มวงเงินสำรองคงเหลือ <strong>ในภาพรวมของ สนจ.</strong> เป็นอำนาจของ <strong>ผอ.ธง. / ผช.ผอ.ธง.</strong> (ส่วน ผอจ. อนุมัติเฉพาะสาขาในสังกัด)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (อำนาจอนุมัติ)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q5: สำรองเงินเกินวงเงินสนจ. ─── -->
+    <div class="q-card" id="q5">
+      <div class="q-num">ข้อ 5 · สำรองเงินเกินวงเงิน สนจ.</div>
+      <div class="q-text">หลังสิ้นงวดวันที่ 1-15 และงวดวันที่ 16-สิ้นเดือน ตรวจสอบแล้วสาขามีการสำรองเงินคงเหลือสิ้นวันเกินวงเงินที่ สนจ.กำหนด สาขาควรดำเนินการอย่างไร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q5" data-correct="4"><span class="letter">ก</span>เข้าระบบการบริหารจัดการเงิน (MMS) > ขอขยายวงเงิน > เพิ่มข้อมูล > บันทึกรายละเอียดการขอขยายวงเงิน และเหตุผลความจำเป็น</div>
+        <div class="q-opt" data-q="q5" data-correct="4"><span class="letter">ข</span>"บันทึก" เพื่อส่งรายการขออนุมัติขยายวงเงินสำรองคงเหลือไปยังผู้จัดการสาขา หรือผู้ช่วยผู้จัดการสาขา เพื่อพิจารณาลงนาม</div>
+        <div class="q-opt" data-q="q5" data-correct="4"><span class="letter">ค</span>หัวหน้าการเงิน หรือพนักงานที่ได้รับมอบหมายสาขาระดับ 4-7 จัดทำบันทึกขออนุมัติขยายวงเงินสำรองคงเหลือ ทุกครั้งที่การสำรองเงินคงเหลือสิ้นวันเกินวงเงินที่ สนจ. กำหนด</div>
+        <div class="q-opt" data-q="q5" data-correct="4"><span class="letter">ง</span>ถูกทุกข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q5')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q5">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> ทั้ง 3 ข้อเป็นส่วนหนึ่งของกระบวนการขอขยายวงเงิน (ก) คือการบันทึกใน MMS, (ข) คือการส่งให้ผจข.ลงนาม, (ค) คือผู้รับผิดชอบในการจัดทำบันทึก — ทั้งหมดเป็นขั้นตอนที่ต้องทำครบ (กธ.39 บทที่ 201.03.06)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (การขอขยายวงเงิน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q6: เกินวงเงินธนาคาร ─── -->
+    <div class="q-card" id="q6">
+      <div class="q-num">ข้อ 6 · สำรองเงินเกินวงเงินธนาคาร</div>
+      <div class="q-text">ในกรณีที่ สนจ. มีความจำเป็นต้องสำรองเงินคงเหลือในภาพรวมเฉลี่ย <strong>"เกินวงเงินที่ธนาคารกำหนด"</strong> ในแต่ละงวด จะต้องดำเนินการขออนุมัติต่อใครและผ่านระบบใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q6" data-correct="2"><span class="letter">ก</span>ขออนุมัติต่อ ผอจ. ผ่านระบบงานสารบรรณ</div>
+        <div class="q-opt" data-q="q6" data-correct="2"><span class="letter">ข</span>ขออนุมัติต่อผู้อำนวยการสำนักธุรกรรมการเงิน (ธง.) ผ่านระบบ MMS</div>
+        <div class="q-opt" data-q="q6" data-correct="2"><span class="letter">ค</span>ขออนุมัติต่อผู้ช่วยผู้จัดการใหญ่ที่กำกับดูแลภาค ผ่านระบบอีเมลองค์กร</div>
+        <div class="q-opt" data-q="q6" data-correct="2"><span class="letter">ง</span>ไม่สามารถขออนุมัติได้ในทุกกรณี ต้องบริหารจัดการภายในวงเงินเดิมเท่านั้น</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q6')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q6">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> กรณีเงินสำรองคงเหลือในภาพรวม สนจ. เกินวงเงินที่ธนาคารกำหนด → ให้บันทึกขออนุมัติขยายวงเงิน โดยเสนอ <strong>ผอ.ธง. ผ่านระบบ MMS</strong> (กธ.39 บทที่ 201.03.06)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (การขอขยายวงเงิน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q7: ระยะเวลาบันทึกขยายวงเงิน ─── -->
+    <div class="q-card" id="q7">
+      <div class="q-num">ข้อ 7 · ระยะเวลาบันทึกขยายวงเงิน</div>
+      <div class="q-text">กรณี สนจ. ขอขยายวงเงินสำรองคงเหลือ พนักงานบริหารเงินทุนจะต้องบันทึกขออนุมัติขยายวงเงินในระบบ MMS ให้เสร็จสิ้นภายในกำหนดเวลาใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ก</span>ภายในวันทำการถัดไปทันทีหลังสิ้นงวด</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ข</span>ภายใน 3 วันทำการหลังสิ้นงวด</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ค</span>ภายใน 5 วันทำการหลังสิ้นงวด</div>
+        <div class="q-opt" data-q="q7" data-correct="3"><span class="letter">ง</span>ภายในวันสิ้นเดือนของไตรมาสนั้นๆ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q7')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q7">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> พนักงานบริหารเงินทุน สนจ. (ระดับ 8 ขึ้นไป) ต้องรวบรวมเหตุผลและบันทึกขออนุมัติขยายวงเงินใน MMS <strong>ภายใน 5 วันทำการ</strong> หลังสิ้นงวด (กธ.39 บทที่ 201.03.06)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (การขอขยายวงเงิน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q8: เก็บเงินสดสิ้นวันเกินวงเงิน ─── -->
+    <div class="q-card" id="q8">
+      <div class="q-num">ข้อ 8 · เก็บรักษาเงินสดสิ้นวันเกินวงเงิน</div>
+      <div class="q-text">กรณีสาขาหรือสาขาย่อยมีความจำเป็นต้อง <strong>"เก็บรักษาเงินสดสิ้นวันเกินวงเงินสำรองคงเหลือที่กำหนดเป็นครั้งคราว"</strong> (แต่ไม่เกินกรมธรรม์) ต้องปฏิบัติอย่างไร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q8" data-correct="3"><span class="letter">ก</span>โทรศัพท์แจ้งพนักงานบริหารเงินทุน สนจ. รับทราบในทันที</div>
+        <div class="q-opt" data-q="q8" data-correct="3"><span class="letter">ข</span>ไม่ต้องทำอะไรหากไม่เกินวงเงินประกันภัย</div>
+        <div class="q-opt" data-q="q8" data-correct="3"><span class="letter">ค</span>ชี้แจงเหตุผลความจำเป็นไว้ในด้านหลังของรายงานยอดเงินคงเหลือต้นฉบับ โดยให้กรรมการตรวจนับเงินสดทุกคนลงลายมือชื่อกำกับ</div>
+        <div class="q-opt" data-q="q8" data-correct="3"><span class="letter">ง</span>ทำบันทึกขอขยายวงเงินย้อนหลังในระบบ MMS ในวันทำการถัดไป</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q8')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q8">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> ให้สาขา/สาขาย่อย <strong>ชี้แจงเหตุผลความจำเป็นไว้ในด้านหลังของรายงานยอดเงินคงเหลือต้นฉบับ</strong> โดยให้กรรมการตรวจนับเงินสดทุกคนลงลายมือชื่อกำกับ (กธ.39 บทที่ 201.03.01)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (เก็บรักษาเงินสดสิ้นวัน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q9: ความถี่/จุดควบคุม ─── -->
+    <div class="q-card" id="q9">
+      <div class="q-num">ข้อ 9 · ความถี่และจุดควบคุม</div>
+      <div class="q-text">ในด้าน "ความถี่ในการควบคุม" และ "จุดควบคุม" ของพนักงานบริหารเงินทุนในการติดตาม ควบคุม และกำกับการสำรองวงเงินของสาขาในสังกัดผ่านระบบ MMS กำหนดไว้อย่างไร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ก</span>ทุกวันสิ้นเดือน</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ข</span>ทุกวันทำการ</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ค</span>ทุกงวดวันที่ 1 และ 16 ของเดือน</div>
+        <div class="q-opt" data-q="q9" data-correct="3"><span class="letter">ง</span>ทุกสิ้นไตรมาส เท่านั้น</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q9')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q9">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> สนจ. เป็นผู้ควบคุมและกำกับการสำรองเงินของทุกสาขารวมกันเฉลี่ยทุกงวด <strong>วันที่ 1-15 และวันที่ 16-วันสิ้นเดือน</strong> (กธ.39 บทที่ 201.03.01)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 1 (การควบคุมผ่าน MMS)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q10: ผจข.+ผช.ผจข. ลาหยุด ─── -->
+    <div class="q-card" id="q10">
+      <div class="q-num">ข้อ 10 · ผจข./ผช.ผจข. ลาหยุด</div>
+      <div class="q-text">กรณีผู้จัดการสาขา และผู้ช่วยผู้จัดการสาขา ลาหยุดหรือไม่สามารถปฏิบัติหน้าที่ได้ ทำให้สาขาไม่มีผู้ลงนามในระบบ MMS ข้อใดกล่าวถูกต้อง</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q10" data-correct="4"><span class="letter">ก</span>ให้ผู้จัดการสาขา มอบหมายเป็นลายลักษณ์อักษร ให้พนักงานการเงิน 4-7 คนใดคนหนึ่งลงนามแทน</div>
+        <div class="q-opt" data-q="q10" data-correct="4"><span class="letter">ข</span>ให้ผู้จัดการสาขาปลายทางอนุมัติในระบบ MMS แทน</div>
+        <div class="q-opt" data-q="q10" data-correct="4"><span class="letter">ค</span>ให้ผู้อำนวยการสำนักงานจังหวัด มอบหมายเป็นลายลักษณ์อักษรให้พนักงานบริหารทั่วไป 4-7 เป็นผู้ลงนามในระบบ MMS แทน</div>
+        <div class="q-opt" data-q="q10" data-correct="4"><span class="letter">ง</span>ให้ผู้จัดการสาขา มอบหมายเป็นลายลักษณ์อักษรให้หัวหน้าการเงิน หรือหัวหน้าหน่วยอำเภอ ตามลำดับ พิจารณาลงนาม</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q10')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q10">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> กรณี ผจข. หรือ ผช.ผจข. ลาหยุด ให้ผจข. <strong>มอบหมายเป็นลายลักษณ์อักษรให้หกง. หรือหนภ. ตามลำดับ</strong> พิจารณาลงนาม (กธ.39 บทที่ 202.01.10)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 2 (สิทธิการใช้งาน MMS)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q11: ขนย้ายต่างสังกัด สนจ. ─── -->
+    <div class="q-card" id="q11">
+      <div class="q-num">ข้อ 11 · ขนย้ายต่างสังกัด สนจ. ฝสข.เดียวกัน</div>
+      <div class="q-text">หากสาขามีความจำเป็นต้องขนย้ายเงินสดระหว่างสาขาที่ <strong>"อยู่ต่างสังกัดสำนักงาน ธ.ก.ส. จังหวัด แต่อยู่ในฝ่ายกิจการสาขาภาคเดียวกัน"</strong> ต้องขออนุมัติใคร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q11" data-correct="3"><span class="letter">ก</span>ขออนุมัติผู้จัดการสาขาของทั้งสองสาขา ทั้งสาขาที่ขอขนย้ายเงินสดและสาขาที่ส่งมอบเงินสด</div>
+        <div class="q-opt" data-q="q11" data-correct="3"><span class="letter">ข</span>ผู้อำนวยการสำนักงาน ธ.ก.ส. จังหวัด ของสาขาต้นทาง</div>
+        <div class="q-opt" data-q="q11" data-correct="3"><span class="letter">ค</span>ผู้อำนวยการฝ่ายกิจการสาขาภาค รองผู้อำนวยการฝ่ายฯ หรือผู้ช่วยผู้อำนวยการฝ่ายฯ</div>
+        <div class="q-opt" data-q="q11" data-correct="3"><span class="letter">ง</span>ผู้อำนวยการสำนักธุรกรรมการเงิน เท่านั้น</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q11')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q11">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> การขนย้ายเงินสด<strong>ต่างสังกัด สนจ. แต่อยู่ใน ฝสข.เดียวกัน</strong> ต้องขออนุมัติ <strong>ผอ.ฝสข. / รอง ผอ.ฝสข. / ผช.ผอ.ฝสข.</strong> (ระเบียบ ฉบับที่ 3)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (อำนาจอนุมัติขนย้ายเงินสดระหว่างสาขา)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q12: การฝากเงิน KCIM ─── -->
+    <div class="q-card" id="q12">
+      <div class="q-num">ข้อ 12 · การฝากเงิน KCIM</div>
+      <div class="q-text">สาขา ก ต้องการฝากเงินวันพุธ สาขาต้องบันทึกรายการฝากเงินล่วงหน้ากี่วัน ภายในเวลาเท่าไหร่</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q12" data-correct="2"><span class="letter">ก</span>สาขาบันทึกรายการฝากเงินล่วงหน้าก่อนวันที่สาขาต้องการนำฝากธนบัตร 1 วันทำการ ภายในเวลา 12.00 น.</div>
+        <div class="q-opt" data-q="q12" data-correct="2"><span class="letter">ข</span>สาขาบันทึกรายการฝากเงินล่วงหน้าก่อนวันที่สาขาต้องการนำฝากธนบัตร 1 วันทำการ ภายในเวลา 14.30 น.</div>
+        <div class="q-opt" data-q="q12" data-correct="2"><span class="letter">ค</span>สาขาบันทึกรายการฝากเงินล่วงหน้าก่อนวันที่สาขาต้องการนำฝากธนบัตร 2 วันทำการ ภายในเวลา 12.00 น.</div>
+        <div class="q-opt" data-q="q12" data-correct="2"><span class="letter">ง</span>สาขาบันทึกรายการฝากเงินล่วงหน้าก่อนวันที่สาขาต้องการนำฝากธนบัตร 2 วันทำการ ภายในเวลา 14.30 น.</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q12')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q12">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> การฝากเงิน KCIM สาขาต้องบันทึกล่วงหน้า <strong>1 วันทำการ ภายใน 14.30 น.</strong> (เช่น ฝากวันพุธที่ 8 → บันทึกวันอังคารที่ 7 ภายใน 14.30 น.) ตามกธ.39 บทที่ 202.01.05</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 2 (การฝากเงิน KCIM)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q13: ขั้นตอนการถอนเงิน ─── -->
+    <div class="q-card" id="q13">
+      <div class="q-num">ข้อ 13 · ขั้นตอนการถอนเงิน KCIM</div>
+      <div class="q-text">ข้อใดถูกต้องเกี่ยวกับขั้นตอนการถอนเงิน กับ บมจ.ธนาคารกรุงไทย ผ่านระบบการบริหารจัดการเงิน (MMS)</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q13" data-correct="4"><span class="letter">ก</span>พนักงานการเงิน (ผู้รักษาเงิน) หรือพนักงานผู้ได้รับมอบหมายสาขา จัดทำบันทึกขออนุมัติถอนเงินใน MMS</div>
+        <div class="q-opt" data-q="q13" data-correct="4"><span class="letter">ข</span>พนักงานการเงินบันทึกรายการถอนเงินล่วงหน้า ก่อนวันที่สาขาต้องการรับมอบธนบัตร 2 วันทำการภายในเวลา 14.30 น.</div>
+        <div class="q-opt" data-q="q13" data-correct="4"><span class="letter">ค</span>พนักงานการเงิน (ผู้รักษาเงิน) หรือพนักงานผู้ได้รับมอบหมายสาขา พิมพ์ใบขอรับเงินจาก MMS ตรวจสอบรายละเอียดใบขอรับเงินให้ถูกต้องครบถ้วน</div>
+        <div class="q-opt" data-q="q13" data-correct="4"><span class="letter">ง</span>ถูกทุกข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q13')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q13">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> ทั้ง 3 ข้อเป็นขั้นตอนที่ถูกต้องของการถอนเงิน KCIM ผ่าน MMS: (ก) จัดทำบันทึกขออนุมัติ, (ข) บันทึกล่วงหน้า 2 วันทำการ ภายใน 14.30 น., (ค) พิมพ์ใบขอรับเงิน + ตรวจสอบ — ทั้งหมดเป็นส่วนหนึ่งของ workflow</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 2 (การถอนเงิน KCIM)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q14: เปลี่ยนแปลงรายการฝาก-ถอน ─── -->
+    <div class="q-card" id="q14">
+      <div class="q-num">ข้อ 14 · เปลี่ยนแปลงรายการฝาก-ถอน</div>
+      <div class="q-text">กรณีสาขาลงนามบันทึกขออนุมัติฝาก–ถอนเงิน ไปยัง สนจ. เรียบร้อยแล้ว และมีความต้องการแก้ไข/เปลี่ยนแปลงรายการฝาก–ถอนเงิน ต้องทำภายในระยะเวลาเท่าไหร่</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ก</span>รายการฝากเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 14.00 น. / รายการถอนเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 12.00 น.</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ข</span>รายการฝากเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 14.30 น. / รายการถอนเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 12.30 น.</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ค</span>รายการฝากเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 15.00 น. / รายการถอนเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 13.00 น.</div>
+        <div class="q-opt" data-q="q14" data-correct="3"><span class="letter">ง</span>รายการฝากเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 15.30 น. / รายการถอนเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 13.30 น.</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q14')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q14">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> กรณี สนจ. ยังไม่ได้อัพโหลดเข้า KCIM → รายการ<strong>ฝากเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 15.00 น.</strong> / <strong>ถอนเงิน: ล่วงหน้า 1 วันทำการ ไม่เกิน 13.00 น.</strong> (กธ.39 บทที่ 202.01.08-09)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 2 (การเปลี่ยนแปลงรายการ)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q15: บันทึกเบิกเงิน KCIM ─── -->
+    <div class="q-card" id="q15">
+      <div class="q-num">ข้อ 15 · บันทึกเบิกเงิน KCIM (ผู้บริหารลาหยุด)</div>
+      <div class="q-text">บันทึกเบิกเงิน KCIM กรณีผู้บริหารและผู้ปฏิบัติงานลาหยุด หรือไปปฏิบัติงานธนาคารและไม่อยู่ปฏิบัติงานพร้อมกัน ข้อใด <strong>ผิด</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q15" data-correct="3"><span class="letter">ก</span>กรณี ผจข./ผช.ผจข. ลาหยุดล่วงหน้า ให้ผจข. มอบหมายเป็นลายลักษณ์อักษรให้หกง. หรือหนภ. ตามลำดับ</div>
+        <div class="q-opt" data-q="q15" data-correct="3"><span class="letter">ข</span>กรณี หกง./หนภ. ลาหยุด ให้ผจข. หรือผช.ผจข. ยืนยัน แก้ไข หรือยกเลิกรายการใน MMS</div>
+        <div class="q-opt" data-q="q15" data-correct="3"><span class="letter">ค</span>กรณี ผอจ./ผช.ผอจ ลาหยุด ให้ สนจ. จัดทำบันทึกในระบบงานสารบรรณ เพื่อขอความร่วมมือ <strong>ฝสข.</strong> อนุมัติรายการฝาก-ถอนเงินใน MMS แทน</div>
+        <div class="q-opt" data-q="q15" data-correct="3"><span class="letter">ง</span>กรณี ผอจ./ผช.ผอจ ลาหยุด ให้ สนจ. จัดทำบันทึกในระบบงานสารบรรณ เพื่อขอความร่วมมือ <strong>ธง.</strong> อนุมัติรายการฝาก-ถอนเงินใน MMS แทน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q15')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q15">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> กรณี ผอจ./ผช.ผอจ ลาหยุด ให้ สนจ. จัดทำบันทึกในระบบงานสารบรรณ เพื่อขอความร่วมมือ <strong>ธง.</strong> (สำนักธุรกรรมการเงิน) อนุมัติแทน ไม่ใช่ <strong>ฝสข.</strong> (กธ.39 บทที่ 202.01.10)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 2 (สิทธิการใช้งาน MMS)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q16: คณะกรรมการรับ-ส่งธนบัตร ─── -->
+    <div class="q-card" id="q16">
+      <div class="q-num">ข้อ 16 · คณะกรรมการรับ-ส่งธนบัตร</div>
+      <div class="q-text">ในการขนย้ายเงินสดกับผู้รับจ้าง ผู้จัดการสาขาต้องแต่งตั้ง "คณะกรรมการรับ-ส่งธนบัตร" อย่างไร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ก</span>แต่งตั้งพนักงานการเงินจำนวนไม่น้อยกว่า 2 คน โดยสั่งการด้วยวาจา</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ข</span>ประกอบด้วย พนักงานผู้รับมอบอำนาจสาขา (โดยตำแหน่ง) และพนักงานการเงินตั้งแต่ระดับ 4 ร่วมด้วย รวมไม่น้อยกว่า 3 คน เป็นลายลักษณ์อักษร</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ค</span>แต่งตั้งพนักงานการเงินระดับ 4 ขึ้นไป จำนวน 5 คน โดยให้หัวหน้าการเงินเป็นประธาน</div>
+        <div class="q-opt" data-q="q16" data-correct="2"><span class="letter">ง</span>ประกอบด้วย ผู้จัดการสาขา และพนักงานการเงินระดับใดก็ได้ รวมกันให้ได้ 4 คน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q16')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q16">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> ผจข. แต่งตั้งคณะกรรมการรับ-ส่งธนบัตรกับผู้รับจ้าง ให้จัดทำคำสั่งเป็นลายลักษณ์อักษร ประกอบด้วย <strong>พนักงานผู้รับมอบอำนาจสาขา (โดยตำแหน่ง) + พนักงานการเงินตั้งแต่ระดับ 4 รวมไม่น้อยกว่า 3 คน</strong> (ระเบียบ ฉบับที่ 3)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (การขนย้ายเงินสดกับผู้รับจ้าง)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q17: ตรวจพบธนบัตรบกพร่อง ─── -->
+    <div class="q-card" id="q17">
+      <div class="q-num">ข้อ 17 · ตรวจพบธนบัตรบกพร่อง</div>
+      <div class="q-text">กรณีสาขารับมอบธนบัตรจากศูนย์บริหารและจัดการธนบัตรกรุงไทย (ธนบัตรปิดผนึกต่างธนาคาร และ บมจ.กรุงไทย) แล้วตรวจพบความบกพร่อง เช่น ธนบัตรขาด-เกิน-ชำรุด-ปลอม หรือปนราคา ให้ปฏิบัติดังนี้</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ก</span>จัดทำ "แบบรายงานการตรวจพบธนบัตรบกพร่อง" พร้อมหลักฐาน (ใบปะหน้ามัดธนบัตร ปลอกรัดธนบัตร ภาพ CCTV) จำนวน 2 ชุด</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ข</span>ส่งต้นฉบับแบบรายงานให้ศูนย์บริหารและจัดการธนบัตรกรุงไทยที่สาขาใช้บริการอยู่ สำเนาชุดที่ 1 ส่งให้ ธง. ทางระบบสารบรรณอิเล็กทรอนิกส์/E-mail/FAX สำเนาชุดที่ 2 สาขาเก็บไว้</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ค</span>ตั้งบัญชีเงินสดขาด–เกินบัญชีตามวิธีปฏิบัติของธนาคาร</div>
+        <div class="q-opt" data-q="q17" data-correct="4"><span class="letter">ง</span>ถูกทุกข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q17')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q17">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> ทั้ง 3 ข้อเป็นขั้นตอนที่ต้องทำครบถ้วนเมื่อพบธนบัตรบกพร่อง — (ก) จัดทำแบบรายงาน+หลักฐาน 2 ชุด, (ข) กระจายหลักฐานไปศูนย์กรุงไทย/ธง./สาขา, (ค) ตั้งบัญชีเงินสดขาด-เกิน</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (การตรวจพบธนบัตรบกพร่อง)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q18: หลักฐานธนบัตรบกพร่อง ─── -->
+    <div class="q-card" id="q18">
+      <div class="q-num">ข้อ 18 · หลักฐานธนบัตรบกพร่อง</div>
+      <div class="q-text">หากสาขาตรวจพบธนบัตรบกพร่อง (เช่น ขาด เกิน ปลอม ปนราคา) จากมัดธนบัตรที่รับมอบมาจากศูนย์บริหารและจัดการธนบัตรกรุงไทย สาขาจะต้องส่งหลักฐานใดร่วมกับแบบรายงานการตรวจพบธนบัตรบกพร่อง</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q18" data-correct="3"><span class="letter">ก</span>สมุดบันทึกรายการเงินสดประจำวันและใบนำส่งเงินฝากธนาคาร</div>
+        <div class="q-opt" data-q="q18" data-correct="3"><span class="letter">ข</span>ใบแจ้งความจากสถานีตำรวจ</div>
+        <div class="q-opt" data-q="q18" data-correct="3"><span class="letter">ค</span>ใบปะหน้ามัดธนบัตร ปลอกรัดธนบัตร และภาพกล้องวงจรปิด (CCTV) ขณะตรวจนับ</div>
+        <div class="q-opt" data-q="q18" data-correct="3"><span class="letter">ง</span>คำยินยอมสละการครอบครองธนบัตรและสำเนาบัตรประชาชนของพนักงาน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q18')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q18">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> หลักฐานที่ต้องส่งพร้อมแบบรายงาน ได้แก่ <strong>ใบปะหน้ามัดธนบัตร + ปลอกรัดธนบัตร + ภาพ CCTV ขณะตรวจนับ</strong> (เพื่อเป็นหลักฐานยืนยันสภาพธนบัตร ณ ตอนรับมอบ)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (การตรวจพบธนบัตรบกพร่อง)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q19: ธนบัตรปลอมจากลูกค้า ─── -->
+    <div class="q-card" id="q19">
+      <div class="q-num">ข้อ 19 · ธนบัตรปลอมจากลูกค้า</div>
+      <div class="q-text">เมื่อสาขาตรวจพบธนบัตรปลอมที่รับจากลูกค้า ขั้นตอนแรกที่สาขาต้องดำเนินการ คือ</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ก</span>ประทับตรา "ปลอม" ทันทีโดยไม่ต้องแจ้งให้ลูกค้าทราบ</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ข</span>ส่งธนบัตรคืนให้ลูกค้าเพื่อให้นำไปทำลายด้วยตนเอง</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ค</span>แจ้งลูกค้าทราบ และให้ลูกค้าจัดทำ "คำยินยอม" เพื่อยินยอมสละการครอบครองธนบัตรปลอม</div>
+        <div class="q-opt" data-q="q19" data-correct="3"><span class="letter">ง</span>ริบธนบัตรไว้แล้วให้ลูกค้ากลับบ้าน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q19')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q19">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> ขั้นตอนแรกคือ <strong>แจ้งลูกค้าทราบ</strong> และให้ลูกค้าจัดทำ "คำยินยอม" เพื่อยินยอมสละการครอบครองธนบัตรปลอม — ห้ามดำเนินการใดๆ โดยไม่แจ้งลูกค้า (เพราะละเมิดสิทธิ์)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (ธนบัตรปลอม)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q20: ลูกค้าไม่ยินยอม ─── -->
+    <div class="q-card" id="q20">
+      <div class="q-num">ข้อ 20 · ลูกค้าไม่ยินยอมให้ยึด</div>
+      <div class="q-text">ในกรณีที่ลูกค้า <strong>"ไม่ยินยอม"</strong> ให้ยึดธนบัตรปลอม สาขาจะต้องปฏิบัติตามข้อใดเป็นอันดับแรก</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q20" data-correct="4"><span class="letter">ก</span>ฉีกธนบัตรปลอมนั้นทิ้งต่อหน้าลูกค้าเพื่อไม่ให้นำกลับมาใช้ได้อีก</div>
+        <div class="q-opt" data-q="q20" data-correct="4"><span class="letter">ข</span>คืนธนบัตรปลอมฉบับนั้นให้แก่ลูกค้าไปทันที</div>
+        <div class="q-opt" data-q="q20" data-correct="4"><span class="letter">ค</span>กักตัวลูกค้าไว้ในห้องมั่นคงจนกว่าเจ้าหน้าที่ตำรวจจะเดินทางมาถึง</div>
+        <div class="q-opt" data-q="q20" data-correct="4"><span class="letter">ง</span>ประทับตรา "ปลอม" ด้วยอักษรนูนไม่น้อยกว่า 3 เซนติเมตร ทั้งด้านหน้าและด้านหลัง</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q20')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q20">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> กรณีลูกค้าไม่ยินยอมให้ยึด → สาขาต้อง <strong>ประทับตรา "ปลอม" ด้วยอักษรนูนไม่น้อยกว่า 3 เซนติเมตร</strong> ทั้งด้านหน้าและด้านหลัง เพื่อป้องกันการนำกลับมาใช้อีก จากนั้นพิจารณาแจ้งความต่อเจ้าพนักงานสอบสวน</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (ธนบัตรปลอม - ลูกค้าไม่ยินยอม)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q21: แลกเปลี่ยนธนบัตรชำรุด ─── -->
+    <div class="q-card" id="q21">
+      <div class="q-num">ข้อ 21 · แลกเปลี่ยนธนบัตรชำรุด</div>
+      <div class="q-text">เงื่อนไขใดที่ทำให้พนักงานการเงินสามารถ <strong>"จ่ายค่าแลกเปลี่ยนธนบัตรชำรุดให้ลูกค้าได้ทันที"</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q21" data-correct="4"><span class="letter">ก</span>เมื่อธนบัตรชำรุดนั้นถูกไฟไหม้มาทั้งหมดแต่มีใบแจ้งความประกอบ</div>
+        <div class="q-opt" data-q="q21" data-correct="4"><span class="letter">ข</span>ธนบัตรนั้นต้องเป็นธนบัตรปลอมที่ลูกค้าไม่ตั้งใจรับมา</div>
+        <div class="q-opt" data-q="q21" data-correct="4"><span class="letter">ค</span>เมื่อลูกค้าเป็นข้าราชการหรือพนักงานรัฐวิสาหกิจเท่านั้น</div>
+        <div class="q-opt" data-q="q21" data-correct="4"><span class="letter">ง</span>เมื่อเป็นธนบัตรชำรุดที่มีเนื้อธนบัตรตั้งแต่ 3 ใน 5 ส่วนขึ้นไป</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q21')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q21">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> เงื่อนไขการจ่ายค่าแลกเปลี่ยนธนบัตรชำรุดให้ลูกค้าทันที คือ ธนบัตรชำรุดที่มี<strong>เนื้อธนบัตรตั้งแต่ 3 ใน 5 ส่วนขึ้นไป</strong> (ไม่ต้องส่ง ธปท. ตรวจ)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (ธนบัตรชำรุด)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q22: คุ้มกันขนย้าย ─── -->
+    <div class="q-card" id="q22">
+      <div class="q-num">ข้อ 22 · คุ้มกันขนย้ายเงินสด</div>
+      <div class="q-text">การพิจารณาว่าจะจัดให้มีเจ้าหน้าที่ตำรวจ หรือเจ้าหน้าที่รักษาความปลอดภัยถืออาวุธปืนคุ้มกันไปด้วยในการขนย้ายเงินสดหรือไม่ ให้อยู่ในดุลยพินิจของใคร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q22" data-correct="2"><span class="letter">ก</span>ผู้จัดการสาขา</div>
+        <div class="q-opt" data-q="q22" data-correct="2"><span class="letter">ข</span>พนักงานผู้รับมอบอำนาจชั้น ก ตามคำสั่งธนาคาร</div>
+        <div class="q-opt" data-q="q22" data-correct="2"><span class="letter">ค</span>ผู้รับจ้างขนย้ายเงินสด</div>
+        <div class="q-opt" data-q="q22" data-correct="2"><span class="letter">ง</span>ผู้อำนวยการสำนักธุรกรรมการเงิน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q22')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q22">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> การพิจารณาจัดให้มีเจ้าหน้าที่ตำรวจ/รปภ.ถืออาวุธปืนคุ้มกัน ให้อยู่ใน<strong>ดุลยพินิจของพนักงานผู้รับมอบอำนาจชั้น ก</strong> ตามคำสั่งธนาคาร (ระเบียบ ฉบับที่ 3)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (การรักษาความปลอดภัยในการขนย้าย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q23: เกิดวินาศภัยระหว่างขนย้าย ─── -->
+    <div class="q-card" id="q23">
+      <div class="q-num">ข้อ 23 · วินาศภัยระหว่างขนย้าย</div>
+      <div class="q-text">ระหว่างการขนย้ายเงินสด หากเกิดเหตุสุดวิสัยทำให้เงินสดสูญหาย หรือเสียหายบางส่วน พนักงานผู้รับผิดชอบต้องปฏิบัติอย่างไรเป็นอันดับแรก</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q23" data-correct="2"><span class="letter">ก</span>พยายามตามหาเงินที่สูญหายด้วยตนเองก่อนเพื่อไม่ให้เป็นเรื่องใหญ่</div>
+        <div class="q-opt" data-q="q23" data-correct="2"><span class="letter">ข</span>แจ้งความต่อสถานีตำรวจที่ใกล้ที่สุด แล้วรายงานผู้บังคับบัญชาโดยด่วน</div>
+        <div class="q-opt" data-q="q23" data-correct="2"><span class="letter">ค</span>โทรศัพท์แจ้งบริษัทประกันภัยทันทีเพื่อเคลมค่าเสียหาย</div>
+        <div class="q-opt" data-q="q23" data-correct="2"><span class="letter">ง</span>รอเดินทางกลับมาถึงสาขาแล้วค่อยทำบันทึกรายงานผู้จัดการสาขาตามลำดับ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q23')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q23">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> อันดับแรกต้อง <strong>แจ้งความต่อสถานีตำรวจที่ใกล้ที่สุด</strong> แล้วรายงานผู้บังคับบัญชาโดยด่วน (ห้ามตามหาเงินเอง/รอกลับสาขา เพราะอาจเป็นอันตรายและเสียหลักฐาน)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (การรักษาความปลอดภัยในการขนย้าย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q24: ข้อยกเว้นประกันภัย ─── -->
+    <div class="q-card" id="q24">
+      <div class="q-num">ข้อ 24 · ข้อยกเว้นประกันภัย</div>
+      <div class="q-text">เหตุการณ์ความสูญเสียในข้อใดต่อไปนี้ที่ <strong>"อยู่ภายใต้เงื่อนไขข้อยกเว้น"</strong> และบริษัทประกันภัย <strong>"จะไม่ชดใช้"</strong> ค่าสินไหมทดแทนให้แก่ธนาคาร</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q24" data-correct="2"><span class="letter">ก</span>เงินสดถูกทำลายจากเหตุอัคคีภัยที่เกิดขึ้นภายในอาคารสำนักงาน</div>
+        <div class="q-opt" data-q="q24" data-correct="2"><span class="letter">ข</span>การปลอมแปลงเอกสาร การทอนเงินผิด หรือความผิดพลาดในการคำนวณและทำบัญชี</div>
+        <div class="q-opt" data-q="q24" data-correct="2"><span class="letter">ค</span>เงินสดสูญหายเนื่องจากยานพาหนะขนส่งเงินของธนาคารประสบอุบัติเหตุพลิกคว่ำ</div>
+        <div class="q-opt" data-q="q24" data-correct="2"><span class="letter">ง</span>เจ้าหน้าที่ขนส่งเงินถูกคนร้ายจู่โจมชิงทรัพย์ระหว่างเดินทางไปปฏิบัติงานนอกสถานที่</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q24')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q24">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> <strong>การปลอมแปลงเอกสาร การทอนเงินผิด หรือความผิดพลาดในการคำนวณและทำบัญชี</strong> เป็น <strong>ข้อยกเว้น</strong>ที่บริษัทประกันภัยไม่ชดใช้ (เพราะเป็นความผิดพลาดภายใน ไม่ใช่ภัยจากภายนอก)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (ข้อยกเว้น)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q25: เกณฑ์แจ้งเพิ่มวงเงินประกันภัย (ผิด) ─── -->
+    <div class="q-card" id="q25">
+      <div class="q-num">ข้อ 25 · เกณฑ์แจ้งเพิ่มวงเงินประกันภัย (ข้อผิด)</div>
+      <div class="q-text">ในฐานะหัวหน้างาน หากสาขาของคุณมีความจำเป็นต้องขอเพิ่มวงเงินประกันภัยเงินสดเนื่องจากมีปริมาณเงินหมุนเวียนสูงกว่าปกติ เกณฑ์ในการคำนวณระยะเวลาล่วงหน้าในการแจ้งบริษัทประกันภัยข้อใด <strong>"ไม่ถูกต้อง"</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q25" data-correct="4"><span class="letter">ก</span>หากวงเงินรวมใหม่ไม่เกิน 150 ล้านบาท ต้องแจ้งเป็นลายลักษณ์อักษรภายในวันที่ต้องการเพิ่ม</div>
+        <div class="q-opt" data-q="q25" data-correct="4"><span class="letter">ข</span>หากวงเงินรวมใหม่ตั้งแต่ 150 ล้านบาท แต่ไม่เกิน 200 ล้านบาท ต้องแจ้งล่วงหน้าอย่างน้อย 1 วัน</div>
+        <div class="q-opt" data-q="q25" data-correct="4"><span class="letter">ค</span>หากวงเงินรวมใหม่เกิน 200 ล้านบาท แต่ไม่เกิน 300 ล้านบาท ต้องแจ้งล่วงหน้าอย่างน้อย 2 วัน</div>
+        <div class="q-opt" data-q="q25" data-correct="4"><span class="letter">ง</span>หากวงเงินรวมใหม่เกิน 300 ล้านบาทขึ้นไป สามารถแจ้งภายในวันที่ต้องการเพิ่มได้ทันทีหากไม่เกินเวลา 16.30 น.</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q25')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q25">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> เกณฑ์ที่ระบุในข้อ ก/ข/ค (ไม่เกิน 150 / 150-200 / 200-300 ล้านบาท) <strong>ถูกต้อง</strong> แต่ <strong>เกิน 300 ล้านบาท ไม่มีเกณฑ์ "แจ้งภายในวันได้ทันที"</strong> — โดยทั่วไปต้องแจ้งล่วงหน้ามากกว่า 2 วัน หรือต้องผ่านกระบวนการพิจารณาพิเศษ ไม่ใช่แจ้งวันเดียวได้ (ข้อ ง จึงผิด)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (เงื่อนไขการเพิ่มวงเงินประกันภัย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q26: เพิ่มวงเงินประกันภัย (ข้อผิด) ─── -->
+    <div class="q-card" id="q26">
+      <div class="q-num">ข้อ 26 · เงื่อนไขการเพิ่มวงเงินประกันภัย (ข้อผิด)</div>
+      <div class="q-text">การจัดทำประกันภัยสำหรับเงิน มีเงื่อนไขการเพิ่มวงเงินประกันภัยที่ต้องแจ้งบริษัทประกันภัย ข้อใดกล่าว <strong>ผิด</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q26" data-correct="4"><span class="letter">ก</span>กรณีจำนวนเงินที่เพิ่มขึ้นเมื่อรวมกับวงเงินเดิมแล้ว มีจำนวนเงินรวมกันไม่เกิน 150 ล้านบาท ต้องแจ้งบริษัทเป็นลายลักษณ์อักษรภายในวันที่ต้องการเพิ่ม</div>
+        <div class="q-opt" data-q="q26" data-correct="4"><span class="letter">ข</span>กรณีจำนวนเงินที่เพิ่มขึ้นเมื่อรวมกับวงเงินเดิมแล้ว มีจำนวนรวมกันตั้งแต่ 150 ล้านบาท แต่ไม่เกิน 200 ล้านบาท ต้องแจ้งบริษัทเป็นลายลักษณ์อักษรล่วงหน้าอย่างน้อย 1 วัน ก่อนทำการเก็บรักษาทุกครั้ง</div>
+        <div class="q-opt" data-q="q26" data-correct="4"><span class="letter">ค</span>กรณีจำนวนเงินที่เพิ่มขึ้นเมื่อรวมกับวงเงินเดิมแล้วเกิน 200 ล้านบาท แต่ไม่เกิน 300 ล้านบาท ต้องแจ้งบริษัทเป็นลายลักษณ์อักษรล่วงหน้าอย่างน้อย 2 วัน ก่อนทำการเก็บรักษาทุกครั้ง</div>
+        <div class="q-opt" data-q="q26" data-correct="4"><span class="letter">ง</span>ไม่มีข้อใดกล่าวผิด</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q26')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q26">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> ข้อ ก, ข, ค <strong>ถูกต้องทั้งหมด</strong> ตามหลักเกณฑ์ 3 ระดับ (150 / 150-200 / 200-300 ล้านบาท) → คำตอบคือ <strong>ไม่มีข้อใดกล่าวผิด</strong> (หมายเหตุ: เกิน 300 ล้านบาท ไม่มีระบุเกณฑ์ในระเบียบ — ต้องพิจารณาตามกรณี)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (เงื่อนไขการเพิ่มวงเงินประกันภัย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q27: ประกันภัย ATM/CDM ─── -->
+    <div class="q-card" id="q27">
+      <div class="q-num">ข้อ 27 · ประกันภัยเงินในเครื่อง ATM/CDM</div>
+      <div class="q-text">พิจารณาข้อความเกี่ยวกับการประกันภัยสำหรับเงินในเครื่อง ATM/CDM ข้อใดกล่าว <strong>ถูกต้อง</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q27" data-correct="2"><span class="letter">ก</span>วงเงินประกันภัยของเครื่อง ATM/CDM ทั้งในและนอกพื้นที่สาขา ให้นับรวมอยู่ในวงเงินประกันภัยภายในสำนักงาน</div>
+        <div class="q-opt" data-q="q27" data-correct="2"><span class="letter">ข</span>เครื่อง ATM/CDM ที่ติดตั้งอยู่ภายในรั้วอาคารสาขา ให้ใช้วงเงินคุ้มครองภายในสำนักงาน ส่วนเครื่องนอกพื้นที่สาขา บช. จะจัดทำประกันภัยแยกต่างหาก</div>
+        <div class="q-opt" data-q="q27" data-correct="2"><span class="letter">ค</span>สาขาไม่มีหน้าที่ต้องควบคุมปริมาณเงินในการบรรจุตู้ ATM นอกพื้นที่ เพราะฝ่ายปฏิบัติการบริการอิเล็กทรอนิกส์ (บอ.) เป็นผู้รับประกันภัย</div>
+        <div class="q-opt" data-q="q27" data-correct="2"><span class="letter">ง</span>หากตู้ ATM นอกพื้นที่สาขาถูกโจรกรรม วงเงินคุ้มครองจะไปดึงมาจากวงเงินประกันภัยภายนอกสถานที่ของสาขาต้นสังกัด</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q27')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q27">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> เครื่อง ATM/CDM <strong>ภายในรั้วอาคารสาขา ใช้วงเงินคุ้มครองภายในสำนักงาน</strong> ส่วนเครื่อง <strong>นอกพื้นที่สาขา</strong> บช. จะจัดทำประกันภัยแยกต่างหาก (ไม่นับรวมกับวงเงินประกันภัยภายในสำนักงาน) และสาขามีหน้าที่ควบคุมปริมาณเงินในตู้ ATM นอกพื้นที่ไม่ให้เกินวงเงินที่ บอ. กำหนด</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การประกันภัย ATM/CDM)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q28: ไม่ต้องระบุสาเหตุ ─── -->
+    <div class="q-card" id="q28">
+      <div class="q-num">ข้อ 28 · ไม่ต้องระบุสาเหตุ</div>
+      <div class="q-text">ในหนังสือขอเปลี่ยนแปลงวงเงินประกันภัยที่สาขาส่งถึงบริษัทประกันภัย เหตุใดจึง <strong>"ไม่ต้องระบุสาเหตุ"</strong> ของการขอเพิ่มหรือลดวงเงิน</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q28" data-correct="1"><span class="letter">ก</span>เนื่องจากเป็นเรื่องธุรกิจเฉพาะภายในธนาคาร</div>
+        <div class="q-opt" data-q="q28" data-correct="1"><span class="letter">ข</span>เนื่องจากบริษัทประกันภัยจะโทรศัพท์มาสอบถามพนักงานการเงินเองอยู่แล้ว</div>
+        <div class="q-opt" data-q="q28" data-correct="1"><span class="letter">ค</span>เนื่องจากแบบพิมพ์ 301.03.05 ไม่มีช่องให้กรอกข้อความ</div>
+        <div class="q-opt" data-q="q28" data-correct="1"><span class="letter">ง</span>เนื่องจากสาขาต้องระบุสาเหตุลงใน E-mail ที่ส่งให้ บช. แทนอยู่แล้ว</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q28')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q28">
+        <div class="a-label">✅ เฉลย: ข้อ ก</div>
+        <p><strong>เหตุผล:</strong> ไม่ต้องระบุสาเหตุในหนังสือขอเปลี่ยนแปลงวงเงินประกันภัย เพราะ <strong>เป็นเรื่องธุรกิจเฉพาะภายในธนาคาร</strong> (ไม่ต้องเปิดเผยข้อมูลภายในให้บริษัทประกันภัยทราบ)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การเปลี่ยนแปลงวงเงินประกันภัย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q29: เพิ่มวงเงิน 30→40 ล้าน เดือนละ 1 วัน ─── -->
+    <div class="q-card" id="q29">
+      <div class="q-num">ข้อ 29 · เพิ่มวงเงินเป็นรายวัน</div>
+      <div class="q-text">สาขาต้องการเพิ่มวงเงินคุ้มครองภายในสำนักงานจาก 30 ล้านบาท เป็น 40 ล้านบาท เฉพาะในวันทำการสุดท้ายของทุกเดือนเพื่อจ่ายเงินเดือนพนักงานบริษัท สาขาต้องแจ้งขอเปลี่ยนแปลงวงเงินลักษณะใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q29" data-correct="2"><span class="letter">ก</span>การเปลี่ยนแปลงวงเงินประกันภัยระยะยาวจนสิ้นสุดกรมธรรม์</div>
+        <div class="q-opt" data-q="q29" data-correct="2"><span class="letter">ข</span>การเปลี่ยนแปลงวงเงินประกันภัยเป็นรายวัน โดยระบุข้อความเพิ่มวงเงินเดือนละ 1 วัน</div>
+        <div class="q-opt" data-q="q29" data-correct="2"><span class="letter">ค</span>ไม่ต้องแจ้งเปลี่ยนแปลง เนื่องจากวงเงินเฉลี่ยทั้งปีไม่เกินกำหนด</div>
+        <div class="q-opt" data-q="q29" data-correct="2"><span class="letter">ง</span>การแจ้งเปลี่ยนแปลงวงเงินประกันภัยแบบรายชั่วโมง</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q29')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q29">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> เพิ่มวงเงิน<strong>เฉพาะวันใดวันหนึ่งทุกเดือน</strong> → ใช้วิธี <strong>การเปลี่ยนแปลงวงเงินประกันภัยเป็นรายวัน</strong> โดยระบุข้อความ "วงเงินคุ้มครองภายในสำนักงาน 30 ล้านบาท และ 40 ล้านบาทเดือนละ 1 วัน" (ตามตัวอย่างที่ 2)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การเปลี่ยนแปลงวงเงินเป็นรายวัน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q30: ประกันภัย ATM/CDM นอกพื้นที่ ─── -->
+    <div class="q-card" id="q30">
+      <div class="q-num">ข้อ 30 · ประกันภัย ATM/CDM นอกพื้นที่</div>
+      <div class="q-text">ข้อใดกล่าวถูกต้องเกี่ยวกับประกันภัยเงินสดในเครื่อง ATM/CDM ที่ติดตั้งอยู่ <strong>"นอกพื้นที่สาขา"</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q30" data-correct="3"><span class="letter">ก</span>ใช้วงเงินคุ้มครองร่วมกับวงเงินประกันภัยภายในสำนักงานของสาขาต้นสังกัด</div>
+        <div class="q-opt" data-q="q30" data-correct="3"><span class="letter">ข</span>ฝ่ายปฏิบัติการบริการอิเล็กทรอนิกส์ (บอ.) เป็นผู้จัดทำประกันภัยร่วมกับภาพรวมจังหวัด</div>
+        <div class="q-opt" data-q="q30" data-correct="3"><span class="letter">ค</span>บช. จัดทำประกันภัยแยกออกจากกรมธรรม์ปกติ และไม่นับรวมกับวงเงินคุ้มครองภายในสำนักงาน</div>
+        <div class="q-opt" data-q="q30" data-correct="3"><span class="letter">ง</span>สาขาไม่ต้องควบคุมการบรรจุเงินเนื่องจากบริษัทประกันภัยคุ้มครองไม่จำกัดวงเงิน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q30')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q30">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> จัดทำประกันภัย<strong>แยก</strong>ออกจากกรมธรรม์ประกันภัยสำหรับเงิน และ<strong>ไม่นับรวม</strong>กับวงเงินประกันภัยภายในสำนักงาน สาขามีหน้าที่ควบคุมการบรรจุเงินสดในตู้ ATM/CDM นอกพื้นที่สาขา มิให้เกินวงเงินประกันภัยตามที่ บอ. กำหนด</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การประกันภัย ATM/CDM นอกพื้นที่)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q31: ระยะเวลาเอาประกันภัย ─── -->
+    <div class="q-card" id="q31">
+      <div class="q-num">ข้อ 31 · ระยะเวลาเอาประกันภัย</div>
+      <div class="q-text">ระยะเวลาเอาประกันภัยสำหรับเงินของธนาคารที่จัดทำขึ้นคราวละ 1 ปี มีกำหนดเริ่มต้นและสิ้นสุดตามข้อใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q31" data-correct="3"><span class="letter">ก</span>เริ่ม 1 มกราคม เวลา 00.01 น. สิ้นสุด 31 ธันวาคม เวลา 24.00 น.</div>
+        <div class="q-opt" data-q="q31" data-correct="3"><span class="letter">ข</span>เริ่ม 1 ตุลาคม เวลา 08.30 น. สิ้นสุด 30 กันยายน เวลา 16.30 น.</div>
+        <div class="q-opt" data-q="q31" data-correct="3"><span class="letter">ค</span>เริ่ม 1 เมษายน เวลา 00.01 น. สิ้นสุด 31 มีนาคม เวลา 24.00 น. ของปีถัดไป</div>
+        <div class="q-opt" data-q="q31" data-correct="3"><span class="letter">ง</span>เริ่มวันที่สาขาเปิดดำเนินการและสิ้นสุดเมื่อปิดสาขา</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q31')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q31">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> การจัดทำประกันภัยสำหรับเงินคราวละ 1 ปี <strong>เริ่ม 1 เมษายน เวลา 00.01 น. สิ้นสุด 31 มีนาคม เวลา 24.00 น. ของปีถัดไป</strong> (กธ.39 บทที่ 202.04)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (ระยะเวลาเอาประกันภัย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q32: ประกันภัยภายในสำนักงาน ─── -->
+    <div class="q-card" id="q32">
+      <div class="q-num">ข้อ 32 · ประกันภัยภายในสำนักงาน (ถูกต้อง)</div>
+      <div class="q-text">การประกันภัยสำหรับเงินภายในสำนักงาน ข้อใดกล่าว <strong>ถูกต้อง</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q32" data-correct="4"><span class="letter">ก</span>กรมธรรม์ประกันภัยให้ความคุ้มครองเงินที่เก็บรักษาภายในสาขา สาขาย่อย หน่วยอำเภอ และตลาดกลาง</div>
+        <div class="q-opt" data-q="q32" data-correct="4"><span class="letter">ข</span>กรมธรรม์ประกันภัยให้ความคุ้มครองเงินที่เก็บรักษาภายในตู้นิรภัยเมื่อสิ้นสุดการปฏิบัติงาน รวมทั้งเงินในเครื่อง ATM/CDM ที่ติดตั้งอยู่ภายในอาคาร หรือรั้วของแต่ละสำนักงาน</div>
+        <div class="q-opt" data-q="q32" data-correct="4"><span class="letter">ค</span>กรมธรรม์ประกันภัยสำหรับเงินภายในสำนักงาน ไม่ให้ความคุ้มครองสำหรับเงินในเครื่อง ATM/CDM นอกพื้นที่สาขา</div>
+        <div class="q-opt" data-q="q32" data-correct="4"><span class="letter">ง</span>ถูกทุกข้อ</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q32')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q32">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> ทั้ง 3 ข้อถูกต้องตาม กธ.39 บทที่ 202.05: (ก) คุ้มครอง สนจ./สาขา/สาขาย่อย/หน่วยอำเภอ/ตลาดกลาง, (ข) คุ้มครองเงินในตู้นิรภัย + ATM/CDM ในอาคาร/รั้ว, (ค) ไม่คุ้มครอง ATM/CDM นอกพื้นที่สาขา (เพราะมีกรมธรรม์แยก)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การประกันภัยภายในสำนักงาน)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q33: คุ้มครองภายนอก 3 จุด ─── -->
+    <div class="q-card" id="q33">
+      <div class="q-num">ข้อ 33 · คุ้มครองภายนอก 3 จุด (ชุดเดียว)</div>
+      <div class="q-text">สาขากระนวน บริการรับเงินฝากนอกสถานที่ 2 จุด จุดที่ 1 จำนวน 5 ล้านบาท จุดที่ 2 จำนวน 5 ล้านบาท และรับเงินสดที่สาขาซำสูงอีก 1 จุด จำนวน 15 ล้านบาท สนจ. ขอนแก่น มีวงเงินคุ้มครองภายนอก 20 ล้านบาท เมื่อรับเงินครบทุกจุดแล้ว เกิดความเสียหาย สาขากระนวนจะได้รับความคุ้มครองเท่าไหร่</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q33" data-correct="3"><span class="letter">ก</span>คุ้มครอง 10 ล้านบาท</div>
+        <div class="q-opt" data-q="q33" data-correct="3"><span class="letter">ข</span>คุ้มครอง 15 ล้านบาท</div>
+        <div class="q-opt" data-q="q33" data-correct="3"><span class="letter">ค</span>คุ้มครอง 20 ล้านบาท</div>
+        <div class="q-opt" data-q="q33" data-correct="3"><span class="letter">ง</span>คุ้มครอง 25 ล้านบาท</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q33')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q33">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> รับเงิน 3 จุด รวม 25 ล้านบาท (เกินวงเงิน 20 ล้าน) แต่ตามเนื้อหา ใช้พนักงานและยานพาหนะชุดเดียว (ตามบริบทสาขากระนวน) → กรมธรรม์ให้ความคุ้มครอง <strong>รวมเท่ากับวงเงินคุ้มครองภายนอก 20 ล้านบาท</strong> (ตามตัวอย่างที่ 2 ใน slide)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การประกันภัยเงินภายนอก)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q34: คุ้มครองภายนอก 2 ชุด ─── -->
+    <div class="q-card" id="q34">
+      <div class="q-num">ข้อ 34 · คุ้มครองภายนอก 2 ชุด (แยก)</div>
+      <div class="q-text">สาขากระนวน ออกไปรับเงินฝากจากการทอดกฐินที่วัดสองแห่ง ในวันเดียวกัน โดยจัดพนักงานแยกเป็น 2 ชุด และรถยนต์ชุดละ 1 คัน สาขามีวงเงินคุ้มครองภายนอกสำนักงาน 2 ล้านบาท โดยสาขารับเงินจากวัดแห่งแรก 3 ล้านบาท และวัดแห่งที่สอง 2 ล้านบาท แต่หากเกิดความเสียหายเกี่ยวกับเงินทั้งสองแห่งพร้อมกัน บริษัทประกันภัยจะชดใช้ค่าเสียหายเป็นจำนวนเท่าใด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q34" data-correct="4"><span class="letter">ก</span>ชดใช้ค่าเสียหายรวมไม่เกิน 5 ล้านบาท</div>
+        <div class="q-opt" data-q="q34" data-correct="4"><span class="letter">ข</span>ชดใช้ค่าเสียหายรวมไม่เกิน 3 ล้านบาท</div>
+        <div class="q-opt" data-q="q34" data-correct="4"><span class="letter">ค</span>ชดใช้ค่าเสียหายทั้งสองแห่ง แห่งละ 2 ล้าน</div>
+        <div class="q-opt" data-q="q34" data-correct="4"><span class="letter">ง</span>ชดใช้ค่าเสียหายรวมไม่เกิน 2 ล้านบาท</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q34')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q34">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> จัดพนักงาน<strong>แยก 2 ชุด + รถแยก</strong> → กรมธรรม์ให้ความคุ้มครอง <strong>แต่ละสถานที่ ในวงเงินเท่ากับที่กำหนดในกรมธรรม์</strong> (2 ล้าน) แต่หากเสียหายทั้งสองแห่งพร้อมกัน → ชดใช้ <strong>รวมไม่เกิน 2 ล้านบาท</strong> (เพราะวงเงินคุ้มครองภายนอกรวม 2 ล้าน)</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (ตัวอย่างที่ 1 — แยก 2 ชุด)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q35: กรมธรรม์ไม่คุ้มครอง ─── -->
+    <div class="q-card" id="q35">
+      <div class="q-num">ข้อ 35 · กรมธรรม์ไม่คุ้มครอง</div>
+      <div class="q-text">เหตุการณ์ในข้อใดถ้าเกิดความเสียหายแก่เงินสด <strong>กรมธรรม์ประกันภัยไม่คุ้มครอง</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q35" data-correct="4"><span class="letter">ก</span>สาขาจ้างเหมารถยนต์ของบุคคลภายนอกขนเงินสดระหว่างสาขากับสาขาในจังหวัดเดียวกัน</div>
+        <div class="q-opt" data-q="q35" data-correct="4"><span class="letter">ข</span>สาขาจ้างเหมารถยนต์ของบุคคลภายนอกขนเงินสดระหว่างสาขากับสาขาที่มีอาณาเขตติดต่อกันตามหลักภูมิศาสตร์ แต่อยู่ต่างจังหวัดกัน</div>
+        <div class="q-opt" data-q="q35" data-correct="4"><span class="letter">ค</span>ขนเงินสดระหว่างสาขา ระหว่างเส้นทางเกิดเหตุจลาจลปะทะกันระหว่างฝ่ายคัดค้านรัฐบาลและฝ่ายสนับสนุนรัฐบาล</div>
+        <div class="q-opt" data-q="q35" data-correct="4"><span class="letter">ง</span>รับเงินฝากลูกค้าโดยถอนเงินจากธนาคารพาณิชย์ที่ตั้งอยู่ฝั่งตรงกันข้ามกับสำนักงานสาขาโดยการเดินเท้า</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q35')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q35">
+        <div class="a-label">✅ เฉลย: ข้อ ง</div>
+        <p><strong>เหตุผล:</strong> กรมธรรม์คุ้มครองการขนส่งเงิน <strong>ในเขตท้องที่ดำเนินงาน หรือจังหวัดใกล้เคียงที่มีอาณาเขตติดต่อกัน</strong> (ตามหลักภูมิศาสตร์) → กรณี (ก) ในจังหวัดเดียวกัน คุ้มครอง / (ข) ต่างจังหวัดแต่อาณาเขตติดต่อกัน คุ้มครอง / (ค) จลาจลระหว่างทาง คุ้มครอง (เป็นภัยที่กรมธรรม์ระบุไว้) แต่ <strong>(ง) ข้ามถนนเดินเท้าไปอีกฝั่ง = นอกเขตท้องที่</strong> → ไม่คุ้มครอง</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (สถานที่เอาประกันภัย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q36: ปฏิบัติตามระเบียบ ฉ.3 ─── -->
+    <div class="q-card" id="q36">
+      <div class="q-num">ข้อ 36 · ปฏิบัติตามระเบียบฉบับที่ 3</div>
+      <div class="q-text">ข้อใด <strong>ปฏิบัติตามระเบียบฉบับที่ 3</strong> ว่าด้วยการบริหารจัดการเงินสด</div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q36" data-correct="3"><span class="letter">ก</span>ผู้ช่วยพนักงานธุรการ ร่วมกับผู้ช่วยพนักงานบริการ (ยานพาหนะ) เดินทางรับเงินของ TOT จำนวนเงิน 100,000 บาท</div>
+        <div class="q-opt" data-q="q36" data-correct="3"><span class="letter">ข</span>หัวหน้าการเงิน เดินทางรับเงินของ ปณ. 300,000 บาท</div>
+        <div class="q-opt" data-q="q36" data-correct="3"><span class="letter">ค</span>หัวหน้าหน่วยอำเภอ ร่วมกับพนักงานบริการ (ยานพาหนะ) เดินทางรับเงินสด 500,000 บาท จากสาขาข้างเคียงในสังกัด สนจ.เดียวกัน</div>
+        <div class="q-opt" data-q="q36" data-correct="3"><span class="letter">ง</span>พนักงานการเงิน 7 ขับรถยนต์ของสาขา ขนเงินสด 1.5 ล้านบาท จากสาขาข้างเคียง ในสังกัด สนจ.เดียวกัน</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q36')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q36">
+        <div class="a-label">✅ เฉลย: ข้อ ค</div>
+        <p><strong>เหตุผล:</strong> การขนย้ายเงินต้องมี <strong>พนักงานอย่างน้อย 2 คน</strong>: (ก) ผช.ธุรการ+ผช.บริการ = 2 คน แต่ไม่ใช่พนักงานการเงินโดยตรง → ไม่ตรงตามระเบียบ, (ข) หกง. คนเดียว = 1 คน ไม่ครบ, (ง) พนง.การเงิน 7 ขับรถคนเดียว = 1 คน ไม่ครบ → <strong>ข้อ ค</strong> หน.หน่วยอำเภอ + พนง.บริการ = 2 คน ครบตามระเบียบ</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 3 (พนักงานผู้รับผิดชอบในการขนย้าย)</div>
+      </div>
+    </div>
+
+    <!-- ─── Q37: ประกันภัยภายในสำนักงาน (ผิด) ─── -->
+    <div class="q-card" id="q37">
+      <div class="q-num">ข้อ 37 · ประกันภัยภายในสำนักงาน (ข้อผิด)</div>
+      <div class="q-text">การประกันภัยสำหรับเงินภายในสำนักงาน ข้อใด <strong>ผิด</strong></div>
+      <div class="q-options">
+        <div class="q-opt" data-q="q37" data-correct="2"><span class="letter">ก</span>กรมธรรม์ประกันภัยให้ความคุ้มครองเงินที่เก็บรักษาภายในอาคารสำนักงานของธนาคาร ได้แก่ สนจ./สาขา/สาขาย่อย/หน่วยอำเภอ และตลาดกลาง ทั้งนอกตู้นิรภัยในขณะปฏิบัติงาน และในตู้นิรภัยเมื่อสิ้นสุดการปฏิบัติงาน รวมทั้งเงินในเครื่อง ATM/CDM ที่ติดตั้งอยู่ภายในอาคาร หรือรั้วของแต่ละสำนักงาน</div>
+        <div class="q-opt" data-q="q37" data-correct="2"><span class="letter">ข</span>กรมธรรม์ประกันภัยให้ความคุ้มครองเงินที่เก็บรักษาภายในอาคารสำนักงานของธนาคาร ได้แก่ สนจ./สาขา/สาขาย่อย/หน่วยอำเภอ และตลาดกลาง ทั้งนอกตู้นิรภัยในขณะปฏิบัติงาน และในตู้นิรภัยเมื่อสิ้นสุดการปฏิบัติงาน รวมทั้งเงินในเครื่อง ATM/CDM ที่ติดตั้งอยู่ภายในอาคาร <strong>และเครื่อง ATM/CDM นอกพื้นที่สาขา</strong></div>
+        <div class="q-opt" data-q="q37" data-correct="2"><span class="letter">ค</span>การรับ-จ่ายเงิน ขอให้ดำเนินการให้เสร็จสิ้นภายในเวลาทำการของธนาคาร ในกรณีที่มีความจำเป็นต้องรับ-จ่ายเงินก่อนหรือหลังเวลาทำการก็สามารถกระทำได้ เมื่อสิ้นสุดการรับ-จ่ายเงินแล้วให้ตรวจนับเงินและนำเก็บเข้าตู้นิรภัยตามวิธีปฏิบัติที่ธนาคารกำหนดทันทีที่ปิดการรับ-จ่ายเงินประจำวัน</div>
+        <div class="q-opt" data-q="q37" data-correct="2"><span class="letter">ง</span>ถูกทั้ง ข้อ ก และ ข้อ ค</div>
+      </div>
+      <button class="btn-check" onclick="reveal('q37')">✅ เฉลย</button>
+      <div class="answer-reveal" id="ans-q37">
+        <div class="a-label">✅ เฉลย: ข้อ ข</div>
+        <p><strong>เหตุผล:</strong> ข้อ ข <strong>ผิด</strong> เพราะกรมธรรม์ประกันภัยสำหรับเงินภายในสำนักงาน <strong>ไม่คุ้มครองเครื่อง ATM/CDM นอกพื้นที่สาขา</strong> (เพราะมีกรมธรรม์แยกต่างหากที่ บช. จัดทำ) — ข้อ ก และ ค ถูกต้อง</p>
+        <div class="a-ref">📖 อ้างอิง: หัวข้อ 4 (การประกันภัยภายในสำนักงาน vs ATM/CDM นอกพื้นที่)</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <div class="quiz-intro" style="margin-top:40px;">
+    <h2>✅ จบแบบทดสอบแล้ว!</h2>
+    <p>กลับไปอ่านเนื้อหาเพิ่มเติม หรือทบทวนข้อที่ตอบผิดได้ที่หน้าสรุป</p>
+    <p style="margin-top:14px;">
+      <a href="cash-regulation3.html" style="display:inline-block; padding:8px 20px; background:var(--gold); color:#000; border-radius:100px; text-decoration:none; font-weight:600; font-size:0.9rem;">📘 กลับไปหน้าเนื้อหา</a>
+    </p>
+  </div>
+
+</main>
+
+<!-- ═══ FLOATING BACK ═══ -->
+<a href="index.html" class="float-back">← กลับหน้าหลัก</a>
+
+<!-- ═══ JS ═══ -->
+<script>
+function reveal(id) {
+  const el = document.getElementById('ans-' + id);
+  if (el) el.classList.toggle('show');
+}
+
+/* Click to highlight correct/wrong */
+document.querySelectorAll('.q-opt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const qid = this.dataset.q;
+    const correct = this.dataset.correct;
+    const siblings = this.closest('.q-options').querySelectorAll('.q-opt');
+    siblings.forEach(s => s.classList.remove('correct', 'wrong'));
+    const idx = Array.from(siblings).indexOf(this) + 1;
+    if (String(idx) === correct) {
+      this.classList.add('correct');
+    } else {
+      this.classList.add('wrong');
+      siblings[parseInt(correct) - 1].classList.add('correct');
+    }
+    const ansEl = document.getElementById('ans-' + qid);
+    if (ansEl) ansEl.classList.add('show');
+  });
+});
+</script>
+
+</body>
+</html>

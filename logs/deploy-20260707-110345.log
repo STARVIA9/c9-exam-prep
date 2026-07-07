@@ -1,0 +1,13 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;36m[check][0m checking cash-management-quiz.html
+[1;32m  ✓[0m cash-management-quiz.html: inline JS syntax OK (362 script blocks)
+[1;36m[check][0m checking index.html
+[1;32m  ✓[0m index.html: inline JS syntax OK (40 script blocks)
+[1;36m[check][0m checking cash-regulation3-quiz.html
+[1;32m  ✓[0m cash-regulation3-quiz.html: inline JS syntax OK (32 script blocks)
+[1;36m[check][0m checking cash-regulation3.html
+[1;32m  ✓[0m cash-regulation3.html: inline JS syntax OK (8 script blocks)
+
+[1;32m✅ pre-check OK[0m · 4 file(s) checked
+[1;32m  ✓[0m pre-check passed (4 file(s))
+[1;36m[deploy][0m step 2/5: commit local changes

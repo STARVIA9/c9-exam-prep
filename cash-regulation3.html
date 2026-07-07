@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💰 ระเบียบฉบับที่ 3 การบริหารเงินสด — สรุปเนื้อหา | ธ.ก.ส.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0d1425;
+  --surface: #131d33;
+  --surface2: #1a2740;
+  --surface3: #22324f;
+  --gold: #d4942f;
+  --gold2: #e8b84f;
+  --gold-dim: rgba(212,148,47,0.12);
+  --gold-soft: rgba(212,148,47,0.06);
+  --green: #22a67e;
+  --green-dim: rgba(34,166,126,0.12);
+  --blue: #4b7bec;
+  --blue-dim: rgba(75,123,186,0.10);
+  --purple: #9772e6;
+  --purple-dim: rgba(151,114,230,0.10);
+  --red: #e55c5c;
+  --red-dim: rgba(229,92,92,0.10);
+  --cyan: #36b5c4;
+  --cyan-dim: rgba(54,181,196,0.10);
+  --orange: #f09b3a;
+  --orange-dim: rgba(240,155,58,0.10);
+  --text: #edf2f7;
+  --text2: #94a3b8;
+  --text3: #5a6a7e;
+  --border: rgba(255,255,255,0.05);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --glow: 0 0 60px rgba(212,148,47,0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Thai', 'Sarabun', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 40%, rgba(212,148,47,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 85% 20%, rgba(75,123,186,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(151,114,230,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  background: rgba(7,11,20,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; z-index: 100;
+}
+.top-nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text2); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  padding: 6px 14px; border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.top-nav a:hover { color: var(--gold2); background: var(--gold-dim); }
+.top-nav .logo { color: var(--gold2); font-weight: 700; font-size: 0.9rem; }
+.top-nav .logo small { font-weight: 400; font-size: 0.75rem; color: var(--text3); }
+.top-nav .nav-links { display: flex; gap: 4px; }
+.top-nav .nav-links a { font-size: 0.8rem; }
+.top-nav .nav-links a.active { color: var(--gold2); background: var(--gold-dim); }
+
+/* ===== MAIN ===== */
+.container {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto; padding: 80px 20px 120px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center; padding: 48px 0 40px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 14px; border-radius: 100px;
+  background: var(--gold-dim); color: var(--gold2);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3px;
+  margin-bottom: 16px; border: 1px solid rgba(212,148,47,0.25);
+}
+.hero h1 {
+  font-size: clamp(28px,5vw,44px); font-weight: 700; line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--gold2); }
+.hero p {
+  color: var(--text2); font-size: 0.95rem; max-width: 640px; margin: 0 auto;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 24px;
+  margin-top: 20px; font-size: 0.8rem; color: var(--text3);
+  flex-wrap: wrap;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ===== SECTION ===== */
+.section { margin-bottom: 40px; }
+.section-title {
+  font-size: 1.2rem; font-weight: 700;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.section-title .icon {
+  width: 30px; height: 30px; border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  background: var(--gold-dim); color: var(--gold2); flex-shrink: 0;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: all 0.2s;
+}
+.card:hover { border-color: rgba(212,148,47,0.2); }
+.card-title {
+  font-size: 1rem; font-weight: 600;
+  margin-bottom: 8px; color: var(--text);
+}
+.card-title .sub {
+  font-weight: 400; font-size: 0.8rem; color: var(--text3);
+  display: block; margin-top: 2px;
+}
+.card p, .card li { font-size: 0.88rem; color: var(--text2); line-height: 1.8; }
+.card ul, .card ol { padding-left: 18px; margin-top: 6px; }
+.card li { margin-bottom: 4px; }
+.card li strong { color: var(--text); }
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-block; padding: 1px 10px; border-radius: 100px;
+  font-size: 0.7rem; font-weight: 600; margin-right: 4px;
+}
+.tag-gold  { background: var(--gold-dim); color: var(--gold2); }
+.tag-red   { background: var(--red-dim); color: var(--red); }
+.tag-green { background: var(--green-dim); color: var(--green); }
+.tag-blue  { background: var(--blue-dim); color: var(--blue); }
+.tag-purple{ background: var(--purple-dim); color: var(--purple); }
+.tag-cyan  { background: var(--cyan-dim); color: var(--cyan); }
+.tag-orange{ background: var(--orange-dim); color: var(--orange); }
+
+/* ===== ALERT CARD ===== */
+.card-alert { border-left: 3px solid var(--red); }
+.card-warn  { border-left: 3px solid var(--orange); }
+.card-info  { border-left: 3px solid var(--blue); }
+.card-success{ border-left: 3px solid var(--green); }
+
+/* ===== HIGHLIGHT ===== */
+.hl-gold { color: var(--gold2); font-weight: 600; }
+.hl-red  { color: var(--red); font-weight: 600; }
+.hl-green{ color: var(--green); font-weight: 600; }
+.hl-blue { color: var(--blue); font-weight: 600; }
+
+/* ===== FORM TABLE ===== */
+.form-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.form-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.form-item:hover { border-color: rgba(212,148,47,0.15); }
+.form-icon {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.form-body { flex: 1; }
+.form-body .f-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.form-body .f-detail { font-size: 0.82rem; color: var(--text2); margin-top: 2px; }
+
+/* ===== TABLE ===== */
+.tbl {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg2); border-radius: var(--radius-sm);
+  overflow: hidden; margin: 8px 0;
+}
+.tbl th, .tbl td {
+  padding: 10px 14px; text-align: left;
+  font-size: 0.85rem; border-bottom: 1px solid var(--border);
+}
+.tbl th {
+  background: var(--surface2); color: var(--gold2);
+  font-weight: 600;
+}
+.tbl td { color: var(--text2); }
+.tbl tr:last-child td { border-bottom: none; }
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  background: linear-gradient(135deg, var(--gold-dim), transparent);
+  border: 1px solid rgba(212,148,47,0.3);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  margin-top: 30px;
+}
+.cta-banner p { color: var(--text2); margin-bottom: 14px; }
+.cta-banner a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; border-radius: 100px;
+  background: var(--gold); color: #000;
+  text-decoration: none; font-weight: 600;
+  font-size: 0.9rem; transition: all 0.2s;
+}
+.cta-banner a:hover { background: var(--gold2); transform: translateY(-2px); }
+
+/* ===== FLOATING BACK ===== */
+.float-back {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text2); text-decoration: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: all 0.2s; font-family: inherit; font-size: 0.85rem;
+}
+.float-back:hover {
+  border-color: var(--gold); color: var(--gold2); background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .container { padding: 72px 14px 100px; }
+  .top-nav { padding: 0 10px; }
+  .top-nav .logo { font-size: 0.8rem; }
+  .top-nav .nav-links a { padding: 4px 8px; font-size: 0.72rem; }
+  .hero-meta { gap: 12px; flex-direction: column; align-items: center; }
+  .card { padding: 16px; }
+  .form-item { flex-direction: column; }
+  .float-back { bottom: 14px; right: 14px; padding: 8px 14px; font-size: 0.8rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  .top-nav, .float-back, .cta-banner { display: none; }
+  body { background: #fff; color: #111; }
+  .card { border-color: #ccc; background: #f9f9f9; }
+}
+</style>
+<link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="top-nav">
+  <a href="index.html" class="logo">💰 ระเบียบ ฉ.3 <small>การบริหารเงินสด</small></a>
+  <div class="nav-links">
+    <a href="#s1">1. นิยาม</a>
+    <a href="#s2">2. MMS/KCIM</a>
+    <a href="#s3">3. ขนย้าย/ธนบัตร</a>
+    <a href="#s4">4. ประกันภัย</a>
+    <a href="cash-regulation3-quiz.html">✍️ ข้อสอบ</a>
+    <a href="index.html">← หน้าหลัก</a>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main class="container">
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-badge">🏦 ระเบียบ ธ.ก.ส. ฉบับที่ 3 · บังคับใช้ 1 ต.ค. 67</div>
+    <h1>การบริหารเงินสด<br><span>ตามระเบียบฉบับที่ 3</span></h1>
+    <p>สรุปเนื้อหาการบริหารเงินสดสำหรับพนักงาน ธ.ก.ส. ครอบคลุมทุก workflow ตั้งแต่วงเงินสำรอง การฝาก-ถอน KCIM การขนย้ายเงิน ไปจนถึงการประกันภัยเงินสด พร้อมแบบทดสอบ 37 ข้อ</p>
+    <div class="hero-meta">
+      <span>📘 4 หัวข้อหลัก</span>
+      <span>✍️ 37 ข้อสอบ</span>
+      <span>📋 อ้างอิง กธ.39</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--  CONTENT  -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <section id="content">
+
+    <!-- ───── 1. นิยาม + วงเงินสำรอง ───── -->
+    <div class="section" id="s1">
+      <h2 class="section-title"><span class="icon">📐</span> 1. นิยาม & วงเงินสำรองคงเหลือ</h2>
+
+      <div class="card">
+        <div class="card-title">นิยามสำคัญ (กธ.39 บทที่ 201.03.01)</div>
+        <div class="form-list">
+          <div class="form-item">
+            <div class="form-icon" style="background:var(--blue-dim); color:var(--blue);">💰</div>
+            <div class="form-body">
+              <div class="f-name">เงินคงเหลือ</div>
+              <div class="f-detail">จำนวนเงินรวมของรายการคงเหลือ ณ สิ้นวันทำการ ได้แก่ <strong>เงินสดในมือ + เงินสดใน ATM + เงินฝากธนาคาร</strong></div>
+            </div>
+          </div>
+          <div class="form-item">
+            <div class="form-icon" style="background:var(--gold-dim); color:var(--gold2);">📊</div>
+            <div class="form-body">
+              <div class="f-name">วงเงินสำรอง</div>
+              <div class="f-detail">จำนวนเงินคงเหลือที่เฉลี่ย <strong>สูงสุดในช่วงเวลาใดเวลาหนึ่ง</strong></div>
+            </div>
+          </div>
+          <div class="form-item">
+            <div class="form-icon" style="background:var(--green-dim); color:var(--green);">📈</div>
+            <div class="form-body">
+              <div class="f-name">เงินสำรองเกิน</div>
+              <div class="f-detail">เงินคงเหลือเฉลี่ย <strong>มากกว่า</strong> วงเงินที่ธนาคาร/สนจ. กำหนด</div>
+            </div>
+          </div>
+          <div class="form-item">
+            <div class="form-icon" style="background:var(--purple-dim); color:var(--purple);">🔄</div>
+            <div class="form-body">
+              <div class="f-name">การขยายวงเงิน vs การเพิ่มวงเงิน</div>
+              <div class="f-detail"><strong>ขยาย:</strong> สนจ./สาขามีเงินสำรองเกิน → อนุมัติให้ใช้ในวงเงินเดิม / <strong>เพิ่ม:</strong> อนุมัติวงเงินมากกว่าที่ธนาคารกำหนด</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-info">
+        <div class="card-title">🏛️ อำนาจอนุมัติ (กธ.39 บทที่ 201.03.01)</div>
+        <table class="tbl">
+          <thead>
+            <tr><th>ผู้มีอำนาจ</th><th>ขอบเขตอำนาจ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="hl-gold">ผอจ. / ผช.ผอจ.</span></td><td>กำหนด/ขยาย/เพิ่มวงเงินของสาขาในสังกัด, กำหนดวงเงินเก็บรักษาเงินสดให้สาขา, ลงนามในบันทึกขออนุมัติเพิ่ม/ขยายวงเงินในภาพรวม สนจ.</td></tr>
+            <tr><td><span class="hl-gold">ผอ.ธง. / ผช.ผอ.ธง.</span></td><td>กำหนดวงเงิน, การขยาย/เพิ่มวงเงินในภาพรวมของ สนจ.</td></tr>
+            <tr><td><span class="hl-gold">ผจข.</span></td><td>ลงนามบันทึกขออนุมัติขยาย/เพิ่มวงเงินสำรองคงเหลือของสาขา, กำหนดวงเงินสด Teller โดยมอบหมายเป็นลายลักษณ์อักษร</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📐 หลักเกณฑ์การกำหนดวงเงินสำรอง (กธ.39 บทที่ 201.03.01)</div>
+        <ul>
+          <li>กำหนดจาก <strong>ปริมาณธุรกิจของสาขา</strong> เช่น ปริมาณการใช้เงินของสาขา, ตารางเดินรถ KCIM, สาขาห่างไกล ในแต่ละไตรมาส</li>
+          <li><strong>สนจ. เป็นผู้ควบคุมและกำกับ</strong>การสำรองเงินของทุกสาขารวมกันเฉลี่ยทุกงวด (วันที่ 1-15 และ 16-สิ้นเดือน) ไม่ให้เกินวงเงินที่ธนาคารกำหนด</li>
+          <li><strong>ผอจ. มีอำนาจอนุมัติเพิ่ม/ลด</strong>วงเงินของสาขาในสังกัดในช่วงเวลาใดเวลาหนึ่งได้ โดยต้องไม่ทำให้วงเงินในภาพรวม สนจ. เกินวงเงินที่ธนาคารกำหนด</li>
+          <li>ธนาคารจะกำหนดวงเงินเก็บรักษาเงินสดและเงินคงเหลือสิ้นวันทำการในภาพรวมของ สนจ. <strong>ไตรมาสละ 1 ครั้ง</strong></li>
+        </ul>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">⚠️ กรณีเก็บรักษาเงินสดสิ้นวันเกินวงเงินชั่วคราว (ไม่เกินกรมธรรม์)</div>
+        <p>สาขา/สาขาย่อยต้อง <strong>ชี้แจงเหตุผลความจำเป็น</strong> ไว้ในด้านหลังของรายงานยอดเงินคงเหลือต้นฉบับ โดยให้ <strong>กรรมการตรวจนับเงินสดทุกคนลงลายมือชื่อกำกับ</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔄 การขอขยายวงเงิน (กธ.39 บทที่ 201.03.06)</div>
+        <p>กรณีสาขามีการสำรองเงินคงเหลือสิ้นวันเกินวงเงินที่ สนจ. กำหนด → ขออนุมัติขยายวงเงินผ่าน <span class="hl-gold">ระบบการบริหารจัดการเงิน (MMS)</span></p>
+        <ol>
+          <li><strong>หัวหน้าการเงิน/พนักงานที่ได้รับมอบหมาย (ระดับ 4-7)</strong> บันทึกขออนุมัติใน MMS</li>
+          <li><strong>พนักงานบริหารเงินทุน สนจ. (ระดับ 8 ขึ้นไป)</strong> รวบรวมเ�ละบันทึกใน MMS <span class="hl-red">ภายใน 5 วันทำการ</span> หลังสิ้นงวด</li>
+          <li><strong>ผจข./ผช.ผจข.</strong> พิจารณาลงนามอนุมัติ</li>
+          <li><strong>ผอจ./ผช.ผอจ.</strong> พิจารณาอนุมัติใน MMS เสนอ ธง.</li>
+        </ol>
+        <p style="margin-top:8px; font-size:0.82rem; color:var(--text3);">💡 กรณีเงินสำรองคงเหลือในภาพรวม สนจ. <strong>ไม่เกินวงเงินที่ธนาคารกำหนด</strong> → สนจ. ไม่ต้องบันทึกขออนุมัติ</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📈 การขอเพิ่มวงเงิน (กธ.39 บทที่ 201.03.07)</div>
+        <p>ล่วงหน้า <span class="hl-red">5 วันทำการ</span> ของงวดที่ขอเพิ่มวงเงิน</p>
+        <ul>
+          <li>วงเงินในภาพรวม สนจ. <strong>มีเพียงพอ</strong> → เสนอ ผอจ./ผช.ผอจ. พิจารณาจัดสรรภายใน สนจ.</li>
+          <li>วงเงินในภาพรวม สนจ. <strong>มีไม่เพียงพอ</strong> → เสนอบันทึกขออนุมัติเพิ่มวงเงิน</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📊 การควบคุมผ่าน MMS</div>
+        <p>พนักงานบริหารเงินทุนในการติดตาม ควบคุม และกำกับการสำรองวงเงินของสาขาในสังกัดผ่านระบบ MMS กำหนดไว้:</p>
+        <ul>
+          <li><strong>ความถี่ในการควบคุม:</strong> <span class="hl-gold">ทุกงวดวันที่ 1 และ 16 ของเดือน</span></li>
+          <li><strong>จุดควบคุม:</strong> สาขาในสังกัด สนจ. ทั้งหมด</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ───── 2. MMS / KCIM ───── -->
+    <div class="section" id="s2">
+      <h2 class="section-title"><span class="icon">💻</span> 2. ระบบ MMS / การฝาก-ถอน KCIM</h2>
+
+      <div class="card card-info">
+        <div class="card-title">🖥️ ระบบบริหารและจัดการเงิน (MMS) — สิทธิการใช้งาน</div>
+        <table class="tbl">
+          <thead>
+            <tr><th>บทบาท</th><th>ผู้รับผิดชอบ</th><th>หน้าที่</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ผู้บันทึก</td><td>พกง.(ผู้รักษาเงิน) / พ.ที่ได้รับมอบหมาย</td><td>บันทึกรายการ</td></tr>
+            <tr><td>ผู้ยืนยัน</td><td>พนักงานบริหารเงินทุน / พ.ที่ได้รับมอบหมาย สนจ. ระดับ 8 ขึ้นไป</td><td>ตรวจสอบ/ยืนยัน</td></tr>
+            <tr><td>ผู้อนุมัติ</td><td>ผอ.ธง. (พนักงานผู้ที่ได้รับมอบอำนาจ)</td><td>อนุมัติ</td></tr>
+            <tr><td>ผู้ยืนยัน (สนจ.)</td><td>หกง./หนภ.</td><td>ยืนยัน</td></tr>
+            <tr><td>ผู้อนุมัติ (สนจ.)</td><td>ผอจ./ผช.ผอจ.</td><td>อนุมัติ</td></tr>
+            <tr><td>ผู้ลงนาม</td><td>ผจข./ผช.ผจข.</td><td>ลงนาม</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">⚠️ กรณีผู้บริหาร/ผู้ปฏิบัติงานลาหยุด</div>
+        <ul>
+          <li><strong>ผจข. หรือ ผช.ผจข. ลาหยุด</strong> → ผจข. มอบหมายเป็นลายลักษณ์อักษรให้ <strong>หกง. หรือ หนภ.</strong> ตามลำดับ พิจารณาลงนาม</li>
+          <li><strong>หกง. หรือ หนภ. ลาหยุด</strong> → ผจข. หรือ ผช.ผจข. ยืนยัน แก้ไข หรือยกเลิกรายการใน MMS แทน (ผู้ยืนยันกับผู้ลงนามต้องไม่เป็นคนเดียวกัน)</li>
+          <li><strong>ผอจ./ผช.ผอจ ลาหยุด</strong> → สนจ. จัดทำบันทึกในระบบงานสารบรรณอิเล็กทรอนิกส์ เพื่อขอความร่วมมือ <strong>ธง.</strong> อนุมัติรายการฝาก-ถอนเงินใน MMS แทน (ระบุเหตุผล + วันที่)</li>
+        </ul>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title">📥 การฝากเงิน KCIM (กธ.39 บทที่ 202.01.05)</div>
+        <ol>
+          <li><strong>สาขา</strong> บันทึกล่วงหน้าก่อนนำฝากธนบัตร <span class="hl-gold">1 วันทำการ</span> ภายในเวลา <span class="hl-gold">14.30 น.</span></li>
+          <li><strong>สนจ.</strong> Import File เข้าระบบ KCIM ล่วงหน้าก่อนวันนำฝากธนบัตร 1 วันทำการ ภายในเวลา 15.00 น.</li>
+          <li><strong>สนจ.</strong> นำส่งไฟล์ใบนำฝากเงินผ่านระบบ MMS ให้สาขา ภายในเวลา <span class="hl-gold">16.00 น.</span></li>
+          <li><strong>สาขา</strong> ตรวจสอบรายละเอียดให้ถูกต้อง (ประเภทเอกสาร, สถานะ, วันที่, สถานที่, จำนวนเงิน)</li>
+        </ol>
+        <p style="margin-top:6px; font-size:0.85rem;">ตัวอย่าง: ต้องการฝากเงิน<strong>วันพุธที่ 8</strong> → สาขาบันทึกใน <strong>วันอังคารที่ 7 ภายใน 14.30 น.</strong></p>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title">📤 การถอนเงิน KCIM (กธ.39 บทที่ 202.01.06)</div>
+        <ol>
+          <li><strong>สาขา</strong> บันทึกล่วงหน้าก่อนรับมอบธนบัตร <span class="hl-gold">2 วันทำการ</span> ภายในเวลา <span class="hl-gold">14.30 น.</span></li>
+          <li><strong>สนจ.</strong> Import File เข้าระบบ KCIM ล่วงหน้าก่อนวันรับมอบธนบัตร 1 วันทำการ ภายในเวลา <span class="hl-gold">13.00 น.</span> (สถานะต้องเป็น "รอ สนจ.ยืนยัน" ทุกรายการ)</li>
+          <li><strong>สนจ.</strong> นำส่งไฟล์ใบขอรับเงินผ่านระบบ MMS ให้สาขา ภายในเวลา 16.00 น.</li>
+          <li><strong>สาขา</strong> ตรวจสอบรายละเอียดให้ถูกต้อง</li>
+        </ol>
+        <p style="margin-top:6px; font-size:0.85rem;">ตัวอย่าง: ต้องการถอนเงิน<strong>วันพุธที่ 8</strong> → สาขาบันทึกใน <strong>วันจันทร์ที่ 6 ภายใน 14.30 น.</strong></p>
+        <p style="margin-top:6px; font-size:0.82rem; color:var(--orange);">⚠️ หากตรวจสอบแล้วข้อมูลไม่ถูกต้อง ให้ประสานงาน สนจ. <strong>ภายใน 16.30 น.</strong> เพื่อจะได้แก้ไขทันเวลา</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔄 การเปลี่ยนแปลงรายการฝาก-ถอน (กธ.39 บทที่ 202.01.08-09)</div>
+
+        <div class="card-title" style="margin-top:10px; font-size:0.9rem;">📋 กรณี สนจ. ยังไม่ได้อัพโหลดเข้าระบบ KCIM</div>
+        <ol>
+          <li>สาขาแจ้ง สนจ. เพื่อขอแก้ไข/เปลี่ยนแปลง</li>
+          <li>สนจ. ส่งกลับรายการผ่าน MMS ให้สาขาแก้ไข/ยกเลิก และ Import File เข้า KCIM ภายใน:
+            <ul>
+              <li><strong>รายการถอนเงิน:</strong> ล่วงหน้า 1 วันทำการ ไม่เกิน <span class="hl-gold">13.00 น.</span></li>
+              <li><strong>รายการฝากเงิน:</strong> ล่วงหน้า 1 วันทำการ ไม่เกิน <span class="hl-gold">15.00 น.</span></li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="card-title" style="margin-top:14px; font-size:0.9rem;">📋 กรณี สนจ. อัพโหลดเข้าระบบ KCIM เรียบร้อยแล้ว</div>
+        <ol>
+          <li>สาขาแจ้ง สนจ. เพื่อขอแก้ไข/เปลี่ยนแปลง</li>
+          <li>สนจ. ประสานงาน ธง. ส่งกลับรายการ</li>
+          <li><span class="hl-red">ธง. ส่งกลับรายการใน MMS ให้สาขาแก้ไข/ยกเลิก</span> — กรณีแก้ไขยอดเงิน <strong>ห้าม!! สาขาทำการยกเลิกรายการ</strong></li>
+          <li>ธง. ส่งกลับรายการใน KCIM ให้ สนจ. แก้ไข/ยกเลิก (สนจ. ไม่ต้องอัพโหลดข้อมูลเข้า KCIM อีก)</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">✍️ การตรวจสอบลายมือชื่อพนักงานขนส่งเงิน (Signature On Web)</div>
+        <p>สาขาต้องตรวจสอบ <strong>ชื่อ-นามสกุล ลายมือชื่อพนักงานขนส่ง หมายเลขรถ ทะเบียนรถ</strong> ให้ถูกต้องกับใบนำฝากหรือใบขอรับเงิน ก่อนส่งมอบ-รับมอบเงินทุกครั้ง (อ้างอิง กธ.39 บทที่ 202.07)</p>
+      </div>
+    </div>
+
+    <!-- ───── 3. การขนย้ายเงิน + ธนบัตรบกพร่อง ───── -->
+    <div class="section" id="s3">
+      <h2 class="section-title"><span class="icon">🚚</span> 3. การขนย้ายเงิน & ธนบัตรบกพร่อง</h2>
+
+      <div class="card card-info">
+        <div class="card-title">👥 พนักงานผู้รับผิดชอบในการขนย้าย (ระเบียบ ฉบับที่ 3)</div>
+        <ul>
+          <li>พนักงานผู้รับมอบอำนาจ <strong>ชั้น ก.</strong> มอบหมายพนักงานการเงินดำเนินการขนย้ายเงินสด (กรณีไม่ใช่พนักงานการเงิน ให้คำนึงถึงความรอบรู้และวุฒิภาวะ)</li>
+          <li>การขนย้ายเงินสด มอบหมายให้มีพนักงาน <strong>อย่างน้อย 1 คน</strong> ร่วมกับพนักงาน/ผู้ช่วยพนักงาน/ลูกจ้างอีก 1 คน = <strong>2 คน</strong></li>
+          <li>จำนวนเงินที่ขนย้าย <strong>ไม่เกินวงเงินประกันภัย</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏛️ อำนาจอนุมัติขนย้ายเงินสดระหว่างสาขา</div>
+        <table class="tbl">
+          <thead>
+            <tr><th>ผู้มีอำนาจ</th><th>ขอบเขต</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="hl-gold">ผอจ. / ผช.ผอจ.</span></td><td>ขนย้ายเงินสดของสาขาในสังกัด <strong>สนจ.เดียวกัน</strong></td></tr>
+            <tr><td><span class="hl-gold">ผอ.ฝสข. / รอง ผอ.ฝสข. / ผช.ผอ.ฝสข.</span></td><td>ขนย้ายเงินสดของสาขา<strong>ต่างสังกัด สนจ. แต่อยู่ใน ฝสข.เดียวกัน</strong></td></tr>
+            <tr><td><span class="hl-gold">ผอ.ธง. / ผช.ผอ.ธง.</span></td><td>ขนย้ายเงินสดของสาขา<strong>ต่างสังกัด ฝสข.</strong></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px; font-size:0.82rem; color:var(--text3);">💡 <strong>กรณีผู้มีอำนาจไม่อยู่</strong> → ลำดับถัดไปมีอำนาจอนุมัติแทน โดยจัดทำบันทึกผ่านระบบสารบรรณอิเล็กทรอนิกส์</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🛡️ การรักษาความปลอดภัยในการขนย้ายเงินสด</div>
+        <ul>
+          <li>พิจารณาจัดให้มี <strong>เจ้าหน้าที่ตำรวจ หรือเจ้าหน้าที่รักษาความปลอดภัยถืออาวุธปืนคุ้มกัน</strong> (อยู่ในดุลยพินิจของ <span class="hl-gold">พนักงานผู้รับมอบอำนาจชั้น ก</span>)</li>
+          <li>ใช้วิธีเดินเท้า หรือใช้ยานพาหนะตามความเหมาะสม (อยู่ในดุลยพินิจของ พนักงานผู้รับมอบอำนาจชั้น ก)</li>
+          <li>หากเกิดความเสียหายระหว่างขนย้าย → <strong>แจ้งความต่อสถานีตำรวจที่ใกล้ที่สุด</strong> แล้วรายงานผู้บังคับบัญชาโดยด่วน</li>
+        </ul>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">📤 การส่งมอบธนบัตรกับ บมจ.ธนาคารกรุงไทย (กธ.39 บทที่ 202.01.11-12)</div>
+        <ul>
+          <li>ใบนำฝาก: <strong>พกง.(ผู้รักษาเงิน)</strong> ลงลายมือชื่อร่วมกับพนักงานที่ได้รับมอบหมายสาขา ระดับ 4-7 อีก 1 คน = <strong>2 คน</strong> ในสดมภ์ "ผู้จ่ายเงิน" จำนวน 3 ฉบับ</li>
+          <li>ส่งมอบ ณ บริเวณจุดรับ-ส่งเงิน ติดตั้ง <strong>กล้องวงจรปิด CCTV</strong> ที่บันทึกภาพได้ชัดเจน</li>
+          <li>พกง. + คณะกรรมการรับ-ส่งธนบัตรส่งมอบธนบัตร + ใบนำฝากให้เจ้าหน้าที่ <strong>KTBGS</strong> ลงนาม สดมภ์ "เจ้าหน้าที่ขนเงิน" 3 ฉบับ</li>
+          <li>ยืนยันจำนวนเงินให้ถูกต้องตรงกับใบนำฝากใน MMS <strong>ภายใน 16.30 น.</strong></li>
+          <li>คณะกรรมการรับ-ส่งธนบัตร มาจากคำสั่งแต่งตั้งของผู้จัดการสาขา (เป็นลายลักษณ์อักษร) ประกอบด้วย:
+            <ul>
+              <li>พนักงานผู้รับมอบอำนาจของสาขา = <strong>คณะกรรมการโดยตำแหน่ง</strong></li>
+              <li>พนักงานตั้งแต่ <strong>ระดับ 4 ขึ้นไป</strong> = คณะกรรมการตามความเหมาะสม</li>
+            </ul>
+          </li>
+        </ul>
+        <p style="margin-top:6px; font-size:0.85rem;"><strong>ห้าม:</strong> ใช้ยางรัดในการมัดธนบัตร / ฝากส่งคืนศูนย์ฯ กรุงไทยกรณีได้รับธนบัตรประเภท "ใหม่" จาก ธปท.</p>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title">📥 การรับมอบธนบัตร</div>
+        <ul>
+          <li>จัดเตรียม <strong>ใบขอรับเงิน 1 ฉบับ</strong> ตรวจสอบบัตรประจำตัวเจ้าหน้าที่ KTBGS ให้ตรงกับ Signature On Web</li>
+          <li>ตรวจสอบถุงบรรจุเงิน: สภาพเรียบร้อย ไม่ชำรุด ฉีกขาด ซีลถูกต้อง แถบผนึกไม่หลุดหลวม</li>
+          <li>ตรวจสอบ <strong>ชนิดราคา + จำนวนเงิน</strong> ให้ตรงกับใบขอรับเงิน + ใบรับ-ส่งทรัพย์สิน</li>
+        </ul>
+      </div>
+
+      <div class="card card-alert">
+        <div class="card-title">⚠️ การตรวจพบธนบัตรบกพร่อง (ขาด/เกิน/ชำรุด/ปลอม/ปนราคา)</div>
+        <ol>
+          <li>จัดทำ <strong>"แบบรายงานการตรวจพบธนบัตรบกพร่อง"</strong> พร้อมหลักฐาน ได้แก่:
+            <ul>
+              <li>ใบปะหน้ามัดธนบัตร</li>
+              <li>ปลอกรัดธนบัตร</li>
+              <li><strong>ภาพกล้องวงจรปิด (CCTV)</strong> ขณะตรวจนับ</li>
+            </ul>
+            จำนวน <strong>2 ชุด</strong>
+          </li>
+          <li>ส่งต้นฉบับให้ศูนย์บริหารและจัดการธนบัตรกรุงไทยที่สาขาใช้บริการ</li>
+          <li>สำเนาชุดที่ 1 ส่ง <strong>ธง.</strong> ทางระบบสารบรรณอิเล็กทรอนิกส์/E-mail/FAX</li>
+          <li>สำเนาชุดที่ 2 สาขาเก็บไว้เป็นหลักฐาน</li>
+          <li><strong>ตั้งบัญชีเงินสดขาด–เกิน</strong> ตามวิธีปฏิบัติของธนาคาร</li>
+        </ol>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">💴 ธนบัตรปลอมที่รับจากลูกค้า</div>
+        <p><strong>ขั้นตอนแรก:</strong> แจ้งลูกค้าทราบ และให้ลูกค้าจัดทำ <strong>"คำยินยอมสละการครอบครองธนบัตรปลอม"</strong></p>
+        <p><strong>กรณีลูกค้า "ไม่ยินยอม" ให้ยึด:</strong> ประทับตรา "ปลอม" ด้วยอักษรนูน <strong>ไม่น้อยกว่า 3 เซนติเมตร</strong> ทั้งด้านหน้าและด้านหลัง</p>
+        <p><strong>กรณีลูกค้าไม่ยินยอมให้ดำเนินการ:</strong> สาขาพิจารณาแจ้งความต่อเจ้าพนักงานสอบสวนเพื่อดำเนินการต่อไป</p>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title">✅ การจ่ายค่าแลกเปลี่ยนธนบัตรชำรุดให้ลูกค้าทันที</div>
+        <p>เงื่อนไข: <strong>ธนบัตรชำรุดที่มีเนื้อธนบัตรตั้งแต่ 3 ใน 5 ส่วนขึ้นไป</strong> → จ่ายค่าแลกเปลี่ยนได้ทันที</p>
+      </div>
+    </div>
+
+    <!-- ───── 4. ประกันภัยเงิน ───── -->
+    <div class="section" id="s4">
+      <h2 class="section-title"><span class="icon">🛡️</span> 4. การประกันภัยสำหรับเงิน</h2>
+
+      <div class="card card-info">
+        <div class="card-title">📅 ระยะเวลาเอาประกันภัย (กธ.39 บทที่ 202.04)</div>
+        <p>การจัดทำประกันภัยสำหรับเงิน <strong>คราวละ 1 ปี</strong></p>
+        <ul>
+          <li><strong>เริ่มต้น:</strong> วันที่ 1 เมษายน เวลา 00.01 น.</li>
+          <li><strong>สิ้นสุด:</strong> วันที่ 31 มีนาคม เวลา 24.00 น. ของปีถัดไป</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>การพิจารณาวงเงินประกันภัย:</strong> พิจารณาจาก <strong>ปริมาณเงินสดหมุนเวียนของสาขาที่มีปริมาณมากที่สุด</strong> เพื่อกำหนดวงเงินคุ้มครองภายในสำนักงาน และภายนอกสำนักงานประจำปี</p>
+      </div>
+
+      <div class="card card-success">
+        <div class="card-title">📋 เงื่อนไขการเพิ่มวงเงินประกันภัย</div>
+        <table class="tbl">
+          <thead>
+            <tr><th>วงเงินรวมใหม่ (เมื่อรวมกับวงเงินเดิม)</th><th>ระยะเวลาล่วงหน้า</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ไม่เกิน 150 ล้านบาท</td><td><strong>ภายในวันที่ต้องการเพิ่ม</strong></td></tr>
+            <tr><td>ตั้งแต่ 150 ล้าน แต่ไม่เกิน 200 ล้านบาท</td><td><strong>ล่วงหน้าอย่างน้อย 1 วัน</strong></td></tr>
+            <tr><td>เกิน 200 ล้าน แต่ไม่เกิน 300 ล้านบาท</td><td><strong>ล่วงหน้าอย่างน้อย 2 วัน</strong></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;">ระหว่างปีประกันภัย สาขาประสงค์เพิ่ม/ลดวงเงินประกันภัยชั่วคราว → จัดทำบันทึกเสนอ ผอจ. อนุมัติ แล้วส่งไปบริษัทประกันภัยทาง E-mail ภายใน <span class="hl-gold">16.30 น.</span> สำเนาให้ บช. (E-mail: paa@baac.or.th)</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏢 การประกันภัยเงินภายในสำนักงาน (กธ.39 บทที่ 202.05)</div>
+        <p>กรมธรรม์ประกันภัยให้ความคุ้มครองเงินที่เก็บรักษา<strong>ภายในอาคารสำนักงานของธนาคาร</strong> ได้แก่:</p>
+        <ul>
+          <li>สนจ. / สาขา / สาขาย่อย / หน่วยอำเภอ / <strong>ตลาดกลาง</strong></li>
+          <li>ทั้งนอกตู้นิรภัยในขณะปฏิบัติงาน และในตู้นิรภัยเมื่อสิ้นสุดการปฏิบัติงาน</li>
+          <li>รวมถึงเงินในเครื่อง <strong>ATM/CDM ที่ติดตั้งอยู่ภายในอาคารหรือรั้ว</strong>ของแต่ละสำนักงาน</li>
+        </ul>
+        <p style="margin-top:8px; font-size:0.85rem;"><strong>การรับ-จ่ายเงิน:</strong> ขอให้ดำเนินการให้เสร็จสิ้นภายในเวลาทำการ แต่หากจำเป็นต้องรับ-จ่ายก่อน/หลังเวลาทำการก็สามารถกระทำได้ เมื่อสิ้นสุดการรับ-จ่ายเงินแล้วให้ตรวจนับเงินและนำเก็บเข้าตู้นิรภัยทันทีที่ปิดการรับ-จ่ายเงินประจำวัน</p>
+        <p style="margin-top:8px; font-size:0.82rem; color:var(--red);">⚠️ <strong>ไม่คุ้มครอง</strong>เงินในเครื่อง ATM/CDM <strong>นอกพื้นที่สาขา</strong></p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🚚 การประกันภัยเงินภายนอกสำนักงาน (กธ.39 บทที่ 202.05)</div>
+        <p>กรมธรรม์ประกันภัยให้ความคุ้มครอง <strong>การขนส่งเงินของธนาคารทุกเส้นทาง</strong> ที่สาขาไปดำเนินการ ในเขตท้องที่ดำเนินงาน หรือในจังหวัดใกล้เคียงที่มีอาณาเขตติดต่อกัน</p>
+        <p style="margin-top:8px;"><strong>กรณีขนย้ายเงินไปปฏิบัติงานเกิน 1 แห่งในวันเดียวกัน:</strong></p>
+        <ul>
+          <li><strong>จัดแบ่งพนักงานและยานพาหนะแยกกันไป</strong> → กรมธรรม์ให้ความคุ้มครอง <strong>แต่ละสถานที่ ในวงเงินเท่ากับที่กำหนดในกรมธรรม์</strong></li>
+          <li><strong>มอบหมายพนักงานและใช้ยานพาหนะชุดเดียว</strong> → กรมธรรม์ให้ความคุ้มครอง <strong>รวมเท่ากับวงเงินคุ้มครองภายนอกสำนักงาน</strong></li>
+        </ul>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">📋 ตัวอย่างการคำนวณวงเงินคุ้มครองภายนอก</div>
+        <p><strong>ตัวอย่างที่ 1:</strong> สาขากระนวน ออกไปรับเงินฝากทอดกฐิน 2 วัด ในวันเดียวกัน จัดพนักงานเป็น <strong>2 ชุด + รถยนต์ชุดละ 1 คัน</strong> วงเงินคุ้มครอง 2 ล้านบาท รับเงิน 1 ล้าน + 2 ล้าน → หากเกิดความเสียหายทั้งสองแห่งพร้อมกัน → บริษัทประกันภัยชดใช้ <span class="hl-red">รวมไม่เกิน 2 ล้านบาท</span> (เพราะเป็น 2 ชุด แยกกัน → แต่ละแห่งได้วงเงินเท่ากัน)</p>
+        <p style="margin-top:8px;"><strong>ตัวอย่างที่ 2:</strong> สาขากระนวน บริการรับเงินฝากนอกสถานที่ 2 จุด (5 ล้าน + 5 ล้าน) + รับเงินสดที่สาขาซำสูง (15 ล้าน) สนจ.ขอนแก่น วงเงินคุ้มครองภายนอก 20 ล้านบาท → ใช้พนักงานชุดเดียว → บริษัทประกันภัยชดใช้ <span class="hl-red">รวมไม่เกิน 20 ล้านบาท</span> (เพราะชุดเดียว → คุ้มครองรวม)</p>
+      </div>
+
+      <div class="card card-info">
+        <div class="card-title">🛡️ ความคุ้มครอง (ตามเงื่อนไขกรมธรรม์)</div>
+        <p>คุ้มครองต่อความสูญเสีย หรือสูญหาย หรือถูกทำลายของเงินอันเกิดจาก:</p>
+        <ul>
+          <li><strong>การลักทรัพย์ ปล้นทรัพย์ ชิงทรัพย์</strong> การโจรกรรมเงินจากห้องนิรภัยหรือตู้นิรภัย หรือความพยายามกระทำดังกล่าว</li>
+          <li><strong>อัคคีภัย อุบัติเหตุ</strong> ต่อยานพาหนะหรือเจ้าหน้าที่ขนส่งเงิน</li>
+          <li><strong>การยักยอกโดยเจ้าหน้าที่ ธ.ก.ส.</strong> ที่สามารถค้นพบได้ใน <strong>สามวันทำการ</strong></li>
+          <li>สาเหตุอื่นๆ ที่ไม่ได้ระบุไว้ในข้อยกเว้น</li>
+        </ul>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">❌ ข้อยกเว้น (ไม่คุ้มครอง)</div>
+        <ul>
+          <li><strong>การปลอมแปลงเอกสาร</strong> การทอนเงินผิด หรือความผิดพลาดในการคำนวณและทำบัญชี</li>
+        </ul>
+      </div>
+
+      <div class="card card-info">
+        <div class="card-title">📍 สถานที่เอาประกันภัย</div>
+        <ul>
+          <li>เงินขณะอยู่ภายในสถานที่เอาประกันภัย รวมถึงเงินที่อยู่ภายในห้องหรือตู้นิรภัย</li>
+          <li>เงินที่จัดเก็บไว้ในตู้ ATM/CDM ซึ่งติดตั้งอยู่ภายในอาคาร หรือรั้ว ธ.ก.ส. โดยใช้วงเงินคุ้มครองภายในอาคารของสำนักงาน</li>
+          <li>เงินขณะอยู่ภายนอกสถานที่เอาประกันภัย ในระหว่างการขนส่ง รวมถึงขณะให้บริการ โดยเจ้าหน้าที่ ธ.ก.ส. ในจังหวัดหรือจังหวัดใกล้เคียงที่มีอาณาเขตติดต่อกัน (ตามหลักภูมิศาสตร์)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔄 การเปลี่ยนแปลงวงเงินประกันภัย</div>
+        <ul>
+          <li><strong>รายวัน:</strong> เพิ่มวงเงินคุ้มครองภายใน/ภายนอกสำนักงานในวันใดวันหนึ่งทุกสัปดาห์หรือทุกเดือน</li>
+          <li><strong>ช่วงระยะเวลา:</strong> กำหนดวงเงินประจำปีแล้ว ต่อมาปริมาณเงินสดหมุนเวียนเพิ่มขึ้น → แจ้งเปลี่ยนแปลงเป็นระยะเวลาช่วงยาวได้</li>
+        </ul>
+        <p style="margin-top:6px; font-size:0.82rem; color:var(--text3);">💡 การแจ้งเปลี่ยนแปลงวงเงินประกันภัย <strong>ไม่ต้องระบุสาเหตุ</strong> เนื่องจากเป็นเรื่องธุรกิจเฉพาะภายในธนาคาร</p>
+      </div>
+
+      <div class="card card-warn">
+        <div class="card-title">🔁 ตัวอย่างการเปลี่ยนแปลงวงเงิน (รายวัน)</div>
+        <p><strong>ตัวอย่างที่ 1:</strong> สาขามีวงเงินคุ้มครองภายนอก 2 ล้านบาท บริการเคลื่อนที่ทุกวันพุธ เพิ่มเป็น 3 ล้าน → แจ้งบริษัทประกันภัย <strong>"วงเงินคุ้มครองภายนอกสำนักงาน 2 ล้านบาท และ 3 ล้านบาทสัปดาห์ละ 1 วัน"</strong></p>
+        <p style="margin-top:6px;"><strong>ตัวอย่างที่ 2:</strong> สาขามีวงเงินคุ้มครองภายใน 30 ล้านบาท จ่ายเงินเดือนพนักงาน 40 ล้านทุกวันสิ้นเดือน → แจ้งบริษัทประกันภัย <strong>"วงเงินคุ้มครองภายในสำนักงาน 30 ล้านบาท และ 40 ล้านบาทเดือนละ 1 วัน"</strong></p>
+      </div>
+
+      <div class="card card-alert">
+        <div class="card-title">🚨 การปฏิบัติกรณีเกิดวินาศภัยเกี่ยวกับเงิน (กธ.39 บทที่ 202.06)</div>
+        <p>เมื่อเกิดเหตุ ให้หัวหน้าการเงิน/ผู้ช่วยผู้จัดการสาขา/พนักงานบริหารเงินทุนดำเนินการทันที:</p>
+        <ol>
+          <li>รายงานหัวหน้าส่วนงาน</li>
+          <li>แจ้งความเพื่อลงบันทึกประจำวันเกี่ยวกับคดี</li>
+          <li>แจ้ง <strong>บช.</strong> ทางโทรศัพท์หรือ E-mail: <strong>paa@baac.or.th</strong> ในวันที่เกิดเหตุหรือในโอกาสแรกที่กระทำได้</li>
+          <li>บันทึกในระบบ <strong>FMIS</strong> เพื่อตั้งลูกหนี้รอการชดใช้จากบริษัทประกันภัย โดยใช้รหัสรายการ <span class="hl-gold">FB65</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ───── CTA ───── -->
+    <div class="cta-banner">
+      <p>📝 เนื้อหาครบ 4 ส่วนแล้ว พร้อมทดสอบความเข้าใจด้วยแบบทดสอบ 37 ข้อ</p>
+      <a href="cash-regulation3-quiz.html">✍️ ไปทำแบบทดสอบ 37 ข้อ →</a>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ═══ FLOATING BACK ═══ -->
+<a href="index.html" class="float-back">← กลับหน้าหลัก</a>
+
+</body>
+</html>
