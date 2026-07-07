@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📋 สรุปติวบุรินทร์ — อำนาจสินเชื่อใหม่ + 7Cs + 5Ps + อัตราส่วน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--a5:#8b5cf6;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:15px;color:var(--a);margin-right:10px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+.hero{text-align:center;padding:20px 16px 24px;border-bottom:2px solid var(--b);margin-bottom:28px}
+.hero h1{font-size:24px;color:var(--a);margin-bottom:6px}
+.hero p{color:var(--t2);font-size:14px}
+.badge{display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24}.badge.red{background:#7f1d1d;color:#fca5a5}.badge.blue{background:#1e3a5f;color:#60a5fa}.badge.green{background:#064e3b;color:#34d399}.badge.purple{background:#3b0764;color:#c4b5fd}
+section{margin-bottom:28px}
+h2{font-size:20px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:14px;margin-top:8px}
+h3{font-size:16px;color:var(--a2);margin:12px 0 8px}
+h4{font-size:14px;color:var(--a3);margin:10px 0 6px;font-weight:600}
+p{margin:6px 0;font-size:14px}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;line-height:1.7}
+.c.info{border-left:4px solid var(--a3)}.c.warn{border-left:4px solid var(--a4)}.c.tip{border-left:4px solid var(--a)}.c.ok{border-left:4px solid var(--a2)}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+th{background:var(--s2);color:var(--a);padding:8px;text-align:left;font-weight:600}
+td{padding:6px 8px;border-bottom:1px solid var(--b);vertical-align:top}
+tr:hover td{background:var(--s2)}
+ul,ol{padding-left:20px;margin:4px 0}li{margin-bottom:4px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mnemo{background:rgba(245,158,11,.08);border:1px dashed var(--a);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:var(--a);font-weight:500;text-align:center}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0;border-radius:6px;border:1px solid var(--b)}
+.table-wrap table{min-width:600px;margin:0}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
+.tag.red{background:#7f1d1d;color:#fca5a5}.tag.green{background:#064e3b;color:#34d399}.tag.blue{background:#1e3a5f;color:#93c5fd}.tag.gold{background:#78350f;color:#fbbf24}.tag.purple{background:#3b0764;color:#c4b5fd}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.table-wrap table{font-size:11px;min-width:520px}th,td{padding:5px 6px}nav{padding:8px 10px;gap:4px}nav h1{font-size:14px;margin-right:6px}nav a{font-size:11px;padding:3px 6px}.hero h1{font-size:20px}}
+footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
+.formula{background:var(--s);border:1px dashed var(--a3);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;color:var(--a3);font-weight:600;text-align:center}
+</style>
+</head>
+<body>
+<nav>
+  <h1>📋 สรุปติวบุรินทร์</h1>
+  <a href="#authority">👑 อำนาจ</a>
+  <a href="#cs">7C/5P</a>
+  <a href="#rating">📊 Risk Rating</a>
+  <a href="#ratios">📈 อัตราส่วน</a>
+  <a href="#od">💰 OD</a>
+  <a href="#notice">📬 บอกกล่าว</a>
+  <a href="quiz-burin-quiz.html">📝 ทำข้อสอบ</a>
+  <a href="index.html">⬅ หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+<div class="hero">
+  <h1>📋 สรุปกรอบอำนาจอนุมัติสินเชื่อใหม่ ธ.ก.ส.</h1>
+  <p>ติวโดย นายบุรินทร์ พลเดน (ผจก.สูงรณภูมิ สนจ.ร้อยเอ็ด) · 25 มิ.ย. 2569</p>
+  <div>
+    <span class="badge gold">📌 ฉ.26/ฉ.31</span>
+    <span class="badge blue">7C's + 5P's</span>
+    <span class="badge green">LTV/ICR/DSCR</span>
+    <span class="badge red">OD 40%</span>
+  </div>
+</div>
+
+<!-- ============ 1. AUTHORITY TABLE ============ -->
+<section id="authority">
+<h2>👑 1. กรอบอำนาจอนุมัติสินเชื่อใหม่ (สหกรณ์ภาคเกษตร)</h2>
+
+<div class="c warn">
+  ⚠️ <strong>ข้อมูลจาก ฉ.26 (กู้เงินระยะยาว) + ฉ.31 (ข้อ 2(1)-(3) ทุนต่างๆ)</strong> · วงเงินระดับกลางรวม ≤ 700 ล้านบาท
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th rowspan="2">ข้อบังคับ</th>
+    <th rowspan="2">วัตถุประสงค์</th>
+    <th rowspan="2">ระดับต้น<br>(ผจก./ท้อง.)</th>
+    <th>ระดับกลาง</th>
+    <th rowspan="2">ระดับอำเภอ<br>(เขต)</th>
+    <th rowspan="2">อนุกลั่นกรอง</th>
+    <th rowspan="2">คณะกรรมการ</th>
+  </tr>
+  <tr><th>(กรอบอำนาจรวม)</th></tr>
+  <tr>
+    <td>26 31</td>
+    <td><strong>ฉ.31 ข้อ 2(1)</strong> ทุนให้สมาชิกกู้</td>
+    <td>ไม่เกิน 15 เท่าแห่งทุน<br>≤ 500</td>
+    <td rowspan="6" style="text-align:center;color:var(--a);font-weight:700">≤ 700</td>
+    <td>ไม่เกิน 15 เท่าแห่งทุน</td>
+    <td>ไม่เกิน 20 เท่าแห่งทุน</td>
+    <td>เกิน 20 เท่าแห่งทุน</td>
+  </tr>
+  <tr>
+    <td>26 31</td>
+    <td><strong>ฉ.31 ข้อ 2(2)</strong> ทุนจัดหา</td>
+    <td>ไม่เกิน 9 เท่าแห่งทุน<br>≤ 60</td>
+    <td>ไม่เกิน 9 เท่าแห่งทุน</td>
+    <td>ไม่เกิน 15 เท่าแห่งทุน</td>
+    <td>เกิน 15 เท่าแห่งทุน</td>
+  </tr>
+  <tr>
+    <td>—</td>
+    <td><strong>ฉ.31 ข้อ 2(3)</strong> ทุนขายผลผลิต</td>
+    <td>≤ 80</td>
+    <td>≤ 100</td>
+    <td>≤ 200</td>
+    <td>&gt; 200</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td><strong>ฉ.26</strong> กู้เงินระยะยาว</td>
+    <td>≤ 60</td>
+    <td>≤ 100</td>
+    <td>≤ 200</td>
+    <td>&gt; 200</td>
+  </tr>
+  <tr>
+    <td>56</td>
+    <td><strong>O/D</strong> (เบิกเงินเกินบัญชี)</td>
+    <td>≤ 60</td>
+    <td>≤ 100</td>
+    <td>≤ 200</td>
+    <td>&gt; 200</td>
+  </tr>
+  <tr>
+    <td>60</td>
+    <td><strong>การค้าส่งผ่านประเทศ</strong> (Export Trading)</td>
+    <td>—</td>
+    <td>≤ 100</td>
+    <td>≤ 200</td>
+    <td>&gt; 200</td>
+  </tr>
+</table>
+</div>
+
+<div class="mnemo">
+  🎯 <strong>จำง่าย:</strong> ระดับกลาง (กรอบรวม) = ≤ 700 ล้านบาท ทุกประเภท · เกิน 20 เท่าแห่งทุน = คณะกรรมการ
+</div>
+</section>
+
+<!-- ============ 2. 7Cs / 5Ps ============ -->
+<section id="cs">
+<h2>🧠 2. หลัก 7C's + 5P's (กรอบวิเคราะห์สินเชื่อ)</h2>
+
+<h3>📌 7C's (สหกรณ์รายใหญ่)</h3>
+<div class="grid2">
+  <div class="c info">
+    <strong>C1: Character</strong> — ความประพฤติ/ชื่อเสียง
+  </div>
+  <div class="c info">
+    <strong>C2: Capacity</strong> — ความสามารถชำระหนี้ (วิเคราะห์ Cash Flow)
+  </div>
+  <div class="c info">
+    <strong>C3: Capital</strong> — เงินทุน/โครงสร้างทางการเงิน (D/E Ratio)
+  </div>
+  <div class="c info">
+    <strong>C4: Collateral</strong> — หลักประกัน (LTV)
+  </div>
+  <div class="c info">
+    <strong>C5: Condition</strong> — สภาพเศรษฐกิจ/อุตสาหกรรม
+  </div>
+  <div class="c info">
+    <strong>C6: Capital Source</strong> — แหล่งเงินทุน
+  </div>
+  <div class="c ok">
+    <strong>🎯 C7: Control</strong> — <strong>ระบบการควบคุมภายใน</strong> + ความโปร่งใส + กลไกการตรวจสอบ (เช่น กรมตรวจบัญชีสหกรณ์) — <strong>หัวใจของลูกหนี้สหกรณ์</strong>
+  </div>
+</div>
+
+<h3>📌 5P's (วิเคราะห์ Payment - ความสามารถชำระหนี้)</h3>
+<div class="grid2">
+  <div class="c tip">
+    <strong>P1: People</strong> — ผู้กู้ (ประวัติ วินัยทางการเงิน)
+  </div>
+  <div class="c info">
+    <strong>P2: Purpose</strong> — วัตถุประสงค์เงินกู้
+  </div>
+  <div class="c ok">
+    <strong>🎯 P3: Payment (Primary Source)</strong> — <strong>กระแสเงินสดจากการดำเนินงานปกติ</strong> (Cash Flow from Core Business) เสมอ — ไม่ใช่จากยึดทรัพย์/ประกัน
+  </div>
+  <div class="c info">
+    <strong>P4: Protection</strong> — หลักประกัน/Secondary Source
+  </div>
+  <div class="c info">
+    <strong>P5: Perspective</strong> — มุมมองระยะยาว
+  </div>
+</div>
+
+<div class="c warn">
+  ⚠️ <strong>Payment (P3) ต้องมาจาก "กระแสเงินสดจากการดำเนินงานปกติ"</strong> เช่น รายได้จากการขายข้าวตามสัญญา Forward Contract — ไม่ใช่เงินจากการยึดทรัพย์/เคลมประกัน
+</div>
+</section>
+
+<!-- ============ 3. CREDIT RISK RATING ============ -->
+<section id="rating">
+<h2>📊 3. Credit Risk Rating — เกณฑ์คะแนนและอัตราดอกเบี้ย (ฉ.26)</h2>
+
+<h3>3.1 โครงสร้าง 3 หมวด รวม 100 คะแนน</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>หมวด 1: ความมั่นคง</strong> (Stability)
+  </div>
+  <div class="c ok">
+    <strong>หมวด 2: ความสามารถในการดำเนินธุรกิจสินเชื่อของสหกรณ์</strong> (Business Capability)
+  </div>
+  <div class="c ok">
+    <strong>หมวด 3: ประวัติการชำระหนี้</strong> (Repayment History)
+  </div>
+  <div class="c tip">
+    <strong>รวม:</strong> 100 คะแนน → ยิ่งสูงยิ่งดี
+  </div>
+</div>
+
+<h3>3.2 อัตราดอกเบี้ยตามระดับคะแนน (กรณีทั่วไป)</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>เกณฑ์คะแนน</th><th>ระดับ</th><th>อัตราดอกเบี้ย</th></tr>
+  <tr><td>ระดับ 7</td><td>≥ 60 คะแนน</td><td><span class="tag blue">MLR + 1.50</span></td></tr>
+  <tr><td>ระดับ 8 (≤ 57)</td><td>คะแนน &le; 57</td><td><span class="tag gold">MLR + 1.75</span></td></tr>
+  <tr><td>ระดับ 8 (≥ 53)</td><td>คะแนน ≥ 53</td><td><span class="tag gold">MLR + 1.75</span></td></tr>
+  <tr><td>ระดับ 9</td><td>&lt; 53</td><td><span class="tag red">MLR + 2.00</span></td></tr>
+  <tr><td>กรณี OD</td><td>เพิ่มชั้นความเสี่ยง</td><td>+ 0.25 ถึง + 3.00</td></tr>
+</table>
+</div>
+
+<div class="mnemo">🎯 <strong>กฎ Floor:</strong> ลูกค้าเดิมดำเนินงาน &lt; 2 ปีบัญชี → <strong>ต้องไม่ต่ำกว่าระดับ 7 (MLR+1.50)</strong> ถึงแม้คะแนนจะดีกว่า</div>
+
+<h3>3.3 ลักษณะการกำหนดดอกเบี้ย</h3>
+<div class="grid2">
+  <div class="c info">
+    <strong>กำหนดเป็นรายลูกค้า (Customer Based)</strong>
+    <ul style="margin-top:6px">
+      <li>MLR + ชั้นความเสี่ยง 0.25-2.00</li>
+      <li>กรณี OD + ชั้นความเสี่ยง 0.25-2.00</li>
+    </ul>
+  </div>
+  <div class="c warn">
+    <strong>ห้าม!</strong>
+    <ul style="margin-top:6px">
+      <li>❌ กำหนดเป็นรายสัญญา (รายเดียวกัน หลายสัญญา)</li>
+      <li>❌ OD ใช้ชั้นความเสี่ยง 0.25-3.00</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ============ 4. FINANCIAL RATIOS ============ -->
+<section id="ratios">
+<h2>📈 4. อัตราส่วนทางการเงิน 6 ตัว (ลูกค้ารายใหญ่)</h2>
+
+<div class="table-wrap">
+<table>
+  <tr><th>อัตราส่วน</th><th>สูตร</th><th>เกณฑ์</th></tr>
+  <tr>
+    <td><strong>1. LTV</strong></td>
+    <td>จำนวนหนี้เงินกู้ × 100 / มูลค่าหลักประกันจำนอง</td>
+    <td><span class="tag green">ค่าต่ำดี</span> — หลักประกันสูงคุ้มวงเงิน</td>
+  </tr>
+  <tr>
+    <td><strong>2. D/E Ratio</strong></td>
+    <td>หนี้สินรวม / ส่วนของเจ้าของ</td>
+    <td><span class="tag red">ค่าสูงไม่ดี</span> — กู้ยืมสูง vs ทุนตัวเอง</td>
+  </tr>
+  <tr>
+    <td><strong>3. Gross Profit Margin</strong></td>
+    <td>(ยอดขาย - ต้นทุนขาย) × 100 / ยอดขาย</td>
+    <td><span class="tag green">ค่าสูงดี</span></td>
+  </tr>
+  <tr>
+    <td><strong>4. ICR (Interest Coverage)</strong></td>
+    <td>EBITDA / ดอกเบี้ยจ่าย</td>
+    <td><span class="tag green">ค่าสูงดี</span></td>
+  </tr>
+  <tr>
+    <td><strong>5. DSCR (Debt Service Coverage)</strong></td>
+    <td>EBITDA / (ดอกเบี้ยจ่าย + ต้นเงินกู้ระยะยาวถึงกำหนดในปี)</td>
+    <td><span class="tag green">ค่าสูงดี</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="formula">EBITDA = กำไรดำเนินงาน + ค่าเสื่อมราคา + ค่าตัดจำหน่าย</div>
+
+<h3>📌 เกณฑ์การลงทุน (โครงการลงทุนระยะยาว)</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ตัววัด</th><th>เกณฑ์ตัดสิน</th></tr>
+  <tr><td><strong>6.1 NPV (มูลค่าปัจจุบันสุทธิ)</strong></td><td><span class="tag green">NPV ≥ 0</span> — ผลตอบแทนคุ้มค่าเสียโอกาส</td></tr>
+  <tr><td><strong>6.2 IRR (อัตราผลตอบแทน)</strong></td><td><span class="tag green">IRR &gt; อัตราดอกเบี้ยเงินกู้</span> — กิจการมีกำไรเหมาะสมลงทุน</td></tr>
+  <tr><td><strong>6.3 Pay Back period</strong></td><td>การชำระคืนต้นเงินกู้ <span class="tag gold">ไม่เกิน 1.5-2.0 เท่า</span> จากผลการคำนวณ</td></tr>
+  <tr><td><strong>6.4 B/C Ratio</strong></td><td><span class="tag green">ค่า &gt; 1</span> — ผลตอบแทน &gt; ค่าใช้จ่าย</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ============ 5. OD CALCULATION ============ -->
+<section id="od">
+<h2>💰 5. วงเงิน O/D (เบิกเงินเกินบัญชี) — สูตร 40%</h2>
+
+<div class="c info">
+  📌 ตามคู่มือ OD ข้อ 202.06 — <strong>ยกเว้นสหกรณ์และองค์กร</strong>
+</div>
+
+<h3>5.1 หลักการ</h3>
+<div class="formula">WCR = ลูกหนี้การค้า + สต็อกสินค้า/วัตถุดิบ − เจ้าหนี้การค้า</div>
+<div class="formula">วงเงิน OD = WCR ที่วิเคราะห์ได้ − วงเงิน W/C ที่มีกับ ธ.ก.ส. − วงเงิน W/C ที่มีกับสถาบันการเงินอื่น</div>
+<div class="formula">⚠️ ต้องไม่เกิน 40% ของ W/C need (ยกเว้นสหกรณ์/องค์กร)</div>
+
+<h3>5.2 ตัวอย่างการคำนวณ</h3>
+<div class="c ok">
+  <strong>โจทย์:</strong> W/C = 90 ล้าน (40% = 36 ล้าน)
+</div>
+<div class="table-wrap">
+<table>
+  <tr><th>รายการ</th><th>วงเงิน (ล้านบาท)</th></tr>
+  <tr><td>วงเงินกู้เครดิตเงินสด ธ.ก.ส.</td><td>10.00</td></tr>
+  <tr><td>วงเงินตั๋วสัญญาใช้เงิน (P/N)</td><td>15.00</td></tr>
+  <tr><td>วงเงิน O/D ธ.พาณิชย์</td><td>25.00</td></tr>
+  <tr><td>คำนวณ OD</td><td>90 − 10 − 15 − 25 = <strong>40 ล้าน</strong></td></tr>
+  <tr><td><span class="tag red">ถูกบังคับให้ ≤ 36 ล้าน</span> (หลัก 40%)</td><td>วงเงิน OD ที่ได้ = 36 ล้าน</td></tr>
+</table>
+</div>
+
+<h3>5.3 สูตร WCR แบบสัดส่วนเวลา (สหกรณ์ซื้อเงินสด ขายเชื่อ 180 วัน เก็บสต๊อค 90 วัน)</h3>
+<div class="formula">WCR = (ยอดขายเชื่อ × 180 / 360) + (ต้นทุน × 90 / 360) − 0</div>
+<div class="formula">WCR สูงสุด ≤ 40% ของ WCR need (ยกเว้นสหกรณ์)</div>
+</section>
+
+<!-- ============ 6. ตารางกำหนดชำระหนี้ ============ -->
+<section>
+<h2>📋 6. ตารางกำหนดชำระหนี้ประจำปี (สถาบันเกษตรกร)</h2>
+
+<div class="c info">
+  <strong>ระยะเวลา:</strong> ภายใน <strong>1 เดือน</strong>หลังสิ้นปีบัญชี หรือก่อนเบิกรับเงินกู้ครั้งแรกของปีบัญชีใหม่<br>
+  <strong>ผู้อนุมัติ:</strong> ผอจ. หรือ ผอ.สกน. (ส่วนกลาง) · ผจก.สาขา (ระดับสาขา)
+</div>
+</section>
+
+<!-- ============ 7. การเรียกคืนเงินกู้ ============ -->
+<section id="notice">
+<h2>📬 7. การเรียกคืนเงินกู้ + บอกกล่าวผู้ค้ำประกัน</h2>
+
+<h3>7.1 เรียกคืนเงินกู้ — ขั้นตอน WebCSR</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>ขั้นตอน</th><th>รายละเอียด</th></tr>
+  <tr><td>1. ส่งหนังสือเรียกคืน</td><td>ผจก.สาขา ส่งแจ้งสถาบันผู้กู้</td></tr>
+  <tr><td>2. ครบ 30 วัน</td><td>หัวหน้าหน่วยอำเภอ บันทึกเปลี่ยนสถานะใน WebCSR</td></tr>
+  <tr><td>3. พิมพ์รายงาน</td><td><strong>ZSCA 359A – Daily File Maintenance</strong></td></tr>
+  <tr><td>4. เสนอ ผบ.</td><td>ตรวจสอบความถูกต้อง</td></tr>
+</table>
+</div>
+
+<div class="c warn">
+  🚨 <strong>กรณีเร่งด่วน:</strong> สาขาเสนอรายงานเรียกคืนผ่าน <strong>ผอ.ฝสข.</strong> ได้ทันที โดยไม่ต้องรอสอบทานหนี้/ตรวจสอบทรัพย์สินเสร็จ — แต่ต้องชี้แจงเหตุผลความจำเป็น
+</div>
+
+<h3>7.2 บอกกล่าวผู้ค้ำประกัน (สัญญาต้นเงินระยะยาว ฉ.52)</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>กรณี</th><th>การบอกกล่าว</th></tr>
+  <tr>
+    <td><strong>กรณีที่ 1:</strong> สัญญาเงินกู้ทุนหมุนเวียนรายงวด + ผิดนัด + ไม่ได้รับผ่อนผัน</td>
+    <td>
+      • บอกกล่าวภายใน 60 วันนับจากผิดนัด (รอบแรก)<br>
+      • เมื่อครบตารางชำระ + ยังผิดนัด + ไม่ได้รับผ่อนผัน → บอกกล่าวอีกครั้งภายใน 60 วัน<br>
+      • <span class="tag green">ผ่อนผันแล้ว = ไม่ต้องบอกกล่าวในปีนั้น</span>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>กรณีที่ 2:</strong> สัญญาเงินกู้ลงทุนรายงวด + ผิดนัด</td>
+    <td>
+      • บอกกล่าวภายใน 60 วันนับจากผิดนัดในแต่ละงวด<br>
+      • งวดต่อไปผิดนัดอีก → บอกกล่าวภายใน 60 วันเช่นกัน<br>
+      • ทำซ้ำจนกว่าจะชำระเสร็จ
+    </td>
+  </tr>
+</table>
+</div>
+
+<h3>7.3 ปัจจัยที่ไม่พิจารณาดำเนินคดีล้มละลาย</h3>
+<div class="c tip">
+  ✅ <strong>พิจารณา:</strong> ทรัพย์สิน &lt; หนี้สิน · เป็นหนี้ ≥ 2 ล้าน · ธนาคารเป็นเจ้าหนี้รายเดียว<br>
+  ❌ <strong>ไม่พิจารณา:</strong> กรณีทุจริตที่เกิดจากคณะกรรมการ (ดำเนินคดีแพ่งแทน)
+</div>
+</section>
+
+<footer>
+🐶✨ สรุปโดย คาร่า — วันที่ 7 ก.ค.2569 · <a href="index.html" style="color:#f59e0b">⬅ กลับหน้าหลัก</a> · <a href="quiz-burin-quiz.html" style="color:#f59e0b">📝 ทำข้อสอบ 36 ข้อ</a><br>
+<span style="font-size:11px">📌 แหล่งอ้างอิง: ติวบุรินทร์ พลเดน (25 มิ.ย.2569) + ข้อบังคับ ฉ.26/ฉ.31 + คู่มือ OD 202.06 + คู่มือ สช.52</span>
+</footer>
+
+</div><!-- /ct -->
+</body>
+</html>
