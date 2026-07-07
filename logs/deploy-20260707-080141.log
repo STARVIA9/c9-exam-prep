@@ -1,0 +1,27 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;36m[check][0m checking index.html
+[1;32m  ✓[0m index.html: inline JS syntax OK (40 script blocks)
+[1;36m[check][0m checking quiz-500-ch1.html
+[1;32m  ✓[0m quiz-500-ch1.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch10.html
+[1;32m  ✓[0m quiz-500-ch10.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch2.html
+[1;32m  ✓[0m quiz-500-ch2.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch3.html
+[1;32m  ✓[0m quiz-500-ch3.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch4.html
+[1;32m  ✓[0m quiz-500-ch4.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch5.html
+[1;32m  ✓[0m quiz-500-ch5.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch6.html
+[1;32m  ✓[0m quiz-500-ch6.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch7.html
+[1;32m  ✓[0m quiz-500-ch7.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch8.html
+[1;32m  ✓[0m quiz-500-ch8.html: inline JS syntax OK (99 script blocks)
+[1;36m[check][0m checking quiz-500-ch9.html
+[1;32m  ✓[0m quiz-500-ch9.html: inline JS syntax OK (99 script blocks)
+
+[1;32m✅ pre-check OK[0m · 11 file(s) checked
+[1;32m  ✓[0m pre-check passed (11 file(s))
+[1;36m[deploy][0m step 2/5: commit local changes

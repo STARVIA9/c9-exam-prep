@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ 500 ข้อ — หัวข้อ 2: วิสัยทัศน์/พันธกิจ/ยุทธศาสตร์/นโยบาย (ข้อ 51-100) | Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f172a; --s:#1e293b; --s2:#334155;
+  --a:#f59e0b; --a2:#10b981; --a3:#3b82f6; --a4:#ef4444;
+  --t:#f1f5f9; --t2:#94a3b8; --b:#475569
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:16px;color:var(--a);margin-right:6px}
+nav a{color:var(--t2);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:6px;white-space:nowrap}
+nav a:hover{background:var(--s2);color:var(--a)}
+nav a.back{margin-left:auto;color:var(--a);font-weight:600}
+.ct{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+.hero{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid var(--a);border-radius:14px;padding:24px;text-align:center;margin-bottom:24px}
+.hero h1{color:var(--a);font-size:1.5rem;margin-bottom:6px}
+.hero p{color:var(--t2);font-size:0.9rem;margin-bottom:8px}
+.hero .badge-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.hero .badge{display:inline-block;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:600}
+.hero .bg{background:#78350f;color:#fbbf24}
+.hero .bb{background:#1e3a8a;color:#93c5fd}
+.hero .br{background:#064e3b;color:#6ee7b7}
+.hero .br2{background:#7f1d1d;color:#fca5a5}
+.sc{background:var(--s2);padding:14px 20px;border-radius:10px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:20px 0;position:sticky;top:54px;z-index:50;border:1px solid var(--a);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.sc-info{font-size:0.9rem;color:var(--t2)}
+.sc-info b{color:var(--a);font-size:1.1rem}
+.btn{display:inline-block;padding:8px 18px;background:var(--a);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.9rem;text-decoration:none}
+.btn:hover{background:#fbbf24}
+.btn.secondary{background:var(--s2);color:var(--t)}
+.btn.secondary:hover{background:var(--b);color:var(--a)}
+.q{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:18px;margin:14px 0;border-left:4px solid var(--s2)}
+.q.answered{border-left-color:var(--a)}
+.q label{display:flex;gap:10px;padding:10px 14px;margin:6px 0;background:var(--bg);border:1px solid var(--b);border-radius:8px;cursor:pointer;transition:all .2s;align-items:flex-start}
+.q label:hover:not(.disabled){background:var(--s2);border-color:var(--a3)}
+.q label.correct{background:rgba(20,83,45,.4);border-color:var(--a2);color:#d1fae5;font-weight:600}
+.q label.wrong{background:rgba(127,29,29,.4);border-color:var(--a4);color:#fca5a5;text-decoration:line-through}
+.q label.disabled{cursor:not-allowed;opacity:.85}
+.q label input[type=radio]{margin-top:4px;accent-color:var(--a);flex-shrink:0}
+.q label span{flex:1;line-height:1.6}
+.q b{color:var(--a);display:block;margin-bottom:8px}
+.q .qbtn{margin-top:10px}
+.q .rb{margin-top:12px;padding:12px 14px;border-radius:6px;display:none;font-size:0.92rem;line-height:1.7}
+.q .rb.show{display:block}
+.q .rb.ok{background:rgba(20,83,45,.4);color:#86efac;border-left:3px solid var(--a2)}
+.q .rb.no{background:rgba(127,29,29,.4);color:#fca5a5;border-left:3px solid var(--a4)}
+.q .rb b{color:inherit;display:inline;margin:0}
+.q .expl{margin-top:8px;padding:10px 12px;background:var(--bg);border-radius:4px;font-size:0.88rem;border-left:2px solid var(--b);margin-left:0}
+.summary{background:var(--s);border:2px solid var(--a);border-radius:12px;padding:24px;margin:24px 0;text-align:center;display:none}
+.summary.show{display:block}
+.summary h2{color:var(--a);font-size:1.4rem;margin-bottom:8px}
+.summary .big-score{font-size:3rem;font-weight:700;color:var(--a);margin:16px 0}
+.summary .pct{font-size:1.2rem;color:var(--a2);margin-bottom:16px}
+.summary .msg{color:var(--t2);font-size:.95rem;margin:8px 0}
+footer{text-align:center;padding:30px 16px;color:var(--t2);font-size:.8rem;border-top:1px solid var(--b);margin-top:40px}
+footer a{color:var(--a);text-decoration:none}
+@media(max-width:640px){
+  nav h1{font-size:14px}
+  nav a{font-size:11px;padding:3px 6px}
+  .hero h1{font-size:1.2rem}
+  .q{padding:14px 12px}
+  .q label{padding:8px 10px;font-size:.88rem}
+  .sc{flex-direction:column;align-items:stretch;text-align:center}
+}
+</style>
+  <script>
+/* Inline auth guard */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+<nav>
+  <h1>📝 แบบทดสอบ 500 ข้อ</h1>
+  <a href="#sec1">⬇ เริ่มทำ</a>
+  <a href="#footer">จบ</a>
+  <a href="index.html" class="back">🏠 หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+
+  <div class="hero" id="sec1">
+    <h1>📋 หัวข้อที่ 2: วิสัยทัศน์ พันธกิจ ยุทธศาสตร์ นโยบาย และทิศทางการดำเนินงานของธนาคาร</h1>
+    <p>แบบฝึกหัดความรู้เนื้อหากลาง ธ.ก.ส. สำหรับเตรียมสอบเลื่อนระดับภายใน</p>
+    <p><strong>ข้อ 51-100</strong> จากชุด 500 ข้อ · จัดทำโดย นายเสธวิทย์ รุ้งแก้ว ผู้จัดการศูนย์ธุรกิจ ธญ.</p>
+    <div class="badge-row">
+      <span class="badge bg">📊 50 ข้อ</span>
+      <span class="badge bb">📝 4 ตัวเลือก</span>
+      <span class="badge br">✅ เฉลยละเอียด</span>
+      <span class="badge br2">⏱ ไม่จำกัดเวลา</span>
+    </div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-info">คะแนน: <b id="sc">0</b> / 50 · ตอบแล้ว: <span id="ans">0</span>/50</div>
+    <div>
+      <button class="btn" onclick="showAll()">✅ เฉลยทั้งหมด</button>
+      <button class="btn secondary" onclick="reset()">🔄 เริ่มใหม่</button>
+    </div>
+  </div>
+
+  <div class="summary" id="summary">
+    <h2>🎉 ทำเสร็จเรียบร้อย!</h2>
+    <p class="msg">คุณตอบถูก</p>
+    <div class="big-score"><span id="finalScore">0</span> / 50</div>
+    <p class="pct"><span id="finalPct">0%</span></p>
+    <p class="msg" id="finalMsg"></p>
+    <div style="margin-top:14px">
+      <button class="btn" onclick="reset()">🔄 ทำใหม่</button>
+      <a href="index.html" class="btn secondary" style="text-decoration:none;display:inline-block">🏠 กลับหน้าหลัก</a>
+    </div>
+  </div>
+
+  <div id="quiz"></div>
+
+  <footer id="footer">
+    <p>📚 <b>แบบฝึกหัดความรู้เนื้อหากลาง ธ.ก.ส.</b> · หัวข้อ 2 (ข้อ 51-100) · นายเสธวิทย์ รุ้งแก้ว ผู้จัดการศูนย์ธุรกิจ ธญ.</p>
+    <p style="margin-top:8px">⚠️ แบบฝึกหัดนี้ใช้เพื่อการเรียนรู้และทบทวนเท่านั้น ไม่ใช่ข้อสอบจริงของหน่วยงาน</p>
+    <p style="margin-top:8px"><a href="index.html">🏠 กลับหน้าหลัก Genius 9</a></p>
+  </footer>
+
+</div>
+
+<script src="quiz-500-ch2-data.js"></script>
+<script>
+// ข้อมูลจาก /home/kara/exam-center-genius9/quiz-500-ch2-data.js
+// Q1 = [{q, c:[4], a:"A"-"D", e:"..."}, ...]
+const Q = Q2.map(d => ({
+  q: d.q,
+  c: d.c,
+  aIdx: d.a.charCodeAt(0) - 65,  // แปลง "A"-"D" เป็น 0-3
+  e: d.e
+}));
+
+const quizEl = document.getElementById('quiz');
+const scEl = document.getElementById('sc');
+const ansEl = document.getElementById('ans');
+const summaryEl = document.getElementById('summary');
+const finalScoreEl = document.getElementById('finalScore');
+const finalPctEl = document.getElementById('finalPct');
+const finalMsgEl = document.getElementById('finalMsg');
+const S = {};
+
+Q.forEach((d, i) => {
+  const num = i + 1;
+  const div = document.createElement('div');
+  div.className = 'q';
+  div.id = 'q' + num;
+  let html = '<b>ข้อ ' + num + '. ' + d.q + '</b>';
+  d.c.forEach((opt, j) => {
+    html += '<label id="q' + num + '_o' + j + '"><input type="radio" name="q' + num + '" value="' + j + '"><span>' + String.fromCharCode(65 + j) + '. ' + opt + '</span></label>';
+  });
+  html += '<div class="qbtn"><button class="btn" onclick="ck(' + num + ')">✅ ตรวจคำตอบ</button></div>';
+  html += '<div class="rb" id="r' + num + '"></div>';
+  div.innerHTML = html;
+  quizEl.appendChild(div);
+});
+
+function ck(num) {
+  const d = Q[num - 1];
+  const sel = document.querySelector('input[name="q' + num + '"]:checked');
+  if (!sel) { alert('กรุณาเลือกคำตอบก่อนนะคะ'); return; }
+  if (S[num]) return; // already answered
+  const chosen = parseInt(sel.value);
+  S[num] = chosen;
+  document.querySelectorAll('#q' + num + ' label').forEach((l, j) => {
+    l.classList.add('disabled');
+    const inp = l.querySelector('input');
+    if (inp) inp.disabled = true;
+    if (j === d.aIdx) l.classList.add('correct');
+    if (j === chosen && chosen !== d.aIdx) l.classList.add('wrong');
+  });
+  const rb = document.getElementById('r' + num);
+  rb.classList.add('show');
+  if (chosen === d.aIdx) {
+    rb.classList.add('ok');
+    rb.innerHTML = '✅ <b>ถูกต้อง!</b><div class="expl">' + d.e + '</div>';
+  } else {
+    rb.classList.add('no');
+    rb.innerHTML = '❌ <b>ผิด</b> · คำตอบที่ถูกคือข้อ ' + String.fromCharCode(65 + d.aIdx) + '<div class="expl">' + d.e + '</div>';
+  }
+  let correct = 0;
+  for (const k in S) if (S[k] === Q[k - 1].aIdx) correct++;
+  scEl.textContent = correct;
+  ansEl.textContent = Object.keys(S).length;
+  document.getElementById('q' + num).classList.add('answered');
+
+  // Check if all answered
+  if (Object.keys(S).length === Q.length) {
+    const pct = Math.round(correct / Q.length * 100);
+    finalScoreEl.textContent = correct;
+    finalPctEl.textContent = pct + '%';
+    if (pct >= 80) finalMsgEl.innerHTML = '🏆 <b style="color:var(--a2)">ดีมาก!</b> พร้อมลุยข้อสอบจริงได้เลย';
+    else if (pct >= 60) finalMsgEl.innerHTML = '👍 <b style="color:var(--a)">พอใช้ได้</b> ควรทบทวนหัวข้อที่ตอบผิดอีกครั้ง';
+    else finalMsgEl.innerHTML = '📖 <b style="color:var(--a4)">ควรทบทวนเพิ่มเติม</b> ลองอ่านเนื้อหาแล้วทำใหม่นะคะ';
+    summaryEl.classList.add('show');
+    setTimeout(() => summaryEl.scrollIntoView({ behavior: 'smooth' }), 200);
+  }
+}
+
+function showAll() {
+  if (!confirm('เปิดเฉลยทั้งหมด 50 ข้อเลยใช่ไหมคะ?')) return;
+  Q.forEach((d, i) => {
+    if (S[i + 1]) return;
+    const radio = document.querySelector('#q' + (i + 1) + ' input[value="' + d.aIdx + '"]');
+    if (radio) radio.checked = true;
+    ck(i + 1);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function reset() {
+  if (!confirm('เริ่มทำข้อสอบใหม่ทั้งหมดใช่ไหมคะ?')) return;
+  location.reload();
+}
+</script>
+  <script src="auth.js" defer></script>
+</body>
+</html>
