@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚙️ 11 ขั้นตอนจัดซื้อจัดจ้าง — สรุปสอบ Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--a5:#8b5cf6;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+nav h1{font-size:15px;color:var(--a);margin-right:10px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:12px;padding:3px 8px;border-radius:5px;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:960px;margin:0 auto;padding:24px 16px 80px}
+.hero{text-align:center;padding:20px 16px 24px;border-bottom:2px solid var(--b);margin-bottom:28px}
+.hero h1{font-size:24px;color:var(--a);margin-bottom:6px}
+.hero p{color:var(--t2);font-size:14px}
+.badge{display:inline-block;margin:3px;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24}.badge.red{background:#7f1d1d;color:#fca5a5}.badge.blue{background:#1e3a5f;color:#60a5fa}.badge.green{background:#064e3b;color:#34d399}.badge.purple{background:#3b0764;color:#c4b5fd}
+section{margin-bottom:28px}
+h2{font-size:20px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:14px;margin-top:8px}
+h3{font-size:16px;color:var(--a2);margin:12px 0 8px}
+h4{font-size:14px;color:var(--a3);margin:10px 0 6px;font-weight:600}
+p{margin:6px 0;font-size:14px}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:14px;line-height:1.7}
+.c.info{border-left:4px solid var(--a3)}.c.warn{border-left:4px solid var(--a4)}.c.tip{border-left:4px solid var(--a)}.c.ok{border-left:4px solid var(--a2)}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+th{background:var(--s2);color:var(--a);padding:8px;text-align:left;font-weight:600}
+td{padding:6px 8px;border-bottom:1px solid var(--b);vertical-align:top}
+tr:hover td{background:var(--s2)}
+ul,ol{padding-left:20px;margin:4px 0}li{margin-bottom:4px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mnemo{background:rgba(245,158,11,.08);border:1px dashed var(--a);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;color:var(--a);font-weight:500;text-align:center}
+.scenario{background:rgba(59,130,246,.08);border:1px dashed var(--a3);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0;border-radius:6px;border:1px solid var(--b)}
+.table-wrap table{min-width:520px;margin:0}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px}
+.tag.red{background:#7f1d1d;color:#fca5a5}.tag.green{background:#064e3b;color:#34d399}.tag.blue{background:#1e3a5f;color:#93c5fd}.tag.gold{background:#78350f;color:#fbbf24}.tag.purple{background:#3b0764;color:#c4b5fd}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.table-wrap table{font-size:12px;min-width:480px}th,td{padding:5px 6px}nav{padding:8px 10px;gap:4px}nav h1{font-size:14px;margin-right:6px}nav a{font-size:11px;padding:3px 6px}.hero h1{font-size:20px}}
+/* Flow steps */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin:14px 0}
+.step{background:var(--s);border:2px solid var(--b);border-radius:8px;padding:10px;text-align:center;font-size:13px;color:var(--t);transition:all .2s}
+.step:hover{border-color:var(--a2);transform:translateY(-2px)}
+.step .n{display:inline-block;background:var(--a);color:var(--bg);width:24px;height:24px;border-radius:50%;font-weight:700;font-size:14px;line-height:24px;margin-bottom:6px}
+.step .l{font-weight:600;color:var(--a3)}
+footer{text-align:center;padding:20px;color:var(--t2);font-size:12px;border-top:1px solid var(--b);margin-top:28px}
+</style>
+</head>
+<body>
+<nav>
+  <h1>⚙️ 11 ขั้นตอนจัดซื้อจัดจ้าง</h1>
+  <a href="#process">📋 11 ขั้นตอน</a>
+  <a href="#plantype">📝 แผนประจำปี</a>
+  <a href="#tor">📄 TOR</a>
+  <a href="#price">💰 ราคากลาง</a>
+  <a href="#category">🏢 ประเภทงาน</a>
+  <a href="#report">📝 รายงานขอจ้าง</a>
+  <a href="#methods">⚡ วิธีจ้าง</a>
+  <a href="#deadline">⏰ 30 วัน</a>
+  <a href="#registration">📋 ทะเบียน</a>
+  <a href="construction-authority.html">👑 อำนาจ</a>
+  <a href="construction-quiz.html">📝 Quiz</a>
+  <a href="index.html">⬅ หน้าหลัก</a>
+</nav>
+
+<div class="ct">
+<div class="hero">
+  <h1>⚙️ 11 ขั้นตอนการจัดซื้อจัดจ้าง</h1>
+  <p>TOR → ราคากลาง → รายงาน → อนุมัติ → สั่งจ้าง → บริหารสัญญา → ตรวจรับ</p>
+  <div>
+    <span class="badge gold">📌 กฎกระทรวง</span>
+    <span class="badge blue">ระเบียบ ฉ.85</span>
+    <span class="badge green">11 ขั้นตอน</span>
+  </div>
+</div>
+
+<!-- ============ 1. 11 STEPS ============ -->
+<section id="process">
+<h2>📋 1. หลักการ 11 ขั้นตอนจัดซื้อจัดจ้าง</h2>
+
+<div class="mnemo">
+  🎯 <strong>จำง่าย:</strong> แผน→TOR→ราคา→รายงาน→กรรมการ→จัดซื้อ→อนุมัติ→ประกาศ→สัญญา→บริหาร→ส่งมอบ
+</div>
+
+<div class="flow">
+  <div class="step"><span class="n">1</span><div class="l">แผนจัดซื้อจัดจ้างประจำปี</div></div>
+  <div class="step"><span class="n">2</span><div class="l">จัดทำขอบเขตของงาน (TOR)</div></div>
+  <div class="step"><span class="n">3</span><div class="l">จัดทำราคากลาง</div></div>
+  <div class="step"><span class="n">4</span><div class="l">ขอความเห็นชอบรายงานขอซื้อขอจ้าง</div></div>
+  <div class="step"><span class="n">5</span><div class="l">แต่งตั้งคณะกรรมการ</div></div>
+  <div class="step"><span class="n">6</span><div class="l">ดำเนินการจัดซื้อจัดจ้าง</div></div>
+  <div class="step"><span class="n">7</span><div class="l">ขออนุมัติสั่งซื้อสั่งจ้าง (รายงานผล)</div></div>
+  <div class="step"><span class="n">8</span><div class="l">ประกาศผู้ชนะ / สนองรับราคา</div></div>
+  <div class="step"><span class="n">8.5</span><div class="l">อก. จัดทำ BOQ</div></div>
+  <div class="step"><span class="n">9</span><div class="l">ลงนามสัญญา</div></div>
+  <div class="step"><span class="n">10</span><div class="l">บริหารสัญญา</div></div>
+  <div class="step"><span class="n">11</span><div class="l">ส่งมอบ ตรวจรับ จ่ายเงิน</div></div>
+</div>
+
+<div class="c info">
+  ℹ️ <strong>หมายเหตุ:</strong> ขั้นตอนที่ 8.5 (อก. จัดทำ BOQ) ตามหนังสือ ที่ กศ (กวจ) 0405.3/ว 651 ลว. 26 กันยายน 2568 — สอดแทรกก่อนลงนามสัญญา
+</div>
+</section>
+
+<!-- ============ 2. PLAN ============ -->
+<section id="plantype">
+<h2>📝 2. แผนจัดซื้อจัดจ้างประจำปี</h2>
+<div class="c info">
+  📌 ตามหนังสือ ที่ จพ/ว 1074 ลงวันที่ 16 เมษายน 2569
+</div>
+
+<h3>📊 ข้อมูลสำคัญ</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>ปีบัญชี 2569</strong>
+    <ul style="margin-top:6px">
+      <li>มีแผนจัดซื้อจัดจ้าง <strong>680 โครงการ</strong></li>
+      <li>ต้องจัดทำรายงานขอซื้อขอจ้างเสนอขอความเห็นชอบ</li>
+      <li>ภายใน <strong>ไตรมาส 3/2569</strong> หรือก่อนการใช้พัสดุ 1 ไตรมาส</li>
+    </ul>
+  </div>
+  <div class="c tip">
+    <strong>การบันทึกข้อมูล</strong>
+    <ul style="margin-top:6px">
+      <li>บันทึกสถานะผ่าน <strong>Link</strong></li>
+      <li>ภายใน<strong>วันที่ 15 ของทุกเดือน</strong></li>
+      <li>บันทึก TOR, ราคากลาง, รายงานขอซื้อขอจ้าง, วิธีจัดซื้อจัดจ้าง</li>
+    </ul>
+  </div>
+</div>
+
+<h3>💡 เกณฑ์เงินงบประมาณ</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>วงเงิน</th><th>ข้อกำหนด</th></tr>
+  <tr><td>ไม่เกิน <strong>500,000 บาท</strong></td><td><span class="tag green">ไม่ต้องจัดทำแผนจัดซื้อจัดจ้าง</span></td></tr>
+  <tr><td>เกิน <strong>500,000 บาท</strong></td><td><span class="tag gold">ต้องจัดทำแผน + ระบุว่า "มีแผนการจัดซื้อจัดจ้าง ประจำปีบัญชี 2569"</span></td></tr>
+</table>
+</div>
+
+<div class="c info">
+  ℹ️ <strong>การกำกับติดตาม:</strong> ตรวจสอบแผนของส่วนงานผ่าน <strong>Dashboard</strong> บนเว็บ จพ. (เมนู จัดซื้อจัดจ้าง → แผนจัดซื้อจัดจ้างประจำปี)
+</div>
+</section>
+
+<!-- ============ 3. TOR ============ -->
+<section id="tor">
+<h2>📄 3. การจัดทำขอบเขตของงาน (TOR)</h2>
+<div class="c info">
+  📌 ตามหนังสือ ที่ สจพ/ว 4189 ลงวันที่ 3 พฤษภาคม 2566
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>ประเภทงาน</th><th>ผู้รับผิดชอบ</th><th>สิ่งที่ต้องจัดทำ</th></tr>
+  <tr>
+    <td><span class="tag blue">งานซ่อมแซม</span></td>
+    <td><strong>ส่วนงานเจ้าของเรื่อง</strong></td>
+    <td>จัดทำ TOR ตามรูปแบบ + ส่วนรายละเอียดที่จะซ่อมแซม (ประสาน อก.)</td>
+  </tr>
+  <tr>
+    <td><span class="tag gold">งานก่อสร้าง ปรับปรุง</span></td>
+    <td><strong>อก. (ฝ่ายก่อสร้างและออกแบบ)</strong></td>
+    <td>จัดทำแบบแปลน + BOQ + กำหนดราคางาน → ส่งให้ส่วนงาน</td>
+  </tr>
+</table>
+</div>
+
+<div class="mnemo">
+  🎯 <strong>จำง่าย:</strong> <strong>ซ่อมแซม</strong> = ส่วนงานทำ TOR เอง · <strong>ก่อสร้าง/ปรับปรุง</strong> = อก. ทำแบบแปลน+BOQ
+</div>
+</section>
+
+<!-- ============ 4. PRICE ============ -->
+<section id="price">
+<h2>💰 4. การจัดทำราคากลาง</h2>
+
+<h3>4.1 แหล่งที่มาของราคากลาง (พ.ร.บ. vs กฎเกณฑ์)</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>แหล่งที่มา</th><th>พ.ร.บ. (6 ข้อ)</th><th>กฎเกณฑ์ฯ (4 ข้อ)</th></tr>
+  <tr><td>1. คำนวณตามหลักเกณฑ์คณะกรรมการราคากลาง</td><td>✅</td><td>✅</td></tr>
+  <tr><td>2. ฐานข้อมูลราคาอ้างอิงกรมบัญชีกลาง</td><td>✅</td><td>—</td></tr>
+  <tr><td>3. ราคามาตรฐานสำนักงบประมาณ/หน่วยงานกลาง</td><td>✅</td><td>—</td></tr>
+  <tr><td>4. สืบราคาจากท้องตลาด</td><td>✅</td><td>✅</td></tr>
+  <tr><td>5. ราคาที่เคยซื้อ/จ้างครั้งหลังสุด (ไม่เกิน 2 ปีงบประมาณ)</td><td>✅</td><td>✅</td></tr>
+  <tr><td>6. ราคาอื่นใดตามแนวปฏิบัติ<strong>ของหน่วยงานนั้นๆ</strong></td><td>✅</td><td>—</td></tr>
+  <tr><td>6'. ราคาอื่นใดตามแนวปฏิบัติ<strong>ของกรมบัญชีกลาง</strong></td><td>—</td><td>✅</td></tr>
+</table>
+</div>
+
+<h3>4.2 หลักการเลือกใช้ราคา</h3>
+<div class="grid2">
+  <div class="c ok">
+    ✅ <strong>ถ้ามีราคาตาม (1)</strong> → ใช้ (1) ก่อน
+  </div>
+  <div class="c info">
+    ✅ <strong>ถ้าไม่มี (1)</strong> → ใช้ (2) (3) (4) ตามลำดับ
+  </div>
+</div>
+
+<div class="c warn">
+  🚨 <strong>ข้อยกเว้น: การจัดซื้อจัดจ้างที่เกี่ยวกับการพาณิชย์โดยตรง</strong><br>
+  วงเงิน<strong>ไม่เกิน 500,000 บาท</strong> → <strong>ไม่ต้องจัดทำราคากลาง</strong> + ไม่ต้องประกาศ
+</div>
+
+<h3>4.3 การประกาศราคากลาง</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>วงเงิน</th><th>การดำเนินการ</th></tr>
+  <tr><td>ทุกวงเงิน</td><td><span class="tag green">ต้องจัดทำราคากลาง</span></td></tr>
+  <tr><td>ไม่เกิน 5 ล้านบาท</td><td><span class="tag gold">ไม่ต้องประกาศราคากลาง</span> (เว็บกรมบัญชีกลาง + เว็บธนาคาร)</td></tr>
+  <tr><td>เกิน 5 ล้านบาท</td><td><span class="tag red">ต้องประกาศราคากลาง</span> ทั้งเว็บกรมบัญชีกลาง + เว็บธนาคาร + เปิดเผยแพร่ที่ส่วนงาน</td></tr>
+</table>
+</div>
+
+<h3>4.4 เอกสารกำกับราคากลาง</h3>
+<div class="c info">
+  📌 <strong>คณะกรรมการกำหนดราคากลาง (ข้อ 17)</strong> ต้องจัดทำ:
+</div>
+<div class="grid2">
+  <div class="c ok">
+    <strong>กรณีตั้งคณะกรรมการ</strong>
+    <ul>
+      <li>(1) คำสั่งแต่งตั้งคณะกรรมการ</li>
+      <li>(2) รายงานการประชุม</li>
+      <li>(3) รายงานผลการกำหนดราคากลาง</li>
+      <li>(4) ตารางแสดงงบประมาณที่ได้รับจัดสรรและราคากลาง (แบบ บก.01)</li>
+      <li>(5) ราคากลางงานก่อสร้าง/ปรับปรุง (BOQ) ตามแบบ ปร.4 ปร.5 ปร.6</li>
+    </ul>
+  </div>
+  <div class="c info">
+    <strong>กรณีมอบหมายพนักงานคนใดคนหนึ่ง</strong>
+    <ul>
+      <li>(1) หลักฐานการมอบหมายเป็นลายลักษณ์อักษร</li>
+      <li>(2) รายงานผลการกำหนดราคากลาง</li>
+      <li>(3) ตารางแสดงงบประมาณที่ได้รับจัดสรรและราคากลาง (แบบ บก.01)</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ============ 5. CATEGORY ============ -->
+<section id="category">
+<h2>🏢 5. ลักษณะงานก่อสร้าง vs ซ่อมแซม</h2>
+
+<div class="c info">
+  📌 ตามหนังสือ ที่ กค (กวจ) 0405.2/ว 259 ลว. 4 มิถุนายน 2561 — เกณฑ์ตัดสินว่างานเข้าข่ายต้องมีผู้ควบคุมงานหรือไม่
+</div>
+
+<h3>📊 เกณฑ์ 3 ข้อ</h3>
+<div class="grid2">
+  <div class="c warn">
+    <strong>(1) มีผลกระทบต่อโครงสร้างหลัก</strong>
+  </div>
+  <div class="c warn">
+    <strong>(2) มีผลกระทบต่อความปลอดภัย</strong>
+  </div>
+  <div class="c warn">
+    <strong>(3) จำเป็นต้องมีผู้ควบคุมงานตลอดระยะเวลาดำเนินการ</strong>
+  </div>
+  <div class="c info" style="grid-column:span 3">
+    <strong>ถ้าเข้าเงื่อนไข ≥ 1 ข้อ</strong> → งาน<strong>ก่อสร้าง ปรับปรุง</strong> (ต้องมีผู้ควบคุมงาน/ที่ปรึกษา) · <strong>สำนักงานใหญ่</strong>ดำเนินการ<br>
+    <strong>ถ้าไม่เข้าเงื่อนไขใดเลย</strong> → งาน<strong>ซ่อมแซม</strong> · <strong>ภูมิภาค</strong>ดำเนินการ
+  </div>
+</div>
+
+<h3>🏢 การแบ่งกลุ่มงาน (พ.ร.บ. vs กฎเกณฑ์)</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>พ.ร.บ.</th><th>กฎเกณฑ์ฯ</th></tr>
+  <tr>
+    <td>
+      • อาคารบ้านพักพนักงาน / ที่พักพนักงาน<br>
+      • อาคารสำนักงาน ฝสข/สนจ. <strong>อยู่นอกรั้วสาขา</strong>
+    </td>
+    <td>
+      • อาคารสำนักงานสาขา <strong>ทุกรูปแบบอาคาร</strong><br>
+      • อาคารสำนักงาน ฝสข/สนจ. <strong>อยู่ในรั้วสาขา</strong>
+    </td>
+  </tr>
+</table>
+</div>
+
+<h3>📋 ภารกิจงาน: ใครรับผิดชอบ</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>สำนักงานใหญ่ (รับผิดชอบ)</strong>
+    <ul>
+      <li>งานก่อสร้างอาคารสำนักงาน</li>
+      <li>งานปรับปรุงอาคารสำนักงานทั้งระบบ (Renovate)</li>
+      <li>งานจ้างออกแบบ</li>
+    </ul>
+  </div>
+  <div class="c info">
+    <strong>ภูมิภาค (รับผิดชอบ)</strong>
+    <ul>
+      <li>งานปรับปรุงอาคารสำนักงาน</li>
+      <li>งานซ่อมแซมอาคารสำนักงาน</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ============ 6. REPORT ============ -->
+<section id="report">
+<h2>📝 6. สาระสำคัญของรายงานขอจ้าง (9 ข้อ)</h2>
+
+<div class="table-wrap">
+<table>
+  <tr><th>ข้อ</th><th>หัวข้อ</th><th>รายละเอียด</th></tr>
+  <tr>
+    <td>1</td><td>เหตุผลและความจำเป็น</td>
+    <td>
+      <strong>ปรับปรุง</strong>: ใช้เป็นที่ทำการ บริการลูกค้า ภาพลักษณ์ที่ดี<br>
+      <strong>ซ่อมแซม</strong>: มีความชำรุด สภาพทรุดโทรม แก้ปัญหา
+    </td>
+  </tr>
+  <tr>
+    <td>2</td><td>แบบรูปรายการ / ขอบเขตของงาน</td>
+    <td>
+      <strong>ปรับปรุง</strong>: แบบรูปรายการ (แบบแปลน)<br>
+      <strong>ซ่อมแซม</strong>: ขอบเขตของงาน (TOR) ตามรูปแบบที่กำหนด
+    </td>
+  </tr>
+  <tr>
+    <td>3</td><td>ราคากลาง</td>
+    <td>
+      <strong>ปรับปรุง</strong>: ใช้แบบ บก.01 (คำนวณตามหลักเกณฑ์ คกร.ราคากลาง)<br>
+      <strong>ซ่อมแซม</strong>: ใช้แบบ บก.06 (สืบราคาท้องตลาด)
+    </td>
+  </tr>
+  <tr>
+    <td>4</td><td>วงเงินที่จะจ้าง</td>
+    <td>วงเงินงบประมาณ ศูนย์ต้นทุน ประจำปีบัญชี</td>
+  </tr>
+  <tr>
+    <td>5</td><td>กำหนดเวลาที่งานแล้วเสร็จ</td>
+    <td>ระยะเวลาดำเนินการ (วัน) + งวดงาน</td>
+  </tr>
+  <tr>
+    <td>6</td><td>วิธีการจ้าง</td>
+    <td>ระบุวิธี + เงื่อนไข + เหตุผลประกอบ (เช่น ภายในวงเงินที่กำหนด จำเป็นเร่งด่วน)</td>
+  </tr>
+  <tr>
+    <td>7</td><td>หลักเกณฑ์การพิจารณาคัดเลือกข้อเสนอ</td>
+    <td>
+      เกณฑ์ราคา<br>
+      <span style="color:var(--a4)"><strong>🚨 งานปรับปรุงอาคาร > 500,000 บาท → ต้องเป็นผู้รับจ้างที่ขึ้นทะเบียนไว้ (ระเบียบ จ.24)</strong></span>
+    </td>
+  </tr>
+  <tr>
+    <td>8</td><td>แผนการจัดซื้อจัดจ้างประจำปี</td>
+    <td>
+      ≤ 500,000 → ไม่ต้องทำแผน<br>
+      > 500,000 → ระบุว่า "มีแผนการจัดซื้อจัดจ้าง ประจำปีบัญชี 2569"
+    </td>
+  </tr>
+  <tr>
+    <td>9</td><td>การแต่งตั้งคณะกรรมการ (ถ้ามี)</td>
+    <td>เสนอร่างคำสั่งแต่งตั้งไปพร้อมกับรายงานขอจ้าง (เห็นชอบคราวเดียว)</td>
+  </tr>
+</table>
+</div>
+</section>
+
+<!-- ============ 7. METHODS ============ -->
+<section id="methods">
+<h2>⚡ 7. วิธีการจ้าง (พ.ร.บ. vs กฎเกณฑ์)</h2>
+
+<div class="c info">
+  📌 พ.ร.บ. ใช้ชื่อ "วิธี A / B / C" · กฎเกณฑ์ฯ ใช้ชื่อ "วิธี X / Y / Z" — มีความหมาย<strong>คู่กัน</strong>
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>พ.ร.บ.</th><th>กฎเกณฑ์ฯ</th><th>ความหมาย</th></tr>
+  <tr>
+    <td><span class="tag blue">วิธีประกวดราคาอิเล็กทรอนิกส์ (e-Bidding)</span></td>
+    <td><span class="tag gold">วิธีประกวดราคา</span></td>
+    <td>เปิดโอกาสให้ผู้ประกอบการทั่วไปแข่งขันราคา</td>
+  </tr>
+  <tr>
+    <td><span class="tag blue">วิธีคัดเลือก</span></td>
+    <td><span class="tag gold">วิธีเปรียบเทียบ</span></td>
+    <td>เปรียบเทียบราคาจากผู้ประกอบการที่เข้าเกณฑ์</td>
+  </tr>
+  <tr>
+    <td><span class="tag blue">วิธีเฉพาะเจาะจง</span></td>
+    <td><span class="tag gold">วิธีพิเศษ</span></td>
+    <td>กรณีพิเศษที่กำหนดเงื่อนไขเฉพาะ</td>
+  </tr>
+</table>
+</div>
+
+<div class="c warn">
+  🚨 <strong>วิธีพิเศษ (ตามกฎเกณฑ์ฯ)</strong> = กรณีจำเป็นเร่งด่วนที่ไม่อาจใช้วิธีประกวดราคาหรือเปรียบเทียบได้
+</div>
+</section>
+
+<!-- ============ 8. 30-DAY DEADLINE ============ -->
+<section id="deadline">
+<h2>⏰ 8. เมื่อผู้มีอำนาจเห็นชอบรายงานขอจ้างแล้ว</h2>
+
+<div class="big-quote" style="background:var(--s);border:2px solid var(--a);color:var(--a);font-size:20px">
+  ⏰ ต้องดำเนินการประกาศ/เชิญชวน <strong>ภายใน 30 วัน</strong><br>
+  <span style="font-size:14px">นับถัดจากวันที่ผู้มีอำนาจเห็นชอบรายงานขอจ้างพร้อมราคากลาง</span>
+</div>
+
+<h3>📋 วิธีการแยกตามวิธีจ้าง</h3>
+<div class="grid2">
+  <div class="c ok">
+    <strong>วิธีจ้างที่มีประกาศ</strong> (เช่น e-Bidding)
+    <ul style="margin-top:6px">
+      <li>→ ต้องดำเนิน<strong>ประกาศประกวดราคา</strong></li>
+    </ul>
+  </div>
+  <div class="c info">
+    <strong>วิธีจ้างที่ไม่มีประกาศ</strong> (เช่น เฉพาะเจาะจง)
+    <ul style="margin-top:6px">
+      <li>→ ต้องดำเนิน<strong>มีหนังสือเชิญชวน</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div class="c warn">
+  🚨 <strong>หากดำเนินการไม่ทัน 30 วัน</strong> → ต้องให้<strong>คณะกรรมการกำหนดราคากลางทบทวนราคากลางใหม่</strong>ให้เป็นปัจจุบัน
+</div>
+</section>
+
+<!-- ============ 9. REGISTRATION ============ -->
+<section id="registration">
+<h2>📋 9. การขึ้นทะเบียนผู้รับจ้าง</h2>
+
+<div class="c info">
+  📌 <strong>ประกาศธนาคาร ธ.ก.ส. ที่ 1290/2566 ลงวันที่ 29 มิถุนายน 2566</strong><br>
+  เรื่อง การขึ้นทะเบียนผู้มีคุณสมบัติเบื้องต้นในการรับจ้างเหมางานก่อสร้าง (อ้างอิงระเบียบ จ.24)
+</div>
+
+<h3>🎯 เมื่อใดต้องใช้ผู้รับจ้างที่ขึ้นทะเบียน</h3>
+<div class="grid2">
+  <div class="c warn">
+    <strong>🚨 งานปรับปรุงอาคาร</strong>
+    <ul style="margin-top:6px">
+      <li>งบประมาณ <strong>> 500,000 บาท</strong></li>
+      <li><strong>ต้อง</strong>เป็นผู้รับจ้างที่ขึ้นทะเบียนไว้</li>
+      <li>ตาม<strong>ระเบียบ จ.24</strong></li>
+    </ul>
+  </div>
+  <div class="c ok">
+    <strong>ขั้นตอนการขึ้นทะเบียน (4 เมนู)</strong>
+    <ol style="margin-top:6px">
+      <li><strong>หลักการ</strong></li>
+      <li><strong>การเข้าระบบ</strong></li>
+      <li><strong>เอกสารการขึ้นทะเบียน</strong></li>
+      <li><strong>คู่มือฉบับย่อ</strong></li>
+    </ol>
+  </div>
+</div>
+
+<div class="c info">
+  ℹ️ Download คู่มือฉบับย่อ: ฝ่ายจัดซื้อจัดจ้างพัสดุ → ข้อมูลผู้รับจ้าง → ขั้นตอนการขึ้นทะเบียน
+</div>
+
+<div class="mnemo">
+  🎯 <strong>จำง่าย:</strong> ปรับปรุง + งบประมาณ > 500K = <strong>ต้องขึ้นทะเบียน</strong>
+</div>
+</section>
+
+<footer>
+🐶✨ สรุปโดย คาร่า — วันที่ 7 ก.ค.2569 · <a href="index.html" style="color:#f59e0b">⬅ กลับหน้าหลัก</a> · <a href="construction-authority.html" style="color:#f59e0b">👑 ไปหน้าอำนาจอนุมัติ</a> · <a href="construction-quiz.html" style="color:#f59e0b">📝 ทำแบบทดสอบ</a><br>
+<span style="font-size:11px">📌 แหล่งอ้างอิง: PDF "การจ้างก่อสร้าง ปรับปรุง ซ่อมแซมอาคาร" (39 หน้า) + พ.ร.บ. 2560 + ประกาศ 1290/2566 · ครอบคลุม 9 หัวข้อ</span>
+</footer>
+
+</div><!-- /ct -->
+</body>
+</html>
