@@ -25,3 +25,37 @@
 [1;32m✅ pre-check OK[0m · 11 file(s) checked
 [1;32m  ✓[0m pre-check passed (11 file(s))
 [1;36m[deploy][0m step 2/5: commit local changes
+[main 368f9d0] deploy: 2026-07-07 08:01 · index.html, logs/deploy-20260707-080141.log, quiz-500-ch1-data.js, quiz-500-ch1.html, quiz-500-ch10-data.js, quiz-500-ch10.html, quiz-500-ch2-data.js, quiz-500-ch2.html, quiz-500-ch3-data.js, quiz-500-ch3.html, quiz-500-ch4-data.js, quiz-500-ch4.html, quiz-500-ch5-data.js, quiz-500-ch5.html, quiz-500-ch6-data.js, quiz-500-ch6.html, quiz-500-ch7-data.js, quiz-500-ch7.html, quiz-500-ch8-data.js, quiz-500-ch8.html, quiz-500-ch9-data.js, quiz-500-ch9.html
+ 22 files changed, 2907 insertions(+), 2 deletions(-)
+ create mode 100644 logs/deploy-20260707-080141.log
+ create mode 100644 quiz-500-ch1-data.js
+ create mode 100644 quiz-500-ch1.html
+ create mode 100644 quiz-500-ch10-data.js
+ create mode 100644 quiz-500-ch10.html
+ create mode 100644 quiz-500-ch2-data.js
+ create mode 100644 quiz-500-ch2.html
+ create mode 100644 quiz-500-ch3-data.js
+ create mode 100644 quiz-500-ch3.html
+ create mode 100644 quiz-500-ch4-data.js
+ create mode 100644 quiz-500-ch4.html
+ create mode 100644 quiz-500-ch5-data.js
+ create mode 100644 quiz-500-ch5.html
+ create mode 100644 quiz-500-ch6-data.js
+ create mode 100644 quiz-500-ch6.html
+ create mode 100644 quiz-500-ch7-data.js
+ create mode 100644 quiz-500-ch7.html
+ create mode 100644 quiz-500-ch8-data.js
+ create mode 100644 quiz-500-ch8.html
+ create mode 100644 quiz-500-ch9-data.js
+ create mode 100644 quiz-500-ch9.html
+[1;32m  ✓[0m git working tree clean
+[1;36m[deploy][0m step 3/5: push to 'c9-prep/main' (= GitHub Pages production)
+To https://github.com/peatlaonado-star/c9-exam-prep.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/peatlaonado-star/c9-exam-prep.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[1;31m  ✗[0m push failed — check auth (gh auth status) and remote URL

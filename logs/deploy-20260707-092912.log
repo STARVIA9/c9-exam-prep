@@ -1,0 +1,7 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;36m[check][0m checking aml-ctf.html
+[1;32m  ✓[0m aml-ctf.html: inline JS syntax OK (31 script blocks)
+
+[1;32m✅ pre-check OK[0m · 1 file(s) checked
+[1;32m  ✓[0m pre-check passed (1 file(s))
+[1;36m[deploy][0m step 2/5: commit local changes
