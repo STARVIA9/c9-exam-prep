@@ -9,3 +9,18 @@
 [1;32m✅ pre-check OK[0m · 3 file(s) checked
 [1;32m  ✓[0m pre-check passed (3 file(s))
 [1;36m[deploy][0m step 2/5: commit local changes
+[main a2a0a57] deploy: 2026-07-08 10:21 · index.html, deposit-pdf/, deposit-practice.html, deposit-quiz.html, logs/deploy-20260708-102134.log
+ 6 files changed, 1825 insertions(+)
+ create mode 100644 "deposit-pdf/doc_39ffdda7a99c_\340\270\201\340\270\262\340\270\243\340\270\233\340\270\217\340\270\264\340\270\232\340\270\261\340\270\225\340\270\264\340\270\207\340\270\262\340\270\231\340\270\224\340\271\211\340\270\262\340\270\231\340\271\200\340\270\207\340\270\264\340\270\231\340\270\235\340\270\262\340\270\201_extracted.json"
+ create mode 100644 "deposit-pdf/doc_39ffdda7a99c_\340\270\201\340\270\262\340\270\243\340\270\233\340\270\217\340\270\264\340\270\232\340\270\261\340\270\225\340\270\264\340\270\207\340\270\262\340\270\231\340\270\224\340\271\211\340\270\262\340\270\231\340\271\200\340\270\207\340\270\264\340\270\231\340\270\235\340\270\262\340\270\201_extracted.md"
+ create mode 100644 deposit-practice.html
+ create mode 100644 deposit-quiz.html
+ create mode 100644 logs/deploy-20260708-102134.log
+[1;32m  ✓[0m git working tree clean
+[1;36m[deploy][0m step 3/5: push to 'c9-prep/main' (= GitHub Pages production)
+fatal: 'c9-prep' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[1;31m  ✗[0m push failed — check auth (gh auth status) and remote URL
