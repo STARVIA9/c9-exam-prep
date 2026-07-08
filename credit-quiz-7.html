@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัดกิ่งที่ 7: วิธีปฏิบัติด้านสินเชื่อ (ฉ.45/77/93) — 11 ข้อ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Sarabun','Noto Sans Thai',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+.header{background:linear-gradient(135deg,#f59e0b,#f59e0bdd);padding:24px 20px;text-align:center}
+.header h1{font-size:1.4em;color:#fff;margin-bottom:8px}
+.header p{color:rgba(255,255,255,.85);font-size:.95em}
+.stats{display:flex;justify-content:center;gap:16px;padding:12px 20px;background:#1e293b}
+.stat{text-align:center}
+.stat .num{font-size:1.5em;font-weight:700;color:#f59e0b}
+.stat .label{font-size:.8em;color:#94a3b8}
+.controls{padding:16px 20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:1em;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#f59e0b;color:#0f172a}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:2px solid #f59e0b;color:#f59e0b}
+.btn-outline:hover{background:#f59e0b22}
+.progress-bar{height:4px;background:#334155;margin:0 20px;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:#f59e0b;transition:width .3s;width:0%}
+.quiz-area{padding:20px;max-width:800px;margin:0 auto}
+.question-card{background:#1e293b;border-radius:12px;padding:20px;margin-bottom:16px;border-left:4px solid #f59e0b}
+.q-num{color:#f59e0b;font-weight:700;font-size:.9em;margin-bottom:8px}
+.q-text{font-size:1.05em;line-height:1.6;margin-bottom:12px}
+.choice{padding:10px 14px;margin:6px 0;border-radius:8px;cursor:pointer;transition:all .2s;background:#334155;border:2px solid transparent}
+.choice:hover{border-color:#f59e0b;background:#f59e0b22}
+.choice.selected{border-color:#f59e0b;background:#f59e0b33}
+.choice.correct{border-color:#22c55e;background:#22c55e22}
+.choice.wrong{border-color:#ef4444;background:#ef444422}
+.explanation{margin-top:12px;padding:12px;background:#0f172a;border-radius:8px;border-left:4px solid #22c55e;font-size:.9em;line-height:1.6;color:#94a3b8}
+.explanation strong{color:#22c55e}
+.choice .key{font-weight:700;color:#f59e0b;margin-right:8px}
+.result-card{text-align:center;padding:40px 20px;display:none}
+.result-card h2{font-size:1.8em;margin-bottom:12px}
+.result-score{font-size:3em;font-weight:700;color:#f59e0b}
+.result-text{font-size:1.1em;color:#94a3b8;margin:12px 0}
+.footer{text-align:center;padding:20px;color:#64748b;font-size:.85em}
+.nav-link{display:inline-block;margin:20px 0;padding:8px 16px;background:#1e293b;border:1px solid #f59e0b;color:#f59e0b;text-decoration:none;border-radius:6px;font-size:.9em}
+.nav-link:hover{background:#f59e0b;color:#0f172a}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>📜 กิ่งที่ 7: วิธีปฏิบัติด้านสินเชื่อ</h1>
+<p>ฉ.45 (บุคคล) + กองทุนหมู่บ้าน + กลุ่มบุคคล/วิสาหกิจชุมชน + องค์กร/อปท. + ฉ.77 + ฉ.93</p>
+</div>
+<div style="text-align:center;padding:12px">
+  <a href="credit-practice-summary.html" class="nav-link">📖 อ่านสรุปเนื้อหาก่อน</a>
+  <a href="index.html" class="nav-link">🏠 หน้าหลัก</a>
+</div>
+<div class="stats">
+<div class="stat"><div class="num" id="totalQ">11</div><div class="label">ข้อทั้งหมด</div></div>
+<div class="stat"><div class="num" id="answered">0</div><div class="label">ตอบแล้ว</div></div>
+<div class="stat"><div class="num" id="score">0</div><div class="label">คะแนน</div></div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+<div class="controls">
+<button class="btn btn-primary" onclick="showAll()">เปิดทั้งหมด</button>
+<button class="btn btn-outline" onclick="showAnswers()">เฉลยทั้งหมด</button>
+<button class="btn btn-outline" onclick="reset()">รีเซ็ต</button>
+</div>
+</div>
+<div class="quiz-area" id="quizArea"></div>
+<div class="result-card" id="result">
+<h2>🏆 ผลลัพธ์</h2>
+<div class="result-score" id="resultScore">0/11</div>
+<div class="result-text" id="resultText"></div>
+<button class="btn btn-primary" onclick="reset()">ทำใหม่</button>
+</div>
+<div class="footer">ธ.ก.ส. สาขาวังท่าช้าง | ข้อสอบวิธีปฏิบัติด้านสินเชื่อ (ฉ.45/77/93) | 11 ข้อ</div>
+<script>
+const questions=[
+{"num":1,"q":"ตามหลักเกณฑ์การคัดเลือกบุคคลขึ้นทะเบียนเป็นลูกค้าตามข้อบังคับ ฉบับที่ 45 ข้อใดเป็นข้อยกเว้นที่ธนาคารอนุโลมให้รับขึ้นทะเบียนได้?","choices":[{"key":"A","text":"ความผิดที่พ้นโทษมาแล้วเกินกว่า 5 ปี"},{"key":"B","text":"ความผิดอันเกิดจากความประมาท"},{"key":"C","text":"ความผิดที่ได้รับพระราชทานอภัยโทษแล้ว"},{"key":"D","text":"ความผิดลหุโทษ"}],"answer":"D","explanation":"ข้อ 6 ของ ฉ.45 กำหนดให้ผู้ขอขึ้นทะเบียนต้องไม่เคยได้รับโทษจำคุกโดยคำพิพากษาถึงที่สุด 'เว้นแต่ความผิดลหุโทษ' จึงเป็นข้อยกเว้นที่อนุโลมให้รับขึ้นทะเบียนได้ โดยไม่ถือเป็นข้อห้ามครับ"},
+
+{"num":2,"q":"ในกรณีที่ผู้ขอขึ้นทะเบียนลูกค้ามีถิ่นที่อยู่ในพื้นที่สาขาหนึ่ง แต่มีสถานประกอบอาชีพหลักอยู่ในพื้นที่อีกสาขาหนึ่ง การรับขึ้นทะเบียนควรดำเนินการอย่างไร?","choices":[{"key":"A","text":"สามารถขึ้นทะเบียนที่สาขาที่ตั้งสถานประกอบอาชีพหลักได้หากสะดวก"},{"key":"B","text":"ต้องขึ้นทะเบียนที่สาขาตามถิ่นที่อยู่เท่านั้น"},{"key":"C","text":"ขึ้นทะเบียนได้ทั้งสองสาขาเพื่อความคล่องตัว"},{"key":"D","text":"ต้องได้รับการอนุมัติร่วมจากผู้จัดการสาขาทั้งสองแห่ง"}],"answer":"A","explanation":"ตาม ฉ.45 ข้อ 4.2 ให้สาขาตามถิ่นที่อยู่พิจารณารับขึ้นทะเบียน เว้นแต่ผู้ขอขึ้นทะเบียนสะดวกจะใช้บริการจากสาขาที่ตั้งสถานประกอบอาชีพ ก็ให้สาขาที่ตั้งสถานประกอบอาชีพหลักพิจารณารับขึ้นทะเบียนได้ เพื่ออำนวยความสะดวกแก่ลูกค้าครับ"},
+
+{"num":3,"q":"กองทุนหมู่บ้านที่ต้องการขอกู้จากธนาคาร จะต้องมีสัดส่วนเงินออมและหุ้น (บัญชี 2) ต่อเงินกองทุน (บัญชี 1) ไม่น้อยกว่าร้อยละเท่าใด?","choices":[{"key":"A","text":"ร้อยละ 5"},{"key":"B","text":"ร้อยละ 15"},{"key":"C","text":"ร้อยละ 10"},{"key":"D","text":"ร้อยละ 20"}],"answer":"B","explanation":"คุณสมบัติข้อ 6 ของ กทบ. กำหนดว่า 'สัดส่วนของเงินออมและหุ้น (บัญชี 2) ไม่น้อยกว่าร้อยละ 15 ของเงินกองทุน (บัญชี 1)' เพื่อสะท้อนความเข้มแข็งของฐานเงินออมสมาชิกครับ"},
+
+{"num":4,"q":"การกำหนดอัตราดอกเบี้ยเงินกู้กองทุนหมู่บ้าน ใช้คะแนนจากสองหมวดมารวมกัน หมวดที่ 1 (การบริหาร) และหมวดที่ 2 (ฐานะทางการเงิน) มีคะแนนเต็มหมวดละเท่าใด?","choices":[{"key":"A","text":"หมวดที่ 1: 25 คะแนน / หมวดที่ 2: 75 คะแนน"},{"key":"B","text":"หมวดที่ 1: 30 คะแนน / หมวดที่ 2: 70 คะแนน"},{"key":"C","text":"หมวดที่ 1: 45 คะแนน / หมวดที่ 2: 55 คะแนน"},{"key":"D","text":"หมวดที่ 1: 50 คะแนน / หมวดที่ 2: 50 คะแนน"}],"answer":"C","explanation":"การคำนวณ Risk Premium สำหรับ กทบ. ใช้ 'หมวด 1 การบริหารและควบคุมภายใน 45 คะแนน + หมวด 2 ฐานะทางการเงินและผลการดำเนินงาน 55 คะแนน' = 100 คะแนนเต็มครับ"},
+
+{"num":5,"q":"หลักประกันประเภทอสังหาริมทรัพย์สำหรับเงินกู้กองทุนหมู่บ้าน หากประเมินศักยภาพอยู่ในระดับชั้น 1-3 ธนาคารผ่อนผันให้กู้ได้ไม่เกินร้อยละเท่าใดของราคาประเมิน?","choices":[{"key":"A","text":"ร้อยละ 80"},{"key":"B","text":"ร้อยละ 100"},{"key":"C","text":"ร้อยละ 50"},{"key":"D","text":"ร้อยละ 90"}],"answer":"A","explanation":"ตามหลักเกณฑ์หลักประกัน กรณี กทบ. ที่มีประวัติการชำระหนี้ดี + ผ่านเกณฑ์ประเมินศักยภาพ 80-100 คะแนน + ได้รับอัตราดอกเบี้ยชั้น 1-3 → 'ผ่อนผันให้กู้ไม่เกินร้อยละ 80 ของราคาประเมินและวงเงินจำนอง' ครับ"},
+
+{"num":6,"q":"ในการพิจารณาวงเงินกู้เพื่อเป็นค่าลงทุนของกองทุนหมู่บ้าน ธนาคารกำหนดให้กองทุนต้องมีเงินทุนสมทบเองอย่างน้อยร้อยละเท่าใดของค่าลงทุนทั้งหมด?","choices":[{"key":"A","text":"ร้อยละ 10"},{"key":"B","text":"ร้อยละ 20"},{"key":"C","text":"ร้อยละ 50"},{"key":"D","text":"ร้อยละ 15"}],"answer":"B","explanation":"ตามเอกสารประกอบการพิจารณา กรณีเป็นค่าลงทุน กทบ. ต้องมี 'เอกสารแสดงมูลค่าการลงทุนส่วนของ กทบ. ซึ่งต้องไม่น้อยกว่าร้อยละ 20 ของค่าลงทุนในโครงการ' เพื่อให้กองทุนมีส่วนร่วมในความเสี่ยงด้วยครับ"},
+
+{"num":7,"q":"วัตถุประสงค์การกู้เงินของกองทุนหมู่บ้านในข้อใดที่ปัจจุบันธนาคารยังไม่สนับสนุนสินเชื่อ?","choices":[{"key":"A","text":"เพื่อเป็นเงินทุนหมุนเวียนให้สมาชิกกู้"},{"key":"B","text":"เพื่อชำระหนี้สินภายนอก"},{"key":"C","text":"เพื่อเป็นค่าใช้จ่ายหมุนเวียนในการดำเนินธุรกิจของกองทุน"},{"key":"D","text":"เพื่อลงทุนซื้อทรัพย์สินถาวรในการดำเนินกิจการ"}],"answer":"B","explanation":"ปัจจุบันธนาคารสนับสนุนสินเชื่อเฉพาะข้อ 1 (ค่าใช้จ่ายหมุนเวียน) และข้อ 2 (ค่าลงทุน) เท่านั้น ส่วน 'ข้อ 3 ชำระหนี้สินภายนอก' ธนาคารยังไม่สนับสนุนแล้วครับ"},
+
+{"num":8,"q":"การคำนวณ 'เงินทุนตนเอง' ของกองทุนหมู่บ้านเพื่อนำไปกำหนดวงเงินกู้ ประกอบด้วยรายการใดบ้าง?","choices":[{"key":"A","text":"เงินงบประมาณจากรัฐ + เงินฝากธนาคาร"},{"key":"B","text":"เงินออมสมาชิก + หนี้สินหมุนเวียน"},{"key":"C","text":"ยอดเงินกู้ที่ได้รับอนุมัติ + ทรัพย์สินถาวร"},{"key":"D","text":"เงินออมสัจจะ + เงินค่าหุ้น + กำไรสะสม"}],"answer":"D","explanation":"เงินทุนตนเองของ กทบ. = 'เงินออมสัจจะของสมาชิก + เงินค่าหุ้นของสมาชิก + กำไรสะสม' ใช้เป็นฐานในการคำนวณวงเงินกู้ตามระดับคะแนน 10/9/8 เท่า ครับ"},
+
+{"num":9,"q":"ในการกำหนดอัตราดอกเบี้ยกองทุนหมู่บ้าน (Risk Premium) ธนาคารใช้ปัจจัยในหมวดใดเป็นตัวกำหนดคะแนนเต็ม 55 คะแนน?","choices":[{"key":"A","text":"ด้านการบริหารและควบคุมภายใน"},{"key":"B","text":"ด้านการจัดกิจกรรมสาธารณประโยชน์"},{"key":"C","text":"ด้านสถานะทางการเงินและผลการดำเนินงาน"},{"key":"D","text":"ด้านความพึงพอใจของสมาชิก"}],"answer":"C","explanation":"การคำนวณ Risk Premium แบ่งเป็น 2 หมวด: 'หมวด 1 การบริหารและควบคุมภายใน = 45 คะแนน' + 'หมวด 2 ฐานะทางการเงินและผลการดำเนินงาน = 55 คะแนน' รวม 100 คะแนนครับ"},
+
+{"num":10,"q":"กองทุนหมู่บ้านที่ได้รับคะแนนประเมินศักยภาพรวม 85 คะแนน จะสามารถขอกู้เงินได้สูงสุดไม่เกินกี่เท่าของทุนตนเอง?","choices":[{"key":"A","text":"20 เท่า"},{"key":"B","text":"10 เท่า"},{"key":"C","text":"8 เท่า"},{"key":"D","text":"9 เท่า"}],"answer":"B","explanation":"คะแนน 85 อยู่ในช่วง 80-100 = 'ดีเยี่ยม' → วงเงินกู้ไม่เกิน 10 เท่าของทุนตนเอง (ส่วน 70-79 = 9 เท่า, 60-69 = 8 เท่า, ต่ำกว่า 60 = ไม่ผ่าน) ครับ"},
+
+{"num":11,"q":"กองทุนหมู่บ้าน A ได้รับการประเมินศักยภาพเพื่อจัดระดับชั้นและกำหนดอัตราดอกเบี้ยเงินกู้ ได้คะแนนหมวดที่ 1 การบริหารและควบคุมภายใน 20 คะแนน หมวดที่ 2 ด้านฐานะทางการเงินและผลการดำเนินงาน 50 คะแนน กองทุนหมู่บ้านแห่งนี้จะได้รับการจัดชั้นอัตราดอกเบี้ยระดับใดและกำหนดอัตราดอกเบี้ยเท่าใด?","choices":[{"key":"A","text":"ระดับ 4/อัตราดอกเบี้ย MLR+0.75"},{"key":"B","text":"ระดับ 5/อัตราดอกเบี้ย MLR+1.00"},{"key":"C","text":"ระดับ 6/อัตราดอกเบี้ย MLR+1.25"},{"key":"D","text":"ระดับ 7/อัตราดอกเบี้ย MLR+1.50"}],"answer":"A","explanation":"คะแนนรวม = 20+50 = 70 คะแนน (ช่วงดีมาก) → จัดชั้นระดับ 4 พร้อมอัตราดอกเบี้ย MLR+0.75 ตามโครงสร้าง Risk Premium ของธนาคารครับ"}
+];
+let answeredCount=0,correctCount=0,showingAnswer={};
+function init(){
+const area=document.getElementById("quizArea");
+area.innerHTML="";
+questions.forEach((q,i)=>{
+const card=document.createElement("div");
+card.className="question-card";
+card.id="q-"+q.num;
+let ch=q.choices.map(c=>{
+const isA=c.key===q.answer;
+return '<div class="choice" data-q="'+q.num+'" data-key="'+c.key+'" data-correct="'+isA+'" onclick="selectChoice(this)"><span class="key">'+c.key+'.</span>'+c.text+'</div>';
+}).join("");
+card.innerHTML='<div class="q-num">ข้อ '+q.num+'</div><div class="q-text">'+q.q+'</div>'+ch;
+area.appendChild(card);
+});
+}
+function selectChoice(el){
+const qNum=el.dataset.q;
+if(showingAnswer[qNum])return;
+showingAnswer[qNum]=true;
+const q=questions.find(q=>q.num==qNum);
+document.querySelectorAll('[data-q="'+qNum+'"]').forEach(c=>{
+c.style.pointerEvents="none";
+if(c.dataset.correct==="true")c.classList.add("correct");
+else if(c.classList.contains("selected"))c.classList.add("wrong");
+});
+if(q&&q.explanation){
+const card=el.closest(".question-card");
+if(card){
+const expDiv=document.createElement("div");
+expDiv.className="explanation";
+expDiv.innerHTML="<strong>💡 เฉลย:</strong> "+q.explanation;
+card.appendChild(expDiv);
+}
+}
+answeredCount++;
+if(el.dataset.correct==="true")correctCount++;
+updateStats();
+}
+function showAll(){
+document.querySelectorAll(".choice").forEach(c=>{
+if(!showingAnswer[c.dataset.q])selectChoice(c);
+});
+}
+function showAnswers(){
+document.querySelectorAll(".question-card").forEach(card=>{
+const ch=card.querySelector(".choice");
+if(!ch)return;
+const qNum=ch.dataset.q;
+if(!showingAnswer[qNum]){
+const correct=card.querySelector('[data-correct="true"]');
+if(correct)correct.classList.add("correct");
+const q=questions.find(q=>q.num==qNum);
+if(q&&q.explanation&&!card.querySelector(".explanation")){
+const expDiv=document.createElement("div");
+expDiv.className="explanation";
+expDiv.innerHTML="<strong>💡 เฉลย:</strong> "+q.explanation;
+card.appendChild(expDiv);
+}
+showingAnswer[qNum]=true;
+answeredCount++;
+correctCount++;
+}
+});
+updateStats();
+}
+function reset(){
+answeredCount=0;correctCount=0;showingAnswer={};
+document.getElementById("result").style.display="none";
+init();updateStats();
+}
+function updateStats(){
+document.getElementById("answered").textContent=answeredCount;
+document.getElementById("score").textContent=correctCount;
+document.getElementById("progress").style.width=(answeredCount/questions.length*100)+"%";
+if(answeredCount===questions.length){
+const r=document.getElementById("result");
+r.style.display="block";
+document.getElementById("resultScore").textContent=correctCount+"/"+questions.length;
+let msg="";
+if(correctCount>=10)msg="🎉 เก่งมาก! พร้อมสอบแล้ว";
+else if(correctCount>=7)msg="👍 ดี! ทบทวนอีกนิด";
+else msg="📖 กลับไปอ่านสรุปก่อนนะคะ";
+document.getElementById("resultText").textContent=msg;
+}
+}
+window.onload=()=>{init();updateStats();};
+</script>
+</body>
+</html>
