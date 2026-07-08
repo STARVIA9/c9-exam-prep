@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 แบบทดสอบ การปฏิบัติงานด้านเงินฝาก — C9</title>
+<style>
+:root {
+  --bg: #0f1923; --card: #1a2836; --card-hover: #1f3040;
+  --text: #e8e8e8; --text2: #a0b4c8; --accent: #ffd54f;
+  --green: #4caf50; --red: #ef5350; --blue: #42a5f5; --purple: #ab47bc;
+  --border: #2a3f52; --shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+* { margin:0; padding:0; box-sizing:border-box }
+body { font-family:'Sarabun','Noto Sans Thai',sans-serif; background:var(--bg); color:var(--text); line-height:1.8   overflow-x: hidden;
+}
+nav { background:linear-gradient(135deg,#0d1b2a,#1b2838); padding:20px 30px; position:sticky; top:0; z-index:100; border-bottom:2px solid var(--accent) }
+nav h1 { color:var(--accent); font-size:1.3em; text-align:center }
+nav .stats { display:flex; justify-content:center; gap:30px; margin-top:10px }
+nav .stats span { color:var(--text2); font-size:.9em }
+nav .stats strong { color:var(--accent) }
+.tabs { display:flex; justify-content:center; gap:8px; padding:15px; flex-wrap:wrap }
+.tab { background:var(--card); border:1px solid var(--border); color:var(--text2); padding:8px 20px; border-radius:25px; cursor:pointer; transition:.2s; font-size:.9em }
+.tab:hover, .tab.active { background:var(--accent); color:#000; border-color:var(--accent) }
+.container { max-width:900px; margin:0 auto; padding:15px }
+.q-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:25px; margin:15px 0; box-shadow:var(--shadow); transition:.3s }
+.q-card:hover { border-color:var(--accent); transform:translateY(-2px) }
+.q-num { display:inline-block; background:var(--accent); color:#000; font-weight:bold; padding:2px 12px; border-radius:15px; font-size:.85em; margin-bottom:10px }
+.q-topic { display:inline-block; padding:2px 10px; border-radius:15px; font-size:.75em; margin-left:8px }
+.topic-cash { background:#1b5e20; color:#a5d6a7 }
+.topic-key { background:#4a148c; color:#ce93d8 }
+.topic-reserve { background:#0d47a1; color:#90caf9 }
+.topic-atm { background:#bf360c; color:#ffab91 }
+.topic-open { background:#0d47a1; color:#90caf9 }
+.topic-sick { background:#b71c1c; color:#ef9a9a }
+.topic-branch { background:#1b5e20; color:#a5d6a7 }
+.topic-freeze { background:#311b92; color:#b39ddb }
+.topic-close { background:#4a148c; color:#ce93d8 }
+.topic-refund { background:#00695c; color:#80cbc4 }
+.q-text { font-size:1.05em; margin-bottom:15px; color:var(--text) }
+.q-opts label { display:block; padding:10px 15px; margin:6px 0; background:#152230; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition:.2s }
+.q-opts label:hover { background:#1f3040; border-color:var(--blue) }
+.q-opts input[type="radio"] { display:none }
+.q-opts input[type="radio"]:checked + span { font-weight:bold; color:var(--accent) }
+.q-opts label.correct { background:#1b3a1b; border-color:var(--green); color:#a5d6a7 }
+.q-opts label.wrong { background:#3a1b1b; border-color:var(--red); color:#ef9a9a }
+.q-opts label.show-correct { border-color:var(--green); border-width:2px }
+.q-btn { background:var(--blue); color:#fff; border:none; padding:10px 25px; border-radius:8px; cursor:pointer; margin-top:12px; font-size:.95em; transition:.2s }
+.q-btn:hover { background:#1e88e5 }
+.explain { display:none; margin-top:12px; padding:15px; background:#152230; border-left:4px solid var(--accent); border-radius:0 8px 8px 0; color:var(--text2); font-size:.92em }
+.explain strong { color:var(--accent) }
+.footer { text-align:center; padding:30px; color:#556; font-size:.85em }
+.score-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:linear-gradient(135deg,#1a3a4a,#0d2137); padding:15px; text-align:center; border-top:2px solid var(--accent); z-index:100 }
+.score-bar span { color:var(--accent); font-size:1.3em; font-weight:bold }
+@media(max-width:600px) { .q-card { padding:18px } nav { padding:15px } }
+</style>
+<link rel="stylesheet" href="study-ui.css">
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+
+<nav>
+  <h1>📝 แบบทดสอบ ผช.ผจข. — การปฏิบัติงานด้านเงินฝาก</h1>
+  <div class="stats">
+    <span>📊 ทั้งหมด <strong>30</strong> ข้อ</span>
+    <span>⏱️ ไม่จำกัดเวลา</span>
+    <span>🎯 ทำเสร็จกดตรวจ</span>
+  </div>
+</nav>
+
+<div class="tabs">
+  <div class="tab active" onclick="filterTab('all')">📋 ทั้งหมด</div>
+  <div class="tab" onclick="filterTab('open')">📋 เปิดบัญชี</div>
+  <div class="tab" onclick="filterTab('sick')">🏥 ถอนผู้ป่วย</div>
+  <div class="tab" onclick="filterTab('branch')">🌐 ต่างสำนักงาน</div>
+  <div class="tab" onclick="filterTab('freeze')">🔒 อายัด</div>
+  <div class="tab" onclick="filterTab('close')">🚪 ปิดบัญชี</div>
+  <div class="tab" onclick="filterTab('refund')">🕊️ จ่ายคืน</div>
+</div>
+
+<div class="container" id="quizContainer">
+
+<!-- ===== เปิดบัญชี (1-6) ===== -->
+<div class="q-card" data-topic="open">
+  <span class="q-num">1</span><span class="q-topic topic-open">📋 เปิดบัญชี</span>
+  <div class="q-text">การแสดงตนของกรรมการผู้มีอำนาจและผู้ถือหุ้น ในกรณีนิติบุคคลประเภทบริษัทจำกัด จะต้องตรวจสอบเอกสารแสดงตนของผู้ถือหุ้นที่มีสัดส่วนการถือหุ้นตั้งแต่เท่าใดขึ้นไป สำหรับสัญชาติไทย?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>A. สัดส่วนการถือหุ้นตั้งแต่ 20% ขึ้นไป</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>B. สัดส่วนการถือหุ้นตั้งแต่ 25% ขึ้นไป</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q1"><span>C. สัดส่วนการถือหุ้นตั้งแต่ 10% ขึ้นไป</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q1"><span>D. สัดส่วนการถือหุ้นตั้งแต่ 15% ขึ้นไป</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e1')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e1"><strong>คำตอบ: D</strong><br>ตามระเบียบการเปิดบัญชีลูกค้านิติบุคคล ต้องตรวจสอบเอกสารแสดงตน (บัตร ปชช./Passport) ของกรรมการผู้มีอำนาจลงนาม และ<b>ผู้ถือหุ้นสัญชาติไทยตั้งแต่ 15%</b>ขึ้นไป ส่วนสัญชาติอื่นตั้งแต่ 10% ขึ้นไป (อ้างอิงหน้า 4)</div>
+</div>
+
+<div class="q-card" data-topic="open">
+  <span class="q-num">2</span><span class="q-topic topic-open">📋 เปิดบัญชี</span>
+  <div class="q-text">การเปิดบัญชีเงินฝากของวัด ตามมติมหาเถรสมาคม ครั้งที่ 4/2569 — รหัสประเภทลูกค้าสำหรับบัญชีวัดคือข้อใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,true)"><input type="radio" name="q2"><span>A. 0702 (สถาบันที่ไม่มีวัตถุประสงค์เพื่อหากำไร)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>B. 0101 (บุคคลธรรมดา)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>C. 0501 (นิติบุคคลทั่วไป)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q2"><span>D. 0301 (ส่วนราชการ)</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e2')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e2"><strong>คำตอบ: A</strong><br>มติมหาเถรสมาคม ครั้งที่ 4-2569 (ลง 28 พ.ค.69) กำหนดให้ใช้<b>รหัสประเภทลูกค้า 0702</b> สำหรับบัญชีวัด (สถาบันที่ไม่มีวัตถุประสงค์เพื่อหากำไร) — ใช้คำว่า "วัด" นำหน้าชื่อ · 1 วัด = 1 CIF</div>
+</div>
+
+<div class="q-card" data-topic="sick">
+  <span class="q-num">3</span><span class="q-topic topic-sick">🏥 ถอนผู้ป่วย</span>
+  <div class="q-text">ในกรณีผู้ฝากเงินป่วยและไม่มีสติสัมปชัญญะสมบูรณ์ โดยศาลยังไม่มีคำสั่งใดๆ (บุคคลวิกลจริต) — หากในขณะที่พนักงานไปพบลูกค้า สามารถพูดคุยรู้เรื่องและมีสติในขณะนั้น พนักงานควรปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>A. ปฏิเสธการทำรายการ และแจ้งให้ญาติไปร้องขอต่อศาลเพื่อตั้งผู้อนุบาลก่อน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>B. ต้องให้พนักงานธนาคารระดับบริหารเป็นผู้อนุมัติการจ่ายเงินเป็นกรณีพิเศษ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q3"><span>C. ให้ลูกค้าถอนเงินเองได้ หากขณะติดต่อมีสติสัมปชัญญะและคุยรู้เรื่อง</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q3"><span>D. ให้ญาติสายโลหิตเป็นผู้ลงนามถอนเงินแทนโดยใช้พยาน 2 คน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e3')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e3"><strong>คำตอบ: C</strong><br>บุคคลวิกลจริต (ศาลยังไม่สั่ง) → หากขณะติดต่อมีสติสัมปชัญญะครู่หนึ่ง <b>ลูกค้าถอนเงินเองได้</b> (อ้างอิงหน้า 10 — หลักการคือสถานะทางกฎหมาย ไม่ใช่อาการป่วย)</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">4</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">เงื่อนไขการให้บริการเกี่ยวกับเงินฝากต่างสำนักงาน สำหรับบัญชีกระแสรายวันของ "นิติบุคคล" มีข้อจำกัดอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,true)"><input type="radio" name="q4"><span>A. ต้องนำฝากเข้าบัญชีตามชื่อหน้าเช็คเท่านั้น ไม่สามารถจ่ายเป็นเงินสดได้</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>B. ผู้รับเงินสามารถสลักหลังเช็คเพื่อรับเงินสดที่สาขาต่างสำนักงานได้</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>C. สามารถถอนเงินสดได้ไม่เกิน 1,000,000 บาทต่อวัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q4"><span>D. สามารถใช้บริการได้กับบัญชีทุกรหัสประเภท DDA</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e4')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e4"><strong>คำตอบ: A</strong><br>บัญชีกระแสรายวันของนิติบุคคล — <b>ต้องนำฝากเข้าบัญชีตามชื่อหน้าเช็คเท่านั้น จ่ายเงินสดไม่ได้</b> (ต่างจากบุคคลธรรมดาที่เช็ค ≤ 1 ล้านจ่ายเงินสดได้) (อ้างอิงหน้า 14)</div>
+</div>
+
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">5</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">หน่วยงานใดที่มีอำนาจ "ยึด/อายัดทรัพย์สิน" แต่ "ไม่มีอำนาจ" ขอข้อมูลบัญชีเงินฝาก (ตาม พ.ร.บ.ข้อมูลข่าวสารของราชการ พ.ศ.2540)?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>A. สำนักงานคณะกรรมการป้องกันและปราบปรามการทุจริตในภาครัฐ (ป.ป.ท.)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>B. สำนักงาน ป.ป.ช.</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q5"><span>C. กรมสอบสวนคดีพิเศษ (DSI)</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q5"><span>D. สำนักงานบังคับคดี</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e5')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e5"><strong>คำตอบ: D</strong><br>จาก 21 หน่วยงาน — มีเพียง<b>สำนักงานบังคับคดี</b>ที่มีอำนาจเฉพาะ "ยึด/อายัด" แต่ไม่มีอำนาจ "ขอข้อมูลบัญชี" (อ้างอิงหน้า 23-24)</div>
+</div>
+
+<div class="q-card" data-topic="refund">
+  <span class="q-num">6</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">กรณีพระภิกษุมรณภาพ เงินฝากที่ได้มา "ขณะที่อยู่ในสมณเพศ" จะถูกจัดการอย่างไรตามระเบียบธนาคาร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,true)"><input type="radio" name="q6"><span>A. ตกเป็นสมบัติของวัดตามกฎหมาย (ยกเว้นมีพินัยกรรม)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>B. จ่ายคืนให้ทายาทโดยธรรมทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>C. ต้องโอนเข้าบัญชีเจ้าหนี้รอจ่ายคืนลูกค้า รหัส 23507007</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q6"><span>D. ให้เจ้าอาวาสและทายาทตกลงแบ่งกันคนละครึ่ง</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e6')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e6"><strong>คำตอบ: A</strong><br>เงินฝากที่ได้มา<b>ขณะอยู่ในสมณเพศ</b> = สมบัติของวัด (ตามกฎหมายคณะสงฆ์) — ยกเว้นมีพินัยกรรมระบุไว้ ให้จ่ายตามพินัยกรรม (อ้างอิงหน้า 36)</div>
+</div>
+
+<!-- ===== ถอนผู้ป่วย (7-9) ===== -->
+<div class="q-card" data-topic="sick">
+  <span class="q-num">7</span><span class="q-topic topic-sick">🏥 ถอนผู้ป่วย</span>
+  <div class="q-text">กรณีผู้ฝากเงินป่วยแต่ "มีสติสัมปชัญญะบริบูรณ์" — พนักงานที่ออกไปให้บริการณ์ที่พัก ต้องพิสูจน์ข้อเท็จจริงว่าอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>A. ใช้พยาน 1 คนรับรองเท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>B. ใช้หนังสือรับรองแพทย์ฉบับเดียว</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q7"><span>C. อย่างน้อย 2 คนออกไปให้บริการ ณ ที่พัก/โรงพยาบาล และพิสูจน์ว่าป่วยจนมาสาขาไม่ได้</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q7"><span>D. ใช้การโทรศัพท์ยืนยันจากญาติ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e7')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e7"><strong>คำตอบ: C</strong><br>พนักงานอย่างน้อย 2 คนออกไปให้บริการ ณ ที่พัก/โรงพยาบาล พร้อมพิสูจน์ข้อเท็จจริงว่าป่วยจนมาสาขาไม่ได้ — ใช้ใบถอนเงินแบบ 302.16 + ลายพิมพ์นิ้วมือ + พยานเชื่อถือได้ 2 คน (เช่น แพทย์/พยาบาล)</div>
+</div>
+
+<div class="q-card" data-topic="sick">
+  <span class="q-num">8</span><span class="q-topic topic-sick">🏥 ถอนผู้ป่วย</span>
+  <div class="q-text">กรณีศาลสั่งให้ลูกค้าเป็น "บุคคลไร้ความสามารถ" — ผู้ที่มีอำนาจดำเนินการถอนเงินฝากแทนคือใคร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>A. ญาติสายโลหิต</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>B. ผู้พิทักษ์</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q8"><span>C. ผู้อนุบาล</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q8"><span>D. ผู้จัดการมรดก</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e8')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e8"><strong>คำตอบ: C</strong><br>บุคคลไร้ความสามารถ (ศาลสั่ง) → <b>ผู้อนุบาล</b>ดำเนินการแทน<b>เท่านั้น</b> · ส่วนบุคคลเสมือนไร้ความสามารถ (ศาลสั่ง) → ผู้พิทักษ์ (ถ้าศาลสั่งให้ทำแทน) — ใช้แบบ 302.16.02 + คำสั่งศาลแต่งตั้ง</div>
+</div>
+
+<div class="q-card" data-topic="sick">
+  <span class="q-num">9</span><span class="q-topic topic-sick">🏥 ถอนผู้ป่วย</span>
+  <div class="q-text">เอกสารที่ต้องใช้ในการถอนเงินฝากของผู้ป่วย (ไม่มีสติสัมปชัญญะ) โดยผู้พิทักษ์/ผู้อนุบาล ต้องใช้แบบพิมพ์ใด และทำที่สาขาใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>A. แบบ 302.16 ทุกสาขา</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q9"><span>B. แบบ 302.16.02 ณ สาขาที่เปิดบัญชีเท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>C. แบบ 302.17.01 ทุกสาขา</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q9"><span>D. แบบ 302.16.02 ทุกสาขาต่างสำนักงาน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e9')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e9"><strong>คำตอบ: B</strong><br>ใช้แบบพิมพ์<b>302.16.02</b> (คำขอรับเงินผู้ฝากป่วยและไม่มีสติสัมปชัญญะสมบูรณ์) + ติดต่อขอถอนเงิน <b>ณ สาขาที่เปิดบัญชีเท่านั้น</b> — เอกสารครบ 5 รายการ (ศาลสั่ง + สำเร็จ + สมุด + บัตร ผู้กระทำการแทน + บัตร ผู้ป่วย)</div>
+</div>
+
+<!-- ===== ต่างสำนักงาน (10-15) ===== -->
+<div class="q-card" data-topic="branch">
+  <span class="q-num">10</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">วงเงินการถอนเงินฝากออมทรัพย์/ประจำ ต่างสำนักงาน ไม่เกินเท่าใดต่อบัญชีต่อวัน (รวมทุกรหัสรายการ ยกเว้นถอนผ่าน ATM และ BAAC Mobile)?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>A. 500,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q10"><span>B. 1,000,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>C. 2,000,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q10"><span>D. ไม่จำกัดวงเงิน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e10')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e10"><strong>คำตอบ: B</strong><br>ออมทรัพย์/ประจำ ถอนต่างสำนักงานได้ไม่เกิน<b>1,000,000 บาท/บัญชี/วัน</b> (รวมทุกรหัสรายการ ยกเว้น ATM/BAAC Mobile)</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">11</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">ข้อใด "ไม่ใช่" ข้อห้ามในการทำรายการต่างสำนักงาน?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>A. รับเอกสารเปิดบัญชี</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>B. ปิดบัญชีเงินฝากทุกประเภท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q11"><span>C. การฝากเงินสดจากลูกค้าบุคคลธรรมดา</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q11"><span>D. มอบอำนาจถอนเงินฝาก</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e11')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e11"><strong>คำตอบ: C</strong><br>ข้อห้าม 7 ข้อ ได้แก่ ① เปิดบัญชี ② ปิดบัญชี ③ เปลี่ยนแปลงข้อมูล ④ ออกสมุดเล่มใหม่ ⑤ มอบอำนาจถอน ⑥ มอบอำนาจขอ Statement/รับรอง ⑦ แก้ไขรายการข้ามวัน — ฝากเงินสดทำได้ตามปกติ</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">12</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">กรณีที่สาขาต่างสำนักงาน "ทำรายการถอนเป็นฝาก" ผิดพลาด (และข้ามวัน/ติดต่อลูกค้าไม่ได้) — ต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>A. ทำรายการ EC (Error Correction) ทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>B. สาขาที่ทำรายการเก็บเงินสดไว้รอลูกค้ามาติดต่อ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q12"><span>C. ส่งบันทึกผ่านระบบสารบรรณ → สาขาเจ้าของบัญชีอายัดเงิน → รอติดต่อลูกค้า</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q12"><span>D. ยกเลิกรายการทันทีโดยไม่ต้องแจ้งลูกค้า</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e12')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e12"><strong>คำตอบ: C</strong><br>① สาขาที่ทำรายการ<b>ส่งบันทึกผ่านระบบสารบรรณ</b> → ② สาขาเจ้าของบัญชี<b>อายัดเงิน</b> → ③ <b>ติดต่อลูกค้า</b>ให้นำสมุดมาแก้ไข (ถ้าข้ามวันจะใช้ EC ไม่ได้)</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">13</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">การถอนสลากออมทรัพย์ต่างสาขา กรณี "เจ้าของสลากมาถอนด้วยตนเอง" ถอนเป็นเงินสดได้ไม่เกินเท่าใดต่อฉบับ?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>A. 100,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>B. 200,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q13"><span>C. 300,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q13"><span>D. 500,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e13')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e13"><strong>คำตอบ: C</strong><br>เจ้าของสลากมาถอนเอง ถอนเงินสดได้ไม่เกิน<b>300,000 บาท/ฉบับ</b> · เกิน → โอนเข้าบัญชีเจ้าของหรือแคชเชียร์เช็ค A/C Payee Only (ชื่อตรงเจ้าของสลาก)</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">14</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">บัญชีเงินฝากออมทรัพย์จะถูกเปลี่ยนสถานะเป็น "Unclaimed" เมื่อใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>A. ไม่เคลื่อนไหว 12 เดือน + ยอดคงเหลือ ≥ 10,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>B. ไม่เคลื่อนไหว 24 เดือน + ยอดคงเหลือ ≥ 100,000 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q14"><span>C. ไม่เคลื่อนไหว 36 เดือน + ยอดคงเหลือ ≥ 50,000 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q14"><span>D. ไม่เคลื่อนไหว 60 เดือน + ยอดคงเหลือ ≥ 1,000 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e14')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e14"><strong>คำตอบ: C</strong><br>ระบบเปลี่ยนสถานะ Active → Unclaimed เมื่อบัญชีออมทรัพย์<b>ไม่เคลื่อนไหวนานกว่า 36 เดือน</b> และมียอดคงเหลือ<b>ตั้งแต่ 50,000 บาทขึ้นไป</b> (หมายเหตุ: รายการจ่ายดอกเบี้ยทบต้น<b>ไม่ถือเป็น</b>การเคลื่อนไหว)</div>
+</div>
+
+<div class="q-card" data-topic="branch">
+  <span class="q-num">15</span><span class="q-topic topic-branch">🌐 ต่างสำนักงาน</span>
+  <div class="q-text">ลูกค้ามาติดต่อที่สาขาเพื่อทำธุรกรรม แต่บัญชีอยู่ในสถานะ Unclaimed พนักงานต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>A. ปฏิเสธการทำรายการทุกกรณี</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>B. ทำธุรกรรมได้ทันที เพราะลูกค้ามาติดต่อ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q15"><span>C. ต้องเปลี่ยนสถานะจาก Unclaimed เป็น Active ก่อน จึงจะทำธุรกรรมได้</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q15"><span>D. แจ้งให้ลูกค้ารอ 30 วัน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e15')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e15"><strong>คำตอบ: C</strong><br>พนักงานผู้รับมอบอำนาจต้อง<b>เปลี่ยนสถานะจาก Unclaimed เป็น Active ก่อน</b> จึงจะทำธุรกรรมตามปกติได้ (ระบบจะแสดง Restriction ที่หน้าจอเมื่อบัญชี Unclaimed)</div>
+</div>
+
+<!-- ===== อายัด (16-20) ===== -->
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">16</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">การอายัดบัญชีเงินฝาก — กรณี "ยอดเงินในบัญชีน้อยกว่าค่าสั่งอายัด" ต้องดำเนินการอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>A. ปฏิเสธคำสั่งอายัด เพราะยอดเงินไม่พอ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>B. อายัดเท่ากับค่าสั่ง โดยหักเงินจากบัญชีอื่นทดแทน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q16"><span>C. หักเงินเท่าที่เหลือทั้งหมด + ส่งแคชเชียร์เช็ค A/C Payee Only + ถ้ามีเงินโอนเข้าภายหลัง ให้แจ้งหน่วยงานดำเนินการต่อ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q16"><span>D. ขอคำสั่งใหม่จากหน่วยงาน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e16')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e16"><strong>คำตอบ: C</strong><br>กรณียอดเงิน &lt; ค่าสั่งอายัด → <b>หักเงินเท่าที่เหลือทั้งหมด</b> + ส่ง<b>แคชเชียร์เช็ค A/C Payee Only</b> · ถ้ามีเงินโอนเข้าภายหลัง → แจ้งหน่วยงานดำเนินการต่อ</div>
+</div>
+
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">17</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">การอายัด "สลากออมทรัพย์ที่เป็นหลักประกันเงินกู้กับธนาคาร" — ธนาคารต้องดำเนินการอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>A. ถอนสลากนำส่งหน่วยงานทันที</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q17"><span>B. ธนาคารมีสิทธิได้รับชำระหนี้ก่อน อายัดสลากไว้แต่ยังไม่นำส่งเงินจนกว่าจะพ้นภาระ + แจ้งเหตุผลให้หน่วยงานทราบ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>C. คืนสลากให้ลูกค้าทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q17"><span>D. แจ้งลูกค้าให้ชำระหนี้ทั้งหมดก่อน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e17')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e17"><strong>คำตอบ: B</strong><br>สลากเป็นหลักประกันกับธนาคาร → <b>ธนาคารมีสิทธิได้รับชำระหนี้ก่อน</b> · อายัดสลากไว้แต่ยังไม่นำส่งเงินจนกว่าจะพ้นภาระ + แจ้งเหตุผลให้หน่วยงานทราบ</div>
+</div>
+
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">18</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">ขั้นตอนการ "ยกเลิกการอายัด" — ขั้นตอนที่ 3 ("สอบทาน") กำหนดให้ใครเป็นผู้สอบทาน และต้องไม่เป็นใคร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>A. พนักงานชั้น ก (คนเดียวกับผู้บันทึก) เพื่อความรวดเร็ว</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q18"><span>B. พนักงานชั้น ก (คนที่ 2) ที่ไม่ใช่ผู้บันทึกในขั้นตอนที่ 2</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>C. พนักงานระดับฝ่ายการเงิน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q18"><span>D. ผู้จัดการสาขา</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e18')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e18"><strong>คำตอบ: B</strong><br>ขั้นที่ 3 สอบทาน ทำโดย<b>พนักงานชั้น ก (คนที่ 2)</b> ที่<b>ไม่ใช่ผู้บันทึกในขั้นตอนที่ 2</b> (หลักการ "สี่ตา" ป้องกันคนเดียวทำครบทุกขั้น)</div>
+</div>
+
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">19</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">ข้อควรระวังในการอายัด — ข้อใด "ถูกต้อง"?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>A. ปิดบัญชีที่ถูกอายัดได้ หากลูกค้ามาขอปิด</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q19"><span>B. ห้ามปิดบัญชีที่ถูกอายัดโดยเด็ดขาด (ยกเว้นปิดโดยระบบอัตโนมัติ หรือมีคำสั่งระบุชัดเจน)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>C. ลูกค้าสามารถถอนเงินบางส่วนได้ หากยอดคงเหลือมากพอ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q19"><span>D. พนักงานสามารถปลดการอายัดใน WebCSR ได้ หากครบกำหนด 30 วัน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e19')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e19"><strong>คำตอบ: B</strong><br>ข้อควรระวัง 3 ข้อ: ① <b>ห้ามปิดบัญชี</b>ที่ถูกอายัด ② <b>ห้ามลูกค้าเคลื่อนไหวบัญชี</b> (โดยเฉพาะถอน) ③ <b>ห้ามปลดการอายัดใน WebCSR</b> โดยไม่มีหนังสือจากหน่วยงานที่มีอำนาจ</div>
+</div>
+
+<div class="q-card" data-topic="freeze">
+  <span class="q-num">20</span><span class="q-topic topic-freeze">🔒 อายัด</span>
+  <div class="q-text">หน่วยงานในข้อใดต่อไปนี้ที่ "มีอำนาจเฉพาะขอข้อมูลบัญชี" เท่านั้น (ไม่มีอำนาจยึด/อายัด)?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>A. กรมสอบสวนคดีพิเศษ (DSI)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>B. สำนักงานบังคับคดี</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q20"><span>C. สำนักงานตรวจคนเข้าเมือง (สตม.)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q20"><span>D. กรมสรรพากร</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e20')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e20"><strong>คำตอบ: C</strong><br>จาก 21 หน่วยงาน — มี 2 หน่วยงานที่มีอำนาจเฉพาะ "ขอข้อมูลบัญชี" ได้แก่ <b>สำนักงานตรวจคนเข้าเมือง (สตม.)</b> และ<b>ส่วนราชการ (สอบสวนวินัยอย่างร้ายแรง)</b> · ส่วน DSI/สำนักงานบังคับคดี/กรมสรรพากรมีอำนาจยึด/อายัดด้วย</div>
+</div>
+
+<!-- ===== ปิดบัญชี (21-25) ===== -->
+<div class="q-card" data-topic="close">
+  <span class="q-num">21</span><span class="q-topic topic-close">🚪 ปิดบัญชี</span>
+  <div class="q-text">การปิดบัญชีเงินฝากมีกี่ประเภท และต้องทำผ่านระบบใดเท่านั้น?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q21"><span>A. 3 ประเภท · ผ่านระบบ WebCSR</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q21"><span>B. 5 ประเภท · ผ่านระบบ PDTeller เท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q21"><span>C. 7 ประเภท · ผ่านระบบ FMIS</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q21"><span>D. 4 ประเภท · ผ่านระบบ KYM</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e21')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e21"><strong>คำตอบ: B</strong><br>การปิดบัญชีมี <b>5 ประเภท</b>: เจ้าของ / มอบอำนาจ / ธนาคาร / ศาล / ผู้อนุบาล · <b>ต้องทำผ่านระบบ PDTeller เท่านั้น</b> · ห้ามแก้ไขสถานะเป็น "Closed" ใน WebCSR โดยเด็ดขาด</div>
+</div>
+
+<div class="q-card" data-topic="close">
+  <span class="q-num">22</span><span class="q-topic topic-close">🚪 ปิดบัญชี</span>
+  <div class="q-text">หนังสือมอบอำนาจในการปิดบัญชี ต้องปิดอากรแสตมป์เท่าใด หาก "กระทำการมากกว่า 1 ครั้ง"?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q22"><span>A. 5 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q22"><span>B. 10 บาท</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q22"><span>C. 30 บาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q22"><span>D. 50 บาท</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e22')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e22"><strong>คำตอบ: C</strong><br>ปิดอากรแสตมป์ตามประมวลรัษฎากร: <b>10 บาท</b> = กระทำการครั้งเดียว · <b>30 บาท</b> = กระทำการมากกว่า 1 ครั้ง</div>
+</div>
+
+<div class="q-card" data-topic="close">
+  <span class="q-num">23</span><span class="q-topic topic-close">🚪 ปิดบัญชี</span>
+  <div class="q-text">การปิดบัญชี "โดยธนาคาร" — ขั้นตอนที่ 2 (การแจ้งเตือนล่วงหน้า) ต้องส่งหนังสือขอความร่วมมือล่วงหน้าอย่างน้อยกี่วัน?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q23"><span>A. 7 วัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q23"><span>B. 15 วัน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q23"><span>C. 30 วัน</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q23"><span>D. 60 วัน</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e23')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e23"><strong>คำตอบ: C</strong><br>ขั้นที่ 2 การแจ้งเตือนล่วงหน้า ส่งหนังสือขอความร่วมมือฯ ล่วงหน้า <b>อย่างน้อย 30 วัน</b> (ไปรษณีย์ลงทะเบียนตอบรับ)</div>
+</div>
+
+<div class="q-card" data-topic="close">
+  <span class="q-num">24</span><span class="q-topic topic-close">🚪 ปิดบัญชี</span>
+  <div class="q-text">หากลูกค้าไม่มาติดต่อตามแจ้งเตือน — ธนาคารปิดบัญชีและโอนเงินเข้าบัญชีใด (ใช้รหัสบัญชีอะไร)?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q24"><span>A. บัญชีลูกหนี้รอการชดใช้ (รหัส 18009003)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q24"><span>B. บัญชีเจ้าหนี้รอดำเนินการ (รหัส 21505002)</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q24"><span>C. บัญชีเจ้าหนี้รอจ่ายคืนลูกค้า (รหัส 23507007)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q24"><span>D. บัญชีรายได้เบ็ดเตล็ด (รหัส 43101001)</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e24')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e24"><strong>คำตอบ: C</strong><br>หากลูกค้าไม่มาติดต่อ → ปิดบัญชี + พิมพ์ Statement + <b>โอนเงินเข้า "บัญชีเจ้าหนี้รอจ่ายคืนลูกค้า" (รหัส 23507007)</b> + ส่งหนังสือแจ้งปิดบัญชี</div>
+</div>
+
+<div class="q-card" data-topic="close">
+  <span class="q-num">25</span><span class="q-topic topic-close">🚪 ปิดบัญชี</span>
+  <div class="q-text">กรณีลูกค้าถูกศาลสั่งพิทักษ์ทรัพย์ และต้องการปิดบัญชี — เอกสารที่ต้องใช้คือข้อใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q25"><span>A. คำสั่งศาล + บัตรประชาชนลูกค้า</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q25"><span>B. แบบหนังสือคำสั่งศาล หรือหนังสือแจ้งตั้งผู้ชำระบัญชี + ดำเนินการตามขั้นตอนการปิดบัญชี</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q25"><span>C. หนังสือมอบอำนาจจากลูกค้า</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q25"><span>D. บัตรประชาชนญาติ</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e25')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e25"><strong>คำตอบ: B</strong><br>กรณีถูกศาลสั่งพิทักษ์ทรัพย์ / บุคคลล้มละลาย / เลิกกิจการ → ใช้<b>แบบหนังสือคำสั่งศาล</b> หรือ<b>หนังสือแจ้งตั้งผู้ชำระบัญชี</b> และดำเนินการตามขั้นตอน (ผู้มีอำนาจอนุมัติ = พนักงานผู้รับมอบอำนาจ ชั้น ก)</div>
+</div>
+
+<!-- ===== จ่ายคืน (26-30) ===== -->
+<div class="q-card" data-topic="refund">
+  <span class="q-num">26</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">กรณีลูกค้า "ล้มละลาย" — ผู้มีสิทธิขอรับเงินฝากแทนเป็นใคร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q26"><span>A. ทายาทโดยธรรม</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q26"><span>B. เจ้าพนักงานพิทักษ์ทรัพย์เท่านั้น</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q26"><span>C. ผู้จัดการมรดก</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q26"><span>D. ลูกค้าร่วมในบัญชีร่วม</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e26')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e26"><strong>คำตอบ: B</strong><br>ลูกค้าล้มละลาย → <b>เจ้าพนักงานพิทักษ์ทรัพย์</b>เป็นผู้มีอำนาจขอรับเงินฝากแทน <b>เท่านั้น</b> (ต่างจากกรณีตายที่ทายาท/ผู้จัดการมรดก/ลูกค้าร่วมมีสิทธิ)</div>
+</div>
+
+<div class="q-card" data-topic="refund">
+  <span class="q-num">27</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">อำนาจอนุมัติจ่ายเงินให้ทายาทที่เกิน 1,000,000 บาท — เงื่อนไขคืออะไร และผู้อนุมัติระดับใด?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q27"><span>A. ใช้ผู้ค้ำประกัน 2 คน · ผู้จัดการสาขาอนุมัติ</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q27"><span>B. ต้องใช้คำสั่งศาลแต่งตั้งผู้จัดการมรดกเท่านั้น · พนักงานผู้รับมอบอำนาจชั้น ก</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q27"><span>C. ใช้หนังสือยินยอมทายาท · พนักงานชั้น ก</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q27"><span>D. ใช้ใบมรณบัตรอย่างเดียว · ผู้จัดการสาขา</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e27')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e27"><strong>คำตอบ: B</strong><br>อนุมัติจ่ายทายาทโดยธรรม: <b>เกิน 1,000,000 บาท</b> → ต้องใช้<b>คำสั่งศาลแต่งตั้งผู้จัดการมรดกเท่านั้น</b> · ผู้อนุมัติ = <b>พนักงานผู้รับมอบอำนาจ ชั้น ก</b> (จำง่าย: วงเงินเกิน 1 ล้าน ใช้ศาลอย่างเดียว)</div>
+</div>
+
+<div class="q-card" data-topic="refund">
+  <span class="q-num">28</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">กรณีบัญชีร่วมที่ผู้ฝากร่วม "ล้มละลาย" — ใครต้องลงลายมือชื่อร่วมกันในการถอนเงินเพื่อปิดบัญชี?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q28"><span>A. ผู้จัดการมรดกของผู้ฝากร่วมคนที่ล้มละลาย</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q28"><span>B. ลูกค้าร่วมทุกคน</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q28"><span>C. เจ้าพนักงานพิทักษ์ทรัพย์ และลูกค้าร่วมคนอื่นๆ</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q28"><span>D. ลูกค้าร่วมคนเดียวที่ยังไม่ล้มละลาย</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e28')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e28"><strong>คำตอบ: C</strong><br>บัญชีร่วมล้มละลาย → <b>เจ้าพนักงานพิทักษ์ทรัพย์</b> (ตัวแทนผู้ล้มละลาย) และ<b>ลูกค้าร่วมคนอื่นๆ</b> ต้อง<b>ลงลายมือชื่อร่วมกัน</b> (ไม่ใช่ผู้จัดการมรดก เพราะล้มละลายไม่ใช่ตาย)</div>
+</div>
+
+<div class="q-card" data-topic="refund">
+  <span class="q-num">29</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">กรณีลูกค้าชาวต่างชาติ (มีถิ่นพำนักนอกประเทศ) เสียชีวิต และไม่สามารถปฏิบัติตามระเบียบธนาคารฉบับที่ 14 ได้ — สาขาต้องปฏิบัติอย่างไร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q29"><span>A. ปฏิเสธการจ่ายคืนทันที</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q29"><span>B. จ่ายคืนตามประเพณีท้องถิ่น</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q29"><span>C. ทำบันทึกหารือมายังสำนักงานใหญ่ เพื่อพิจารณาให้ความเห็นชอบเป็นราย ๆ ไป</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q29"><span>D. โอนเงินเข้าบัญชีเจ้าหนี้รอจ่ายทันที</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e29')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e29"><strong>คำตอบ: C</strong><br>กรณีไม่สามารถปฏิบัติตามระเบียบฯ ได้ → ให้สาขาทำ<b>บันทึกหารือ</b>มายัง<b>สำนักงานใหญ่</b> เพื่อพิจารณาให้ความเห็นชอบ<b>เป็นราย ๆ ไป</b></div>
+</div>
+
+<div class="q-card" data-topic="refund">
+  <span class="q-num">30</span><span class="q-topic topic-refund">🕊️ จ่ายคืน</span>
+  <div class="q-text">กรณีพระภิกษุสึกจากสมณเพศ — เงินฝากที่ฝากไว้ "ก่อนอุปสมบท" จะถูกจ่ายคืนให้ใคร?</div>
+  <div class="q-opts">
+    <label onclick="check(this,false)"><input type="radio" name="q30"><span>A. วัดที่เป็นภูมิลำเนา</span></label>
+    <label onclick="check(this,true)"><input type="radio" name="q30"><span>B. ทายาท</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q30"><span>C. ผู้สึก (พระภิกษุที่ลาสิกขา)</span></label>
+    <label onclick="check(this,false)"><input type="radio" name="q30"><span>D. ตัวแทนวัด</span></label>
+  </div>
+  <button class="q-btn" onclick="toggleExplain('e30')">📖 ดูคำอธิบาย</button>
+  <div class="explain" id="e30"><strong>คำตอบ: B</strong><br>กรณีฝาก<b>ก่อนอุปสมบท</b> เงินนั้นเป็นทรัพย์สินส่วนบุคคล (ไม่ใช่สมบัติของวัด) → จ่ายคืน<b>ทายาท</b> · ส่วนที่ฝาก<b>หลัง</b>อุปสมบท (ขณะเป็นพระ) = สมบัติของ<b>วัด</b></div>
+</div>
+
+</div><!-- /container -->
+
+<div class="score-bar" id="scoreBar">
+  ✅ ทำไปแล้ว <span id="answeredCount">0</span>/30 ข้อ |
+  ถูก <span id="correctCount" style="color:#4caf50">0</span> ข้อ |
+  ผิด <span id="wrongCount" style="color:#ef5350">0</span> ข้อ
+</div>
+
+<div class="footer">
+  📚 เนื้อหาจากสไลด์ "การปฏิบัติงานด้านเงินฝาก" — สรุป 39 หน้า<br>
+  🎯 ศูนย์เตรียมสอบ ผช.ผจข. Genius 9
+</div>
+
+<script>
+let correct=0, wrong=0, answered=0;
+const answeredSet = new Set();
+
+function check(el, isCorrect) {
+  const card = el.closest('.q-card');
+  const name = el.querySelector('input').name;
+  if (answeredSet.has(name)) return;
+  answeredSet.add(name);
+  
+  const opts = card.querySelectorAll('.q-opts label');
+  opts.forEach(o => {
+    o.style.pointerEvents = 'none';
+    if (o === el) {
+      o.classList.add(isCorrect ? 'correct' : 'wrong');
+    }
+  });
+  
+  if (!isCorrect) {
+    opts.forEach(o => {
+      if (o.querySelector('input').name === name && o.onclick && o.onclick.toString().includes('true')) {
+        o.classList.add('show-correct');
+      }
+    });
+  }
+  
+  answered++;
+  if (isCorrect) correct++; else wrong++;
+  
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('scoreBar').style.display = 'block';
+}
+
+function toggleExplain(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function filterTab(topic) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.q-card').forEach(card => {
+    if (topic === 'all' || card.dataset.topic === topic) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+<style>
+.back-home {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(19, 29, 51, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Noto Sans Thai','Sarabun',sans-serif;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.back-home:hover {
+  background: rgba(29, 39, 64, 0.95);
+  border-color: rgba(212,148,47,0.3);
+  color: #e8b84f;
+  transform: translateY(-1px);
+}
+.back-home svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.back-home:hover svg { transform: translateX(-2px); }
+</style>
+<a href="index.html" style="color:#94a3b8">
+  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"/></svg>
+  กลับหน้าหลัก
+</a>
+&nbsp;|&nbsp;
+<a href="deposit-practice.html" style="color:#fbbf24">📖 อ่านสรุปเนื้อหา</a>
+
+<script src="study-ui.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>

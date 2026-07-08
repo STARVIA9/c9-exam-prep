@@ -1,0 +1,11 @@
+[1;36m[deploy][0m step 1/5: pre-check (HTML/JS validation, changed files only)
+[1;36m[check][0m checking index.html
+[1;32m  ✓[0m index.html: inline JS syntax OK (40 script blocks)
+[1;36m[check][0m checking deposit-practice.html
+[1;32m  ✓[0m deposit-practice.html: inline JS syntax OK (8 script blocks)
+[1;36m[check][0m checking deposit-quiz.html
+[1;32m  ✓[0m deposit-quiz.html: inline JS syntax OK (59 script blocks)
+
+[1;32m✅ pre-check OK[0m · 3 file(s) checked
+[1;32m  ✓[0m pre-check passed (3 file(s))
+[1;36m[deploy][0m step 2/5: commit local changes
