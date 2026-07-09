@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ บริหารความเสี่ยงและการควบคุมภายใน — RCSA + LOSS DATA + BCM | Genius 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--a:#f59e0b;--a2:#10b981;--a3:#3b82f6;--a4:#ef4444;--t:#f1f5f9;--t2:#94a3b8;--b:#475569}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Thai','Sarabun',sans-serif;background:var(--bg);color:var(--t);line-height:1.8;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:var(--s);border-bottom:1px solid var(--b);padding:10px 12px;display:flex;gap:3px;flex-wrap:wrap;align-items:center;overflow-x:auto}
+nav h1{font-size:13px;color:var(--a);margin-right:6px;white-space:nowrap}
+nav a{color:var(--t2);text-decoration:none;font-size:11px;padding:2px 6px;border-radius:4px;white-space:nowrap;transition:all .2s}
+nav a:hover{background:var(--s2);color:var(--a)}
+.ct{max-width:960px;margin:0 auto;padding:20px 12px 60px}
+.hero{text-align:center;padding:18px 12px 20px;border-bottom:2px solid var(--b);margin-bottom:22px}
+.hero h1{font-size:22px;color:var(--a);margin-bottom:4px}
+.hero p{color:var(--t2);font-size:13px}
+.badge{display:inline-block;margin:2px;padding:3px 10px;border-radius:14px;font-size:10px;font-weight:600}
+.badge.gold{background:#78350f;color:#fbbf24} .badge.blue{background:#1e3a5f;color:#60a5fa} .badge.green{background:#064e3b;color:#34d399} .badge.red{background:#7f1d1d;color:#fca5a5} .badge.purple{background:#3b0764;color:#c4b5fd}
+section{margin-bottom:20px}
+h2{font-size:18px;color:var(--a);border-left:4px solid var(--a);padding-left:10px;margin-bottom:10px}
+h3{font-size:15px;color:var(--a2);margin:10px 0 6px}
+h4{font-size:14px;color:var(--a3);margin:8px 0 4px}
+.c{background:var(--s);border:1px solid var(--b);border-radius:8px;padding:10px 12px;margin-bottom:6px;font-size:13px;line-height:1.7}
+.c.info{border-left:4px solid var(--a3)} .c.warn{border-left:4px solid var(--a4)} .c.tip{border-left:4px solid var(--a)} .c.ok{border-left:4px solid var(--a2)}
+table{width:100%;border-collapse:collapse;margin:6px 0;font-size:12px}
+th{background:var(--s2);color:var(--a);padding:5px 7px;text-align:left;font-weight:600}
+td{padding:5px 7px;border-bottom:1px solid var(--b)}
+tr:hover td{background:var(--s2)}
+ul,ol{padding-left:16px;margin:4px 0}
+li{margin-bottom:2px;font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+details{margin:6px 0;background:var(--s);border-radius:8px;border:1px solid var(--b);padding:4px 10px}
+details[open]{border-color:var(--a2)}
+summary{cursor:pointer;padding:6px 0;font-weight:600;color:var(--a3);font-size:13px}
+summary::before{content:"▶";color:var(--a);margin-right:6px;font-size:10px}
+details[open] summary::before{content:"▼"}
+.mnemo{background:#0f172a;border:1px solid var(--a);border-radius:8px;padding:8px 10px;margin:6px 0;font-size:12px;color:#fbbf24;text-align:center}
+.scenario{background:var(--s);border:1px dashed var(--a3);border-radius:8px;padding:8px 10px;margin:6px 0;font-size:12px;color:#93c5fd}
+.table-wrap{overflow-x:auto}
+.tag{display:inline-block;padding:1px 6px;border-radius:8px;font-size:10px;font-weight:600;margin:1px}
+.tag.r{background:#7f1d1d;color:#fca5a5}.tag.g{background:#064e3b;color:#34d399}.tag.b{background:#1e3a5f;color:#93c5fd}.tag.y{background:#78350f;color:#fbbf24}
+/* Quiz */
+.qz{padding:4px 0}
+.q{border:1px solid var(--b);background:var(--s);border-radius:8px;padding:10px;margin:6px 0}
+.q p{font-size:13px;margin-bottom:4px}
+.q label{display:block;font-size:12px;padding:2px 0;color:var(--t2);cursor:pointer}
+.q label:hover{color:var(--a)}
+.q .btn{background:var(--a);color:#0f172a;border:none;border-radius:5px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-top:4px}
+.q .btn:hover{opacity:.85}
+.rb.ok{color:#34d399;font-size:12px;padding:3px 0} .rb.no{color:#fca5a5;font-size:12px;padding:3px 0}
+.sc{margin:6px 0;font-size:13px;color:var(--t2)}
+.sc .btn{background:var(--a2);color:#0f172a;border:none;border-radius:5px;padding:3px 10px;font-size:11px;font-weight:600;cursor:pointer;margin-left:6px}
+footer{text-align:center;padding:16px;color:var(--t2);font-size:11px;border-top:1px solid var(--b);margin-top:20px}
+</style>
+  <script>
+/* Inline auth guard — apply site-locked ทันทีก่อน JS โหลด ป้องกัน content flash */
+(function(){
+  try {
+    if (localStorage.getItem('cg_auth_v1') !== '1') {
+      document.documentElement.classList.add('site-locked');
+    }
+  } catch(e){ document.documentElement.classList.add('site-locked'); }
+})();
+</script>
+<style>
+/* Site-wide auth gate: ซ่อนทุกอย่างเมื่อ html มี class site-locked */
+html.site-locked body { visibility: hidden !important; }
+html.site-locked body #site-login-overlay,
+html.site-locked body #site-content-cloak { visibility: visible !important; }
+</style>
+</head>
+<body>
+<nav>
+  <h1>🛡️ บริหารความเสี่ยงฯ</h1>
+  <a href="#s1">📋 RCSA</a>
+  <a href="#s2">📊 LOSS DATA</a>
+  <a href="#s3">🏢 BCM</a>
+  <a href="#qz">📝 ข้อสอบ</a>
+  <a href="index.html" style="margin-left:auto;color:var(--a)">⬅ กลับหน้าหลัก</a>
+</nav>
+<div class="ct">
+
+<div class="hero">
+  <h1>🛡️ การบริหารความเสี่ยงและการควบคุมภายใน</h1>
+  <p>RCSA · LOSS DATA · BCM — Risk Control Self Assessment, Operational Risk, Business Continuity Management</p>
+  <div>
+    <span class="badge gold">📋 RCSA</span>
+    <span class="badge blue">📊 LOSS DATA (7 ประเภท)</span>
+    <span class="badge green">🏢 BCM (9 เหตุการณ์)</span>
+    <span class="badge red">📝 ข้อสอบ 16 ข้อ</span>
+  </div>
+</div>
+
+
+<!-- ============ บทที่ 1: RCSA ============ -->
+<section id="s1">
+<h2>📋 ส่วนที่ 1: การประเมินความเสี่ยงและการควบคุมด้วยตนเอง (RCSA)</h2>
+
+<div class="c info">
+<b>📄 อ้างอิง:</b> PowerPoint ธ.ก.ส. — การบริหารความเสี่ยงและการควบคุมภายใน (RCSA + LOSS DATA + BCM) · คู่มือปฏิบัติงานการควบคุมภายใน 201.03
+</div>
+
+<h3>1.1 นิยามสำคัญ</h3>
+<div class="grid2">
+<div class="c ok">
+<b>RCSA</b> = Risk and Control Self-Assessment = กระบวนการที่พนักงานร่วมกันวิเคราะห์ความเสี่ยงที่มีผลกระทบต่อการดำเนินงาน ประเมินความเสี่ยงด้วยตนเอง และกำหนดมาตรการควบคุมเพิ่มเติม
+</div>
+<div class="c info">
+<b>KRI</b> = Key Risk Indicator = ตัวชี้วัดความเสี่ยง<br>
+<b>Risk Appetite</b> = ระดับความเสี่ยงที่ยอมรับได้<br>
+<b>Risk Tolerance</b> = ช่วงเบี่ยงเบนจากระดับที่ยอมรับได้
+</div>
+</div>
+
+<h3>1.2 องค์ประกอบการควบคุมภายใน 5 ด้าน (COSO 2013)</h3>
+<div class="c">
+1️⃣ <b>สภาพแวดล้อมการควบคุม</b> (Control Environment)<br>
+2️⃣ <b>การประเมินความเสี่ยง</b> (Risk Assessment)<br>
+3️⃣ <b>กิจกรรมการควบคุม</b> (Control Activities)<br>
+4️⃣ <b>สารสนเทศและการสื่อสาร</b> (Information and Communication)<br>
+5️⃣ <b>กิจกรรมการกำกับติดตามและประเมินผล</b> (Monitoring Activity)
+</div>
+
+<h3>1.3 ระดับความเสี่ยง (Risk Score)</h3>
+<div class="c warn">
+<b>สูตร:</b> ผลการประเมินความเสี่ยง = <b>Likelihood × Impact</b><br>
+<b>Risk Appetite (ยอมรับได้):</b> ระดับ 2 · <b>Risk Tolerance (เบี่ยงเบน):</b> ระดับ 4
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>ค่าความเสี่ยง</th><th>ระดับ</th></tr></thead>
+<tbody>
+<tr><td>5 – 9</td><td>ปานกลาง</td></tr>
+<tr><td>10 – 16</td><td>ค่อนข้างสูง</td></tr>
+<tr><td>17 – 25</td><td>สูง</td></tr>
+</tbody>
+</table></div>
+<div class="c warn">⚠️ <b>ความเสี่ยงเกินกว่าระดับที่ยอมรับได้</b> = ปานกลาง/ค่อนข้างสูง/สูง → <b>ต้องจัดทำแผน RCSA</b> เพื่อกำหนดมาตรการจัดการความเสี่ยง</div>
+
+<h3>1.4 การจัดการตอบสนองความเสี่ยง (4 ทางเลือก)</h3>
+<div class="grid2">
+<div class="c info">1️⃣ <b>Accept</b> = ยอมรับ</div>
+<div class="c ok">2️⃣ <b>Reduce</b> = ลด</div>
+<div class="c warn">3️⃣ <b>Transfer</b> = ถ่ายโอน</div>
+<div class="c tip">4️⃣ <b>Avoid</b> = หลีกเลี่ยง</div>
+</div>
+
+<h3>1.5 สิทธิ์ผู้ใช้งานระบบ BAAC Internal Control System</h3>
+<div class="c">
+<b>Operator (2 คน)</b> = พนักงานที่ได้รับมอบหมายให้ <b>บันทึก และแก้ไข</b>ข้อมูล<br>
+<b>Authorizer (2 คน)</b> = พนักงานที่ได้รับมอบหมายให้ <b>บันทึก แก้ไข แนบไฟล์เอกสาร และอนุมัติ</b>ข้อมูล
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>ส่วนงาน</th><th>Operator</th><th>Authorizer</th></tr></thead>
+<tbody>
+<tr><td>สาขา</td><td>ระดับ 4-8</td><td>ตั้งแต่ระดับ 9 ขึ้นไป</td></tr>
+<tr><td>สนจ./สกน.</td><td>ระดับ 4-9</td><td>ตั้งแต่ระดับ 10 ขึ้นไป</td></tr>
+<tr><td>ฝ่ายกิจการสาขาภาค</td><td>ระดับ 4-10</td><td>ตั้งแต่ระดับ 11 ขึ้นไป</td></tr>
+<tr><td>ส่วนงานสำนักงานใหญ่</td><td>ระดับ 4-10</td><td>ตั้งแต่ระดับ 11 ขึ้นไป</td></tr>
+</tbody>
+</table></div>
+
+<h3>1.6 คณะกรรมการบริหารความเสี่ยงฯ ระดับส่วนงาน</h3>
+<div class="c">
+<b>ประธาน:</b> ผอ.ฝ่าย / ผอ.สำนัก / ผอ.สนจ. / ผจก.สาขา (แล้วแต่ระดับ)<br>
+<b>กรรมการ:</b> พนักงานระดับ 8-12 (แล้วแต่ระดับส่วนงาน)<br>
+<b>เลขานุการ:</b> พนักงานที่ได้รับมอบหมาย
+</div>
+<div class="c info">💡 <b>กรณีประธานว่างลง</b> (โยกย้าย/เกษียณ) และอยู่ระหว่างแต่งตั้ง → <b>รองประธาน</b>ทำการแทน</div>
+
+<h3>1.7 ขั้นตอน RCSA 10 ขั้น</h3>
+<ol>
+<li>แต่งตั้งคณะกรรมการบริหารความเสี่ยงและควบคุมภายในระดับส่วนงาน</li>
+<li>รวบรวมข้อมูลเพื่อประเมินความเสี่ยง</li>
+<li>ประเมินความเสี่ยงและการควบคุมด้วยตนเอง (RCSA)</li>
+<li>บันทึกข้อมูล RCSA ของส่วนงาน</li>
+<li>อนุมัติข้อมูล RCSA</li>
+<li>ประเมินองค์ประกอบการควบคุมภายใน</li>
+<li>ติดตามผล/ประเมินความเสี่ยง</li>
+<li>บันทึกข้อมูลติดตามผลความเสี่ยง</li>
+<li>อนุมัติการประเมิน/ติดตามผล</li>
+<li>รายงานผลการดำเนินการสิ้นปีบัญชี</li>
+</ol>
+
+<h3>1.8 หลัก SMART ในการกำหนดวัตถุประสงค์</h3>
+<div class="grid2">
+<div class="c tip"><b>S</b> = Specific (เฉพาะเจาะจง)</div>
+<div class="c tip"><b>M</b> = Measurable (วัดผลได้)</div>
+<div class="c tip"><b>A</b> = Attainable (ทำได้จริง)</div>
+<div class="c tip"><b>R</b> = Relevant (สอดคล้องวิสัยทัศน์)</div>
+<div class="c tip"><b>T</b> = Timely (กำหนดเวลาชัดเจน)</div>
+</div>
+</section>
+
+
+<!-- ============ บทที่ 2: LOSS DATA ============ -->
+<section id="s2">
+<h2>📊 ส่วนที่ 2: ความเสี่ยงด้านปฏิบัติการ (LOSS DATA)</h2>
+
+<div class="c info">
+<b>Operational Risk</b> = ความเสี่ยงที่เกิดความเสียหายจากความไม่เพียงพอหรือบกพร่องของกระบวนการควบคุมภายใน บุคลากร ระบบงาน หรือเหตุการณ์ภายนอก<br>
+<b>ไม่รวม:</b> ความเสี่ยงด้านกลยุทธ์ (Strategic Risk) และความเสี่ยงด้านชื่อเสียง (Reputational Risk)
+</div>
+
+<h3>2.1 เครื่องมือบริหารความเสี่ยงด้านปฏิบัติการ (3 เครื่องมือ)</h3>
+<div class="grid2">
+<div class="c ok">1️⃣ <b>RCSA</b> = Risk Control Self-Assessment</div>
+<div class="c warn">2️⃣ <b>Loss Data</b> = รายงานเหตุการณ์ความเสียหาย</div>
+<div class="c info">3️⃣ <b>BCM</b> = Business Continuity Management</div>
+</div>
+
+<h3>2.2 ประเภทความเสียหายด้านปฏิบัติการ (7 ประเภท)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ประเภท</th><th>ภาษาอังกฤษ</th><th>ตัวอย่าง</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>การฉ้อโกงโดยบุคคลภายใน</td><td>Internal Fraud</td><td>ปลอมแปลงเอกสาร, ทำธุรกรรมโดยไม่ได้รับอนุญาต</td></tr>
+<tr><td>2</td><td>การฉ้อโกงโดยบุคคลภายนอก</td><td>External Fraud</td><td>มิจฉาชีพขโมยข้อมูล, ปลอมแปลงเช็ค, โจรกรรม</td></tr>
+<tr><td>3</td><td>แนวปฏิบัติการจ้างงานและความปลอดภัย</td><td>Employment Practices & Workplace Safety</td><td>พนักงานลื่นล้ม</td></tr>
+<tr><td>4</td><td>ลูกค้า ผลิตภัณฑ์ และการดำเนินธุรกิจ</td><td>Clients, Products & Business Practices</td><td>เสนอขายคุกคามลูกค้า, นำข้อมูลลับไปหาผลประโยชน์</td></tr>
+<tr><td>5</td><td>ความเสียหายต่อทรัพย์สิน</td><td>Damage to Physical Assets</td><td>อุบัติเหตุ, อัคคีภัย, จลาจล, ก่อวินาศภัย</td></tr>
+<tr><td>6</td><td>ธุรกิจหยุดชะงักและระบบขัดข้อง</td><td>Business Disruption & System Failures</td><td>ระบบงานหยุด, ไม่มีสาธารณูปโภค, ATM/CDM/PAM หยุด</td></tr>
+<tr><td>7</td><td>การส่งมอบและการจัดการกระบวนการ</td><td>Execution, Delivery & Process Management</td><td>เงินสดขาดเกินบัญชี, รายงานผิด, บันทึกข้อมูลผิด, นิติกรรมไม่สมบูรณ์</td></tr>
+</tbody>
+</table></div>
+<div class="mnemo">📌 <b>จำ 7 ประเภท:</b> 1.ฉ้อโกงใน 2.ฉ้อโกงนอก 3.จ้างงาน/ปลอดภัย 4.ลูกค้า/ผลิตภัณฑ์ 5.ทรัพย์สิน 6.หยุดชะงัก/ระบบ 7.ส่งมอบ/กระบวนการ</div>
+
+<h3>2.3 การบันทึก Loss Data</h3>
+<div class="c warn">
+<b>ระยะเวลาบันทึก:</b> ทันที หรือ <b>ไม่เกินวันที่ 10 ของเดือนถัดไป</b><br>
+<b>กรณีภัยธรรมชาติ</b> (ไฟไหม้/น้ำท่วม/แผ่นดินไหว/พายุ/จลาจล/ก่อวินาศภัย) → รายงานภายในวันทำการถัดไปหรือโอกาสแรกที่ทำได้<br>
+<b>กรณีไม่มีเหตุการณ์:</b> ต้องรายงาน "ไม่เกิดเหตุการณ์ความเสียหายประจำเดือน" เพื่อยืนยันการตรวจสอบ
+</div>
+
+<h3>2.4 เหตุการณ์ที่เกือบจะเกิดความเสียหาย (Near Miss)</h3>
+<div class="c info">
+<b>ตัวอย่าง Near Miss:</b><br>
+• แนบไฟล์การโอนเงินผิดคน แต่ผู้รับสังเกตเห็นและแจ้งแก้ไขทันก่อนบันทึกในระบบ<br>
+• พิมพ์ Statement ลูกค้าแล้วลืมทิ้งที่เครื่องพิมพ์ แต่นึกขึ้นได้รีบกลับไปหยิบ<br>
+• <b>พนักงานการเงินตรวจพบธนบัตรปลอมก่อนรับฝากเงินจากลูกค้า</b><br>
+• บันทึกโอนเงินผิดบัญชี แต่ดึงเงินคืนได้ทัน (องค์กรไม่เสียเงิน แต่กระบวนการล่าช้า)
+</div>
+
+<h3>2.5 สถานะเหตุการณ์ในระบบ Loss Data (3 ประเภท)</h3>
+<div class="c">
+1️⃣ <b>ระหว่างการสอบสวน</b><br>
+2️⃣ <b>อยู่ระหว่างการเรียกคืนค่าเสียหาย</b><br>
+3️⃣ <b>ดำเนินการแล้วเสร็จ</b>
+</div>
+<div class="c warn">⚠️ <b>"อยู่ระหว่างดำเนินการ"</b> ไม่ใช่สถานะในระบบ Loss Data</div>
+
+<h3>2.6 รายงานที่ต้องจัดทำ</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>รายงาน</th><th>ความถี่</th><th>ผู้รับผิดชอบ</th><th>นำเสนอต่อ</th></tr></thead>
+<tbody>
+<tr><td>BCM</td><td>รายปี</td><td>บส.</td><td>คณะกรรมการ BCM</td></tr>
+<tr><td>Loss Data</td><td>รายไตรมาส</td><td>บส.</td><td>ผอ.บส.</td></tr>
+<tr><td>สอบทานการปฏิบัติตามกฎเกณฑ์</td><td>รายไตรมาส</td><td>ธป.</td><td>คณะกรรมการกำกับและติดตามฯ</td></tr>
+</tbody>
+</table></div>
+</section>
+
+
+<!-- ============ บทที่ 3: BCM ============ -->
+<section id="s3">
+<h2>🏢 ส่วนที่ 3: การบริหารความต่อเนื่องทางธุรกิจ (BCM)</h2>
+
+<h3>3.1 นิยามสำคัญ</h3>
+<div class="grid2">
+<div class="c ok">
+<b>BCMS</b> = Business Continuity Management System = ระบบการบริหารความต่อเนื่องทางธุรกิจ
+</div>
+<div class="c info">
+<b>BCM</b> = แนวทางกำหนดนโยบาย มาตรฐาน กระบวนการ เพื่อให้มั่นใจว่าเมื่อเกิดเหตุหยุดชะงัก ธุรกรรมสำคัญจะดำเนินต่อได้
+</div>
+</div>
+<div class="c">
+<b>BCP</b> (Business Continuity Plan) = แผนงานลายลักษณ์อักษรกำหนดขั้นตอนเรียกคืนการดำเนินงานกลับสู่สภาวะปกติ<br>
+<b>IMP</b> (Incident Management Plan) = แผนจัดการอุบัติการณ์ เพื่อเป็นแนวทางตอบสนองเมื่อเกิดอุบัติการณ์ (ระงับเหตุเบื้องต้น)<br>
+<b>BRP</b> (Business Recovery Plan) = แผนฟื้นฟูสู่สภาวะปกติหลังเกิดอุบัติการณ์
+</div>
+
+<h3>3.2 คำศัพท์ BCM สำคัญ</h3>
+<div class="c">
+<b>RTO</b> (Recovery Time Objectives) = ระยะเวลาที่ยอมให้กระบวนการปฏิบัติงานหยุดชะงักได้<br>
+<b>Alternate Sites</b> = ศูนย์ปฏิบัติงานสำรอง (สถานที่ทดแทน)<br>
+<b>ทีมจัดการเหตุฉุกเฉินสาขา</b> = ทีมตอบสนอง/ระงับเหตุฉุกเฉินเพื่อให้ธุรกรรมกลับมาให้บริการเร็วที่สุด<br>
+<b>ทีมปฏิบัติงาน BCP</b> = ทีมที่เดินทางไปปฏิบัติงานที่ศูนย์สำรองเมื่อเกิดเหตุฉุกเฉิน
+</div>
+
+<h3>3.3 เหตุการณ์สภาวะวิกฤติ (9 เหตุการณ์)</h3>
+<div class="c warn">⚠️ <b>ธนาคารกำหนด 9 เหตุการณ์สภาวะวิกฤติ</b> ในแผน BCP</div>
+<ol>
+<li>ระบบเครือข่ายเทคโนโลยีสารสนเทศขัดข้อง</li>
+<li>สาธารณูปโภคหยุดชะงัก</li>
+<li>น้ำท่วมหรือพายุลมแรง</li>
+<li>เพลิงไหม้</li>
+<li>แผ่นดินไหว</li>
+<li>โรคระบาด</li>
+<li>เหตุไม่สงบในสังคม</li>
+<li>โจรกรรมหรือปล้นทรัพย์สินธนาคาร</li>
+<li>มลพิษทางอากาศ</li>
+</ol>
+<div class="mnemo">📌 <b>จำ:</b> 9 เหตุการณ์ — IT/สาธารณูปโภค/น้ำท่วม/ไฟ/แผ่นดินไหว/โรคระบาด/ไม่สงบ/โจรกรรม/มลพิษ</div>
+
+<h3>3.4 ทรัพยากรสำคัญ 7 ด้าน</h3>
+<div class="c">
+1️⃣ บุคลากร · 2️⃣ คู่มือปฏิบัติงาน · 3️⃣ ข้อมูลและสารสนเทศ · 4️⃣ อาคารสำนักงาน · 5️⃣ อุปกรณ์อำนวยความสะดวก · 6️⃣ ระบบเทคโนโลยีสารสนเทศและการสื่อสาร · 7️⃣ องค์กรคู่ค้าและผู้ให้บริการภายนอก
+</div>
+
+<h3>3.5 การฝึกซ้อม BCM 5 รูปแบบ</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ประเภท</th><th>รายละเอียด</th><th>ข้อเสีย</th></tr></thead>
+<tbody>
+<tr><td><b>Checklist</b></td><td>ตรวจสอบแผน คู่มือ เอกสาร</td><td>ไม่มีการวัดประสิทธิผล</td></tr>
+<tr><td><b>Structured Walk Through</b></td><td>ประชุมแลกเปลี่ยน + จำลองโจทย์</td><td>วัดผลได้น้อย</td></tr>
+<tr><td><b>Simulation</b> ⭐</td><td>จำลองเสมือนจริง มี Call Tree อพยพไปศูนย์สำรอง ทดลองใช้ทรัพยากร</td><td>ขั้นตอนย่อยมีความแตกต่าง</td></tr>
+<tr><td><b>Parallel</b></td><td>ฝึกซ้อมคู่ขนาน ปฏิบัติจริงเต็มรูปแบบที่ศูนย์สำรอง</td><td>ค่าใช้จ่ายสูง ใช้เวลามาก</td></tr>
+<tr><td><b>Full Interruption</b></td><td>ปิดระบบงานหลักจริง ไปใช้ระบบสำรอง</td><td>ค่าใช้จ่ายสูง มีความเสี่ยงสูง</td></tr>
+</tbody>
+</table></div>
+<div class="c ok">⭐ <b>ธนาคารกำหนดให้ฝึกซ้อมแบบ Simulation</b> — เลือกภัยคุกคามที่ประเมินความเสี่ยงสูงสุด 1 ภัยคุกคาม โดย<b>ต้องไม่ซ้ำกับ 1 ปีที่ผ่านมา</b></div>
+
+<h3>3.6 การทบทวน BCM Committee ปีบัญชี 2569</h3>
+<div class="c">
+<b>ครั้งที่ 1:</b> ภายใน 30 มิ.ย. 69 (ฝสข./สนจ./สาขา ทบทวนคำสั่ง Committee)<br>
+<b>ครั้งที่ 2:</b> ภายใน 30 พ.ย. 69<br>
+<b>ฝึกซ้อมอย่างน้อยปีละ 1 ครั้ง</b> ภายใน 30 ก.ย. 69
+</div>
+</section>
+
+
+<!-- ============ QUIZ ============ -->
+<section id="qz">
+<h2>📝 แบบทดสอบ 16 ข้อ</h2>
+<div class="c info">ทำทีละข้อ กด "ตรวจ" เพื่อดูเฉลย + คะแนนสะสม · <b>RCSA 5 ข้อ + LOSS DATA 6 ข้อ + BCM 5 ข้อ</b></div>
+<div class="sc" id="score-bar">คะแนน: <span id="score-display">0</span> / 16 <button class="btn" onclick="resetQuiz()">🔄 ทำใหม่</button></div>
+<div id="qz-container" class="qz"></div>
+</section>
+
+
+<footer>🐶✨ สรุปโดย คาร่า — 9 ก.ค. 2569 · อ้างอิงจาก PowerPoint ธ.ก.ส. (71 หน้า) · <a href="index.html" style="color:#f59e0b">⬅ กลับหน้าหลัก</a></footer>
+</div>
+  <script src="auth.js" defer></script>
+<script>
+const Q = [{'q': 'พนักงานผู้ที่ได้รับมอบหมายให้สามารถบันทึก แก้ไข แนบไฟล์เอกสาร และอนุมัติข้อมูลในระบบ BAAC Internal Control System คือใคร', 'c': ['Operator', 'Viewer', 'Authorizer', 'Administrator'], 'a': 2}, {'q': 'กรณีประธานคณะกรรมการบริหารความเสี่ยงและการควบคุมภายในของส่วนงานได้ว่างลง เช่น โยกย้าย เกษียณ เป็นต้น และธนาคารอยู่ระหว่างแต่งตั้ง ให้ผู้ใดทำการแทน', 'c': ['รองประธานคณะกรรมการบริหารความเสี่ยงและการควบคุมภายในของส่วนงาน', 'ผู้ช่วยประธานคณะกรรมการบริหารความเสี่ยงและการควบคุมภายในของส่วนงาน', 'คนที่ประธานฯ แต่งตั้งไว้', 'ถูกทั้งข้อ ก. และ ข.'], 'a': 0}, {'q': 'ระดับความเสี่ยงใดที่ธนาคารกำหนดให้เป็นระดับความเสี่ยงที่เกินกว่าระดับที่ยอมรับได้ และต้องนำไปจัดทำแผน RCSA เพื่อกำหนดมาตรการจัดการความเสี่ยง', 'c': ['ระดับความเสี่ยงค่อนข้างต่ำ ปานกลาง สูง', 'ระดับความเสี่ยงต่ำ ปานกลาง ค่อนข้างสูง', 'ระดับความเสี่ยงปานกลาง ค่อนข้างสูง สูง', 'ระดับความเสี่ยงค่อนข้างสูง สูง สูงมาก'], 'a': 2}, {'q': 'การประเมินความเสี่ยงและควบคุมด้วยตนเอง (RCSA) ผลการประเมินความเสี่ยงคำนวณมาจากปัจจัยใด', 'c': ['ระดับปัจจัยเสี่ยง (Risk Factor) คูณ ระดับผลกระทบ (Impact)', 'ระดับโอกาส (Likelihood) คูณ ระดับผลกระทบ (Impact)', 'ระดับความเสี่ยง (Risk Score) คูณ ระดับโอกาส (Likelihood)', 'ระดับผลกระทบ (Impact) คูณ ระดับปัจจัยเสี่ยง (Risk Factor)'], 'a': 1}, {'q': 'ธนาคารกำหนดระดับความเสี่ยงที่ยอมรับได้ (Risk Appetite) และกำหนดช่วงระดับความคลาดเคลื่อนหรือเบี่ยงเบน (Risk Tolerance) จากระดับความเสี่ยงที่ยอมรับได้ อยู่ที่ระดับใด', 'c': ['ระดับที่ยอมรับได้ ระดับ 1 และระดับความเสี่ยงเบี่ยงเบนจากที่ยอมรับได้ ระดับ 2', 'ระดับที่ยอมรับได้ ระดับ 1 และระดับความเสี่ยงเบี่ยงเบนจากที่ยอมรับได้ ระดับ 3', 'ระดับที่ยอมรับได้ ระดับ 2 และระดับความเสี่ยงเบี่ยงเบนจากที่ยอมรับได้ ระดับ 3', 'ระดับที่ยอมรับได้ ระดับ 2 และระดับความเสี่ยงเบี่ยงเบนจากที่ยอมรับได้ ระดับ 4'], 'a': 3}, {'q': 'การบันทึกข้อมูลความเสียหายด้านปฏิบัติการ (Loss Data) ธนาคารกำหนดให้บันทึกและอนุมัติข้อมูลภายในวันที่เท่าใดของเดือนถัดไป', 'c': ['วันที่ 5 ของเดือนถัดไป', 'วันที่ 10 ของเดือนถัดไป', 'วันที่ 15 ของเดือนถัดไป', 'ภายในสิ้นเดือนของเดือนถัดไป'], 'a': 1}, {'q': 'เหตุการณ์ใดต้องบันทึกความเสียหายในระบบ Loss Data', 'c': ['ลูกค้าทำเงินหายบริเวณหน้าที่ทำการสาขา', 'อุบัติเหตุรถจักรยานยนต์เฉี่ยวชนบริเวณหน้าที่ทำการสาขา', 'การหยุดชะงักของ ATM CDM PAM', 'การจัดประชุมรวมพนักงานประจำเดือน'], 'a': 2}, {'q': 'ข้อใดเป็นลักษณะความเสียหายจากแนวปฏิบัติที่เกี่ยวกับลูกค้า ผลิตภัณฑ์และการดำเนินธุรกิจ (Clients, Products and Business Practices)', 'c': ['การบันทึกข้อมูลลูกค้าไม่ถูกต้อง', 'การจัดทำนิติกรรมสัญญา หรือเอกสารทางกฎหมายไม่ถูกต้อง', 'การนำข้อมูลความลับของลูกค้าไปหาผลประโยชน์', 'การถูกมิจฉาชีพขโมยข้อมูลจนเกิดความเสียหายเป็นตัวเงิน'], 'a': 2}, {'q': 'กรณีเงินสดขาดเกินบัญชี หรือ การที่ไม่สามารถปฏิบัติงานได้ตามกำหนดเวลาหรือตามหน้าที่ที่ได้รับมอบหมาย จัดเป็นความเสียหายด้านปฏิบัติการ (Type of Operational Risk) ประเภทใด', 'c': ['ความเสียหายจากการปฏิบัติการส่งมอบ และการจัดการกระบวนการ (Execution, Delivery and Process Management)', 'ความเสียหายจากการฉ้อโกงโดยบุคคลภายใน (Internal Fraud)', 'ความเสียหายต่อทรัพย์สิน (Damage to Physical Assets)', 'ความเสียหายจากการที่ธุรกิจหยุดชะงักและระบบงานขัดข้อง โดยไม่สามารถใช้งานได้ตามปกติ (Business Disruption and System Failures)'], 'a': 0}, {'q': 'ข้อใดไม่ใช่สถานะเหตุการณ์ ที่ระบุสถานการณ์ดำเนินการของเหตุการณ์ในระบบ Loss Data', 'c': ['อยู่ระหว่างการสอบสวน', 'อยู่ระหว่างการเรียกคืนค่าเสียหาย', 'อยู่ระหว่างดำเนินการ', 'ดำเนินการแล้วเสร็จ'], 'a': 2}, {'q': 'เหตุการณ์ใดที่เป็นเหตุการณ์ที่เกือบจะเกิดความเสียหาย (Near Miss)', 'c': ['พนักงานการเงินลื่นล้ม และรีบไปโรงพยาบาล', 'พนักงานการเงินส่ง Email ข้อมูลการโอนเงิน อปท. ผิดสาขา', 'พนักงานการเงินโอนเงินผิดบัญชี จำนวน 1,000 บาท และไม่ได้รับเงินคืน', 'พนักงานการเงินตรวจพบธนบัตรปลอมก่อนรับฝากเงินจากลูกค้า'], 'a': 3}, {'q': 'ข้อใดคือแผนงานที่เป็นลายลักษณ์อักษร เพื่อเป็นแนวทางให้องค์กรในการตอบสนองเมื่อเกิดอุบัติการณ์ที่อาจทำให้การดำเนินงานหยุดชะงัก ครอบคลุมถึงบุคลากรหลัก ทรัพยากร การบริการ และการปฏิบัติการที่จำเป็นในการนำกระบวนการจัดการอุบัติการณ์ไปปฏิบัติ โดยเป็นการดำเนินการระงับเหตุเบื้องต้น', 'c': ['Incident Management Plan : IMP', 'Business Continuity Plan : BCP', 'Business Recovery Plan : BRP', 'Business Continuity Management : BCM'], 'a': 0}, {'q': 'การทบทวนคำสั่ง BCM Committee ระดับ ฝสข. สนจ. และสาขา ครั้งที่ 1 กำหนดให้แล้วเสร็จเมื่อใด', 'c': ['31 มีนาคม ของทุกปี', '30 มิถุนายน ของทุกปี', '31 กรกฎาคม ของทุกปี', '30 กันยายน ของทุกปี'], 'a': 1}, {'q': 'จำนวนเหตุการณ์สภาวะวิกฤติการบริหารความต่อเนื่องทางธุรกิจในแผนรองรับการดำเนินธุรกิจอย่างต่อเนื่อง (Business Continuity Plan) ที่ธนาคารกำหนด มีกี่เหตุการณ์', 'c': ['7 เหตุการณ์', '8 เหตุการณ์', '9 เหตุการณ์', '10 เหตุการณ์'], 'a': 2}, {'q': 'ทีมที่ตอบสนองจัดการแก้ไขเหตุฉุกเฉินหรือทีมระงับเหตุฉุกเฉินที่เกิดขึ้นต่อธนาคาร เพื่อให้ธุรกรรมของธนาคารสามารถกลับมาให้บริการได้เร็วที่สุด คือ ทีมใด', 'c': ['ทีมศูนย์ปฏิบัติงานสำรอง', 'ทีมจัดการเหตุฉุกเฉินสาขา', 'ทีมปฏิบัติงาน BCP', 'ถูกทั้ง ข และ ค'], 'a': 1}, {'q': 'การฝึกซ้อมแผนความต่อเนื่องทางธุรกิจ (BCP) ธนาคารกำหนดให้ฝึกซ้อมแบบใด', 'c': ['แบบ Structured Walk Through', 'แบบ Simulation', 'แบบ Parallel', 'แบบ Full Interruption'], 'a': 1}];
+const E = ['เฉลย RCSA Q1: ข้อ ค. Authorizer — ตามคู่มือควบคุมภายใน Authorizer = บันทึก แก้ไข แนบไฟล์เอกสาร และอนุมัติข้อมูล (Operator แค่บันทึก+แก้ไข)', 'เฉลย RCSA Q2: ข้อ ก. รองประธาน — กรณีประธานว่างลง (โยกย้าย/เกษียณ) และอยู่ระหว่างแต่งตั้ง ให้รองประธานทำการแทน', 'เฉลย RCSA Q3: ข้อ ค. ปานกลาง ค่อนข้างสูง สูง — ค่าความเสี่ยง 5-9=ปานกลาง, 10-16=ค่อนข้างสูง, 17-25=สูง (เกินกว่าระดับที่ยอมรับได้)', 'เฉลย RCSA Q4: ข้อ ข. Likelihood × Impact — ผลการประเมินความเสี่ยง = ระดับโอกาส (Likelihood) × ระดับผลกระทบ (Impact)', 'เฉลย RCSA Q5: ข้อ ง. Appetite=2, Tolerance=4 — ธนาคารกำหนด Risk Appetite ที่ระดับ 2 และ Risk Tolerance ที่ระดับ 4', 'เฉลย LOSS Q1: ข้อ ข. วันที่ 10 — บันทึกและอนุมัติข้อมูล Loss Data ทันทีหรือไม่เกินวันที่ 10 ของเดือนถัดไป', 'เฉลย LOSS Q2: ข้อ ค. การหยุดชะงักของ ATM CDM PAM — จัดอยู่ในประเภท "Business Disruption and System Failures" (ธุรกิจหยุดชะงักและระบบขัดข้อง) ก/ข ไม่ใช่ความเสียหายของธนาคาร', 'เฉลย LOSS Q3: ข้อ ค. นำข้อมูลลับลูกค้าไปหาผลประโยชน์ — เป็นตัวอย่างคลาสสิกของ Clients, Products and Business Practices (แนวปฏิบัติเกี่ยวกับลูกค้า/ผลิตภัณฑ์) ก/ข เป็น Execution/Process Management', 'เฉลย LOSS Q4: ข้อ ก. Execution, Delivery and Process Management — เงินสดขาดเกินบัญชี/ปฏิบัติงานไม่ทัน = ประเภทที่ 7 (การส่งมอบและการจัดการกระบวนการ)', 'เฉลย LOSS Q5: ข้อ ค. อยู่ระหว่างดำเนินการ — สถานะเหตุการณ์ในระบบ Loss Data มี 3 ประเภท: (1) ระหว่างการสอบสวน (2) อยู่ระหว่างการเรียกคืนค่าเสียหาย (3) ดำเนินการแล้วเสร็จ', 'เฉลย LOSS Q6: ข้อ ง. ตรวจพบธนบัตรปลอมก่อนรับฝาก — เป็น Near Miss ตามตัวอย่างในคู่มือ (ก พนักงานลื่นล้ม = Employment Practices, ข ส่ง Email ผิดสาขา = ยังเกิดความเสียหายที่ต้องบันทึก, ค โอนผิดและไม่ได้คืน = ความเสียหายจริง)', 'เฉลย BCM Q1: ข้อ ก. IMP (Incident Management Plan) — แผนจัดการอุบัติการณ์ เป็นแนวทางตอบสนองเมื่อเกิดอุบัติการณ์ที่อาจทำให้หยุดชะงัก ครอบคลุมบุคลากร/ทรัพยากร/การบริการ (BCP = เรียกคืนการดำเนินงาน, BRP = ฟื้นฟูสภาวะปกติ, BCM = แนวทางภาพรวม)', 'เฉลย BCM Q2: ข้อ ข. 30 มิถุนายน — การทบทวนคำสั่ง BCM Committee ครั้งที่ 1 กำหนดให้แล้วเสร็จภายใน 30 มิ.ย. (ส่วนครั้งที่ 2 ภายใน 30 พ.ย. / ฝึกซ้อมภายใน 30 ก.ย.)', 'เฉลย BCM Q3: ข้อ ค. 9 เหตุการณ์ — แผน BCP ธนาคารกำหนด 9 เหตุการณ์สภาวะวิกฤติ (IT/สาธารณูปโภค/น้ำท่วม/เพลิงไหม้/แผ่นดินไหว/โรคระบาด/ไม่สงบ/โจรกรรม/มลพิษ)', 'เฉลย BCM Q4: ข้อ ข. ทีมจัดการเหตุฉุกเฉินสาขา — เป็นทีมที่ตอบสนอง/ระงับเหตุฉุกเฉิน เพื่อให้ธุรกรรมกลับมาให้บริการได้เร็วที่สุด (ต่างจากทีมปฏิบัติงาน BCP ที่เดินทางไปศูนย์สำรอง)', 'เฉลย BCM Q5: ข้อ ข. Simulation — ธนาคารกำหนดให้ฝึกซ้อมแบบ Simulation โดยเลือกภัยคุกคามที่ประเมินความเสี่ยงสูงสุด 1 ภัยคุกคาม และต้องไม่ซ้ำกับ 1 ปีที่ผ่านมา'];
+
+function renderQuiz() {
+  const el = document.getElementById('qz-container');
+  let h = '';
+  for (let i = 0; i < Q.length; i++) {
+    const q = Q[i];
+    h += '<div class="q" id="q_'+i+'"><p><b>'+(i+1)+'. '+q.q+'</b></p>';
+    for (let j = 0; j < q.c.length; j++) {
+      const letter = String.fromCharCode(65+j);
+      h += '<label><input type="radio" name="q_'+i+'" value="'+j+'" id="r'+i+'_'+j+'"><span>'+letter+'. '+q.c[j]+'</span></label>';
+    }
+    h += '<button class="btn" onclick="checkAnswer('+i+')">ตรวจ</button>';
+    h += '<div class="rb" id="rb_'+i+'"></div></div>';
+  }
+  el.innerHTML = h;
+}
+
+function checkAnswer(i) {
+  const selected = document.querySelector('input[name="q_'+i+'"]:checked');
+  if (!selected) return;
+  const ans = parseInt(selected.value);
+  const rb = document.getElementById('rb_'+i);
+  document.querySelectorAll('input[name="q_'+i+'"]').forEach(r => r.disabled = true);
+  const btn = rb.parentElement.querySelector('.btn');
+  if (btn) btn.disabled = true;
+  if (ans === Q[i].a) {
+    rb.className = 'rb ok';
+    rb.innerHTML = '✅ ถูกต้อง! ' + E[i];
+  } else {
+    const correctLetter = String.fromCharCode(65+Q[i].a);
+    rb.className = 'rb no';
+    rb.innerHTML = '❌ ผิด! เฉลย: ' + E[i];
+  }
+  updateScore();
+}
+
+function updateScore() {
+  let score = 0;
+  for (let i = 0; i < Q.length; i++) {
+    const rb = document.getElementById('rb_'+i);
+    if (rb && rb.classList.contains('ok')) score++;
+  }
+  document.getElementById('score-display').textContent = score;
+}
+
+function resetQuiz() {
+  if (!confirm('รีเซ็ตข้อสอบทั้งหมด?')) return;
+  for (let i = 0; i < Q.length; i++) {
+    document.querySelectorAll('input[name="q_'+i+'"]').forEach(r => { r.checked = false; r.disabled = false; });
+    const rb = document.getElementById('rb_'+i);
+    if (rb) { rb.className = 'rb'; rb.innerHTML = ''; }
+    const btn = document.querySelector('#q_'+i+' .btn');
+    if (btn) btn.disabled = false;
+  }
+  document.getElementById('score-display').textContent = '0';
+}
+
+renderQuiz();
+</script>
+
+</body>
+</html>

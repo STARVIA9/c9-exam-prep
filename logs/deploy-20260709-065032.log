@@ -5,3 +5,17 @@
 [1;32m✅ pre-check OK[0m · 1 file(s) checked
 [1;32m  ✓[0m pre-check passed (1 file(s))
 [1;36m[deploy][0m step 2/5: commit local changes
+[main 2a6828b] deploy: 2026-07-09 06:50 · logs/deploy-20260709-063019.log, procurement-policy.html, logs/deploy-20260709-065032.log
+ 3 files changed, 27 insertions(+), 6 deletions(-)
+ create mode 100644 logs/deploy-20260709-065032.log
+[1;32m  ✓[0m git working tree clean
+[1;36m[deploy][0m step 3/5: push to 'c9-prep/main' (= GitHub Pages production)
+To https://github.com/peatlaonado-star/c9-exam-prep.git
+   8b33945..2a6828b  main -> main
+[1;32m  ✓[0m pushed 2a6828b
+[1;36m[deploy][0m step 4/5: verify Pages live (3 attempts × 15s)
+[1;36m[deploy][0m   attempt 1/3: HTTP 200 from https://peatlaonado-star.github.io/c9-exam-prep/
+
+[1;33m  ![0m size mismatch on procurement-policy.html: local=57093, remote=54618 (Pages may still be caching)
+[1;32m✅ DEPLOY SUCCESS[0m · https://peatlaonado-star.github.io/c9-exam-prep/
+[2m  log: logs/deploy-20260709-065032.log[0m
