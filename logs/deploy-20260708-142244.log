@@ -8,3 +8,21 @@
 [1;32m✅ pre-check OK[0m · 3 file(s) checked
 [1;32m  ✓[0m pre-check passed (3 file(s))
 [1;36m[deploy][0m step 2/5: commit local changes
+[main e7cb3f9] deploy: 2026-07-08 14:22 · index.html, credit-practice-summary.html, credit-quiz-7.html, downloads/, logs/deploy-20260708-142244.log
+ 6 files changed, 1526 insertions(+), 3 deletions(-)
+ create mode 100644 credit-practice-summary.html
+ create mode 100644 credit-quiz-7.html
+ create mode 100644 downloads/new-content.pdf
+ create mode 100644 downloads/new-content.txt
+ create mode 100644 logs/deploy-20260708-142244.log
+[1;32m  ✓[0m git working tree clean
+[1;36m[deploy][0m step 3/5: push to 'c9-prep/main' (= GitHub Pages production)
+To https://github.com/peatlaonado-star/c9-exam-prep.git
+   01a5349..e7cb3f9  main -> main
+[1;32m  ✓[0m pushed e7cb3f9
+[1;36m[deploy][0m step 4/5: verify Pages live (3 attempts × 15s)
+[1;36m[deploy][0m   attempt 1/3: HTTP 200 from https://peatlaonado-star.github.io/c9-exam-prep/
+
+[1;33m  ![0m size mismatch on index.html: local=80381, remote=78610 (Pages may still be caching)
+[1;32m✅ DEPLOY SUCCESS[0m · https://peatlaonado-star.github.io/c9-exam-prep/
+[2m  log: logs/deploy-20260708-142244.log[0m
